@@ -3,19 +3,24 @@
 #include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
-
-#include <io/pad.h>
-
-#include <sysutil/msg.h>
-#include <sysutil/sysutil.h>
+#include <unistd.h>
 
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL_mixer.h>
 
-char audioPath[]="/dev_hdd0/game/EMPALIENS/data/sound/start.round.mp3";
 
+
+#ifdef PS3
+	#include <sysutil/msg.h>
+	#include <sysutil/sysutil.h>
+	#include <io/pad.h>
+	padInfo padinfo;
+	padData paddata;
+#endif
+
+char audioPath[]="data/sounds/start.round.mp3";
 SDL_Event event;
 
 Mix_Music *music = NULL;
@@ -23,7 +28,6 @@ Mix_Music *music = NULL;
 void makeSound(){
 	music = Mix_LoadMUS((const char*)audioPath);
 	Mix_PlayMusic(music, 0);
-
 }
 
 SDL_Surface *Load_Image(char file[256]){
@@ -43,25 +47,26 @@ void draw_surface(SDL_Surface* destination, SDL_Surface* source, int x, int y){
 	offset.y = y;
 	SDL_BlitSurface( source, NULL, destination, &offset );
 }
-
+#ifdef PS3
 int main (s32 argc, const char* argv[]){
-  padInfo padinfo;
-  padData paddata;
+#else
+int main (int argc, const char* argv[]){
+#endif
   SDL_Init(SDL_INIT_EVERYTHING);
   SDL_Surface* screen = NULL;
   IMG_Init(IMG_INIT_PNG);
   TTF_Init();
-  screen = SDL_SetVideoMode(1280, 720, 32 ,SDL_SWSURFACE|SDL_DOUBLEBUF|SDL_FULLSCREEN);
+  screen = SDL_SetVideoMode(800, 600, 32 ,SDL_SWSURFACE|SDL_DOUBLEBUF);
   Mix_OpenAudio( AUDIO_S16MSB, MIX_DEFAULT_FORMAT, 2, 1024 );
 
   SDL_Surface *image = NULL;
 
-  char imagePath[]="/dev_hdd0/game/EMPALIENS/data/images/ICON0.PNG";
-  char FontPath[]="/dev_hdd0/game/SDL00TEST/font.ttf";
+  char imagePath[]="data/images/ICON0.png";
+  char FontPath[]="data/fonts/font.ttf";
 
 
   image = Load_Image(imagePath);
-  draw_surface(screen, image, 1280/4,720/4);
+  draw_surface(screen, image, 800/4,600/4);
 
   TTF_Font *Sans = TTF_OpenFont( FontPath , 20.0 );
   SDL_Color WHITE = { 255, 255, 255};
@@ -72,8 +77,9 @@ int main (s32 argc, const char* argv[]){
   
   
   
-  
+
   while (1) {
+    #ifdef PS3
     ioPadGetInfo (&padinfo);
     for(int i = 0; i < MAX_PADS; i++) {
         if(padinfo.status[i]) {
@@ -86,6 +92,8 @@ int main (s32 argc, const char* argv[]){
             }
         }
     }
+    #endif
+    makeSound();
     SDL_Flip(screen);
   }
 
@@ -99,7 +107,9 @@ int main (s32 argc, const char* argv[]){
   IMG_Quit();
   TTF_Quit();
   SDL_Quit();
+  #ifdef PS3
   ioPadEnd();
+  #endif
   return 0;
 }
 

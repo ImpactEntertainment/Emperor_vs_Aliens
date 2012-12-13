@@ -21,9 +21,10 @@ SOURCES		:=	source
 DATA		:=	data
 INCLUDES	:=	include
 
-ICON0		:=	$(CURDIR)/data/images/ICON0.PNG
-SFOXML		:=	$(CURDIR)/data/xml/sfo.xml
-PKGFILES	:=	$(CURDIR)/release
+ICON0		:=	$(CURDIR)/data/images/ICON0.png
+PIC0		:=	$(CURDIR)/data/images/PIC0.png
+SFOXML		:=	$(CURDIR)/data/xmls/sfo.xml
+LPKGFILES	:=	$(CURDIR)/data
 
 TITLE		:=       Emperor VS Aliens - Impact Entertainment
 APPID		:=       EMPALIENS
@@ -33,7 +34,7 @@ CONTENTID	:=       UP0001-$(APPID)_00-0000000000000000
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS		=	-O2 -Wall -mcpu=cell $(MACHDEP) $(INCLUDE)
+CFLAGS		=	-O2 -Wall -mcpu=cell $(MACHDEP) $(INCLUDE) -DPS3
 CXXFLAGS	=	$(CFLAGS)
 
 LDFLAGS		=	$(MACHDEP) -Wl,-Map,$(notdir $@).map
@@ -107,7 +108,7 @@ export OUTPUT	:=	$(CURDIR)/$(TARGET)
 #---------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
-	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile.ps3
 
 #---------------------------------------------------------------------------------
 clean:
