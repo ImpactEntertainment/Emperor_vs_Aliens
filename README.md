@@ -11,5 +11,5 @@ Authors
 Changelog:
 ----------
 	- 0.0 -
-	 	- First version with the sample SDL code (working on PC -Linux) 
+	 	- First version with the sample SDL code (working on PC-Windows/Linux  Consoles -PS3/WII) 
 	
