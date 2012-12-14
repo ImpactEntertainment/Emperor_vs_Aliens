@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <fstream>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,17 +11,21 @@
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL_mixer.h>
 
-
-
 #ifdef PS3
 	#include <sysutil/msg.h>
 	#include <sysutil/sysutil.h>
 	#include <io/pad.h>
 	padInfo padinfo;
 	padData paddata;
-#endif
+	char audioPath[]="/dev_hdd0/game/EMPALIENS/USRDIR/data/sounds/start_round.ogg";
+	char imagePath[]="/dev_hdd0/game/EMPALIENS/USRDIR/data/images/ICON0.png";
+	char FontPath[]="/dev_hdd0/game/EMPALIENS/USRDIR/data/fonts/font.ttf";
 
-char audioPath[]="data/sounds/start.round.mp3";
+#else
+	char audioPath[]="data/sounds/start_round.ogg";
+	char imagePath[]="data/images/ICON0.png";
+	char FontPath[]="data/fonts/font.ttf";
+#endif
 SDL_Event event;
 
 Mix_Music *music = NULL;
@@ -61,10 +66,6 @@ int main (int argc, const char* argv[]){
 
   SDL_Surface *image = NULL;
 
-  char imagePath[]="data/images/ICON0.png";
-  char FontPath[]="data/fonts/font.ttf";
-
-
   image = Load_Image(imagePath);
   draw_surface(screen, image, 800/4,600/4);
 
@@ -92,8 +93,9 @@ int main (int argc, const char* argv[]){
             }
         }
     }
-    #endif
+	#else
     makeSound();
+    #endif
     SDL_Flip(screen);
   }
 
