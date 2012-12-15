@@ -62,7 +62,7 @@ int main (int argc, const char* argv[]){
   IMG_Init(IMG_INIT_PNG);
   TTF_Init();
   screen = SDL_SetVideoMode(800, 600, 32 ,SDL_SWSURFACE|SDL_DOUBLEBUF);
-  Mix_OpenAudio( AUDIO_S16MSB, MIX_DEFAULT_FORMAT, 2, 1024 );
+  Mix_OpenAudio( 22050,AUDIO_S16SYS,2,640 );
 
   SDL_Surface *image = NULL;
 
