@@ -61,13 +61,13 @@ int main (int argc, const char* argv[]){
   SDL_Surface* screen = NULL;
   IMG_Init(IMG_INIT_PNG);
   TTF_Init();
-  screen = SDL_SetVideoMode(800, 600, 32 ,SDL_SWSURFACE|SDL_DOUBLEBUF);
+  screen = SDL_SetVideoMode(1024, 768, 32 ,SDL_FULLSCREEN|SDL_SWSURFACE|SDL_DOUBLEBUF);
   Mix_OpenAudio( 22050,AUDIO_S16SYS,2,640 );
 
   SDL_Surface *image = NULL;
 
   image = Load_Image(imagePath);
-  draw_surface(screen, image, 800/4,600/4);
+  draw_surface(screen, image, 1024/4,168/4);
 
   TTF_Font *Sans = TTF_OpenFont( FontPath , 20.0 );
   SDL_Color WHITE = { 255, 255, 255};
