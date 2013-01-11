@@ -67,7 +67,7 @@ int main (int argc, const char* argv[]){
   	TTF_Init();
 
 	SDL_WM_SetCaption("Emperor VS Aliens", "Emperor VS Aliens");
-	SDL_WM_SetIcon(SDL_LoadBMP("data/images/impact/ICON0.bmp"), NULL);
+	SDL_WM_SetIcon(SDL_LoadBMP("data/images/ICON0.bmp"), NULL);
 
 
 	screen = SDL_SetVideoMode(1024, 768, 32 ,SDL_SWSURFACE|SDL_DOUBLEBUF);
