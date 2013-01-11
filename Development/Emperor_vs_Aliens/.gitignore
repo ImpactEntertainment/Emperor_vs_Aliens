@@ -1,0 +1,23 @@
+# Object files
+*.o
+build/
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.pkg
+*.self
+*.elf
+Emperor_vs_Aliens
+
