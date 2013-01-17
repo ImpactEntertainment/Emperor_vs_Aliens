@@ -296,9 +296,6 @@ void draw(SDL_Surface *screen){
 
 
 
-
-
-
 #ifdef PS3
 int main (s32 argc, const char* argv[]){
 #else
