@@ -1,3 +1,9 @@
+#version
+MAJOR_VERSION=0
+MINOR_VERSION=1
+MICRO_VERSION=0
+VERSION=$(MAJOR_VERSION).$(MINOR_VERSION).$(MICRO_VERSION)
+
 # Compiler
 CC=g++
 TARGET		:=	$(notdir $(CURDIR))
@@ -18,7 +24,7 @@ main:
 	@$(CC) $(CPPFLAGS)  -c source/main.cpp
 	@echo linking ...
 	@$(CC) $(OBJECTS) $(CPPFLAGS) $(LDFLAGS) -o $(TARGET)
-	@echo Done "<$(TARGET)>"
+	@echo "$(TARGET)-$(VERSION)"
 
 # Cleanup
 clean:
