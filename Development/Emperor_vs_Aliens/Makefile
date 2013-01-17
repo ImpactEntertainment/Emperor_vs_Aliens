@@ -14,7 +14,7 @@ LIBS	:=	-lSDL -lSDL_image -lSDL_mixer -lSDL_ttf
 	#		-lSDL -lSDL_image -lSDL_mixer -lSDL_ttf -lpng -ljpeg -lvorbisfile -lvorbis -logg -laudio -lmikmod -ltiff -lm -lfreetype -lz -lpixman-1 -lSDLmain -lrt  -lm 
 			
 # Flags
-CPPFLAGS=-Wall -g -W
+CPPFLAGS=-Wall -g -W -pedantic -ansi
 
 # Linking flags
 LDFLAGS= $(LIBS)
