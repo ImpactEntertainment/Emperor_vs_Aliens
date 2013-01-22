@@ -16,7 +16,7 @@
 #include <cairo/cairo.h>
 #include <math.h>
 
-#include "rsxutil.h"
+#include "rsxutil.hpp"
 
 #define GCM_LABEL_INDEX		255
 
