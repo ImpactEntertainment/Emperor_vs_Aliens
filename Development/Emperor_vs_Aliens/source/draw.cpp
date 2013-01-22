@@ -66,15 +66,7 @@ void putPixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
     }
 }
 
-void draw(SDL_Surface *screen)
-{
-	drawBackground(screen);
-	//drawBoard(screen);
-	drawX(screen);
-	drawO(screen);
-	
-	SDL_UpdateRect(screen, 0, 0, 0, 0);
-}
+
 
 void drawBackground(SDL_Surface *screen){
 
@@ -110,168 +102,8 @@ void drawBackground(SDL_Surface *screen){
 	SDL_FillRect(screen, &ground, lightgreenPixel);
 }
 
-void drawBoard(SDL_Surface *screen)
-{
-	SDL_Color black;
-	black.r = black.g = black.b = 0;
-
-	SDL_PixelFormat *format = screen->format;
-	Uint32 blackPixel = SDL_MapRGB(format, black.r, black.g, black.b);
-
-	SDL_Rect verticalBar;
-	verticalBar.x = 235;
-	verticalBar.y = 15;
-	verticalBar.w = 15;
-	verticalBar.h = 690;
-
-	SDL_FillRect(screen, &verticalBar, blackPixel);
-
-	verticalBar.x += 235;
-	SDL_FillRect(screen, &verticalBar, blackPixel);
-
-	SDL_Rect horizontalBar;
-	horizontalBar.x = 15;
-	horizontalBar.y = 235;
-	horizontalBar.w = 690;
-	horizontalBar.h = 15;
-
-	SDL_FillRect(screen, &horizontalBar, blackPixel);
-
-	horizontalBar.y += 235;
-	SDL_FillRect(screen, &horizontalBar, blackPixel);
-}
-
-void drawX(SDL_Surface *screen)
-{
-	SDL_Color blue;
-	blue.r = blue.g = 0;
-	blue.b = 255;
-
-	for (int i = 0; i < 35; i++)
-	{
-		drawLine(screen, 35 + i, 35, 180 + i, 215, blue);
-		drawLine(screen, 35 + i, 215, 180 + i, 35, blue);
-	}
-}
-
-void drawO(SDL_Surface *screen)
-{
-	SDL_Color red;
-	red.g = red.b = 0;
-	red.r = 255;
-
-	drawCircle(screen, 90, 595, 360, red);
-}
-
-void fillPoints(SDL_Surface *screen, int cx, int cy, int x, int y, Uint32 color)
-{
-	for (int j = x; j <= y; j++)
-	{
-		putPixel(screen, cx + x, cy + j, color);
-		putPixel(screen, cx + x, cy - j, color);
-		putPixel(screen, cx - x, cy + j, color);
-		putPixel(screen, cx - x, cy - j, color);
-		putPixel(screen, cx + j, cy + x, color);
-		putPixel(screen, cx + j, cy - x, color);
-		putPixel(screen, cx - j, cy + x, color);
-		putPixel(screen, cx - j, cy - x, color);
-	}
-}
-
-void drawCircle(SDL_Surface *screen, int radius, int x, int y, SDL_Color color)
-{
-	Uint32 pixelColor = SDL_MapRGB(screen->format, color.r, color.g, color.b);
-
-	// Algoritmo de Bresenham para círculos
-	int error = 3 - (radius << 1);
-	int i = 0, j = radius;
-
-	do 
-	{
-		fillPoints(screen, x, y, i, j, pixelColor);
-
-		if (error < 0)
-		{
-			error += (i << 2) + 6;
-		} else 
-		{
-			error += ((i - j) << 2) + 10;
-			j--;
-		}	
-
-		i++;
-	} while (i <= j);
-
-}
-
-void drawLine(SDL_Surface *screen, int x1, int y1, int x2, int y2, 
-	SDL_Color color)
-{
-	Uint32 pixelColor = SDL_MapRGB(screen->format, color.r, color.g, color.b);
-	
-	// Bresenham's line algorithm
-	const bool steep = (fabs(y2 - y1) > fabs(x2 - x1));
-	if(steep)
-	{
-		std::swap(x1, y1);
-		std::swap(x2, y2);
-	}
- 
-	if(x1 > x2)
-	{
-		std::swap(x1, x2);
-		std::swap(y1, y2);
-	}
- 
-	const float dx = x2 - x1;
-	const float dy = fabs(y2 - y1);
- 
-	float error = dx / 2.0f;
-	const int ystep = (y1 < y2) ? 1 : -1;
-	int y = (int)y1;
- 
-	const int maxX = (int)x2;
- 
-	for(int x=(int)x1; x<maxX; x++)
-	{
-		if(steep)
-        {
-            putPixel(screen, y, x, pixelColor);
-        }
-		else
-        {
-            putPixel(screen, x, y, pixelColor);
-        }
- 
-           error -= dy;
-
-	    if(error < 0)
-        {
-	        y += ystep;
-	        error += dx;
-        }
-	}
-}
-
-void draw2(SDL_Surface *screen){
-
-
-	SDL_Color white;
-	white.r = white.g = white.b = 255;
-	
-	SDL_Color darkgray;
-	darkgray.r = darkgray.g = darkgray.b = 60;
-	
-	SDL_Color gray;
-	gray.r = gray.g = gray.b = 127;
-	
-	SDL_Color lightgray;
-	lightgray.r = lightgray.g = lightgray.b = 190;
-	
-
-
-
-	SDL_Color darkgreen;
+void drawMontains(SDL_Surface *screen){
+    SDL_Color darkgreen;
 	darkgreen.r = 0;
 	darkgreen.g = 80;
 	darkgreen.b = 10;
@@ -281,35 +113,10 @@ void draw2(SDL_Surface *screen){
 	middlegreen.g = 170;
 	middlegreen.b = 40;
 
-	SDL_Color grassgreen;
-	grassgreen.r = 150;
-	grassgreen.g = 230;
-	grassgreen.b = 30;
 
-
-	SDL_Color yellow;
-	yellow.r = 230;
-	yellow.g = 230;
-	yellow.b = 90;
-	
-	SDL_Color lightpink;
-	lightpink.r = 240;
-	lightpink.g = 180;
-	lightpink.b = 240;
-		SDL_PixelFormat *format = screen->format;
-
-
-	Uint32 whitePixel = SDL_MapRGB(format, white.r, white.g, white.b);
-	Uint32 darkgrayPixel = SDL_MapRGB(format, darkgray.r, darkgray.g, darkgray.b);
-	Uint32 grayPixel = SDL_MapRGB(format, gray.r, gray.g, gray.b);
-	Uint32 lightgrayPixel = SDL_MapRGB(format, lightgray.r, lightgray.g, lightgray.b);
-
-	Uint32 darkgreenPixel = SDL_MapRGB(format, darkgreen.r, darkgreen.g, darkgreen.b);
+	SDL_PixelFormat *format = screen->format;
+    Uint32 darkgreenPixel = SDL_MapRGB(format, darkgreen.r, darkgreen.g, darkgreen.b);
 	Uint32 middlegreenPixel = SDL_MapRGB(format, middlegreen.r, middlegreen.g, middlegreen.b);
-	Uint32 grassgreenPixel = SDL_MapRGB(format, grassgreen.r, grassgreen.g, grassgreen.b);
-	Uint32 yellowPixel = SDL_MapRGB(format, yellow.r, yellow.g, yellow.b);	
-	Uint32 lightpinkPixel = SDL_MapRGB(format, lightpink.r, lightpink.g, lightpink.b);	
-	
 
 
 	SDL_Rect mountainleft;
@@ -328,14 +135,33 @@ void draw2(SDL_Surface *screen){
 
 	SDL_FillRect(screen, &mountainright, middlegreenPixel);
 
-	SDL_Rect sun;
-	sun.x = 360;
-	sun.y = 30;
-	sun.w = 80;
-	sun.h = 80;
+}
 
-	SDL_FillRect(screen, &sun, yellowPixel);
+void drawMap(SDL_Surface *screen){
 
+	SDL_Color darkgray;
+	darkgray.r = darkgray.g = darkgray.b = 60;
+	
+	SDL_Color gray;
+	gray.r = gray.g = gray.b = 127;
+	
+	SDL_Color lightgray;
+	lightgray.r = lightgray.g = lightgray.b = 190;
+	
+
+	SDL_Color lightpink;
+	lightpink.r = 240;
+	lightpink.g = 180;
+	lightpink.b = 240;
+	
+	SDL_PixelFormat *format = screen->format;
+
+
+	Uint32 darkgrayPixel = SDL_MapRGB(format, darkgray.r, darkgray.g, darkgray.b);
+	Uint32 grayPixel = SDL_MapRGB(format, gray.r, gray.g, gray.b);
+	Uint32 lightgrayPixel = SDL_MapRGB(format, lightgray.r, lightgray.g, lightgray.b);
+
+	
 
 	SDL_Rect wall;
 	wall.x = 5;
@@ -345,21 +171,6 @@ void draw2(SDL_Surface *screen){
 
 	SDL_FillRect(screen, &wall, grayPixel);
 
-	SDL_Rect cloudleft;
-	cloudleft.x = 105;
-	cloudleft.y = 25;
-	cloudleft.w = 80;
-	cloudleft.h = 50;
-
-	SDL_FillRect(screen, &cloudleft, whitePixel);
-
-	SDL_Rect cloudright;
-	cloudright.x = 405;
-	cloudright.y = 35;
-	cloudright.w = 80;
-	cloudright.h = 50;
-
-	SDL_FillRect(screen, &cloudright, whitePixel);
 	
 	SDL_Rect rockA;
 	rockA.x = 280;
@@ -393,30 +204,22 @@ void draw2(SDL_Surface *screen){
 
 	SDL_FillRect(screen, &rockD, darkgrayPixel);
 	
-	SDL_Rect leafsA;
-	leafsA.x = 420;
-	leafsA.y = 350;
-	leafsA.w = 60;
-	leafsA.h = 60;
-
-	SDL_FillRect(screen, &leafsA, lightpinkPixel);
-
 	SDL_Rect woodA;
-	woodA.x = 440;
-	woodA.y = 410;
+	woodA.x = 410;
+	woodA.y = 420;
 	woodA.w = 20;
 	woodA.h = 60;
 
 	SDL_FillRect(screen, &woodA, lightgrayPixel);
 	
-	SDL_Rect leafsB;
-	leafsB.x = 590;
-	leafsB.y = 480;
-	leafsB.w = 60;
-	leafsB.h = 60;
+	SDL_Rect leafsA;
+	leafsA.x = 420;
+	leafsA.y = 350;
+	leafsA.w = 60;
+	leafsA.h = 60;
+    drawCircle(screen, 40, 420, 380, lightpink);
 
-	SDL_FillRect(screen, &leafsB, lightpinkPixel);
-
+	
 	SDL_Rect woodB;
 	woodB.x = 610;
 	woodB.y = 540;
@@ -425,5 +228,146 @@ void draw2(SDL_Surface *screen){
 
 	SDL_FillRect(screen, &woodB, lightgrayPixel);
 	
+	SDL_Rect leafsB;
+	leafsB.x = 590;
+	leafsB.y = 480;
+	leafsB.w = 60;
+	leafsB.h = 60;
+    drawCircle(screen, 40, 620, 500, lightpink);
+    
+	SDL_UpdateRect(screen, 0, 0, 0, 0);
+
+/*
+	SDL_Color blue;
+	blue.r = blue.g = 0;
+	blue.b = 255;
+
+	for (int i = 0; i < 35; i++){
+		drawLine(screen, 35 + i, 35, 180 + i, 215, blue);
+		drawLine(screen, 35 + i, 215, 180 + i, 35, blue);
+	}*/
+}
+
+void drawSun(SDL_Surface *screen){
+	SDL_Color yellow;
+	yellow.r = 230;
+	yellow.g = 230;
+	yellow.b = 90;
+
+	drawCircle(screen, 30, 360, 40, yellow);
+}
+
+void fillPoints(SDL_Surface *screen, int cx, int cy, int x, int y, Uint32 color){
+
+	for (int j = x; j <= y; j++){
+		putPixel(screen, cx + x, cy + j, color);
+		putPixel(screen, cx + x, cy - j, color);
+		putPixel(screen, cx - x, cy + j, color);
+		putPixel(screen, cx - x, cy - j, color);
+		putPixel(screen, cx + j, cy + x, color);
+		putPixel(screen, cx + j, cy - x, color);
+		putPixel(screen, cx - j, cy + x, color);
+		putPixel(screen, cx - j, cy - x, color);
+	}
+}
+
+void drawCircle(SDL_Surface *screen, int radius, int x, int y, SDL_Color color){
+
+	Uint32 pixelColor = SDL_MapRGB(screen->format, color.r, color.g, color.b);
+
+	// Algoritmo de Bresenham para círculos
+	int error = 3 - (radius << 1);
+	int i = 0, j = radius;
+
+	do{
+		fillPoints(screen, x, y, i, j, pixelColor);
+
+		if (error < 0)		{
+			error += (i << 2) + 6;
+		} else {
+			error += ((i - j) << 2) + 10;
+			j--;
+		}	
+
+		i++;
+	} while (i <= j);
+
+}
+
+void drawLine(SDL_Surface *screen, int x1, int y1, int x2, int y2, 	SDL_Color color){
+	Uint32 pixelColor = SDL_MapRGB(screen->format, color.r, color.g, color.b);
+	
+	// Bresenham's line algorithm
+	const bool steep = (fabs(y2 - y1) > fabs(x2 - x1));
+	if(steep){
+		std::swap(x1, y1);
+		std::swap(x2, y2);
+	}
+ 
+	if(x1 > x2){
+		std::swap(x1, x2);
+		std::swap(y1, y2);
+	}
+ 
+	const float dx = x2 - x1;
+	const float dy = fabs(y2 - y1);
+ 
+	float error = dx / 2.0f;
+	const int ystep = (y1 < y2) ? 1 : -1;
+	int y = (int)y1;
+ 
+	const int maxX = (int)x2;
+ 
+	for(int x=(int)x1; x<maxX; x++){
+		if(steep){
+            putPixel(screen, y, x, pixelColor);
+        }
+		else{
+            putPixel(screen, x, y, pixelColor);
+        }
+ 
+           error -= dy;
+
+	    if(error < 0){
+	        y += ystep;
+	        error += dx;
+        }
+	}
+}
+
+void drawCloud(SDL_Surface *screen){
+
+	SDL_Color white;
+	white.r = white.g = white.b = 255;
+	
+	SDL_PixelFormat *format = screen->format;
+	
+	Uint32 whitePixel = SDL_MapRGB(format, white.r, white.g, white.b);
+		
+	SDL_Rect cloudleft;
+	cloudleft.x = 105;
+	cloudleft.y = 25;
+	cloudleft.w = 80;
+	cloudleft.h = 50;
+
+	SDL_FillRect(screen, &cloudleft, whitePixel);
+
+	SDL_Rect cloudright;
+	cloudright.x = 405;
+	cloudright.y = 35;
+	cloudright.w = 80;
+	cloudright.h = 50;
+
+	SDL_FillRect(screen, &cloudright, whitePixel);
+}
+
+
+void draw(SDL_Surface *screen)
+{
+	drawBackground(screen);
+	drawMontains(screen);	
+	drawSun(screen);
+	drawCloud(screen);
+	drawMap(screen);
 	SDL_UpdateRect(screen, 0, 0, 0, 0);
 }
