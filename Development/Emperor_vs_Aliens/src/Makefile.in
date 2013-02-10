@@ -43,10 +43,7 @@ bin_PROGRAMS = EmperorVsAliens$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -83,7 +80,11 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libedge_la_DEPENDENCIES =
-am_libedge_la_OBJECTS = draw.lo video.lo
+am_libedge_la_OBJECTS = draw.lo videosettings.lo windowsettings.lo \
+	sdlvideo.lo sdlwindow.lo sdlvideosettings.lo \
+	sdlwindowfactory.lo sdlwindowsettings.lo sdlcanvas.lo point.lo \
+	color.lo rectangle.lo line.lo circle.lo sdlimage.lo \
+	boundingrectangle.lo element.lo game.lo
 libedge_la_OBJECTS = $(am_libedge_la_OBJECTS)
 libedge_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -238,22 +239,40 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 
 # Library description
-lib_LTLIBRARIES = libedge.la
+lib_LTLIBRARIES = libedge.la 
 
 # Library flags
 libedge_la_LDFLAGS = -static
 
 # Library sources
-libedge_la_SOURCES = draw.cpp video.cpp
+libedge_la_SOURCES = draw.cpp \
+						videosettings.cpp \
+						windowsettings.cpp \
+						sdlvideo.cpp \
+						sdlwindow.cpp \
+						sdlvideosettings.cpp \
+						sdlwindowfactory.cpp \
+						sdlwindowsettings.cpp \
+						sdlcanvas.cpp \
+						point.cpp \
+						color.cpp \
+						rectangle.cpp \
+						line.cpp \
+						circle.cpp \
+						sdlimage.cpp \
+						boundingrectangle.cpp \
+						element.cpp \
+						game.cpp
+
 
 # Libraries needed to build our library
-libedge_la_LIBADD = -lSDL
+libedge_la_LIBADD = -lSDL 
 
 # Program description
 EmperorVsAliens_SOURCES = EmperorVsAliens.cpp
 
 # Libraries needed to build program
-EmperorVsAliens_LDADD = -lSDL libedge.la
+EmperorVsAliens_LDADD = libedge.la -lSDL -lSDL_image
 
 # Include flags
 INCLUDES = -I./include -Wall -Wno-long-long -W -pedantic -ansi
@@ -378,8 +397,24 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/EmperorVsAliens.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/boundingrectangle.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/circle.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/color.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/draw.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/video.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/element.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/line.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/point.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/rectangle.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sdlcanvas.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sdlimage.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sdlvideo.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sdlvideosettings.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sdlwindow.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sdlwindowfactory.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sdlwindowsettings.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/videosettings.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/windowsettings.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

@@ -6,7 +6,6 @@
  * de vídeo estão na classe WindowSettings.
  *
  * \author Edson Alves (edsonalves@unb.br)
- * \co-author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com)
  * \date 30/12/2012
  */
 #ifndef EDGE_WINDOW_SETTINGS_H
@@ -18,23 +17,28 @@ using namespace std;
 
 namespace edge {
 
+typedef enum {SYSTEM, INDEXED, HICOLOR, TRUE_COLOR, RGBA} ColorDepth;
 typedef enum {WINDOW, NO_FRAME_WINDOW, FULLSCREEN} PresentationMode;
 typedef enum {RESIZABLE, FIXED} WindowSize;
 
 ostream& operator<<(ostream& os, PresentationMode presentationMode);
 ostream& operator<<(ostream& os, WindowSize windowSize);
+ostream& operator<<(ostream& os, ColorDepth colorDepth);
 
 class WindowSettings {
 	friend ostream& operator<<(ostream& os, const WindowSettings settings);
 	
 public:
-	WindowSettings(unsigned short width = 800, unsigned short height = 600,
-		string title = "Window", PresentationMode presentationMode = WINDOW,		WindowSize windowSize = FIXED);
+	WindowSettings();
+
+	WindowSettings& operator=(const WindowSettings& settings);
+	bool operator!=(const WindowSettings& settings);
 
 	unsigned short width;
 	unsigned short height;
 	string title;
 	PresentationMode presentationMode;
+	ColorDepth colorDepth;
 	WindowSize windowSize;
 };	
 

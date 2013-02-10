@@ -16,6 +16,7 @@
 
 
 # Author: Edson Alves - edsonalves@unb.br
+# Co-author: Luis Gustavo Souza Silva - luisgustavodd@hotmail.com
 # Date: 21/12/2012
 
 
@@ -35,17 +36,14 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = i686-pc-linux-gnu
-host_triplet = i686-pc-linux-gnu
-target_triplet = i686-pc-linux-gnu
+build_triplet = x86_64-unknown-linux-gnu
+host_triplet = x86_64-unknown-linux-gnu
+target_triplet = x86_64-unknown-linux-gnu
 subdir = include
-DIST_COMMON = $(include_HEADERS) $(srcdir)/Makefile.am \
+DIST_COMMON = $(libedgeinclude_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -81,17 +79,17 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-am__installdirs = "$(DESTDIR)$(includedir)"
-HEADERS = $(include_HEADERS)
+am__installdirs = "$(DESTDIR)$(libedgeincludedir)"
+HEADERS = $(libedgeinclude_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run autoconf
-AUTOHEADER = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run autoheader
-AUTOMAKE = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run automake-1.11
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -120,7 +118,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = /usr/bin/ld
+LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
 LIBS = 
@@ -129,9 +127,9 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_CURRENT = 0
-LT_RELEASE = 0.4.0
-LT_REVISION = 4
-MAKEINFO = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run makeinfo
+LT_RELEASE = 0.10.0
+LT_REVISION = 10
+MAKEINFO = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -153,11 +151,11 @@ SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = strip
-VERSION = 0.4.0
-abs_builddir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/include
-abs_srcdir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/include
-abs_top_builddir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens
-abs_top_srcdir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens
+VERSION = 0.10.0
+abs_builddir = /home/luis/Desktop/EmperorVsAliens-0.10.0/include
+abs_srcdir = /home/luis/Desktop/EmperorVsAliens-0.10.0/include
+abs_top_builddir = /home/luis/Desktop/EmperorVsAliens-0.10.0
+abs_top_srcdir = /home/luis/Desktop/EmperorVsAliens-0.10.0
 ac_config_aux_dir = 
 ac_ct_AR = ar
 ac_ct_CC = gcc
@@ -169,26 +167,26 @@ am__quote =
 am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
-build = i686-pc-linux-gnu
+build = x86_64-unknown-linux-gnu
 build_alias = 
-build_cpu = i686
+build_cpu = x86_64
 build_os = linux-gnu
-build_vendor = pc
+build_vendor = unknown
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = i686-pc-linux-gnu
+host = x86_64-unknown-linux-gnu
 host_alias = 
-host_cpu = i686
+host_cpu = x86_64
 host_os = linux-gnu
-host_vendor = pc
+host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/install-sh
+install_sh = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -204,20 +202,44 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target = i686-pc-linux-gnu
+target = x86_64-unknown-linux-gnu
 target_alias = 
-target_cpu = i686
+target_cpu = x86_64
 target_os = linux-gnu
-target_vendor = pc
+target_vendor = unknown
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
 
 # Includes dir
-libitemincludedir = $(includedir)/
+libedgeincludedir = $(includedir)/tictactoe
 
 # Include files
-include_HEADERS = element.h draw.h video.h
+libedgeinclude_HEADERS = draw.h \
+							video.h \
+							videosettings.h \
+							windowsettings.h \
+							exception.h \
+							window.h \
+							sdlvideo.h \
+							sdlwindow.h \
+							canvas.h \
+							color.h \
+							point.h \
+							rectangle.h \
+							sdlcanvas.h \
+							sdlvideosettings.h \
+							windowfactory.h \
+							line.h \
+							circle.h \
+							image.h \
+							sdlimage.h \
+							sdlwindowsettings.h \
+							boundingarea.h \
+							boundingrectangle.h \
+							element.h \
+							game.h
+
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -273,24 +295,24 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
-install-includeHEADERS: $(include_HEADERS)
+install-libedgeincludeHEADERS: $(libedgeinclude_HEADERS)
 	@$(NORMAL_INSTALL)
-	test -z "$(includedir)" || $(MKDIR_P) "$(DESTDIR)$(includedir)"
-	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \
+	test -z "$(libedgeincludedir)" || $(MKDIR_P) "$(DESTDIR)$(libedgeincludedir)"
+	@list='$(libedgeinclude_HEADERS)'; test -n "$(libedgeincludedir)" || list=; \
 	for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  echo "$$d$$p"; \
 	done | $(am__base_list) | \
 	while read files; do \
-	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(includedir)'"; \
-	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(includedir)" || exit $$?; \
+	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(libedgeincludedir)'"; \
+	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(libedgeincludedir)" || exit $$?; \
 	done
 
-uninstall-includeHEADERS:
+uninstall-libedgeincludeHEADERS:
 	@$(NORMAL_UNINSTALL)
-	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \
+	@list='$(libedgeinclude_HEADERS)'; test -n "$(libedgeincludedir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(includedir)'; $(am__uninstall_files_from_dir)
+	dir='$(DESTDIR)$(libedgeincludedir)'; $(am__uninstall_files_from_dir)
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -378,7 +400,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(HEADERS) config.h
 installdirs:
-	for dir in "$(DESTDIR)$(includedir)"; do \
+	for dir in "$(DESTDIR)$(libedgeincludedir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -431,7 +453,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-includeHEADERS
+install-data-am: install-libedgeincludeHEADERS
 
 install-dvi: install-dvi-am
 
@@ -475,7 +497,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-includeHEADERS
+uninstall-am: uninstall-libedgeincludeHEADERS
 
 .MAKE: all install-am install-strip
 
@@ -484,13 +506,13 @@ uninstall-am: uninstall-includeHEADERS
 	distclean-libtool distclean-tags distdir dvi dvi-am html \
 	html-am info info-am install install-am install-data \
 	install-data-am install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am \
-	install-includeHEADERS install-info install-info-am \
-	install-man install-pdf install-pdf-am install-ps \
-	install-ps-am install-strip installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
-	ps ps-am tags uninstall uninstall-am uninstall-includeHEADERS
+	install-exec-am install-html install-html-am install-info \
+	install-info-am install-libedgeincludeHEADERS install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags uninstall uninstall-am uninstall-libedgeincludeHEADERS
 
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

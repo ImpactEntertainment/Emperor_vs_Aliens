@@ -5,6 +5,7 @@
  * Esta interface representa uma imagem.
  *
  * \author Edson Alves (edsonalves@unb.br)
+ * \author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com.br)
  * \date 10/01/2013
  */
 

@@ -16,7 +16,7 @@ dnl Version control
 PACKAGE=EmperorVsAliens
 
 MAJOR_VERSION=0
-MINOR_VERSION=4
+MINOR_VERSION=10
 MICRO_VERSION=0
 VERSION=$MAJOR_VERSION.$MINOR_VERSION.$MICRO_VERSION
 
@@ -46,6 +46,7 @@ Makefile
 include/Makefile
 src/Makefile
 resources/Makefile
+test/Makefile
 )
 
 dnl User info

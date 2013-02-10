@@ -1,0 +1,11 @@
+boundingrectangle.lo: boundingrectangle.cpp \
+ ../include/boundingrectangle.h ../include/boundingarea.h \
+ ../include/point.h ../include/rectangle.h
+
+../include/boundingrectangle.h:
+
+../include/boundingarea.h:
+
+../include/point.h:
+
+../include/rectangle.h:

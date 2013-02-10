@@ -11,7 +11,11 @@
 #ifndef GAME_H
 #define	GAME_H
 
+#include "canvas.h"
+#include "draw.h"
+
 using namespace std;
+using namespace edge;
 
 class Game {
 public:
@@ -23,14 +27,16 @@ public:
 	void LoadGame();
 	void Loop();
 
+	Game(Canvas* canvas);
 
 	void togglePause();
 	void toggleFastForward();
 	void callNextWave();
 private:
-	Game* instance;
+	Canvas *mCanvas;
 
 	void getInput();
+	void drawScene();
 };
 #endif
 

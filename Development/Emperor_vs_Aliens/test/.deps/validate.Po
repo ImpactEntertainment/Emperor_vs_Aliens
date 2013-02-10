@@ -486,8 +486,12 @@ validate.o: validate.cpp /usr/include/c++/4.6/string \
  /usr/include/SDL/SDL_video.h /usr/include/SDL/SDL_joystick.h \
  /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
  /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
- ../include/exception.h ../include/videosettings.h ../include/window.h \
- ../include/windowsettings.h ../include/video.h
+ ../include/exception.h ../include/videosettings.h \
+ ../include/windowfactory.h ../include/window.h \
+ ../include/windowsettings.h ../include/canvas.h ../include/point.h \
+ ../include/color.h ../include/rectangle.h ../include/line.h \
+ ../include/circle.h ../include/image.h ../include/canvas.h \
+ ../include/exception.h ../include/image.h
 
 /usr/include/c++/4.6/string:
 
@@ -1623,8 +1627,28 @@ validate.o: validate.cpp /usr/include/c++/4.6/string \
 
 ../include/videosettings.h:
 
+../include/windowfactory.h:
+
 ../include/window.h:
 
 ../include/windowsettings.h:
 
-../include/video.h:
+../include/canvas.h:
+
+../include/point.h:
+
+../include/color.h:
+
+../include/rectangle.h:
+
+../include/line.h:
+
+../include/circle.h:
+
+../include/image.h:
+
+../include/canvas.h:
+
+../include/exception.h:
+
+../include/image.h:

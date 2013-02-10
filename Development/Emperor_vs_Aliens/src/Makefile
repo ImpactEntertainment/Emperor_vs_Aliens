@@ -36,17 +36,14 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = i686-pc-linux-gnu
-host_triplet = i686-pc-linux-gnu
-target_triplet = i686-pc-linux-gnu
+build_triplet = x86_64-unknown-linux-gnu
+host_triplet = x86_64-unknown-linux-gnu
+target_triplet = x86_64-unknown-linux-gnu
 bin_PROGRAMS = EmperorVsAliens$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -83,7 +80,11 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libedge_la_DEPENDENCIES =
-am_libedge_la_OBJECTS = draw.lo video.lo
+am_libedge_la_OBJECTS = draw.lo videosettings.lo windowsettings.lo \
+	sdlvideo.lo sdlwindow.lo sdlvideosettings.lo \
+	sdlwindowfactory.lo sdlwindowsettings.lo sdlcanvas.lo point.lo \
+	color.lo rectangle.lo line.lo circle.lo sdlimage.lo \
+	boundingrectangle.lo element.lo game.lo
 libedge_la_OBJECTS = $(am_libedge_la_OBJECTS)
 libedge_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -110,12 +111,12 @@ DIST_SOURCES = $(libedge_la_SOURCES) $(EmperorVsAliens_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run autoconf
-AUTOHEADER = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run autoheader
-AUTOMAKE = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run automake-1.11
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -144,7 +145,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = /usr/bin/ld
+LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
 LIBS = 
@@ -153,9 +154,9 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_CURRENT = 0
-LT_RELEASE = 0.4.0
-LT_REVISION = 4
-MAKEINFO = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run makeinfo
+LT_RELEASE = 0.10.0
+LT_REVISION = 10
+MAKEINFO = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -177,11 +178,11 @@ SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = strip
-VERSION = 0.4.0
-abs_builddir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/src
-abs_srcdir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/src
-abs_top_builddir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens
-abs_top_srcdir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens
+VERSION = 0.10.0
+abs_builddir = /home/luis/Desktop/EmperorVsAliens-0.10.0/src
+abs_srcdir = /home/luis/Desktop/EmperorVsAliens-0.10.0/src
+abs_top_builddir = /home/luis/Desktop/EmperorVsAliens-0.10.0
+abs_top_srcdir = /home/luis/Desktop/EmperorVsAliens-0.10.0
 ac_config_aux_dir = 
 ac_ct_AR = ar
 ac_ct_CC = gcc
@@ -193,26 +194,26 @@ am__quote =
 am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
-build = i686-pc-linux-gnu
+build = x86_64-unknown-linux-gnu
 build_alias = 
-build_cpu = i686
+build_cpu = x86_64
 build_os = linux-gnu
-build_vendor = pc
+build_vendor = unknown
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = i686-pc-linux-gnu
+host = x86_64-unknown-linux-gnu
 host_alias = 
-host_cpu = i686
+host_cpu = x86_64
 host_os = linux-gnu
-host_vendor = pc
+host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/install-sh
+install_sh = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -228,32 +229,50 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target = i686-pc-linux-gnu
+target = x86_64-unknown-linux-gnu
 target_alias = 
-target_cpu = i686
+target_cpu = x86_64
 target_os = linux-gnu
-target_vendor = pc
+target_vendor = unknown
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
 
 # Library description
-lib_LTLIBRARIES = libedge.la
+lib_LTLIBRARIES = libedge.la 
 
 # Library flags
 libedge_la_LDFLAGS = -static
 
 # Library sources
-libedge_la_SOURCES = draw.cpp video.cpp
+libedge_la_SOURCES = draw.cpp \
+						videosettings.cpp \
+						windowsettings.cpp \
+						sdlvideo.cpp \
+						sdlwindow.cpp \
+						sdlvideosettings.cpp \
+						sdlwindowfactory.cpp \
+						sdlwindowsettings.cpp \
+						sdlcanvas.cpp \
+						point.cpp \
+						color.cpp \
+						rectangle.cpp \
+						line.cpp \
+						circle.cpp \
+						sdlimage.cpp \
+						boundingrectangle.cpp \
+						element.cpp \
+						game.cpp
+
 
 # Libraries needed to build our library
-libedge_la_LIBADD = -lSDL
+libedge_la_LIBADD = -lSDL 
 
 # Program description
 EmperorVsAliens_SOURCES = EmperorVsAliens.cpp
 
 # Libraries needed to build program
-EmperorVsAliens_LDADD = -lSDL libedge.la
+EmperorVsAliens_LDADD = libedge.la -lSDL -lSDL_image
 
 # Include flags
 INCLUDES = -I./include -Wall -Wno-long-long -W -pedantic -ansi
@@ -378,8 +397,24 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/EmperorVsAliens.Po
+include ./$(DEPDIR)/boundingrectangle.Plo
+include ./$(DEPDIR)/circle.Plo
+include ./$(DEPDIR)/color.Plo
 include ./$(DEPDIR)/draw.Plo
-include ./$(DEPDIR)/video.Plo
+include ./$(DEPDIR)/element.Plo
+include ./$(DEPDIR)/game.Plo
+include ./$(DEPDIR)/line.Plo
+include ./$(DEPDIR)/point.Plo
+include ./$(DEPDIR)/rectangle.Plo
+include ./$(DEPDIR)/sdlcanvas.Plo
+include ./$(DEPDIR)/sdlimage.Plo
+include ./$(DEPDIR)/sdlvideo.Plo
+include ./$(DEPDIR)/sdlvideosettings.Plo
+include ./$(DEPDIR)/sdlwindow.Plo
+include ./$(DEPDIR)/sdlwindowfactory.Plo
+include ./$(DEPDIR)/sdlwindowsettings.Plo
+include ./$(DEPDIR)/videosettings.Plo
+include ./$(DEPDIR)/windowsettings.Plo
 
 .cpp.o:
 	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

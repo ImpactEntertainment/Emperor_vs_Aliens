@@ -19,31 +19,25 @@ namespace edge {
 
 typedef enum {SYSTEM_MEMORY, VIDEO_MEMORY} VideoBufferLocation;
 typedef enum {SINGLE_CORE, MULTI_CORE} MachineArchitecture;
-typedef enum {SYSTEM, INDEXED, HICOLOR, TRUE_COLOR, RGBA} ColorDepth;
 typedef enum {SINGLE_BUFFER, DOUBLE_BUFFER} BufferingMode;
-typedef enum {BIDIMENSIONAL, TRIDIMENSIONAL, MIXED} RenderingMode;
 
 ostream& operator<<(ostream& os, VideoBufferLocation videoBufferLocation);
 ostream& operator<<(ostream& os, MachineArchitecture machineArchitecture);
-ostream& operator<<(ostream& os, ColorDepth colorDepth);
 ostream& operator<<(ostream& os, BufferingMode bufferingMode);
-ostream& operator<<(ostream& os, RenderingMode renderingMode);
 
 class VideoSettings {
 	friend ostream& operator<<(ostream& os, const VideoSettings settings);
 	
 public:
-	VideoSettings(VideoBufferLocation videoBufferLocation = VIDEO_MEMORY, 
-		MachineArchitecture machineArchitecture = SINGLE_CORE, 
-		ColorDepth colorDepth = HICOLOR,
-		BufferingMode bufferingMode = DOUBLE_BUFFER, 
-		RenderingMode renderingMode = BIDIMENSIONAL);
+	VideoSettings();
+	VideoSettings(const VideoSettings& settings);
+
+	VideoSettings& operator=(const VideoSettings& settings);
+	bool operator!=(const VideoSettings& settings);
 
 	VideoBufferLocation videoBufferLocation;
 	MachineArchitecture machineArchitecture;
-	ColorDepth colorDepth;
 	BufferingMode bufferingMode;
-	RenderingMode renderingMode;
 };	
 
 }

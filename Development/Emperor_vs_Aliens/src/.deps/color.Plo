@@ -1,0 +1,3 @@
+color.lo: color.cpp ../include/color.h
+
+../include/color.h:

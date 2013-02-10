@@ -1,12 +1,9 @@
 # Author: Edson Alves - edsonalves@unb.br
+# Co-Author: Luis Gustavo Souza Silva - luisgustavodd@hotmail.com
 # Date: 21/12/2012
 
 # Resources
-tictactoedir = /opt/$(PACKAGE)/resources
-dist_tictactoe_DATA = eva32.bmp \
-	cerejeira.bmp \
-	muralha.bmp \
-	nuvem.bmp \
-	rock.bmp \
-	sol.bmp \
-	level_01.bmp
+EmperorVsAliensdir = /opt/$(PACKAGE)/resources
+dist_EmperorVsAliens_DATA = eva32.bmp \
+							level_01.png \
+							map_elements.png

@@ -1,0 +1,3 @@
+rectangle.lo: rectangle.cpp ../include/rectangle.h
+
+../include/rectangle.h:

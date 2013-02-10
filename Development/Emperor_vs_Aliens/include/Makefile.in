@@ -16,6 +16,7 @@
 @SET_MAKE@
 
 # Author: Edson Alves - edsonalves@unb.br
+# Co-author: Luis Gustavo Souza Silva - luisgustavodd@hotmail.com
 # Date: 21/12/2012
 
 VPATH = @srcdir@
@@ -39,13 +40,10 @@ build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
 subdir = include
-DIST_COMMON = $(include_HEADERS) $(srcdir)/Makefile.am \
+DIST_COMMON = $(libedgeinclude_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -81,8 +79,8 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-am__installdirs = "$(DESTDIR)$(includedir)"
-HEADERS = $(include_HEADERS)
+am__installdirs = "$(DESTDIR)$(libedgeincludedir)"
+HEADERS = $(libedgeinclude_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -214,10 +212,34 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 
 # Includes dir
-libitemincludedir = $(includedir)/
+libedgeincludedir = $(includedir)/tictactoe
 
 # Include files
-include_HEADERS = element.h draw.h video.h
+libedgeinclude_HEADERS = draw.h \
+							video.h \
+							videosettings.h \
+							windowsettings.h \
+							exception.h \
+							window.h \
+							sdlvideo.h \
+							sdlwindow.h \
+							canvas.h \
+							color.h \
+							point.h \
+							rectangle.h \
+							sdlcanvas.h \
+							sdlvideosettings.h \
+							windowfactory.h \
+							line.h \
+							circle.h \
+							image.h \
+							sdlimage.h \
+							sdlwindowsettings.h \
+							boundingarea.h \
+							boundingrectangle.h \
+							element.h \
+							game.h
+
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -273,24 +295,24 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
-install-includeHEADERS: $(include_HEADERS)
+install-libedgeincludeHEADERS: $(libedgeinclude_HEADERS)
 	@$(NORMAL_INSTALL)
-	test -z "$(includedir)" || $(MKDIR_P) "$(DESTDIR)$(includedir)"
-	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \
+	test -z "$(libedgeincludedir)" || $(MKDIR_P) "$(DESTDIR)$(libedgeincludedir)"
+	@list='$(libedgeinclude_HEADERS)'; test -n "$(libedgeincludedir)" || list=; \
 	for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  echo "$$d$$p"; \
 	done | $(am__base_list) | \
 	while read files; do \
-	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(includedir)'"; \
-	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(includedir)" || exit $$?; \
+	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(libedgeincludedir)'"; \
+	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(libedgeincludedir)" || exit $$?; \
 	done
 
-uninstall-includeHEADERS:
+uninstall-libedgeincludeHEADERS:
 	@$(NORMAL_UNINSTALL)
-	@list='$(include_HEADERS)'; test -n "$(includedir)" || list=; \
+	@list='$(libedgeinclude_HEADERS)'; test -n "$(libedgeincludedir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(includedir)'; $(am__uninstall_files_from_dir)
+	dir='$(DESTDIR)$(libedgeincludedir)'; $(am__uninstall_files_from_dir)
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -378,7 +400,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(HEADERS) config.h
 installdirs:
-	for dir in "$(DESTDIR)$(includedir)"; do \
+	for dir in "$(DESTDIR)$(libedgeincludedir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -431,7 +453,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-includeHEADERS
+install-data-am: install-libedgeincludeHEADERS
 
 install-dvi: install-dvi-am
 
@@ -475,7 +497,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-includeHEADERS
+uninstall-am: uninstall-libedgeincludeHEADERS
 
 .MAKE: all install-am install-strip
 
@@ -484,13 +506,13 @@ uninstall-am: uninstall-includeHEADERS
 	distclean-libtool distclean-tags distdir dvi dvi-am html \
 	html-am info info-am install install-am install-data \
 	install-data-am install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am \
-	install-includeHEADERS install-info install-info-am \
-	install-man install-pdf install-pdf-am install-ps \
-	install-ps-am install-strip installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
-	ps ps-am tags uninstall uninstall-am uninstall-includeHEADERS
+	install-exec-am install-html install-html-am install-info \
+	install-info-am install-libedgeincludeHEADERS install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags uninstall uninstall-am uninstall-libedgeincludeHEADERS
 
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

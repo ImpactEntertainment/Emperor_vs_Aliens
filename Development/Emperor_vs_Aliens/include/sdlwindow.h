@@ -13,6 +13,7 @@
 #include <SDL/SDL.h>
 
 #include "window.h"
+#include "canvas.h"
 
 namespace edge {
 
@@ -20,15 +21,17 @@ class SDL_Window : public Window {
 public:
 	SDL_Window();
 
-	WindowSettings currentSettings() const;
-
 	int getWidth() const;
 	int getHeight() const;
+
+	WindowSettings currentSettings() const;
+	Canvas * getCanvas() const;
 
 	void applySettings(const WindowSettings& settings) throw (Exception);
 
 private:
 	WindowSettings settings;
+	Canvas *canvas;
 	SDL_Surface *surface;
 };
 

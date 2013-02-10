@@ -8,6 +8,7 @@
 
 #include "video.h"
 #include "sdlwindow.h"
+#include "sdlcanvas.h"
 #include "sdlvideosettings.h"
 #include "sdlwindowsettings.h"
 
@@ -15,6 +16,8 @@ namespace edge {
 
 SDL_Window::SDL_Window()
 {
+	canvas = NULL;
+	surface = NULL;
 }
 
 void 
@@ -40,6 +43,18 @@ SDL_Window::applySettings(const WindowSettings& settings) throw (Exception)
 		throw Exception("Error on SDL_SetVideoMode()");
 	} 
 
+	if (canvas)
+		delete canvas;
+	
+	canvas = new SDL_Canvas();
+
+	if (!canvas)
+	{
+		throw Exception("Sem memoria");
+	}
+
+        SDL_WM_SetCaption(sdlWindowSettings.title.c_str(), NULL);
+        
 	this->settings = settings;
 }
 
@@ -59,6 +74,12 @@ int
 SDL_Window::getHeight() const
 {
 	return surface->h;
+}
+
+Canvas * 
+SDL_Window::getCanvas() const
+{
+	return canvas;
 }
 
 }

@@ -16,6 +16,7 @@
 
 
 # Author: Edson Alves - edsonalves@unb.br
+# Co-Author: Luis Gustavo Souza Silva - luisgustavodd@hotmail.com
 # Date: 21/12/2012
 
 
@@ -35,17 +36,14 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = i686-pc-linux-gnu
-host_triplet = i686-pc-linux-gnu
-target_triplet = i686-pc-linux-gnu
+build_triplet = x86_64-unknown-linux-gnu
+host_triplet = x86_64-unknown-linux-gnu
+target_triplet = x86_64-unknown-linux-gnu
 subdir = resources
-DIST_COMMON = $(dist_tictactoe_DATA) $(srcdir)/Makefile.am \
+DIST_COMMON = $(dist_EmperorVsAliens_DATA) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -81,15 +79,15 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-am__installdirs = "$(DESTDIR)$(tictactoedir)"
-DATA = $(dist_tictactoe_DATA)
+am__installdirs = "$(DESTDIR)$(EmperorVsAliensdir)"
+DATA = $(dist_EmperorVsAliens_DATA)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run autoconf
-AUTOHEADER = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run autoheader
-AUTOMAKE = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run automake-1.11
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -118,7 +116,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = /usr/bin/ld
+LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
 LIBS = 
@@ -127,9 +125,9 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_CURRENT = 0
-LT_RELEASE = 0.4.0
-LT_REVISION = 4
-MAKEINFO = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run makeinfo
+LT_RELEASE = 0.10.0
+LT_REVISION = 10
+MAKEINFO = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -151,11 +149,11 @@ SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = strip
-VERSION = 0.4.0
-abs_builddir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/resources
-abs_srcdir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/resources
-abs_top_builddir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens
-abs_top_srcdir = /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens
+VERSION = 0.10.0
+abs_builddir = /home/luis/Desktop/EmperorVsAliens-0.10.0/resources
+abs_srcdir = /home/luis/Desktop/EmperorVsAliens-0.10.0/resources
+abs_top_builddir = /home/luis/Desktop/EmperorVsAliens-0.10.0
+abs_top_srcdir = /home/luis/Desktop/EmperorVsAliens-0.10.0
 ac_config_aux_dir = 
 ac_ct_AR = ar
 ac_ct_CC = gcc
@@ -167,26 +165,26 @@ am__quote =
 am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
-build = i686-pc-linux-gnu
+build = x86_64-unknown-linux-gnu
 build_alias = 
-build_cpu = i686
+build_cpu = x86_64
 build_os = linux-gnu
-build_vendor = pc
+build_vendor = unknown
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = i686-pc-linux-gnu
+host = x86_64-unknown-linux-gnu
 host_alias = 
-host_cpu = i686
+host_cpu = x86_64
 host_os = linux-gnu
-host_vendor = pc
+host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/install-sh
+install_sh = ${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -202,24 +200,20 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target = i686-pc-linux-gnu
+target = x86_64-unknown-linux-gnu
 target_alias = 
-target_cpu = i686
+target_cpu = x86_64
 target_os = linux-gnu
-target_vendor = pc
+target_vendor = unknown
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
 
 # Resources
-tictactoedir = /opt/$(PACKAGE)/resources
-dist_tictactoe_DATA = eva32.bmp \
-	cerejeira.bmp \
-	muralha.bmp \
-	nuvem.bmp \
-	rock.bmp \
-	sol.bmp \
-	level_01.bmp
+EmperorVsAliensdir = /opt/$(PACKAGE)/resources
+dist_EmperorVsAliens_DATA = eva32.bmp \
+							level_01.png \
+							map_elements.png
 
 all: all-am
 
@@ -260,24 +254,24 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
-install-dist_tictactoeDATA: $(dist_tictactoe_DATA)
+install-dist_EmperorVsAliensDATA: $(dist_EmperorVsAliens_DATA)
 	@$(NORMAL_INSTALL)
-	test -z "$(tictactoedir)" || $(MKDIR_P) "$(DESTDIR)$(tictactoedir)"
-	@list='$(dist_tictactoe_DATA)'; test -n "$(tictactoedir)" || list=; \
+	test -z "$(EmperorVsAliensdir)" || $(MKDIR_P) "$(DESTDIR)$(EmperorVsAliensdir)"
+	@list='$(dist_EmperorVsAliens_DATA)'; test -n "$(EmperorVsAliensdir)" || list=; \
 	for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  echo "$$d$$p"; \
 	done | $(am__base_list) | \
 	while read files; do \
-	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(tictactoedir)'"; \
-	  $(INSTALL_DATA) $$files "$(DESTDIR)$(tictactoedir)" || exit $$?; \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(EmperorVsAliensdir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(EmperorVsAliensdir)" || exit $$?; \
 	done
 
-uninstall-dist_tictactoeDATA:
+uninstall-dist_EmperorVsAliensDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(dist_tictactoe_DATA)'; test -n "$(tictactoedir)" || list=; \
+	@list='$(dist_EmperorVsAliens_DATA)'; test -n "$(EmperorVsAliensdir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(tictactoedir)'; $(am__uninstall_files_from_dir)
+	dir='$(DESTDIR)$(EmperorVsAliensdir)'; $(am__uninstall_files_from_dir)
 tags: TAGS
 TAGS:
 
@@ -319,7 +313,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(DATA)
 installdirs:
-	for dir in "$(DESTDIR)$(tictactoedir)"; do \
+	for dir in "$(DESTDIR)$(EmperorVsAliensdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -372,7 +366,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-dist_tictactoeDATA
+install-data-am: install-dist_EmperorVsAliensDATA
 
 install-dvi: install-dvi-am
 
@@ -416,21 +410,22 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-dist_tictactoeDATA
+uninstall-am: uninstall-dist_EmperorVsAliensDATA
 
 .MAKE: install-am install-strip
 
 .PHONY: all all-am check check-am clean clean-generic clean-libtool \
 	distclean distclean-generic distclean-libtool distdir dvi \
 	dvi-am html html-am info info-am install install-am \
-	install-data install-data-am install-dist_tictactoeDATA \
+	install-data install-data-am install-dist_EmperorVsAliensDATA \
 	install-dvi install-dvi-am install-exec install-exec-am \
 	install-html install-html-am install-info install-info-am \
 	install-man install-pdf install-pdf-am install-ps \
 	install-ps-am install-strip installcheck installcheck-am \
 	installdirs maintainer-clean maintainer-clean-generic \
 	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
-	ps ps-am uninstall uninstall-am uninstall-dist_tictactoeDATA
+	ps ps-am uninstall uninstall-am \
+	uninstall-dist_EmperorVsAliensDATA
 
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

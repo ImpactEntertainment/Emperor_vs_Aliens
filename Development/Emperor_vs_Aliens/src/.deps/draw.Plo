@@ -111,7 +111,10 @@ draw.lo: draw.cpp /usr/include/c++/4.6/iostream \
  /usr/include/SDL/SDL_video.h /usr/include/SDL/SDL_joystick.h \
  /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
  /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
- ../include/draw.h ../include/element.h
+ /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h ../include/draw.h \
+ ../include/canvas.h ../include/exception.h ../include/point.h \
+ ../include/color.h ../include/rectangle.h ../include/line.h \
+ ../include/circle.h ../include/image.h ../include/element.h
 
 /usr/include/c++/4.6/iostream:
 
@@ -429,6 +432,26 @@ draw.lo: draw.cpp /usr/include/c++/4.6/iostream \
 
 /usr/include/SDL/SDL_version.h:
 
+/usr/include/SDL/SDL_image.h:
+
+/usr/include/SDL/SDL.h:
+
 ../include/draw.h:
+
+../include/canvas.h:
+
+../include/exception.h:
+
+../include/point.h:
+
+../include/color.h:
+
+../include/rectangle.h:
+
+../include/line.h:
+
+../include/circle.h:
+
+../include/image.h:
 
 ../include/element.h:

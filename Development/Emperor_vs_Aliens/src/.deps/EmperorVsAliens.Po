@@ -103,7 +103,13 @@ EmperorVsAliens.o: EmperorVsAliens.cpp /usr/include/c++/4.6/iostream \
  /usr/include/SDL/SDL_video.h /usr/include/SDL/SDL_joystick.h \
  /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
  /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
- ../include/draw.h ../include/element.h ../include/video.h
+ ../include/video.h ../include/exception.h ../include/videosettings.h \
+ ../include/windowfactory.h ../include/window.h \
+ ../include/windowsettings.h ../include/canvas.h ../include/point.h \
+ ../include/color.h ../include/rectangle.h ../include/line.h \
+ ../include/circle.h ../include/image.h ../include/boundingrectangle.h \
+ ../include/boundingarea.h ../include/game.h ../include/draw.h \
+ ../include/canvas.h ../include/element.h
 
 /usr/include/c++/4.6/iostream:
 
@@ -401,8 +407,40 @@ EmperorVsAliens.o: EmperorVsAliens.cpp /usr/include/c++/4.6/iostream \
 
 /usr/include/SDL/SDL_version.h:
 
+../include/video.h:
+
+../include/exception.h:
+
+../include/videosettings.h:
+
+../include/windowfactory.h:
+
+../include/window.h:
+
+../include/windowsettings.h:
+
+../include/canvas.h:
+
+../include/point.h:
+
+../include/color.h:
+
+../include/rectangle.h:
+
+../include/line.h:
+
+../include/circle.h:
+
+../include/image.h:
+
+../include/boundingrectangle.h:
+
+../include/boundingarea.h:
+
+../include/game.h:
+
 ../include/draw.h:
 
-../include/element.h:
+../include/canvas.h:
 
-../include/video.h:
+../include/element.h:

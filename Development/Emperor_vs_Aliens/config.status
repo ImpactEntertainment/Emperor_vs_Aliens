@@ -405,7 +405,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile include/Makefile src/Makefile resources/Makefile"
+config_files=" Makefile include/Makefile src/Makefile resources/Makefile test/Makefile"
 config_headers=" include/config.h"
 config_commands=" depfiles libtool"
 
@@ -449,7 +449,7 @@ Copyright (C) 2010 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens'
+ac_pwd='/home/luis/Desktop/EmperorVsAliens-0.10.0'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/bin/mkdir -p'
@@ -571,20 +571,20 @@ SHELL='/bin/bash'
 ECHO='printf %s\n'
 PATH_SEPARATOR=':'
 host_alias=''
-host='i686-pc-linux-gnu'
+host='x86_64-unknown-linux-gnu'
 host_os='linux-gnu'
 build_alias=''
-build='i686-pc-linux-gnu'
+build='x86_64-unknown-linux-gnu'
 build_os='linux-gnu'
 SED='/bin/sed'
 Xsed='/bin/sed -e 1s/^X//'
 GREP='/bin/grep'
 EGREP='/bin/grep -E'
 FGREP='/bin/grep -F'
-LD='/usr/bin/ld'
+LD='/usr/bin/ld -m elf_x86_64'
 NM='/usr/bin/nm -B'
 LN_S='ln -s'
-max_cmd_len='805306365'
+max_cmd_len='1572864'
 ac_objext='o'
 exeext=''
 lt_unset='unset'
@@ -686,8 +686,8 @@ postuninstall_cmds=''
 finish_cmds='PATH="\$PATH:/sbin" ldconfig -n $libdir'
 finish_eval=''
 hardcode_into_libs='yes'
-sys_lib_search_path_spec='/usr/lib/gcc/i686-linux-gnu/4.6 /usr/lib/i386-linux-gnu /usr/lib /lib/i386-linux-gnu /lib '
-sys_lib_dlsearch_path_spec='/lib /usr/lib /usr/lib/i386-linux-gnu/mesa-egl /usr/lib/i386-linux-gnu/mesa /lib/i386-linux-gnu /usr/lib/i386-linux-gnu /lib/i686-linux-gnu /usr/lib/i686-linux-gnu /usr/local/lib '
+sys_lib_search_path_spec='/usr/lib/gcc/x86_64-linux-gnu/4.6 /usr/lib/x86_64-linux-gnu /usr/lib /lib/x86_64-linux-gnu /lib '
+sys_lib_dlsearch_path_spec='/lib /usr/lib /usr/local/lib /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/mesa '
 hardcode_action='immediate'
 enable_dlopen='unknown'
 enable_dlopen_self='unknown'
@@ -700,7 +700,7 @@ postdep_objects=''
 predeps=''
 postdeps=''
 compiler_lib_search_path=''
-LD_CXX='/usr/bin/ld'
+LD_CXX='/usr/bin/ld -m elf_x86_64'
 reload_flag_CXX=' -r'
 reload_cmds_CXX='$LD$reload_flag -o $output$reload_objs'
 old_archive_cmds_CXX='$AR $AR_FLAGS $oldlib$oldobjs~$RANLIB $tool_oldlib'
@@ -742,12 +742,12 @@ prelink_cmds_CXX=''
 postlink_cmds_CXX=''
 file_list_spec_CXX=''
 hardcode_action_CXX='immediate'
-compiler_lib_search_dirs_CXX='/usr/lib/gcc/i686-linux-gnu/4.6 /usr/lib/gcc/i686-linux-gnu/4.6/../../../i386-linux-gnu /usr/lib/gcc/i686-linux-gnu/4.6/../../../../lib /lib/i386-linux-gnu /lib/../lib /usr/lib/i386-linux-gnu /usr/lib/../lib /usr/lib/gcc/i686-linux-gnu/4.6/../../..'
-predep_objects_CXX='/usr/lib/gcc/i686-linux-gnu/4.6/../../../i386-linux-gnu/crti.o /usr/lib/gcc/i686-linux-gnu/4.6/crtbeginS.o'
-postdep_objects_CXX='/usr/lib/gcc/i686-linux-gnu/4.6/crtendS.o /usr/lib/gcc/i686-linux-gnu/4.6/../../../i386-linux-gnu/crtn.o'
+compiler_lib_search_dirs_CXX='/usr/lib/gcc/x86_64-linux-gnu/4.6 /usr/lib/gcc/x86_64-linux-gnu/4.6/../../../x86_64-linux-gnu /usr/lib/gcc/x86_64-linux-gnu/4.6/../../../../lib /lib/x86_64-linux-gnu /lib/../lib /usr/lib/x86_64-linux-gnu /usr/lib/../lib /usr/lib/gcc/x86_64-linux-gnu/4.6/../../..'
+predep_objects_CXX='/usr/lib/gcc/x86_64-linux-gnu/4.6/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.6/crtbeginS.o'
+postdep_objects_CXX='/usr/lib/gcc/x86_64-linux-gnu/4.6/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/4.6/../../../x86_64-linux-gnu/crtn.o'
 predeps_CXX=''
 postdeps_CXX='-lstdc++ -lm -lgcc_s -lc -lgcc_s'
-compiler_lib_search_path_CXX='-L/usr/lib/gcc/i686-linux-gnu/4.6 -L/usr/lib/gcc/i686-linux-gnu/4.6/../../../i386-linux-gnu -L/usr/lib/gcc/i686-linux-gnu/4.6/../../../../lib -L/lib/i386-linux-gnu -L/lib/../lib -L/usr/lib/i386-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/i686-linux-gnu/4.6/../../..'
+compiler_lib_search_path_CXX='-L/usr/lib/gcc/x86_64-linux-gnu/4.6 -L/usr/lib/gcc/x86_64-linux-gnu/4.6/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.6/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.6/../../..'
 
 LTCC='gcc'
 LTCFLAGS='-g -O2'
@@ -797,7 +797,7 @@ fi
 
 
     PACKAGE='EmperorVsAliens'
-    VERSION='0.4.0'
+    VERSION='0.10.0'
     TIMESTAMP=''
     RM='rm -f'
     ofile='libtool'
@@ -819,6 +819,7 @@ do
     "include/Makefile") CONFIG_FILES="$CONFIG_FILES include/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "resources/Makefile") CONFIG_FILES="$CONFIG_FILES resources/Makefile" ;;
+    "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -911,7 +912,7 @@ S["LN_S"]="ln -s"
 S["NM"]="/usr/bin/nm -B"
 S["ac_ct_DUMPBIN"]=""
 S["DUMPBIN"]=""
-S["LD"]="/usr/bin/ld"
+S["LD"]="/usr/bin/ld -m elf_x86_64"
 S["FGREP"]="/bin/grep -F"
 S["EGREP"]="/bin/grep -E"
 S["GREP"]="/bin/grep"
@@ -944,34 +945,34 @@ S["mkdir_p"]="/bin/mkdir -p"
 S["MKDIR_P"]="/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]="strip"
-S["install_sh"]="${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/install-sh"
-S["MAKEINFO"]="${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run makeinfo"
-S["AUTOHEADER"]="${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run autoheader"
-S["AUTOMAKE"]="${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run automake-1.11"
-S["AUTOCONF"]="${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run autoconf"
-S["ACLOCAL"]="${SHELL} /media/HD/PS3/homebrew/MyProjects/Impact_Entertainment/Emperor_vs_Aliens/Development/Emperor_vs_Aliens/config/missing --run aclocal-1.11"
-S["VERSION"]="0.4.0"
+S["install_sh"]="${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/install-sh"
+S["MAKEINFO"]="${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run makeinfo"
+S["AUTOHEADER"]="${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run autoheader"
+S["AUTOMAKE"]="${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run automake-1.11"
+S["AUTOCONF"]="${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run autoconf"
+S["ACLOCAL"]="${SHELL} /home/luis/Desktop/EmperorVsAliens-0.10.0/config/missing --run aclocal-1.11"
+S["VERSION"]="0.10.0"
 S["PACKAGE"]="EmperorVsAliens"
 S["CYGPATH_W"]="echo"
 S["am__isrc"]=""
 S["INSTALL_DATA"]="${INSTALL} -m 644"
 S["INSTALL_SCRIPT"]="${INSTALL}"
 S["INSTALL_PROGRAM"]="${INSTALL}"
-S["LT_REVISION"]="4"
+S["LT_REVISION"]="10"
 S["LT_CURRENT"]="0"
-S["LT_RELEASE"]="0.4.0"
+S["LT_RELEASE"]="0.10.0"
 S["target_os"]="linux-gnu"
-S["target_vendor"]="pc"
-S["target_cpu"]="i686"
-S["target"]="i686-pc-linux-gnu"
+S["target_vendor"]="unknown"
+S["target_cpu"]="x86_64"
+S["target"]="x86_64-unknown-linux-gnu"
 S["host_os"]="linux-gnu"
-S["host_vendor"]="pc"
-S["host_cpu"]="i686"
-S["host"]="i686-pc-linux-gnu"
+S["host_vendor"]="unknown"
+S["host_cpu"]="x86_64"
+S["host"]="x86_64-unknown-linux-gnu"
 S["build_os"]="linux-gnu"
-S["build_vendor"]="pc"
-S["build_cpu"]="i686"
-S["build"]="i686-pc-linux-gnu"
+S["build_vendor"]="unknown"
+S["build_cpu"]="x86_64"
+S["build"]="x86_64-unknown-linux-gnu"
 S["ac_config_aux_dir"]=""
 S["target_alias"]=""
 S["host_alias"]=""
@@ -1059,7 +1060,7 @@ D["PACKAGE_STRING"]=" \"\""
 D["PACKAGE_BUGREPORT"]=" \"\""
 D["PACKAGE_URL"]=" \"\""
 D["PACKAGE"]=" \"EmperorVsAliens\""
-D["VERSION"]=" \"0.4.0\""
+D["VERSION"]=" \"0.10.0\""
 D["STDC_HEADERS"]=" 1"
 D["HAVE_SYS_TYPES_H"]=" 1"
 D["HAVE_SYS_STAT_H"]=" 1"

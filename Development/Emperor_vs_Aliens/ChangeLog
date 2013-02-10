@@ -7,3 +7,9 @@
 	  para o desenvolvimento de jogos
 	- O código está mal organizado de forma intencional, para exemplificar aos
 	  alunos a necessidade da organização
+
+08/01/2013:
+	- As primeiras refatorações foram feitas, nos módulos de Vídeo e Janela
+	- A primeira versão dos testes unitários também foi inserida
+	- Os blits já levam em consideração as colorkeys e conversão para o 
+	  formato da janela

@@ -41,35 +41,6 @@ operator<<(ostream& os, MachineArchitecture machineArchitecture)
 }
 
 ostream& 
-operator<<(ostream& os, ColorDepth colorDepth)
-{
-	switch (colorDepth)
-	{
-		case SYSTEM:
-			os << "Same as OS";
-			break;
-
-		case INDEXED: 
-			os << "Indexed";
-			break;
-
-		case HICOLOR: 
-			os << "Hicolor";
-			break;
-
-		case TRUE_COLOR: 
-			os << "True color";
-			break;
-
-		case RGBA:
-			os << "32-bit";
-			break;
-	}
-
-	return os;
-}
-
-ostream& 
 operator<<(ostream& os, BufferingMode bufferingMode)
 {
 	switch (bufferingMode)
@@ -87,46 +58,50 @@ operator<<(ostream& os, BufferingMode bufferingMode)
 }
 
 ostream& 
-operator<<(ostream& os, RenderingMode renderingMode)
-{
-	switch (renderingMode)
-	{
-		case BIDIMENSIONAL: 
-			os << "2D";
-			break;
-		case TRIDIMENSIONAL: 
-			os << "3D";
-			break;
-
-		case MIXED: 
-			os << "Mixed 2D and 3D";
-			break;
-	}
-
-	return os;
-}
-
-ostream& 
 operator<<(ostream& os, const VideoSettings settings)
 {
 	os << "Video buffer location: " << settings.videoBufferLocation << endl;
 	os << "Machine architecture: " << settings.machineArchitecture << endl;
-	os << "Color depth: " << settings.colorDepth << endl;
 	os << "Buffering mode: " << settings.bufferingMode << endl;
-	os << "Rendering mode: " << settings.renderingMode << endl;
 
 	return os;	
 }
 	
-VideoSettings::VideoSettings(VideoBufferLocation videoBufferLocation, 
-		MachineArchitecture machineArchitecture, ColorDepth colorDepth,
-		BufferingMode bufferingMode, RenderingMode renderingMode)
+VideoSettings::VideoSettings(const VideoSettings& settings)
 {
-	this->videoBufferLocation = videoBufferLocation;
-	this->machineArchitecture = machineArchitecture;
-	this->colorDepth = colorDepth;
-	this->bufferingMode = bufferingMode;
-	this->renderingMode = renderingMode;
+	*this = settings;
+}
+
+VideoSettings::VideoSettings()
+{
+	videoBufferLocation = VIDEO_MEMORY;
+	machineArchitecture = SINGLE_CORE;
+	bufferingMode = DOUBLE_BUFFER;
+}
+
+VideoSettings& 
+VideoSettings::operator=(const VideoSettings& settings)
+{
+	videoBufferLocation = settings.videoBufferLocation;
+	machineArchitecture = settings.machineArchitecture;
+	bufferingMode = settings.bufferingMode;
+
+	return *this;
+}
+
+bool 
+VideoSettings::operator!=(const VideoSettings& settings)
+{
+	if (videoBufferLocation != settings.videoBufferLocation)
+		return true;
+
+	if (machineArchitecture != settings.machineArchitecture)
+		return true;
+
+	if (bufferingMode != settings.bufferingMode)
+		return true;
+
+	return false;
 }
 
 }

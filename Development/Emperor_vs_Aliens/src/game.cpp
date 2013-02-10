@@ -9,6 +9,9 @@
 #include <SDL/SDL.h>
 #include "game.h"
 
+Game::Game(Canvas* canvas)
+: mCanvas(canvas)
+{}
 void Game::LoadGame()
 {
 	PAUSED=(false);
@@ -36,39 +39,46 @@ void Game::Loop()
 {
 	while (!QUIT) {
 		getInput();
+		drawScene();
 		SDL_Delay(1);
 	}
+}
+
+void Game::drawScene()
+{
+	draw(mCanvas);
 }
 
 void Game::getInput()
 {
 	while (SDL_PollEvent(&event)) {
-		switch (event.type) {
-			case SDL_QUIT:
-				QUIT = true;
-				break;
-		
-			case SDL_KEYDOWN:
 
-				switch (event.key.keysym.sym) {
-				case SDLK_ESCAPE:
-					QUIT = true;
-					break;		
-				case SDLK_SPACE:
-					togglePause();
-					break;	
-				case SDLK_f:
-					toggleFastForward();
-					break;	
-				case SDLK_x:
-					callNextWave();
-					break;
-				default:
-					break;
-				}
+	    switch (event.type) {
+	    case SDL_QUIT:
+	        QUIT = true;
+	        break;
+	        
+	    case SDL_KEYDOWN:
 
-			default:
-				break;
-			}
-		}
+	        switch (event.key.keysym.sym) {
+	        case SDLK_ESCAPE:
+	            QUIT = true;
+	            break;		
+	        case SDLK_SPACE:
+	            togglePause();
+	            break;	
+	        case SDLK_f:
+	            toggleFastForward();
+	            break;	
+	        case SDLK_x:
+	            callNextWave();
+	            break;
+	        default:
+	            break;
+	        }
+
+	    default:
+	        break;
+	    }
+	}
 }
