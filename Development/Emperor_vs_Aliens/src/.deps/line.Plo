@@ -1,5 +1,0 @@
-line.lo: line.cpp ../include/line.h ../include/point.h
-
-../include/line.h:
-
-../include/point.h:

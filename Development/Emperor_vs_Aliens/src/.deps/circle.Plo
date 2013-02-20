@@ -1,3 +1,0 @@
-circle.lo: circle.cpp ../include/circle.h
-
-../include/circle.h:

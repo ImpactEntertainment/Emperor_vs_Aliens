@@ -1,3 +1,0 @@
-point.lo: point.cpp ../include/point.h
-
-../include/point.h:
