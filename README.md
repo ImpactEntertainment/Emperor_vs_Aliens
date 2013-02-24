@@ -10,7 +10,6 @@ Authors
 Changelog:
 ----------
 	- 0.0 -
-<<<<<<< HEAD
 	 	- First version with the sample SDL code (working on PC-Windows/Linux  Consoles -PS3/WII) 
 	- 0.2 -
 	 	- All  drawing is made on drawrect
@@ -46,4 +45,4 @@ Changelog:
 		- improves the engine architeture	
 	- 0.9 -
 		- multiplataform version ps3 - linux
->>>>>>> f6c3b266ba6bd2b845f255e72b496a51e0ef1660
+
