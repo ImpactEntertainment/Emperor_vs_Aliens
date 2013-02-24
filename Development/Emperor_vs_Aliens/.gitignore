@@ -4,6 +4,8 @@ build/
 
 # Libraries
 *.lib
+*.lo
+*.la
 *.a
 
 # Shared objects (inc. Windows DLLs)
@@ -11,6 +13,10 @@ build/
 *.so
 *.so.*
 *.dylib
+
+
+#temp files 
+*~
 
 # Executables
 *.exe
