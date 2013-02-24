@@ -21,43 +21,6 @@
 using namespace std;
 using namespace edge;
 
-void init_board(char board[][3])
-{
-    for (int x = 0; x < 3; x++) {
-        for (int y = 0; y < 3; y++) {
-            board[x][y] = 0;
-        }
-    }
-}
-
-void init_board_tiles(BoundingRectangle boardTiles[][3])
-{
-    int blackboardFrameSize = 40;
-    int leftMargin = 14, topMargin = 14;
-    int boardTileSize = 194;
-    int markerWidth = 180;
-    int boardTileMargin = (boardTileSize - markerWidth) / 2;
-    int verticalBarWidth = 15, horizontalBarHeight = 15;
-
-    int x = blackboardFrameSize + leftMargin + boardTileMargin;
-    int y; 
-    
-    Rectangle rect(180, 180);
-    
-    for (int i = 0; i < 3; i++) {
-        y = blackboardFrameSize + topMargin + boardTileMargin;
-        
-        for (int j = 0; j < 3; j++) {
-            Point position(x, y);
-            boardTiles[i][j].set(rect, position);
-            
-            y += (horizontalBarHeight + boardTileSize);
-        }
-        
-        x += (verticalBarWidth + boardTileSize);
-    }
-}
-
 #ifdef PS3
 int main (s32 argc, const char* argv[]){
 #else
