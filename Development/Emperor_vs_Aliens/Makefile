@@ -55,6 +55,7 @@ LDFLAGS= $(LIBS)
 main: 
 	@echo building ...
 	@$(LD) $(CPPFLAGS)  -c $(CPPFILES) $(INCLUDE)
+	@mkdir -p $(BUILD)
 	@mv *.o $(BUILD)
 	@echo linking ...
 	@$(LD) $(OFILES) $(CPPFLAGS) $(LDFLAGS) -o $(TARGET)
