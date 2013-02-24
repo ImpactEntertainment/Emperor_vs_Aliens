@@ -14,6 +14,12 @@
 #include "canvas.h"
 #include "draw.h"
 
+#ifdef PS3
+	#include <sysutil/msg.h>
+	#include <sysutil/sysutil.h>
+	#include <io/pad.h>
+#endif
+ 
 using namespace std;
 using namespace edge;
 

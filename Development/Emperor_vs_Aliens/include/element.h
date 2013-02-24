@@ -7,7 +7,7 @@
 
 #include <string>
 
-#define RESOURCES "/opt/EmperorVsAliens/resources/map_elements.png"
+//#define RESOURCES "/opt/ElementmperorVsAliens/resources/map_elements.png"
 
 #define CHERRY_WIDTH	224
 #define CHERRY_HEIGHT	224
