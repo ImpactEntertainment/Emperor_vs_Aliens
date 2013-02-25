@@ -15,6 +15,8 @@
 #include <string>
 
 #include "exception.h"
+#include "point.h"
+#include "rectangle.h"
 
 using namespace std;
 
@@ -25,6 +27,8 @@ namespace edge {
         static Image * load(const string& imagePath, int offsetX=0, int offsetY=0, int width=0, int height=0) throw (Exception);
         static void release(Image *image) throw (Exception);
         
+		virtual Image *select(const Point& position, 
+			const Rectangle& rect) const = 0;
         
         virtual int width() const = 0;
         virtual int height() const = 0;

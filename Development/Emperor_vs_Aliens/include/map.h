@@ -18,10 +18,13 @@
 #include "boundingrectangle.h"
 #include "imageset.h"
 #include "enviromentelement.h"
+#include "unit.h"
+
+#define BATTLEFIELD_WIDTH 16
+#define BATTLEFIELD_HEIGHT 6
+
 
 using namespace std;
-
-typedef int Unit;
 
 class Map
 {
@@ -37,6 +40,7 @@ public:
     int	 getWavesLeft();
 	void reset();
 	
+	//Field	battlefield[BATTLEFIELD_HEIGHT][BATTLEFIELD_WIDTH];
 	vector<EnviromentElement> enviromentElements;
 	vector< vector<Unit> > waves;
 	int currentWave;

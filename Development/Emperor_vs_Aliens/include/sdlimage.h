@@ -27,6 +27,8 @@ namespace edge {
         int width() const;
         int height() const;
         bool hasClip() const;
+
+		Image *select(const Point& position, const Rectangle& rect) const;
         
         SDL_Surface *surface;
     };

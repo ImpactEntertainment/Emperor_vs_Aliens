@@ -82,4 +82,34 @@ namespace edge
     {
     	return (offsetX || offsetY || w || h);
     }
+    
+    Image *
+	SDL_Image::select(const Point& position, const Rectangle& rect) const
+	{
+		SDL_Surface *selection = SDL_CreateRGBSurface(SDL_HWSURFACE,
+			rect.width, rect.height, surface->format->BitsPerPixel,
+			surface->format->Rmask, surface->format->Gmask,
+			surface->format->Bmask, surface->format->Amask);
+		
+		if (selection == NULL) {
+			return NULL;
+		}
+		
+		SDL_Rect r, dest;
+		r.x = position.x;
+		r.y = position.y;
+		r.w = rect.width;
+		r.h = rect.height;
+		
+		dest.x = dest.y = 0;
+		dest.w = rect.width;
+		dest.h = rect.height;
+		
+		//SDL_BlitSurface(surface, &r, selection, &dest);
+		//SDL_UpdateRect(selection, 0, 0, 0, 0);
+		SDL_BlitSurface(selection, &dest, surface, &dest);
+		SDL_UpdateRect(surface, 0, 0, 0, 0);
+		
+		return new SDL_Image(selection);
+	}
 }

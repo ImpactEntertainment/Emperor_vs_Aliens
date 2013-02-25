@@ -25,12 +25,8 @@ namespace edge {
     public:
         Marker();
         
-        void init();
-        void shutdown();
-        void draw(Canvas *canvas);
-        
-        Point position;
-        Image *image;
+        void loadRectangle();
+        void loadImage();
     };
     
 }

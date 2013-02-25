@@ -34,17 +34,31 @@
 #define SMALL_ROCK_01_OFFSET_X	1008
 #define SMALL_ROCK_01_OFFSET_Y	0
 
+typedef enum EnviromentElementType
+{
+	CHERRY_TREE,
+	LARGE_ROCK_01,
+	LARGE_ROCK_02,
+	LARGE_ROCK_03,
+	SMALL_ROCK_01	
+}EnviromentElementType; 
+
 class EnviromentElement : public Element 
 {
 public:
-	EnviromentElement(int x=0, int y=0);
+	EnviromentElement(EnviromentElementType type, int x=0, int y=0);
+	
+	EnviromentElementType mType;
+	
+	void loadRectangle();
+	void loadImage();
+	
+private:
 	void loadCherryTree();
 	void loadLargeRock01();
 	void loadLargeRock02();
 	void loadLargeRock03();
-	void loadSmallRock01();
-	
-private:
+	void loadSmallRock01(); 
 };
 
 

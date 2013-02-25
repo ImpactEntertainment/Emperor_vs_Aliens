@@ -9,24 +9,17 @@ namespace edge
     }
 
     void
-    Marker::init()
+    Marker::loadRectangle()
     {
-    	mWidth	= 112;
-		mHeight	= 112;
-		mResourcePositionX = 0;
-		mResourcePositionY = 0;
-        image = Image::load("data/images/map_elements.png",mResourcePositionX,mResourcePositionY,mWidth,mHeight);
-    }
-
-    void
-    Marker::shutdown()
-    {
-        Image::release(image);
-    }
-
-    void
-    Marker::draw(Canvas* canvas)
-    {
-        canvas->drawImage(image, position);
-    }
+    	mResource.width	= 112;
+		mResource.height= 112;
+		mResource.x		= 0;
+		mResource.y		= 0;
+	}
+	
+	void
+	Marker::loadImage()
+	{
+		image = Image::load("/opt/EmperorVsAliens/resources/map_elements.png",mResource.x,mResource.y,mResource.width,mResource.height);
+	}
 }

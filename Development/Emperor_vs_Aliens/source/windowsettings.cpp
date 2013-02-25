@@ -90,7 +90,7 @@ WindowSettings::WindowSettings()
 	width = 800; 
 	height = 600;
 	title = "Window"; 
-	presentationMode = WINDOW;		
+	presentationMode = FULLSCREEN;		
 	windowSize = FIXED;
 	colorDepth = SYSTEM;
 }

@@ -16,6 +16,7 @@ namespace edge {
     public:
         Rectangle(unsigned int width = 1, unsigned int height = 0);
 
+		int x, y;
         int width;
         int height;
     };

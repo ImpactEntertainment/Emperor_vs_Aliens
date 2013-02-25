@@ -1,51 +1,23 @@
 #include "element.h"
 
-Element::Element()
+Element::Element(int x, int y)
+: mPosition(x,y)
 {}
 
 void Element::setPosition(int x, int y)
-{
-	mPositionX = x;
-	mPositionY = y;
+{ 
+	mPosition.x = x;
+	mPosition.y = y;
 }
 
-void Element::loadCherryTree()
+void Element::init()
 {
-	mWidth				=(CHERRY_WIDTH);
-	mHeight				=(CHERRY_HEIGHT);
-	mResourcePositionX	=(CHERRY_OFFSET_X);
-	mResourcePositionY	=(CHERRY_OFFSET_Y);
+	loadRectangle();
+	loadImage();
 }
 
-void Element::loadLargeRock01()
+void Element::shutdown()
 {
-	mWidth				=(LARGE_ROCK_01_WIDTH);
-	mHeight				=(LARGE_ROCK_01_HEIGHT);
-	mResourcePositionX	=(LARGE_ROCK_01_OFFSET_X);
-	mResourcePositionY	=(LARGE_ROCK_01_OFFSET_Y);
-}
-
-void Element::loadLargeRock02()
-{
-	mWidth				=(LARGE_ROCK_02_WIDTH);
-	mHeight				=(LARGE_ROCK_02_HEIGHT);
-	mResourcePositionX	=(LARGE_ROCK_02_OFFSET_X);
-	mResourcePositionY	=(LARGE_ROCK_02_OFFSET_Y);
-}
-
-void Element::loadLargeRock03()
-{
-	mWidth				=(LARGE_ROCK_03_WIDTH);
-	mHeight				=(LARGE_ROCK_03_HEIGHT);
-	mResourcePositionX	=(LARGE_ROCK_03_OFFSET_X);
-	mResourcePositionY	=(LARGE_ROCK_03_OFFSET_Y);
-}
-
-void Element::loadSmallRock01()
-{
-	mWidth				=(SMALL_ROCK_01_WIDTH);
-	mHeight				=(SMALL_ROCK_01_HEIGHT);
-	mResourcePositionX	=(SMALL_ROCK_01_OFFSET_X);
-	mResourcePositionY	=(SMALL_ROCK_01_OFFSET_Y);
+    Image::release(image);
 }
 

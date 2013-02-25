@@ -10,8 +10,6 @@
 
 #include "map.h"
 
-typedef int Unit;
-
 using namespace std;
 	
 class Level_01 : public Map

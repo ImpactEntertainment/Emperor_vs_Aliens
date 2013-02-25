@@ -16,20 +16,6 @@
 #include "exception.h"
 #include "videosettings.h"
 
-#ifdef PS3
- 	#ifndef VIDEO_H_PS3
-	#define VIDEO_H_PS3
- 		const string resourcesDirectory ="/dev_hdd0/game/EMPALIENS/USRDIR/data/";
- 	#endif
-#else
- 	#ifndef VIDEO_H_PC
-	#define VIDEO_H_PC
-    const string resourcesDirectory ="data/";
-    #endif
-#endif
-
-
-
 namespace edge {
 
 class Video {
