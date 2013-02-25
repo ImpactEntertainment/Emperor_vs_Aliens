@@ -36,7 +36,7 @@ public:
 	Status status;
 	int frameCount;
 private:
-	//vector<Field*> path;
+	vector<Field*> path;
 };
 
 
