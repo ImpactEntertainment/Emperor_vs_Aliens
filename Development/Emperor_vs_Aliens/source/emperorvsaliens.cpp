@@ -17,6 +17,9 @@ namespace edge
     
     void EmperorVsAliens::update()
     {
+		vector<Unit>::iterator it;
+		for(it = swarmUnits.begin(); it < swarmUnits.end(); it++)
+			it->update();
     }
     
     void EmperorVsAliens::callNextWave()
@@ -31,5 +34,12 @@ namespace edge
         canvas->drawUnits(swarmUnits);
         //marker.draw(canvas);
     }
+
+	void EmperorVsAliens::IA()
+	{
+		vector<Unit>::iterator it;
+		for(it = swarmUnits.begin(); it < swarmUnits.end(); it++)
+			it->IA();
+	}
 
 }

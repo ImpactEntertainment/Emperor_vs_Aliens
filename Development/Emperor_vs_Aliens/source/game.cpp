@@ -2,6 +2,7 @@
 
 #include "game.h"
 #include "windowfactory.h"
+#include "point.h"
 
 using namespace std;
 
@@ -26,13 +27,15 @@ namespace edge
         PAUSED=(false);
 		FAST_FORWARD=(false);
 		QUIT=(false);
+		
+		allFrameCount = -1;
     }
 
     void
     Game::loop() throw (Exception)
     {
         // 1. Atualizar time step
-
+		allFrameCount++;
         // 2. Inputs
         SDL_Event event;
         bool quitGame = false;
@@ -59,6 +62,9 @@ namespace edge
 					case SDLK_x:
 						callNextWave();
 						break;
+					case SDLK_a:
+						eva.board.moveUnit(eva.swarmUnits[0],Point(eva.swarmUnits[0].mPosition.x-1,eva.swarmUnits[0].mPosition.y));
+						break;
                     default:
                         //eva.board.handleKeyboardEvent(&event.key);
                     	break;
@@ -69,6 +75,7 @@ namespace edge
             }
 
             // 3. Rodar IA
+			eva.IA();
             // 4. Rodar simulações de física
             // 5. Atualizar entidades do jogo
 			eva.update();

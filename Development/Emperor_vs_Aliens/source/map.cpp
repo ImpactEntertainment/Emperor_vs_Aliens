@@ -11,6 +11,7 @@ void Map::reset()
 void Map::init()
 {
 	reset();
+	loadSpawnPoints();
 	loadWaves();
 	loadEnviroment();
 }
@@ -40,3 +41,14 @@ int Map::getWavesLeft()
 {
 	return waves.size();
 }
+
+void Map::moveUnit(Unit& unit,const Point& dst)
+{	
+	unit.status = UNIT_MOVING;
+	unit.speed.x = -SPEED_X;
+	battlefield[unit.mPosition.x][unit.mPosition.y].habitant = NULL;
+	
+	//unit.mPosition = dst;
+	//battlefield[unit.mPosition.x][unit.mPosition.y].habitant = &unit;
+}
+

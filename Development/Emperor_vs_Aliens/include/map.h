@@ -18,6 +18,7 @@
 #include "boundingrectangle.h"
 #include "imageset.h"
 #include "enviromentelement.h"
+#include "field.h"
 #include "unit.h"
 
 #define BATTLEFIELD_WIDTH 16
@@ -29,6 +30,7 @@ using namespace std;
 class Map
 {
 private:
+	virtual void loadSpawnPoints() = 0;
 	virtual void loadWaves() = 0;
 	virtual void loadEnviroment() = 0;
 public:    
@@ -39,8 +41,11 @@ public:
     vector<Unit>& Wave();
     int	 getWavesLeft();
 	void reset();
+
+	void moveUnit(Unit& unit,const Point& dst);
 	
-	//Field	battlefield[BATTLEFIELD_HEIGHT][BATTLEFIELD_WIDTH];
+	Field	battlefield[BATTLEFIELD_HEIGHT][BATTLEFIELD_WIDTH];
+	vector<Point> spawnPoints;
 	vector<EnviromentElement> enviromentElements;
 	vector< vector<Unit> > waves;
 	int currentWave;

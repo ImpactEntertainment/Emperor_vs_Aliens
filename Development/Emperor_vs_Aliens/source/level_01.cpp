@@ -2,16 +2,26 @@
 
 using namespace std;
 
+void Level_01::loadSpawnPoints()
+{
+	spawnPoints.push_back(Point(15,2));
+	spawnPoints.push_back(Point(15,3));
+	spawnPoints.push_back(Point(15,4));
+}
+
 void Level_01::loadWaves()
 {
 	vector<Unit> wave1,
 				 wave2,
 				 wave3;
-	//Unit a(spawnPoint);
-	Unit a(100,100);
-	wave1.push_back(1);
-	wave2.push_back(1);
-	wave3.push_back(1);
+
+	Unit a(spawnPoints[rand()%spawnPoints.size()]);
+	Unit b(spawnPoints[rand()%spawnPoints.size()]);
+	Unit c(spawnPoints[rand()%spawnPoints.size()]);
+
+	wave1.push_back(a);
+	wave2.push_back(b);
+	wave3.push_back(c);
 	
 	waves.push_back(wave1);
 	waves.push_back(wave2);

@@ -35,8 +35,7 @@ namespace edge {
                 const Color& color);
 
         void drawImage(const Image *image, const Point& position);
-        void drawImage(const Image *image, const Point& basePosition,
-			const Rectangle& baseRect, const Point& position);
+        void drawImage(const Image *image, const Rectangle& baseRect, const Point& position);
 		
         void fillRectangle(const Rectangle& rectangle, const Point& position,
                 const Color& color);
@@ -50,7 +49,7 @@ namespace edge {
         
         void drawElementAt(const Element& element, int fieldIndex);
         void drawElement(const Element& element);
-        void drawUnit(const Unit& element);
+        void drawUnit(Unit& element);
             
 
     private:

@@ -32,6 +32,7 @@ namespace edge
         void shutdown();
         void update();
         void draw(Canvas *canvas);
+		void IA();
         
         void callNextWave();
         

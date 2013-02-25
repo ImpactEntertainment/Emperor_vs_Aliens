@@ -42,8 +42,7 @@ namespace edge {
         virtual void drawCircle(const Circle& circle,
                 const Point& center, const Color& color) = 0;
         virtual void drawImage(const Image *image, const Point& position) = 0;
-		virtual void drawImage(const Image *image, const Point& basePosition,
-			const Rectangle& baseRect, const Point& position) = 0;
+		virtual void drawImage(const Image *image, const Rectangle& baseRect, const Point& position) = 0;
 
         virtual void fillRectangle(const Rectangle& rectangle,
                 const Point& position, const Color& color) = 0;
@@ -57,7 +56,7 @@ namespace edge {
      	
      	virtual void drawElementAt(const Element& element, int fieldIndex) = 0;
      	virtual void drawElement(const Element& element)=0;
-    	virtual void drawUnit(const Unit& element)=0;
+    	virtual void drawUnit(Unit& element)=0;
     };
 
 }

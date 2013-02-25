@@ -323,14 +323,13 @@ namespace edge {
     }
 	
 	void 
-	SDL_Canvas::drawImage(const Image *image, const Point& basePosition,
-			const Rectangle& baseRect, const Point& position)
+	SDL_Canvas::drawImage(const Image *image, const Rectangle& baseRect, const Point& position)
 	{
 		const SDL_Image *sdlimage = dynamic_cast<const SDL_Image *>(image);
         
 		SDL_Rect srcrect;
-		srcrect.x = basePosition.x;
-		srcrect.y = basePosition.y;
+		srcrect.x = baseRect.x;
+		srcrect.y = baseRect.y;
 		srcrect.w = baseRect.width;
 		srcrect.h = baseRect.height;
 		
@@ -391,14 +390,6 @@ namespace edge {
 		Image::release(image);
 	}
 	
-	/**drawElement(Unit& unit)
-	* ...
-	*  position = calcularPosition();
-	*   factor = MOVING ? FACTOR_CORRIDO : 1
-	*   position.x += 112/(112*unit.speed.x);
-	*   position.y += 112/(112*unit.speed.y);
-	* ...
-	*/
 	void SDL_Canvas::drawElement(const Element& element)
 	{
 	
@@ -410,13 +401,30 @@ namespace edge {
 		drawImage(element.image, position);
 	}
 	
-	void SDL_Canvas::drawUnit(const Unit& element){
+	void SDL_Canvas::drawUnit(Unit& element){
 		Point position;
 		
-		position.x = (element.mPosition.x)*112+134-(element.mResource.width-112);
-		position.y = (element.mPosition.y)*112+409-(element.mResource.height-112);
-
-		drawImage(element.image, position);
+		if(element.status == UNIT_MOVING)
+		{
+			position.x = (element.mPosition.x)*112 + element.speed.x * (element.frameCount+1)+134-(element.mResource.width-112);
+			position.y = (element.mPosition.y)*112 + element.speed.y * (element.frameCount+1)+409-(element.mResource.height-112);
+			
+			if(element.frameCount == 7) 
+			{
+				element.status = UNIT_IDLE;
+				element.mPosition.x += element.speed.x > 0 ? 1 : element.speed.x < 0 ? -1 : 0;
+				element.mPosition.x += element.speed.y > 0 ? 1 : element.speed.y < 0 ? -1 : 0;
+				
+				element.speed.x = 0;
+				element.speed.y = 0;
+			}
+		}		
+		else
+		{
+			position.x = (element.mPosition.x)*112+134-(element.mResource.width-112);
+			position.y = (element.mPosition.y)*112+409-(element.mResource.height-112);
+		}
+		drawImage(element.image, element.mResource, position);
 	
 	}
 	
