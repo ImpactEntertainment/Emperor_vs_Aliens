@@ -49,11 +49,11 @@ CPPFLAGS=-Wall -g -W -pedantic -ansi
 # Linking flags
 LDFLAGS= $(LIBS)
 
-main: 
+$(BUILD)/%.o:$(SOURCES)/%.cpp
 	@echo building ...
-	@$(LD) $(CPPFLAGS)  -c $(CPPFILES) $(INCLUDE)
+	@$(LD) $(CPPFLAGS) -c $^ -o $@ $(INCLUDE)
+main:$(OFILES)
 	@mkdir -p $(BUILD)
-	@mv *.o $(BUILD)
 	@echo linking ...
 	@$(LD) $(OFILES) $(CPPFLAGS) $(LDFLAGS) -o $(TARGET)
 	@echo "$(TARGET)-$(VERSION)"
