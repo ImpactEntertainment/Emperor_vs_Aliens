@@ -4,9 +4,9 @@ using namespace std;
 
 void Level_01::loadSpawnPoints()
 {
-	spawnPoints.push_back(Point(15,2));
-	spawnPoints.push_back(Point(15,3));
-	spawnPoints.push_back(Point(15,4));
+	spawnPoints.push_back(&battlefield[15][2]);
+	spawnPoints.push_back(&battlefield[15][3]);
+	spawnPoints.push_back(&battlefield[15][4]);
 }
 
 void Level_01::loadWaves()
@@ -19,6 +19,7 @@ void Level_01::loadWaves()
 	Unit b(spawnPoints[rand()%spawnPoints.size()]);
 	Unit c(spawnPoints[rand()%spawnPoints.size()]);
 
+
 	wave1.push_back(a);
 	wave2.push_back(b);
 	wave3.push_back(c);
@@ -30,13 +31,13 @@ void Level_01::loadWaves()
 
 void Level_01::loadEnviroment()
 {
-	EnviromentElement	cherryTree1(CHERRY_TREE,11,0),
-						cherryTree2(CHERRY_TREE,4,4),
-						cherryTree3(CHERRY_TREE,14,5);
+	EnviromentElement	cherryTree1(CHERRY_TREE,&battlefield[11][0]),
+						cherryTree2(CHERRY_TREE,&battlefield[4][4]),
+						cherryTree3(CHERRY_TREE,&battlefield[14][5]);
 	
-	EnviromentElement	largeRock01(LARGE_ROCK_01,4,4),
-						largeRock03(LARGE_ROCK_03,11,5),
-						smallRock01(SMALL_ROCK_01,11,0);
+	EnviromentElement	largeRock01(LARGE_ROCK_01,&battlefield[4][4]),
+						largeRock03(LARGE_ROCK_03,&battlefield[11][5]),
+						smallRock01(SMALL_ROCK_01,&battlefield[11][0]);
 	
 	
 	enviromentElements.push_back(cherryTree1);

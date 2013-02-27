@@ -1,13 +1,12 @@
 #include "element.h"
 
-Element::Element(int x, int y)
-: mPosition(x,y)
+Element::Element(Point *pos)
+: mPosition(pos)
 {}
 
-void Element::setPosition(int x, int y)
+void Element::setPosition(Point *pos)
 { 
-	mPosition.x = x;
-	mPosition.y = y;
+	mPosition = pos;
 }
 
 void Element::init()

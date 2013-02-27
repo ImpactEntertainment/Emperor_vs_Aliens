@@ -46,7 +46,7 @@ typedef enum EnviromentElementType
 class EnviromentElement : public Element 
 {
 public:
-	EnviromentElement(EnviromentElementType type, int x=0, int y=0);
+	EnviromentElement(EnviromentElementType type, Point *pos);
 	
 	EnviromentElementType mType;
 	

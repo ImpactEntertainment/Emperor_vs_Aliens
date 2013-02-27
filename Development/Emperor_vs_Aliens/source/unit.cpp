@@ -1,11 +1,11 @@
 #include "unit.h"
+#include <algorithm>
 
-Unit::Unit(Point position)
-: status(UNIT_IDLE)
+Unit::Unit(Point *pos)
+: status(UNIT_IDLE), Element(pos)
 {
 	speed.x = 0;
 	speed.y = 0;
-	mPosition = position;
 	init();
 }
 
@@ -28,6 +28,8 @@ void Unit::update()
 	frameCount = (frameCount + 1) % 8;
 	mResource.x = mResource.width * frameCount;
 	mResource.y = mResource.height * status;
+
+	if(frameCount == 7 && status == UNIT_MOVING) arrive();
 }
 
 void Unit::IA()
@@ -35,6 +37,70 @@ void Unit::IA()
 	switch(status)
 	{
 	case UNIT_MOVING: break;
-	case UNIT_IDLE: break;
+	case UNIT_IDLE:
+		if(!mPosition->x)
+			getTarget();
+		else if(!path.size())
+			createPath();
+		else
+			decision();
+	break;
+	case UNIT_ATTACKING: break;
 	}
+}
+
+void Unit::createPath()
+{
+	Point *next = mPosition->path[WEST];
+	while(next)
+	{ 
+		path.push_back(next);
+		next = next->path[WEST];
+	}
+	reverse(path.begin(),path.end());
+}
+
+void Unit::decision()
+{
+	Point *next = path.size() ? path[path.size()-1] : 0;
+	if(!next)
+	{}
+	//else if(next->habitant)
+	//	attack((Unit*) path.end()->habitant);
+	else
+		move();
+}
+
+void Unit::move()
+{
+	mPosition->habitant = NULL;
+	status = UNIT_MOVING;
+	speed.x = -SPEED_X;
+	speed.y = 0;
+}
+
+#include <iostream>
+using namespace std;
+
+void Unit::arrive()
+{
+	mPosition = path[path.size()-1];	
+	mPosition->habitant = this;
+	status = UNIT_IDLE;				
+	speed.x = 0;
+	speed.y = 0;
+	path.pop_back();
+}
+
+void Unit::attack(Unit* target)
+{
+	status = UNIT_ATTACKING;
+	
+	cout << this <<" Attacking! ->" << target << endl;
+}
+
+void Unit::getTarget()
+{
+	attack(NULL);
+	cout << "Attacking wall!" << endl;
 }

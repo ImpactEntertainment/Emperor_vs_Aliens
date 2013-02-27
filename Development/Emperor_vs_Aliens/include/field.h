@@ -1,16 +1,17 @@
 #ifndef FIELD_H
 #define	FIELD_H
 
-#include "unit.h"
+#include "element.h"
 
 using namespace std;
 
-class Field
+class Field : public Point
 {
 private:
 
-public:    
-	Unit* habitant;
+public:
+	Element* habitant;
+	Field*	 boundries[8];
 };
 #endif
 

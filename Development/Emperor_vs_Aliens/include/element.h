@@ -5,24 +5,24 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include "point.h"
 #include "rectangle.h"
 #include "image.h"
+#include "point.h"
 
 using namespace edge;
 
 class Element {
 public:
 	Rectangle mResource;	
-	Point mPosition;
+	Point *mPosition;
     Image *image;
-	
+    
 	virtual void loadRectangle() = 0;
 	virtual void loadImage() = 0;
 	
 	void init();
-	Element(int x=0, int y=0);
-	void setPosition(int, int);
+	Element(Point *pos);
+	void setPosition(Point *pos);
 	void shutdown();
 private:
 };

@@ -6,12 +6,10 @@ namespace edge
     void EmperorVsAliens::init()
     {
         board.init();
-        marker.init();
     }
 
     void EmperorVsAliens::shutdown()
     {
-        marker.shutdown();
         board.shutdown();
     }
     
@@ -32,7 +30,6 @@ namespace edge
     {
         board.draw(canvas);
         canvas->drawUnits(swarmUnits);
-        //marker.draw(canvas);
     }
 
 	void EmperorVsAliens::IA()

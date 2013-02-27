@@ -17,7 +17,6 @@
 #include "video.h"
 #include "window.h"
 #include "boundingrectangle.h"
-#include "marker.h"
 #include "map.h"
 #include "level_01.h"
 
@@ -39,7 +38,6 @@ namespace edge
         
         vector<Unit> swarmUnits;
         Level_01 board;
-        Marker marker;
     };
 }
 

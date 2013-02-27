@@ -13,6 +13,7 @@
 
 #include "exception.h"
 #include "canvas.h"
+#include "rectangle.h"
 
 namespace edge {
 
@@ -54,6 +55,7 @@ namespace edge {
 
     private:
         SDL_Surface *surface;
+        Image *map_elements,*background;
 
         void putPixel(const Point& position, const Color& color);
         void drawCirclePoints(int cx, int cy, int x, int y, Color color);
