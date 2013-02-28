@@ -50,8 +50,10 @@ CPPFLAGS=-Wall -g -W -pedantic -ansi
 LDFLAGS= $(LIBS)
 
 $(BUILD)/%.o:$(SOURCES)/%.cpp
-	@echo building ...
+	@mkdir -p $(BUILD)
+	@echo building $^ ...
 	@$(LD) $(CPPFLAGS) -c $^ -o $@ $(INCLUDE)
+
 main:$(OFILES)
 	@mkdir -p $(BUILD)
 	@echo linking ...
