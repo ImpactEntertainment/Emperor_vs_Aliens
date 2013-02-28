@@ -37,6 +37,7 @@ namespace edge
         
         
         vector<Unit> swarmUnits;
+        vector<Unit> emperorUnits;
         Level_01 board;
     };
 }

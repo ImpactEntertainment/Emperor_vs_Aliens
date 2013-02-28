@@ -17,6 +17,10 @@ typedef struct Speed{
 	float x, y;
 }Speed;
 
+typedef struct Attributes{
+	int hitpoints;
+}Attributes;
+
 typedef enum Status {
 	UNIT_IDLE,
 	UNIT_MOVING,
@@ -36,11 +40,16 @@ public:
 	void moveTo(int x, int y);
 	void createPath();
 	void decision();
-	void attack(Unit* target);
+	void startAttack(Unit* target);
 	void move();
 	void getTarget();
 	void arrive();
+	void attack();
+	void enableAttack();
 	
+	Unit *target;
+
+	bool  attackCooldown;
 	float attackSpeed;
 	Speed speed;
 	Status status;

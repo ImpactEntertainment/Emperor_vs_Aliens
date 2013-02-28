@@ -2,7 +2,9 @@
 
 Element::Element(Point *pos)
 : mPosition(pos)
-{}
+{
+	pos->habitant = this;
+}
 
 void Element::setPosition(Point *pos)
 { 

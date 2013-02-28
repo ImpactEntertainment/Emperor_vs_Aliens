@@ -6,6 +6,7 @@ Unit::Unit(Point *pos)
 {
 	speed.x = 0;
 	speed.y = 0;
+	attackCooldown = false;
 	init();
 }
 
@@ -30,6 +31,7 @@ void Unit::update()
 	mResource.y = mResource.height * status;
 
 	if(frameCount == 7 && status == UNIT_MOVING) arrive();
+	if(frameCount == 7 && attackCooldown)		 enableAttack();  
 }
 
 void Unit::IA()
@@ -45,7 +47,9 @@ void Unit::IA()
 		else
 			decision();
 	break;
-	case UNIT_ATTACKING: break;
+	case UNIT_ATTACKING: 
+		if(!attackCooldown) attack();
+	break;
 	}
 }
 
@@ -65,8 +69,8 @@ void Unit::decision()
 	Point *next = path.size() ? path[path.size()-1] : 0;
 	if(!next)
 	{}
-	//else if(next->habitant)
-	//	attack((Unit*) path.end()->habitant);
+	else if(next->habitant)
+		startAttack((Unit *)next->habitant);
 	else
 		move();
 }
@@ -79,9 +83,6 @@ void Unit::move()
 	speed.y = 0;
 }
 
-#include <iostream>
-using namespace std;
-
 void Unit::arrive()
 {
 	mPosition = path[path.size()-1];	
@@ -92,15 +93,30 @@ void Unit::arrive()
 	path.pop_back();
 }
 
-void Unit::attack(Unit* target)
+#include <iostream>
+using namespace std;
+
+void Unit::enableAttack()
+{
+	cout << "attack enabled" << endl;
+	attackCooldown = false;
+}
+
+void Unit::attack()
+{
+	attackCooldown = true;
+	cout << "attack done" << endl;
+}
+
+void Unit::startAttack(Unit* target)
 {
 	status = UNIT_ATTACKING;
 	
-	cout << this <<" Attacking! ->" << target << endl;
+	cout << this <<" Start Attacking! ->" << target << endl;
 }
 
 void Unit::getTarget()
 {
-	attack(NULL);
+	startAttack(NULL);
 	cout << "Attacking wall!" << endl;
 }
