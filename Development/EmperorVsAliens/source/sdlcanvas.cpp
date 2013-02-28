@@ -27,8 +27,8 @@ namespace edge {
         } else {
             this->surface = surface;
         }
-        background = Image::load("/opt/EmperorVsAliens/resources/level_01.png");
-        map_elements = Image::load("/opt/EmperorVsAliens/resources/map_elements.png"); 
+        background = Image::load("/opt/EmperorVsAliens/data/images/level_01.png");
+        map_elements = Image::load("/opt/EmperorVsAliens/data/images/map_elements.png"); 
     }
 
     SDL_Canvas::~SDL_Canvas() {
@@ -354,7 +354,7 @@ namespace edge {
 		rect.height = 60;
 		
 		//Image *bottomGrass = 
-		//Image::load("/opt/EmperorVsAliens/resources/map_elements.png",
+		//Image::load("/opt/EmperorVsAliens/data/images/map_elements.png",
 		//imageOffsetX,imageOffsetY,imageWidth,imageHeight);
 
 		Point position;
@@ -369,7 +369,7 @@ namespace edge {
 	
 	void SDL_Canvas::drawBackground() 
 	{
-		//Image *background = Image::load("/opt/EmperorVsAliens/resources/level_01.png");
+		//Image *background = Image::load("/opt/EmperorVsAliens/data/images/level_01.png");
 
 		Point position(0, 0);
 		drawImage(background, position);
@@ -381,7 +381,7 @@ namespace edge {
 	{
 
 		//Image *image = 
-		//Image::load("/opt/EmperorVsAliens/resources/map_elements.png",  element.mResource.x, element.mResource.y, element.mResource.width, element.mResource.height);
+		//Image::load("/opt/EmperorVsAliens/data/images/map_elements.png",  element.mResource.x, element.mResource.y, element.mResource.width, element.mResource.height);
 
 		Point position;
 

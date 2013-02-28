@@ -63,7 +63,7 @@ main:$(OFILES)
 # Cleanup
 clean:
 	@echo clean ...
-	@rm -rf $(OFILES)
+	@rm -rf $(BUILD)
 	@rm -f $(TARGET)
 
 install:

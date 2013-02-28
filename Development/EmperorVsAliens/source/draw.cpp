@@ -73,7 +73,7 @@ void putPixel(SDL_Surface *surface, int x, int y, Uint32 pixel) {
 }
 
 void drawX(Canvas *canvas) {
-    Image *x = Image::load("/opt/tictactoe/resources/x.png");
+    Image *x = Image::load("/opt/tictactoe/data/images/x.png");
 
     int blackboardFrameSize = 40;
     int leftMargin = 14, topMargin = 14;
@@ -91,7 +91,7 @@ void drawX(Canvas *canvas) {
 }
 
 void drawO(Canvas *canvas) {
-    Image *y = Image::load("/opt/tictactoe/resources/o.png");
+    Image *y = Image::load("/opt/tictactoe/data/images/o.png");
 
     int blackboardFrameSize = 40;
     int leftMargin = 14, topMargin = 14;
