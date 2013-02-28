@@ -18,7 +18,6 @@
 #include "boundingrectangle.h"
 #include "imageset.h"
 #include "enviromentelement.h"
-#include "field.h"
 #include "unit.h"
 
 #define BATTLEFIELD_WIDTH 16
@@ -35,17 +34,16 @@ private:
 	virtual void loadEnviroment() = 0;
 public:    
     void init();
+    void loadBattlefield();
     void shutdown();
     void draw(Canvas * canvas);
     void NextWave();
     vector<Unit>& Wave();
     int	 getWavesLeft();
 	void reset();
-
-	void moveUnit(Unit& unit,const Point& dst);
 	
-	Field	battlefield[BATTLEFIELD_HEIGHT][BATTLEFIELD_WIDTH];
-	vector<Point> spawnPoints;
+	Point	battlefield[BATTLEFIELD_WIDTH][BATTLEFIELD_HEIGHT];
+	vector<Point*> spawnPoints;
 	vector<EnviromentElement> enviromentElements;
 	vector< vector<Unit> > waves;
 	int currentWave;

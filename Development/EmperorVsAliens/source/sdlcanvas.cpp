@@ -27,6 +27,8 @@ namespace edge {
         } else {
             this->surface = surface;
         }
+        background = Image::load("/opt/EmperorVsAliens/resources/level_01.png");
+        map_elements = Image::load("/opt/EmperorVsAliens/resources/map_elements.png"); 
     }
 
     SDL_Canvas::~SDL_Canvas() {
@@ -344,50 +346,51 @@ namespace edge {
 	
 	void SDL_Canvas::drawBottomGrass()
 	{
-		int imageOffsetX = 0;
-		int imageOffsetY = 1020;
+	
+		Rectangle rect;
+		rect.x = 0;
+		rect.y = 1020;
+		rect.width = 1920;
+		rect.height = 60;
 		
-		int imageWidth	 = 1920;
-		int imageHeight	 = 60;
-
-		Image *bottomGrass = 
-		Image::load("/opt/EmperorVsAliens/resources/map_elements.png",
-		imageOffsetX,imageOffsetY,imageWidth,imageHeight);
+		//Image *bottomGrass = 
+		//Image::load("/opt/EmperorVsAliens/resources/map_elements.png",
+		//imageOffsetX,imageOffsetY,imageWidth,imageHeight);
 
 		Point position;
 
 		position.x = 0;
 		position.y = 1020;
 
-		drawImage(bottomGrass, position);
+		drawImage(map_elements, rect, position);
 		
-		Image::release(bottomGrass);
+		//Image::release(bottomGrass);
 	}
 	
 	void SDL_Canvas::drawBackground() 
 	{
-		Image *background = Image::load("/opt/EmperorVsAliens/resources/level_01.png");
+		//Image *background = Image::load("/opt/EmperorVsAliens/resources/level_01.png");
 
 		Point position(0, 0);
 		drawImage(background, position);
 		
-		Image::release(background);
+		//Image::release(background);
 	}
 	
 	void SDL_Canvas::drawElementAt(const Element& element, int fieldIndex)
 	{
 
-		Image *image = 
-		Image::load("/opt/EmperorVsAliens/resources/map_elements.png",  element.mResource.x, element.mResource.y, element.mResource.width, element.mResource.height);
+		//Image *image = 
+		//Image::load("/opt/EmperorVsAliens/resources/map_elements.png",  element.mResource.x, element.mResource.y, element.mResource.width, element.mResource.height);
 
 		Point position;
 
 		position.x = (fieldIndex%16)*112+134-(element.mResource.width-112);
 		position.y = (fieldIndex >> 4)*112+409-(element.mResource.height-112);
 
-		drawImage(image, position);
+		drawImage(map_elements, position);
 		
-		Image::release(image);
+		//Image::release(image);
 	}
 	
 	void SDL_Canvas::drawElement(const Element& element)
@@ -395,34 +398,25 @@ namespace edge {
 	
 		Point position;
 		
-		position.x = (element.mPosition.x)*112+134-(element.mResource.width-112);
-		position.y = (element.mPosition.y)*112+409-(element.mResource.height-112);
+		position.x = (element.mPosition->x)*112+134-(element.mResource.width-112);
+		position.y = (element.mPosition->y)*112+409-(element.mResource.height-112);
 
 		drawImage(element.image, position);
 	}
 	
 	void SDL_Canvas::drawUnit(Unit& element){
+		
 		Point position;
 		
 		if(element.status == UNIT_MOVING)
 		{
-			position.x = (element.mPosition.x)*112 + element.speed.x * (element.frameCount+1)+134-(element.mResource.width-112);
-			position.y = (element.mPosition.y)*112 + element.speed.y * (element.frameCount+1)+409-(element.mResource.height-112);
-			
-			if(element.frameCount == 7) 
-			{
-				element.status = UNIT_IDLE;
-				element.mPosition.x += element.speed.x > 0 ? 1 : element.speed.x < 0 ? -1 : 0;
-				element.mPosition.x += element.speed.y > 0 ? 1 : element.speed.y < 0 ? -1 : 0;
-				
-				element.speed.x = 0;
-				element.speed.y = 0;
-			}
+			position.x = (element.mPosition->x)*112 + element.speed.x * (element.frameCount+1)+134-(element.mResource.width-112);
+			position.y = (element.mPosition->y)*112 + element.speed.y * (element.frameCount+1)+409-(element.mResource.height-112);	         
 		}		
 		else
 		{
-			position.x = (element.mPosition.x)*112+134-(element.mResource.width-112);
-			position.y = (element.mPosition.y)*112+409-(element.mResource.height-112);
+			position.x = (element.mPosition->x)*112+134-(element.mResource.width-112);
+			position.y = (element.mPosition->y)*112+409-(element.mResource.height-112);
 		}
 		drawImage(element.image, element.mResource, position);
 	

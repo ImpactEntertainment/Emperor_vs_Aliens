@@ -62,9 +62,6 @@ namespace edge
 					case SDLK_x:
 						callNextWave();
 						break;
-					case SDLK_a:
-						eva.board.moveUnit(eva.swarmUnits[0],Point(eva.swarmUnits[0].mPosition.x-1,eva.swarmUnits[0].mPosition.y));
-						break;
                     default:
                         //eva.board.handleKeyboardEvent(&event.key);
                     	break;
@@ -151,7 +148,7 @@ namespace edge
 			eva.callNextWave();
 		}
 		printf("Pressed: CALL_NEXT_WAVE! %d waves left!\n",WAVES_LEFT);
-		printf("Swarn Units alive: %d\n",eva.swarmUnits.size());
+		printf("Swarn Units alive: %d\n",(int)eva.swarmUnits.size());
 		
 	}
 }
