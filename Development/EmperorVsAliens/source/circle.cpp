@@ -1,6 +1,6 @@
 /**
  * \file circle.cpp
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 10/01/2013
  */
 

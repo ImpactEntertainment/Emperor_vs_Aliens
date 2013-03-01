@@ -9,7 +9,7 @@
  * O comportamento do recebimento de mensagens e se o objeto é uma folha
  * (isto é, não tem filhos) deve ser definido nas classes que herdam Object
  * 
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 25/01/2012
  */
 #ifndef OBJECT_H

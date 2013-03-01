@@ -4,7 +4,7 @@
  *
  * Cria janelas a partir das configurações dadas.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 08/01/2013
  */
 #ifndef WINDOW_FACTORY_H

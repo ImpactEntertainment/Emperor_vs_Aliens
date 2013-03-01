@@ -2,7 +2,7 @@
  * \file messageidgenerator.h
  * \brief Classe que gera os identificadores de mensagens.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 28/01/2012
  */
 #ifndef MESSAGE_ID_GENERATOR_H

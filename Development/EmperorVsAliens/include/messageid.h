@@ -2,7 +2,7 @@
  * \file messageid.h
  * \brief Definição do tipo dos identificadores de mensagens.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 28/01/2012
  */
 #ifndef MESSAGE_ID_H

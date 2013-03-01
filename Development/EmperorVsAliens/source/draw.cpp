@@ -1,6 +1,6 @@
 /**
  * \file draw.cpp
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 24/12/2012
  */
 #include <iostream>

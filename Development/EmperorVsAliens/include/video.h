@@ -5,7 +5,7 @@
  * Esta interface representa o módulo de vídeo, com suas configurações.
  * A janela e a área desenhável fazem parte da interface Window.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 26/12/2012
  */
 #ifndef VIDEO_H

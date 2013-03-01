@@ -4,7 +4,7 @@
  *
  * Esta classe representa um retângulo no espaço bidimensional. 
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 09/01/2012
  */
 #ifndef RECTANGLE_H

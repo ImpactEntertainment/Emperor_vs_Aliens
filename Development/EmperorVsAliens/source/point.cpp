@@ -1,6 +1,6 @@
 /**
  * \file sdlcanvas.cpp
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \co-author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com)
  * \date 09/01/2013
  */

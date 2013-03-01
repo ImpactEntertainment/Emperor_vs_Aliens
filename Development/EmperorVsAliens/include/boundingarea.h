@@ -2,7 +2,7 @@
  * \file boundingarea.h
  * \brief Interface que representa uma região para detecção de colisão.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 25/01/2012
  */
 #ifndef BOUNDING_AREA_H

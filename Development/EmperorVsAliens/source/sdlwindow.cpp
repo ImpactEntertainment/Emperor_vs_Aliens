@@ -1,6 +1,6 @@
 /**
  * \file sdlwindow.cpp
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 07/01/2013
  */
 #include <iostream>

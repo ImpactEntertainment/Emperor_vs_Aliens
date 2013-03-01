@@ -5,7 +5,7 @@
  * Esta interface representa a área desenhável da janela.
  * O vídeo deve estar inicializado para o uso do canvas.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com)
  * \date 26/12/2012
  */

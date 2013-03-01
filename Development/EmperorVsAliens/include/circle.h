@@ -4,7 +4,7 @@
  *
  * Esta classe representa um círculo no espaço bidimensional. 
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 10/01/2012
  */
 #ifndef CIRCLE_H

@@ -2,7 +2,7 @@
  * \file imageset.h
  * \brief Interface que representa um conjunto de imagens.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 29/01/2012
  */
 #ifndef IMAGE_SET_H

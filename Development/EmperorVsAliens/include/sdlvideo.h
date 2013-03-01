@@ -5,7 +5,7 @@
  * Esta classe implementa a interface vídeo, com suas configurações, utilizando
  * a SDL.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 07/01/2013
  */
 #ifndef SDL_VIDEO_H

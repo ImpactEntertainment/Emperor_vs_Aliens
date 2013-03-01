@@ -5,7 +5,7 @@
  * Módulo principal do jogo TicTacToe, responsável para inicialização
  * dos componentes e do laço principal.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 26/12/2012
  */
 #include <iostream>

@@ -6,7 +6,7 @@
  * superfície diretamente. Este módulo deverá ser refatorado nas próximas
  * versões.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \co-author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com.br)
  * \date 24/12/2012
  */

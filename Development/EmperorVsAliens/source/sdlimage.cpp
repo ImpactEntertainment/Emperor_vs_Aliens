@@ -1,6 +1,6 @@
 /**
  * \file sdlimage.cpp
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com.br)
  * \date 09/01/2013
  */

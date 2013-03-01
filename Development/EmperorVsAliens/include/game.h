@@ -2,7 +2,7 @@
  * \file game.h
  * \brief Interface que representa um jogo.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 25/01/2012
  */
 #ifndef GAME_H

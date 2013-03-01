@@ -4,7 +4,7 @@
  *
  * Esta classe representa uma janela em SDL. 
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 07/01/2013
  */
 #ifndef SDL_WINDOW_H

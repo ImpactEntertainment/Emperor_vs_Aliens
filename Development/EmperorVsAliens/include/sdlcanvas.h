@@ -5,7 +5,7 @@
  * Esta classe representa a área desenhável da janela em SDL.
  * O vídeo deve estar inicializado para o uso do canvas.
  *
- * \author Edson Alves (edsonalves@unb.br)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 08/01/2013
  */
 #ifndef SDL_CANVAS_H
