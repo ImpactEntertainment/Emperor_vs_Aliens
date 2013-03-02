@@ -162,59 +162,7 @@ namespace edge {
         }
     }
 
-    void SDL_Canvas::drawLine(const Line& position, const Color& color) {
-
-        int x1 = position.begin.x;
-        int x2 = position.end.x;
-        int y1 = position.begin.y;
-        int y2 = position.end.y;
-
-        // Bresenham's line algorithm
-        const bool steep = (fabs(y2 - y1) > fabs(x2 - x1));
-        if (steep) {
-            std::swap(x1, y1);
-            std::swap(x2, y2);
-        }
-
-        if (x1 > x2) {
-            std::swap(x1, x2);
-            std::swap(y1, y2);
-        }
-
-        const float dx = x2 - x1;
-        const float dy = fabs(y2 - y1);
-
-        float error = dx / 2.0f;
-        const int ystep = (y1 < y2) ? 1 : -1;
-        int y = (int) y1;
-
-        const int maxX = (int) x2;
-
-        if (SDL_MUSTLOCK(surface)) {
-            SDL_LockSurface(surface);
-        }
-
-        for (int x = (int) x1; x < maxX; x++) {
-            if (steep) {
-                putPixel(Point(y, x), color);
-            } else {
-                putPixel(Point(x, y), color);
-            }
-
-            error -= dy;
-
-            if (error < 0) {
-                y += ystep;
-                error += dx;
-            }
-        }
-
-        if (SDL_MUSTLOCK(surface)) {
-            SDL_UnlockSurface(surface);
-        }
-    }
-
-
+  
     void 
     SDL_Canvas::drawImage(const Image *image, const Point& position)
     {

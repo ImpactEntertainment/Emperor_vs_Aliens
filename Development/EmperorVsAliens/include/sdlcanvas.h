@@ -29,7 +29,6 @@ namespace edge {
         void update();
 
         void drawPixel(const Point& position, const Color& color);
-        void drawLine(const Line& position, const Color& color);
         void drawRectangle(const Rectangle& rectangle, const Point& position,
                 const Color& color);
         

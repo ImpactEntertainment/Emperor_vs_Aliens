@@ -19,7 +19,6 @@
 #include "point.h"
 #include "color.h"
 #include "rectangle.h"
-#include "line.h"
 #include "image.h"
 #include "element.h"
 #include "enviromentelement.h"
@@ -36,7 +35,6 @@ namespace edge {
         virtual void update() = 0;
 
         virtual void drawPixel(const Point& position, const Color& color) = 0;
-        virtual void drawLine(const Line& position, const Color& color) = 0;
         virtual void drawRectangle(const Rectangle& rectangle,
                 const Point& position, const Color& color) = 0;
       
