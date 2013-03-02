@@ -11,7 +11,7 @@
 
 #include <SDL/SDL.h>
 #include <string>
-#include <vector>
+#include <list>
 
 #include "exception.h"
 #include "video.h"
@@ -35,9 +35,11 @@ namespace edge
         
         void callNextWave();
         
+        void decomposeDead();
+        void updateUnits();
         
-        vector<Unit*> swarmUnits;
-        vector<Unit*> emperorUnits;
+        list<Unit*> swarmUnits;
+        list<Unit*> emperorUnits;
         Level_01 board;
     };
 }

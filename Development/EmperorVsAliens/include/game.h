@@ -13,6 +13,9 @@
 #include "video.h"
 #include "window.h"
 #include "emperorvsaliens.h"
+#include "timer.h"
+
+#define FRAMES_PER_SECOND 20
 
 using namespace std;
 
@@ -41,6 +44,8 @@ namespace edge {
 		EmperorVsAliens eva;
 		int allFrameCount;
         
+        Timer clck;
+
         void initVideo(const string& configFilePath) throw(Exception);
         void initWindow(const string& configFilePath) throw(Exception);
     };

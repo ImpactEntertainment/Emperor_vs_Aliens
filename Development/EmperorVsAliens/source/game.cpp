@@ -29,6 +29,7 @@ namespace edge
 		QUIT=(false);
 		
 		allFrameCount = -1;
+        clck.start();
     }
 
     void
@@ -36,11 +37,14 @@ namespace edge
     {
         // 1. Atualizar time step
 		allFrameCount++;
+
         // 2. Inputs
         SDL_Event event;
         bool quitGame = false;
 
         while (quitGame == false) {
+
+            int tickCountBegin = clck.get_ticks();
 
             while (SDL_PollEvent(&event)) {
 
@@ -82,7 +86,9 @@ namespace edge
             
             window->getCanvas()->update();
 
-            SDL_Delay(20);
+            int ticksElapsed = clck.get_ticks() - tickCountBegin;
+            int delayTime = ( 1000 / FRAMES_PER_SECOND ) - ticksElapsed;
+            SDL_Delay( delayTime > 0 ? delayTime : 0);
         }
 
 

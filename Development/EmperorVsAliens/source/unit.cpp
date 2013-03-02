@@ -10,6 +10,7 @@ Unit::Unit(Field *pos)
 	init();
 	pos->habitant = this;
 	spawned = false;
+	decomposed = false;
 	
 	speed.x = 0;
 	speed.y = 0;
@@ -98,8 +99,12 @@ void Unit::decision()
 	else if(next->habitant){
     	startAttack((Unit *)next->habitant);
 	}
-	else{
+	else if(!next->locked){
+		next->locked = true;
     	move();
+		next->locked = false;
+	}
+	else{
 	}
 }
 
@@ -113,33 +118,30 @@ void Unit::move()
 
 void Unit::arrive()
 {
-	mPosition = path.back();	
-	mPosition->habitant = this;
 	status = UNIT_IDLE;				
 	speed.x = 0;
 	speed.y = 0;
+	mPosition = path.back();	
+	mPosition->habitant = this;
 	path.pop_back();
 }
 
 void Unit::onDeath()
 {	
-	cout << this << " Died" << endl;
+	cout << this << " Died and Decomposed" << endl;
+	decomposed = true;
 }
 
 void Unit::enableAttack()
 {
-	cout << "attack enabled" << endl;
 	attackCooldown = false;
 }
 
 void Unit::receiveDamage(int damage)
 {
-	cout << this << " hitpoints: " <<  attributes.hitpoints;
 	attributes.hitpoints -= damage;
-	cout << "->" << attributes.hitpoints << endl;
 	if(attributes.hitpoints <= 0)
 	{
-		cout << this << " will die" << endl;
 		status = UNIT_DEAD;
 		mPosition->habitant = NULL;		
 	}
@@ -149,10 +151,8 @@ void Unit::attack()
 {
 	attackCooldown = true;
 	target->receiveDamage(attributes.damage);
-	cout << "attack done to " << target << endl;
 	if(target->status == UNIT_DEAD)
 	{
-		cout << "my target died" << endl;
 		status = UNIT_IDLE;
 		target = NULL;
 	}
@@ -162,11 +162,10 @@ void Unit::startAttack(Unit* newTarget)
 {
 	status = UNIT_ATTACKING;
 	target = newTarget;
-	cout << this <<" Start Attacking! ->" << newTarget << endl;
 }
 
 void Unit::getTarget()
 {
-	cout << "Attacking wall!" << endl;
+	//cout << "Attacking wall!" << endl;
 	//startAttack(this);
 }

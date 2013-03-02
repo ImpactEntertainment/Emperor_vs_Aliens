@@ -33,6 +33,7 @@ namespace edge {
 
 		Element *habitant;
         Field   *path[8];
+        bool	locked;
 		int x;
         int y;
     };

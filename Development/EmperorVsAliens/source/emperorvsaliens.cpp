@@ -16,14 +16,36 @@ namespace edge
         board.shutdown();
     }
     
-    void EmperorVsAliens::update()
-    {
 
-		vector<Unit*>::iterator it;
-        for(it = swarmUnits.begin(); it < swarmUnits.end(); it++)
+    void EmperorVsAliens::decomposeDead()
+    {
+        list<Unit*>::iterator it;
+        for(it = swarmUnits.begin(); it != swarmUnits.end();)
+            if((*it)->decomposed)
+                it = swarmUnits.erase(it);
+            else
+                it ++;
+        for(it = emperorUnits.begin(); it != emperorUnits.end();)
+            if((*it)->decomposed)
+                it = swarmUnits.erase(it);
+            else
+                it ++;
+    }
+
+    void EmperorVsAliens::updateUnits()
+    {
+        list<Unit*>::iterator it;
+        for(it = swarmUnits.begin(); it != swarmUnits.end(); it++)
             (*it)->update();
-        for(it = emperorUnits.begin(); it < emperorUnits.end(); it++)
+        for(it = emperorUnits.begin(); it != emperorUnits.end(); it++)
             (*it)->update();
+    
+    }
+    
+    void EmperorVsAliens::update()
+    {    
+        decomposeDead();
+        updateUnits();
     }
     
     void EmperorVsAliens::callNextWave()
@@ -43,8 +65,8 @@ namespace edge
 
 	void EmperorVsAliens::IA()
 	{
-		vector<Unit*>::iterator it;
-		for(it = swarmUnits.begin(); it < swarmUnits.end(); it++)
+		list<Unit*>::iterator it;
+		for(it = swarmUnits.begin(); it != swarmUnits.end(); it++)
 			(*it)->IA();
 	}
 

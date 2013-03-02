@@ -46,7 +46,7 @@ namespace edge {
         void drawBackground();
         void drawBottomGrass();
         void drawEnviroment(vector<EnviromentElement>& enviroment);
-        void drawUnits(vector<Unit*>& units);
+        void drawUnits(list<Unit*>& units);
         
         void drawElementAt(const Element& element, int fieldIndex);
         void drawElement(const Element& element);

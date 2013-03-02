@@ -57,6 +57,7 @@ public:
 	
 	Unit *target;
 
+	bool  decomposed;
 	bool  spawned;
 	bool  attackCooldown;
 	float attackSpeed;
