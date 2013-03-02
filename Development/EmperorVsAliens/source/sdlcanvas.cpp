@@ -355,14 +355,14 @@ namespace edge {
 	void SDL_Canvas::drawEnviroment(vector<EnviromentElement>& enviroment) 
 	{	
 		vector<EnviromentElement>::iterator it;
-		for(it = enviroment.begin(); it < enviroment.end(); it++)
+		for(it = enviroment.begin(); it != enviroment.end(); it++)
 			drawElement(*it);
 	}
 	
-	void SDL_Canvas::drawUnits(vector<Unit>& units) 
+	void SDL_Canvas::drawUnits(list<Unit*>& units) 
 	{	
-		vector<Unit>::iterator it;
-		for(it = units.begin(); it < units.end(); it++)
-			drawUnit(*it);
+		list<Unit*>::iterator it;
+		for(it = units.begin(); it != units.end(); it++)
+			drawUnit(**it);
 	}
 }

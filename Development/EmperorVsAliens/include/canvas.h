@@ -13,6 +13,7 @@
 #define CANVAS_H
 
 #include <vector>
+#include <boost/ptr_container/ptr_vector.hpp>
 
 #include "exception.h"
 #include "point.h"
@@ -48,7 +49,7 @@ namespace edge {
      	virtual void drawBackground() = 0;
      	virtual void drawBottomGrass() = 0;
      	virtual void drawEnviroment(vector<EnviromentElement>& enviroment) = 0;
-     	virtual void drawUnits(vector<Unit>& units) = 0;
+     	virtual void drawUnits(list<Unit*>& units) = 0;
      	
      	virtual void drawElementAt(const Element& element, int fieldIndex) = 0;
      	virtual void drawElement(const Element& element)=0;

@@ -8,21 +8,23 @@
 #include "rectangle.h"
 #include "image.h"
 #include "point.h"
+#include "field.h"
 
 using namespace edge;
 
 class Element {
 public:
 	Rectangle mResource;	
-	Point *mPosition;
+	Field *mPosition;
     Image *image;
     
 	virtual void loadRectangle() = 0;
 	virtual void loadImage() = 0;
 	
 	void init();
-	Element(Point *pos);
-	void setPosition(Point *pos);
+	Element(Field *pos);
+
+	void setPosition(Field *pos);
 	void shutdown();
 private:
 };

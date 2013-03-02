@@ -11,6 +11,7 @@
 #include <SDL/SDL.h>
 #include <string>
 #include <vector>
+#include <boost/ptr_container/ptr_vector.hpp>
 
 #include "exception.h"
 #include "video.h"
@@ -19,6 +20,7 @@
 #include "imageset.h"
 #include "enviromentelement.h"
 #include "unit.h"
+#include "field.h"
 
 #define BATTLEFIELD_WIDTH 16
 #define BATTLEFIELD_HEIGHT 6
@@ -38,14 +40,14 @@ public:
     void shutdown();
     void draw(Canvas * canvas);
     void NextWave();
-    vector<Unit>& Wave();
+    vector<Unit*>* Wave();
     int	 getWavesLeft();
 	void reset();
 	
-	Point	battlefield[BATTLEFIELD_WIDTH][BATTLEFIELD_HEIGHT];
-	vector<Point*> spawnPoints;
+	Field	battlefield[BATTLEFIELD_WIDTH][BATTLEFIELD_HEIGHT];
+	vector<Field*> spawnPoints;
 	vector<EnviromentElement> enviromentElements;
-	vector< vector<Unit> > waves;
+	vector< vector<Unit*> > waves;
 	int currentWave;
 };
 #endif
