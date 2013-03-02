@@ -2,7 +2,7 @@
 #include <algorithm>
 
 Unit::Unit(Point *pos)
-: status(UNIT_IDLE), Element(pos)
+: Element(pos), status(UNIT_IDLE)
 {
 	speed.x = 0;
 	speed.y = 0;
