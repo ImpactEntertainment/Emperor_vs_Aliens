@@ -44,9 +44,6 @@ namespace edge {
     private:
         SDL_Surface *surface;
         Image *map_elements,*background;
-
-        void putPixel(const Point& position, const Color& color);
-
     };
 
 }
