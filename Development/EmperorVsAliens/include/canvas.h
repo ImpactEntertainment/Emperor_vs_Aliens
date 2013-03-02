@@ -19,8 +19,6 @@
 #include "point.h"
 #include "color.h"
 #include "rectangle.h"
-#include "line.h"
-#include "circle.h"
 #include "image.h"
 #include "element.h"
 #include "enviromentelement.h"
@@ -36,20 +34,10 @@ namespace edge {
         virtual void erase(const Color& color) = 0;
         virtual void update() = 0;
 
-        virtual void drawPixel(const Point& position, const Color& color) = 0;
-        virtual void drawLine(const Line& position, const Color& color) = 0;
-        virtual void drawRectangle(const Rectangle& rectangle,
-                const Point& position, const Color& color) = 0;
-        virtual void drawCircle(const Circle& circle,
-                const Point& center, const Color& color) = 0;
+      
         virtual void drawImage(const Image *image, const Point& position) = 0;
 		virtual void drawImage(const Image *image, const Rectangle& baseRect, const Point& position) = 0;
-
-        virtual void fillRectangle(const Rectangle& rectangle,
-                const Point& position, const Color& color) = 0;
-        virtual void fillCircle(const Circle& circle,
-                const Point& center, const Color& color) = 0;
-     	
+      
      	virtual void drawBackground() = 0;
      	virtual void drawBottomGrass() = 0;
      	virtual void drawEnviroment(vector<EnviromentElement>& enviroment) = 0;
