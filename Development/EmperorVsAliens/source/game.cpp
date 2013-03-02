@@ -23,13 +23,12 @@ namespace edge
         eva.init();
         
         WAVES_LEFT = eva.board.getWavesLeft();
-        
         PAUSED=(false);
 		FAST_FORWARD=(false);
 		QUIT=(false);
 		
 		allFrameCount = -1;
-        clck.start();
+        Timer::start();
     }
 
     void
@@ -44,7 +43,7 @@ namespace edge
 
         while (quitGame == false) {
 
-            int tickCountBegin = clck.get_ticks();
+            int tickCountBegin = Timer::get_ticks();
 
             while (SDL_PollEvent(&event)) {
 
@@ -79,14 +78,18 @@ namespace edge
             // 4. Rodar simulações de física
             // 5. Atualizar entidades do jogo
 			eva.update();
-            
+
+            if(Timer::get_ticks() > RESOURCES_COOLDOWN){
+                eva.increaseResources();
+                RESOURCES_COOLDOWN = Timer::get_ticks() + THREE_SECONDS;
+            }
             // 6. Enviar/receber mensagens da rede
             // 7. Atualizar o estado do jogo (display)
             eva.draw(window->getCanvas());
             
             window->getCanvas()->update();
 
-            int ticksElapsed = clck.get_ticks() - tickCountBegin;
+            int ticksElapsed = Timer::get_ticks() - tickCountBegin;
             int delayTime = ( 1000 / FRAMES_PER_SECOND ) - ticksElapsed;
             SDL_Delay( delayTime > 0 ? delayTime : 0);
         }

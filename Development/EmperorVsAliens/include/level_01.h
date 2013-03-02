@@ -15,6 +15,8 @@ using namespace std;
 class Level_01 : public Map
 {
 public:
+	int getInitialResources();
+	int getResourcesIncrement();
 private:
 	void loadWaves();
 	void loadEnviroment();

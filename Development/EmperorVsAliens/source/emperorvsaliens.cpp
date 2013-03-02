@@ -9,6 +9,7 @@ namespace edge
     void EmperorVsAliens::init()
     {
         board.init();
+        resources = board.getInitialResources();
     }
 
     void EmperorVsAliens::shutdown()
@@ -41,9 +42,14 @@ namespace edge
             (*it)->update();
     
     }
+
+    void EmperorVsAliens::increaseResources()
+    {
+        resources += board.getResourcesIncrement();
+    }
     
     void EmperorVsAliens::update()
-    {    
+    {   
         decomposeDead();
         updateUnits();
     }

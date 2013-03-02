@@ -17,7 +17,7 @@ void Level_01::loadWaves()
 
 	wave1.push_back(new Unit(spawnPoints[rand()%spawnPoints.size()]));
 	wave2.push_back(new Unit(spawnPoints[rand()%spawnPoints.size()]));
-	wave2.push_back(new Unit(spawnPoints[rand()%spawnPoints.size()]));
+	wave3.push_back(new Unit(spawnPoints[rand()%spawnPoints.size()]));
 	
 	waves.push_back(wave1);
 	waves.push_back(wave2);
@@ -42,4 +42,14 @@ void Level_01::loadEnviroment()
 	enviromentElements.push_back(largeRock01);
 	enviromentElements.push_back(largeRock03);
 	enviromentElements.push_back(smallRock01);	
+}
+
+int Level_01::getInitialResources()
+{
+	return 1000;
+}
+
+int Level_01::getResourcesIncrement()
+{
+	return 10;
 }
