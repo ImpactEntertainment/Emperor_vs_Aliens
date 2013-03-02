@@ -34,15 +34,9 @@ namespace edge {
         virtual void erase(const Color& color) = 0;
         virtual void update() = 0;
 
-        virtual void drawPixel(const Point& position, const Color& color) = 0;
-        virtual void drawRectangle(const Rectangle& rectangle,
-                const Point& position, const Color& color) = 0;
       
         virtual void drawImage(const Image *image, const Point& position) = 0;
 		virtual void drawImage(const Image *image, const Rectangle& baseRect, const Point& position) = 0;
-
-        virtual void fillRectangle(const Rectangle& rectangle,
-                const Point& position, const Color& color) = 0;
       
      	virtual void drawBackground() = 0;
      	virtual void drawBottomGrass() = 0;

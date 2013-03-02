@@ -28,16 +28,8 @@ namespace edge {
         void erase(const Color& color);
         void update();
 
-        void drawPixel(const Point& position, const Color& color);
-        void drawRectangle(const Rectangle& rectangle, const Point& position,
-                const Color& color);
-        
         void drawImage(const Image *image, const Point& position);
-        void drawImage(const Image *image, const Rectangle& baseRect, const Point& position);
-		
-        void fillRectangle(const Rectangle& rectangle, const Point& position,
-                const Color& color);
-     
+        void drawImage(const Image *image, const Rectangle& baseRect, const Point& position);    
         
         void drawBackground();
         void drawBottomGrass();
