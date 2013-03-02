@@ -18,20 +18,20 @@ namespace edge
     
     void EmperorVsAliens::update()
     {
-		vector<Unit>::iterator it;
+
+		vector<Unit*>::iterator it;
         for(it = swarmUnits.begin(); it < swarmUnits.end(); it++)
-            it->update();
+            (*it)->update();
         for(it = emperorUnits.begin(); it < emperorUnits.end(); it++)
-            it->update();
+            (*it)->update();
     }
     
     void EmperorVsAliens::callNextWave()
     {	
-    	swarmUnits.insert(swarmUnits.end(),board.Wave().begin(),board.Wave().end());
+    	swarmUnits.insert(swarmUnits.end(),board.Wave()->begin(),board.Wave()->end());
     	board.NextWave();
 
-        Unit test(&board.battlefield[8][3]);
-        emperorUnits.push_back(test);
+        emperorUnits.push_back(new Unit(&board.battlefield[8][3]));
     }
     
     void EmperorVsAliens::draw(Canvas* canvas)
@@ -43,9 +43,9 @@ namespace edge
 
 	void EmperorVsAliens::IA()
 	{
-		vector<Unit>::iterator it;
+		vector<Unit*>::iterator it;
 		for(it = swarmUnits.begin(); it < swarmUnits.end(); it++)
-			it->IA();
+			(*it)->IA();
 	}
 
 }

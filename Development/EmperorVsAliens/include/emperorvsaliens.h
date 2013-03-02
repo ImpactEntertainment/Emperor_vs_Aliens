@@ -36,8 +36,8 @@ namespace edge
         void callNextWave();
         
         
-        vector<Unit> swarmUnits;
-        vector<Unit> emperorUnits;
+        vector<Unit*> swarmUnits;
+        vector<Unit*> emperorUnits;
         Level_01 board;
     };
 }

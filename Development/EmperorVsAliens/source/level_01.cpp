@@ -11,18 +11,13 @@ void Level_01::loadSpawnPoints()
 
 void Level_01::loadWaves()
 {
-	vector<Unit> wave1,
-				 wave2,
-				 wave3;
+	vector<Unit*>	wave1,
+					wave2,
+					wave3;
 
-	Unit a(spawnPoints[rand()%spawnPoints.size()]);
-	Unit b(spawnPoints[rand()%spawnPoints.size()]);
-	Unit c(spawnPoints[rand()%spawnPoints.size()]);
-
-
-	wave1.push_back(a);
-	wave2.push_back(b);
-	wave3.push_back(c);
+	wave1.push_back(new Unit(spawnPoints[rand()%spawnPoints.size()]));
+	wave2.push_back(new Unit(spawnPoints[rand()%spawnPoints.size()]));
+	wave2.push_back(new Unit(spawnPoints[rand()%spawnPoints.size()]));
 	
 	waves.push_back(wave1);
 	waves.push_back(wave2);

@@ -70,7 +70,6 @@ namespace edge
                     break;
                 }
             }
-
             // 3. Rodar IA
 			eva.IA();
             // 4. Rodar simulações de física

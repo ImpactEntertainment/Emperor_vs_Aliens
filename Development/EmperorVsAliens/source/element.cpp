@@ -1,12 +1,10 @@
 #include "element.h"
 
-Element::Element(Point *pos)
+Element::Element(Field *pos)
 : mPosition(pos)
-{
-	pos->habitant = this;
-}
+{}
 
-void Element::setPosition(Point *pos)
+void Element::setPosition(Field *pos)
 { 
 	mPosition = pos;
 }

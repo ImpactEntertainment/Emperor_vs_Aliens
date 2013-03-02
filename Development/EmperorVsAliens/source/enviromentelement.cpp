@@ -1,6 +1,6 @@
 #include "enviromentelement.h"
 
-EnviromentElement::EnviromentElement(EnviromentElementType type, Point *pos)
+EnviromentElement::EnviromentElement(EnviromentElementType type, Field *pos)
 : Element(pos), mType(type)
 {
 	init();

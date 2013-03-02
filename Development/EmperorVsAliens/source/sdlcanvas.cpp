@@ -429,10 +429,10 @@ namespace edge {
 			drawElement(*it);
 	}
 	
-	void SDL_Canvas::drawUnits(vector<Unit>& units) 
+	void SDL_Canvas::drawUnits(vector<Unit*>& units) 
 	{	
-		vector<Unit>::iterator it;
+		vector<Unit*>::iterator it;
 		for(it = units.begin(); it < units.end(); it++)
-			drawUnit(*it);
+			drawUnit(**it);
 	}
 }

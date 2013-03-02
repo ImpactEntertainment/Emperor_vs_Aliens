@@ -73,9 +73,9 @@ void Map::NextWave()
 	currentWave++;
 }
 
-vector<Unit>& Map::Wave()
+vector<Unit*>* Map::Wave()
 {
-	return waves[currentWave];
+	return &waves[currentWave];
 }
 
 int Map::getWavesLeft()
