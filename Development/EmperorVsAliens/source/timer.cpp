@@ -1,80 +1,76 @@
 //CODIGO DO LAZY FOO
 #include "timer.h"
 
-Timer::Timer()
-{
-    //Initialize the variables
-    startTicks = 0;
-    pausedTicks = 0;
-    paused = false;
-    started = false;
-}
+int Timer::START_TICKS = 0;
+int Timer::PAUSED_TICKS = 0;
+bool Timer::PAUSED = false;
+bool Timer::STARTED = false;
 
 void Timer::start()
 {
     //Start the timer
-    started = true;
+    STARTED = true;
 
     //Unpause the timer
-    paused = false;
+    PAUSED = false;
 
     //Get the current clck time
-    startTicks = SDL_GetTicks();
+    START_TICKS = SDL_GetTicks();
 }
 
 void Timer::stop()
 {
     //Stop the timer
-    started = false;
+    STARTED = false;
 
     //Unpause the timer
-    paused = false;
+    PAUSED = false;
 }
 
 void Timer::pause()
 {
-    //If the timer is running and isn't already paused
-    if( ( started == true ) && ( paused == false ) )
+    //If the timer is running and isn't already PAUSED
+    if( ( STARTED == true ) && ( PAUSED == false ) )
     {
         //Pause the timer
-        paused = true;
+        PAUSED = true;
 
-        //Calculate the paused ticks
-        pausedTicks = SDL_GetTicks() - startTicks;
+        //Calculate the PAUSED ticks
+        PAUSED_TICKS = SDL_GetTicks() - START_TICKS;
     }
 }
 
 void Timer::unpause()
 {
-    //If the timer is paused
-    if( paused == true )
+    //If the timer is PAUSED
+    if( PAUSED == true )
     {
         //Unpause the timer
-        paused = false;
+        PAUSED = false;
 
         //Reset the starting ticks
-        startTicks = SDL_GetTicks() - pausedTicks;
+        START_TICKS = SDL_GetTicks() - PAUSED_TICKS;
 
-        //Reset the paused ticks
-        pausedTicks = 0;
+        //Reset the PAUSED ticks
+        PAUSED_TICKS = 0;
     }
 }
 
 int Timer::get_ticks()
 {
     //If the timer is running
-    if( started == true )
+    if( STARTED == true )
     {
-        //If the timer is paused
-        if( paused == true )
+        //If the timer is PAUSED
+        if( PAUSED == true )
         {
-            //Return the number of ticks when the timer was paused
-            return pausedTicks;
+            //Return the number of ticks when the timer was PAUSED
+            return PAUSED_TICKS;
         }
         else
         {
             //Return the current time minus the start time
-            return SDL_GetTicks() - startTicks;
+            return SDL_GetTicks() - START_TICKS;
         }
     }
 
@@ -82,12 +78,12 @@ int Timer::get_ticks()
     return -1;
 }
 
-bool Timer::is_started()
+bool Timer::is_STARTED()
 {
-    return started;
+    return STARTED;
 }
 
-bool Timer::is_paused()
+bool Timer::is_PAUSED()
 {
-    return paused;
+    return PAUSED;
 }

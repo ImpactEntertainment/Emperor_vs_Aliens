@@ -38,13 +38,14 @@ namespace edge {
 		bool QUIT;
 		bool GAME_ENDED;
 		int  WAVES_LEFT;
+
+        int RESOURCES_COOLDOWN;
+
     //private:
         Video *video;
         Window *window;
 		EmperorVsAliens eva;
 		int allFrameCount;
-        
-        Timer clck;
 
         void initVideo(const string& configFilePath) throw(Exception);
         void initWindow(const string& configFilePath) throw(Exception);

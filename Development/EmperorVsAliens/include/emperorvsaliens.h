@@ -37,7 +37,9 @@ namespace edge
         
         void decomposeDead();
         void updateUnits();
-        
+        void increaseResources();
+
+        int resources;
         list<Unit*> swarmUnits;
         list<Unit*> emperorUnits;
         Level_01 board;

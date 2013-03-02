@@ -35,6 +35,8 @@ private:
 	virtual void loadWaves() = 0;
 	virtual void loadEnviroment() = 0;
 public:    
+	virtual int getInitialResources() = 0;
+	virtual int getResourcesIncrement() = 0;
     void init();
     void loadBattlefield();
     void shutdown();
