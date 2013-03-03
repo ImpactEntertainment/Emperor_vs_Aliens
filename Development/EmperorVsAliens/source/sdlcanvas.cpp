@@ -169,7 +169,7 @@ namespace edge {
 		
 		if(element.status == UNIT_MOVING)
 		{
-			int timeTraveling = element.travelTime - (element.ARRIVAL_TIME - Timer::get_ticks());
+			int timeTraveling = element.travelTime - (element.ARRIVAL_TIME - Timer::get_currentFrameTick());
 			position.x = (element.mPosition->x)*112 + element.speed.x * (timeTraveling) +134-(element.mResource.width-112);
 			position.y = (element.mPosition->y)*112 + element.speed.y * (timeTraveling) +409-(element.mResource.height-112);	         
 		}		

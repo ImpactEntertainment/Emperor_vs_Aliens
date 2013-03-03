@@ -43,7 +43,7 @@ namespace edge
 
         while (quitGame == false) {
 
-            int tickCountBegin = Timer::get_ticks();
+            Timer::set_currentFrameTick();
 
             while (SDL_PollEvent(&event)) {
 
@@ -79,9 +79,9 @@ namespace edge
             // 5. Atualizar entidades do jogo
 			eva.update();
 
-            if(Timer::get_ticks() > RESOURCES_COOLDOWN){
+            if(Timer::get_currentFrameTick() > RESOURCES_COOLDOWN){
                 eva.increaseResources();
-                RESOURCES_COOLDOWN = Timer::get_ticks() + THREE_SECONDS;
+                RESOURCES_COOLDOWN = Timer::get_currentFrameTick() + THREE_SECONDS;
             }
             // 6. Enviar/receber mensagens da rede
             // 7. Atualizar o estado do jogo (display)
@@ -89,7 +89,7 @@ namespace edge
             
             window->getCanvas()->update();
 
-            int ticksElapsed = Timer::get_ticks() - tickCountBegin;
+            int ticksElapsed = Timer::get_ticks() - Timer::get_currentFrameTick();
             int delayTime = ( 1000 / FRAMES_PER_SECOND ) - ticksElapsed;
             SDL_Delay( delayTime > 0 ? delayTime : 0);
         }

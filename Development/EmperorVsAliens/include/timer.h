@@ -21,7 +21,7 @@ class Timer
 private:
     //The clck time when the timer STARTED
     static int START_TICKS;
-
+    static int CURRENT_FRAME_TICK;
     //The ticks stored when the timer was PAUSED
     static int PAUSED_TICKS;
 
@@ -39,12 +39,15 @@ public:
     static void pause();
     static void unpause();
 
+    static void set_currentFrameTick();
+    static int get_currentFrameTick();
+
     //Gets the timer's time
     static int get_ticks();
 
     //Checks the status of the timer
-    static bool is_STARTED();
-    static bool is_PAUSED();
+    static bool is_started();
+    static bool is_paused();
 };
 
 #endif

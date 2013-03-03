@@ -2,6 +2,7 @@
 #include "timer.h"
 
 int Timer::START_TICKS = 0;
+int Timer::CURRENT_FRAME_TICK = 0;
 int Timer::PAUSED_TICKS = 0;
 bool Timer::PAUSED = false;
 bool Timer::STARTED = false;
@@ -56,6 +57,16 @@ void Timer::unpause()
     }
 }
 
+void Timer::set_currentFrameTick()
+{
+    CURRENT_FRAME_TICK = get_ticks();
+}
+
+int Timer::get_currentFrameTick()
+{
+    return CURRENT_FRAME_TICK;
+}
+
 int Timer::get_ticks()
 {
     //If the timer is running
@@ -78,12 +89,12 @@ int Timer::get_ticks()
     return -1;
 }
 
-bool Timer::is_STARTED()
+bool Timer::is_started()
 {
     return STARTED;
 }
 
-bool Timer::is_PAUSED()
+bool Timer::is_paused()
 {
     return PAUSED;
 }

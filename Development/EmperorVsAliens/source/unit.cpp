@@ -57,7 +57,7 @@ void Unit::update()
 	mResource.y = mResource.height * status;
 
 	//if(frameCount == 7 && status == UNIT_MOVING) arrive();
-	if((ARRIVAL_TIME < Timer::get_ticks()) && status == UNIT_MOVING) arrive();
+	if((ARRIVAL_TIME < Timer::get_currentFrameTick()) && status == UNIT_MOVING) arrive();
 	if(frameCount == 7 && attackCooldown)		 enableAttack();  
 	if(frameCount == 7 && status == UNIT_DEAD)	 onDeath();	
 }
@@ -116,7 +116,7 @@ void Unit::decision()
 
 void Unit::move()
 {
-	ARRIVAL_TIME = Timer::get_ticks() + UNIT_TRAVEL_TIME;
+	ARRIVAL_TIME = Timer::get_currentFrameTick() + UNIT_TRAVEL_TIME;
 	mPosition->habitant = NULL;
 	status = UNIT_MOVING;
 	speed.x = -SPEED_X;
