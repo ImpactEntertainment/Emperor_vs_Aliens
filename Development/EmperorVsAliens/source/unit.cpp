@@ -16,13 +16,7 @@ Unit::Unit(Field *pos)
 	speed.y	= 0;
 
 	attackCooldown	= false;
-	backswingTime 	= UNIT_BACKSWING_TIME;
-	travelTime 		= UNIT_TRAVEL_TIME;
 	
-	attributes.hitpoints = UNIT_BASE_HITPOINTS;
-	attributes.damage	 = UNIT_BASE_DAMAGE;
-	attributes.defense	 = UNIT_BASE_DEFENSE;
-
 	path.clear();
 }
 
@@ -32,6 +26,7 @@ bool Unit::spawn()
 	{
 		spawned = true;
 		mPosition->habitant = this;
+		loadBaseAttributes();
 		return true;
 	}
 	return false;
@@ -95,21 +90,12 @@ void Unit::IA()
 	}
 }
 
-void Unit::createPath()
-{
-	Field *next = mPosition;
-	while(next)
-	{ 
-		next = next->path[WEST];
-		path.push_front(next);
-	}
-}
-
 void Unit::decision()
 {
 	Field *next = !path.empty() ? path.back() : 0;
-	if(!next)
-	{}
+	if(!next){
+		getTarget();
+	}
 	else if(next->habitant && !next->locked){
     	startAttack((Unit *)next->habitant);
 	}
@@ -126,8 +112,6 @@ void Unit::move()
 	ARRIVAL_TIME = Timer::get_currentFrameTick() + travelTime;
 	mPosition->habitant = NULL;
 	status = UNIT_MOVING;
-	speed.x = -SPEED_X;
-	speed.y = 0;
 }
 
 void Unit::arrive()
@@ -181,6 +165,7 @@ void Unit::startAttack(Unit* newTarget)
 
 void Unit::getTarget()
 {
+	//TODO: checar se e uma posicao com "alvo de construcao objetivo" se nao procurar alvos ao redor...
 	//cout << "Attacking wall!" << endl;
 	//startAttack(this);
 }

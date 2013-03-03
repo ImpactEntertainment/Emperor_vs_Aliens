@@ -11,17 +11,6 @@
 #include "element.h"
 #include "field.h"
 
-#define UNIT_BASE_HITPOINTS 100
-#define	UNIT_BASE_DAMAGE	40
-#define UNIT_BASE_DEFENSE	20
-
-#define UNIT_TRAVEL_TIME	ONE_SECOND
-#define UNIT_BACKSWING_TIME	ONE_SECOND
-
-#define SPEED_X	 112.0/UNIT_TRAVEL_TIME
-#define SPEED_Y  112.0/UNIT_TRAVEL_TIME
-#define SPEED_XY (112)
-
 typedef struct Speed{
 	float x, y;
 }Speed;
@@ -42,6 +31,10 @@ typedef enum Status {
 class Unit : public Element {
 public:
 	
+	virtual void loadBaseAttributes() = 0;
+	virtual void createPath() = 0;
+	virtual void move() = 0;
+
 	bool spawn();
 	void loadRectangle();
 	void loadImage();
@@ -51,10 +44,8 @@ public:
 	void update();
 	void IA();
 	void moveTo(int x, int y);
-	void createPath();
 	void decision();
 	void startAttack(Unit* newTarget);
-	void move();
 	void getTarget();
 	void arrive();
 	void attack();
