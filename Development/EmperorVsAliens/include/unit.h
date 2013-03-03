@@ -5,16 +5,19 @@
 #ifndef UNIT_H
 #define UNIT_H
 
+#include <cmath>
 #include <vector>
 #include <list>
 #include "element.h"
 #include "field.h"
 
-#define SPEED_X	 112/8.0
-#define SPEED_Y  112/8.0
-#define SPEED_XY 0
-#define UNIT_BASE_HITFieldS 100
+#define UNIT_BASE_HITPOINTS 100
 #define	UNIT_BASE_DAMAGE	10
+#define UNIT_TRAVEL_TIME	ONE_SECOND
+
+#define SPEED_X	 112.0/UNIT_TRAVEL_TIME
+#define SPEED_Y  112.0/UNIT_TRAVEL_TIME
+#define SPEED_XY (112)
 
 typedef struct Speed{
 	float x, y;
@@ -35,7 +38,7 @@ typedef enum Status {
 class Unit : public Element {
 public:
 	
-	void spawn();
+	bool spawn();
 	void loadRectangle();
 	void loadImage();
 	
@@ -60,12 +63,14 @@ public:
 	bool  decomposed;
 	bool  spawned;
 	bool  attackCooldown;
-	float attackSpeed;
+	int	  attackSpeed;
 
 	Attributes attributes;
 	Speed speed;
 	Status status;
 	
+	int travelTime;
+	int ARRIVAL_TIME;
 	int frameCount;
 protected:
 	list<Field*> path;

@@ -9,6 +9,7 @@
 #include "image.h"
 #include "point.h"
 #include "field.h"
+#include "timer.h"
 
 using namespace edge;
 

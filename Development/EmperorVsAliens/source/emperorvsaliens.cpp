@@ -59,7 +59,7 @@ namespace edge
     	swarmUnits.insert(swarmUnits.end(),board.Wave()->begin(),board.Wave()->end());
     	board.NextWave();
 
-        emperorUnits.push_back(new Unit(&board.battlefield[8][3]));
+        //emperorUnits.push_back(new Unit(&board.battlefield[8][3]));
     }
     
     void EmperorVsAliens::draw(Canvas* canvas)

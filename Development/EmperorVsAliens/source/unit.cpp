@@ -8,27 +8,29 @@ Unit::Unit(Field *pos)
 : Element(pos), status(UNIT_IDLE)
 {
 	init();
-	pos->habitant = this;
 	spawned = false;
 	decomposed = false;
 	
 	speed.x = 0;
 	speed.y = 0;
 	attackCooldown = false;
+	travelTime = UNIT_TRAVEL_TIME;
 
-	attributes.hitpoints = UNIT_BASE_HITFieldS;
+	attributes.hitpoints = UNIT_BASE_HITPOINTS;
 	attributes.damage	 = UNIT_BASE_DAMAGE;
 
 	path.clear();
 }
 
-void Unit::spawn()
+bool Unit::spawn()
 {
 	if(!mPosition->habitant && !spawned)
 	{
 		spawned = true;
 		mPosition->habitant = this;
+		return true;
 	}
+	return false;
 }
 
 void Unit::loadRectangle()
@@ -46,11 +48,16 @@ void Unit::loadImage()
 
 void Unit::update()
 {
+	if(!spawned) 
+		if(!spawn())
+			return;
+
 	frameCount = (frameCount + 1) % 8;
 	mResource.x = mResource.width * frameCount;
 	mResource.y = mResource.height * status;
 
-	if(frameCount == 7 && status == UNIT_MOVING) arrive();
+	//if(frameCount == 7 && status == UNIT_MOVING) arrive();
+	if((ARRIVAL_TIME < Timer::get_ticks()) && status == UNIT_MOVING) arrive();
 	if(frameCount == 7 && attackCooldown)		 enableAttack();  
 	if(frameCount == 7 && status == UNIT_DEAD)	 onDeath();	
 }
@@ -102,7 +109,6 @@ void Unit::decision()
 	else if(!next->locked){
 		next->locked = true;
     	move();
-		next->locked = false;
 	}
 	else{
 	}
@@ -110,6 +116,7 @@ void Unit::decision()
 
 void Unit::move()
 {
+	ARRIVAL_TIME = Timer::get_ticks() + UNIT_TRAVEL_TIME;
 	mPosition->habitant = NULL;
 	status = UNIT_MOVING;
 	speed.x = -SPEED_X;
@@ -123,6 +130,7 @@ void Unit::arrive()
 	speed.y = 0;
 	mPosition = path.back();	
 	mPosition->habitant = this;
+	mPosition->locked = false;
 	path.pop_back();
 }
 
