@@ -1,7 +1,8 @@
 /**
  * \file sdlcanvas.cpp
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com)
+ * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 09/01/2013
  */
 

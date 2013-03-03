@@ -2,7 +2,7 @@
  * \file emperorvsaliens.h
  * \brief Classe que representa o jogo.
  *
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \author Luis Gustavo (luisgustavodd@hotmail.com)
  * \date 25/01/2012
  */

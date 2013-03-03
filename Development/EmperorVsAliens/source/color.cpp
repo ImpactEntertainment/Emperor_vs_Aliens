@@ -1,6 +1,6 @@
 /**
  * \file color.cpp
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \date 09/01/2013
  */
 

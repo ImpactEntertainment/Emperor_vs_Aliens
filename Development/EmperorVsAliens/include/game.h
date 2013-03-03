@@ -3,7 +3,7 @@
  * \brief Interface que representa um jogo.
  *
  * \author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com)
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \date 25/01/2012
  */
 #ifndef GAME_H

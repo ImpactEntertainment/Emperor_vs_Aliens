@@ -2,7 +2,7 @@
  * \file messagehandler.h
  * \brief Interface para recebimento e envio de mensagens.
  *
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \date 28/01/2012
  */
 #ifndef MESSAGE_HANDLER_H

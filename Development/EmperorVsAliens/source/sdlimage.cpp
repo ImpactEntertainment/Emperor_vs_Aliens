@@ -1,6 +1,6 @@
 /**
  * \file sdlimage.cpp
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com.br)
  * \date 09/01/2013
  */
@@ -95,12 +95,7 @@ namespace edge
 			return NULL;
 		}
 		
-		SDL_Rect r, dest;
-		r.x = position.x;
-		r.y = position.y;
-		r.w = rect.width;
-		r.h = rect.height;
-		
+		SDL_Rect dest;
 		dest.x = dest.y = 0;
 		dest.w = rect.width;
 		dest.h = rect.height;

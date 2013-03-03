@@ -6,7 +6,7 @@
  * deve ser exibida com o método show() antes da chamada de qualquer
  * função de desenho.
  *
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \date 01/01/2013
  */
 #ifndef WINDOW_H

@@ -1,6 +1,6 @@
 /**
  * \file windowsettings.cpp
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \date 30/12/2012
  */
 #include "windowsettings.h"

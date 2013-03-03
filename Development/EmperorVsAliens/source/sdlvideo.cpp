@@ -1,6 +1,6 @@
 /**
  * \file sdlvideo.cpp
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \date 07/01/2013
  */
 #include <iostream>

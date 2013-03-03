@@ -2,7 +2,7 @@
  * \file exception.h
  * \brief Classe base que representa as exceções.
  *
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \date 31/12/2012
  */
 #ifndef EXCEPTION_H

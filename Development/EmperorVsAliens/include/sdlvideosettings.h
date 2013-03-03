@@ -4,7 +4,7 @@
  *
  * Esta classe representa as opções específicas de vídeo para SDL.
  *
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \date 08/01/2013
  */
 #ifndef SDL_EDGE_VIDEO_SETTINGS_H

@@ -5,7 +5,7 @@
  * Esta classe representa as opções específicas de janela. As opções
  * de vídeo estão na classe WindowSettings.
  *
- * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
+ * \author Edson Alves (edsonalves@unb.br)
  * \date 30/12/2012
  */
 #ifndef EDGE_WINDOW_SETTINGS_H
