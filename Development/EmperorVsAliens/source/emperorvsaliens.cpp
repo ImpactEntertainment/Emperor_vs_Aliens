@@ -84,4 +84,9 @@ namespace edge
 			(*it)->IA();
 	}
 
+    bool EmperorVsAliens::waveAlive()
+    {
+        return !swarmUnits.empty();
+    }
+
 }

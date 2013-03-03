@@ -2,6 +2,7 @@
  * \file game.h
  * \brief Interface que representa um jogo.
  *
+ * \author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com)
  * \author Leonn Ferreira Paiva (leonn.paiva@gmail.com)
  * \date 25/01/2012
  */
@@ -24,17 +25,18 @@ namespace edge {
 
     class Game {
     public:
+        virtual void gameBehaviour() = 0;
+        virtual void callNextWave();
+
         Game();
         
         void init(const string& configFilePath) throw(Exception);
+        
         void loop() throw(Exception);
         void shutdown();
         
 		void togglePause();
 		void toggleFastForward();
-		void callNextWave();
-        
-        void gameBehaviour();
 
 		bool PAUSED;
 		bool FAST_FORWARD;
@@ -44,9 +46,6 @@ namespace edge {
 
         int RESOURCES_COOLDOWN;
         int timeForNextWave;
-
-        //easy
-        int timeToLive;
 
     //private:
         Video *video;

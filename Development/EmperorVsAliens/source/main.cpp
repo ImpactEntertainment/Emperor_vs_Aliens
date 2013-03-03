@@ -14,14 +14,16 @@
 #include "windowfactory.h"
 #include "canvas.h"
 #include "boundingrectangle.h"
-#include "game.h"
+#include "easygame.h"
+#include "normalgame.h"
+#include "hardgame.h"
 
 using namespace std;
 using namespace edge;
 
 int main()
 {
-    Game game;
+    HardGame game;
 
     try {
         game.init("");

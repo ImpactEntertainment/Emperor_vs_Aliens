@@ -39,6 +39,7 @@ namespace edge
         void updateUnits();
         void increaseResources();
         void killSwarm();
+        bool waveAlive();
 
         int resources;
         list<Unit*> swarmUnits;

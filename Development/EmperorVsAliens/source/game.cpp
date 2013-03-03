@@ -31,7 +31,6 @@ namespace edge
         Timer::start();
 
         timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
-        timeToLive = timeForNextWave;
     }
 
     void
@@ -164,13 +163,5 @@ namespace edge
             timeForNextWave = Timer::get_currentFrameTick() + WAVE_COOLDOWN;
 			eva.callNextWave();
 		}	
-
-        timeToLive = timeForNextWave; 
 	}
-
-    void Game::gameBehaviour()
-    {
-        if(Timer::get_currentFrameTick() >= timeToLive)
-            eva.killSwarm();
-    }
 }
