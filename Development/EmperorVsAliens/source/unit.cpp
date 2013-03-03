@@ -12,12 +12,15 @@ Unit::Unit(Field *pos)
 	decomposed = false;
 	
 	speed.x = 0;
-	speed.y = 0;
-	attackCooldown = false;
-	travelTime = UNIT_TRAVEL_TIME;
+	speed.y	= 0;
 
+	attackCooldown	= false;
+	backswingTime 	= UNIT_BACKSWING_TIME;
+	travelTime 		= UNIT_TRAVEL_TIME;
+	
 	attributes.hitpoints = UNIT_BASE_HITPOINTS;
 	attributes.damage	 = UNIT_BASE_DAMAGE;
+	attributes.defense	 = UNIT_BASE_DEFENSE;
 
 	path.clear();
 }
@@ -56,9 +59,9 @@ void Unit::update()
 	mResource.x = mResource.width * frameCount;
 	mResource.y = mResource.height * status;
 
-	//if(frameCount == 7 && status == UNIT_MOVING) arrive();
-	if((ARRIVAL_TIME < Timer::get_currentFrameTick()) && status == UNIT_MOVING) arrive();
-	if(frameCount == 7 && attackCooldown)		 enableAttack();  
+	if((ARRIVAL_TIME <= Timer::get_currentFrameTick()) && status == UNIT_MOVING)	arrive();
+	if((ATTACK_READY_TIME <= Timer::get_currentFrameTick()) && attackCooldown)		enableAttack();  
+	
 	if(frameCount == 7 && status == UNIT_DEAD)	 onDeath();	
 }
 
@@ -89,12 +92,11 @@ void Unit::IA()
 
 void Unit::createPath()
 {
-
-	Field *next = mPosition->path[WEST];
+	Field *next = mPosition;
 	while(next)
 	{ 
-		path.push_front(next);
 		next = next->path[WEST];
+		path.push_front(next);
 	}
 }
 
@@ -103,7 +105,7 @@ void Unit::decision()
 	Field *next = !path.empty() ? path.back() : 0;
 	if(!next)
 	{}
-	else if(next->habitant){
+	else if(next->habitant && !next->locked){
     	startAttack((Unit *)next->habitant);
 	}
 	else if(!next->locked){
@@ -116,7 +118,7 @@ void Unit::decision()
 
 void Unit::move()
 {
-	ARRIVAL_TIME = Timer::get_currentFrameTick() + UNIT_TRAVEL_TIME;
+	ARRIVAL_TIME = Timer::get_currentFrameTick() + travelTime;
 	mPosition->habitant = NULL;
 	status = UNIT_MOVING;
 	speed.x = -SPEED_X;
@@ -136,7 +138,6 @@ void Unit::arrive()
 
 void Unit::onDeath()
 {	
-	cout << this << " Died and Decomposed" << endl;
 	mPosition->locked = false;	
 	decomposed = true;
 }
@@ -148,7 +149,7 @@ void Unit::enableAttack()
 
 void Unit::receiveDamage(int damage)
 {
-	attributes.hitpoints -= damage;
+	attributes.hitpoints -= (damage - attributes.defense);
 	if(attributes.hitpoints <= 0)
 	{
 		status = UNIT_DEAD;
@@ -159,6 +160,7 @@ void Unit::receiveDamage(int damage)
 
 void Unit::attack()
 {
+	ATTACK_READY_TIME = Timer::get_currentFrameTick() + backswingTime;
 	attackCooldown = true;
 	target->receiveDamage(attributes.damage);
 	if(target->status == UNIT_DEAD)

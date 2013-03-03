@@ -12,8 +12,11 @@
 #include "field.h"
 
 #define UNIT_BASE_HITPOINTS 100
-#define	UNIT_BASE_DAMAGE	10
+#define	UNIT_BASE_DAMAGE	40
+#define UNIT_BASE_DEFENSE	20
+
 #define UNIT_TRAVEL_TIME	ONE_SECOND
+#define UNIT_BACKSWING_TIME	ONE_SECOND
 
 #define SPEED_X	 112.0/UNIT_TRAVEL_TIME
 #define SPEED_Y  112.0/UNIT_TRAVEL_TIME
@@ -26,6 +29,7 @@ typedef struct Speed{
 typedef struct Attributes{
 	int hitpoints;
 	int damage;
+	int defense;
 }Attributes;
 
 typedef enum Status {
@@ -63,14 +67,15 @@ public:
 	bool  decomposed;
 	bool  spawned;
 	bool  attackCooldown;
-	int	  attackSpeed;
+	int	  backswingTime;
+	int	  travelTime;
 
 	Attributes attributes;
 	Speed speed;
 	Status status;
 	
-	int travelTime;
 	int ARRIVAL_TIME;
+	int ATTACK_READY_TIME;
 	int frameCount;
 protected:
 	list<Field*> path;

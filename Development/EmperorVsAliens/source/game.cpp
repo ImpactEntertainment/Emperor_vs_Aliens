@@ -29,6 +29,8 @@ namespace edge
 		
 		allFrameCount = -1;
         Timer::start();
+
+        timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
     }
 
     void
@@ -44,6 +46,8 @@ namespace edge
         while (quitGame == false) {
 
             Timer::set_currentFrameTick();
+
+            gameBehaviour();
 
             while (SDL_PollEvent(&event)) {
 
@@ -139,13 +143,11 @@ namespace edge
     void Game::togglePause()
 	{
 		PAUSED = !PAUSED;
-		printf("Pressed: PAUSE!\n");
 	}
 
 	void Game::toggleFastForward()
 	{
 		FAST_FORWARD = !FAST_FORWARD;
-		printf("Pressed: FAST_FORWARD!\n");
 	}
 
 	void Game::callNextWave()
@@ -153,10 +155,15 @@ namespace edge
 		if (WAVES_LEFT > 0) 
 		{
 			WAVES_LEFT--;
+            timeForNextWave = Timer::get_currentFrameTick() + WAVE_COOLDOWN;
 			eva.callNextWave();
 		}
-		printf("Pressed: CALL_NEXT_WAVE! %d waves left!\n",WAVES_LEFT);
-		printf("Swarn Units alive: %d\n",(int)eva.swarmUnits.size());
 		
 	}
+
+    void Game::gameBehaviour()
+    {
+        if(Timer::get_currentFrameTick() >= timeForNextWave)
+            callNextWave();
+    }
 }

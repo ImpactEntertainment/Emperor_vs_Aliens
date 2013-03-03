@@ -4,6 +4,7 @@ EnviromentElement::EnviromentElement(EnviromentElementType type, Field *pos)
 : Element(pos), mType(type)
 {
 	init();
+	mPosition->habitant = this;
 	mPosition->locked = true;
 }
 

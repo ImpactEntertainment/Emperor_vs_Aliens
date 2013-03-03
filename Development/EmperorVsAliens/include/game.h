@@ -15,7 +15,8 @@
 #include "emperorvsaliens.h"
 #include "timer.h"
 
-#define FRAMES_PER_SECOND 20
+#define FRAMES_PER_SECOND   20
+#define WAVE_COOLDOWN       TEN_SECONDS
 
 using namespace std;
 
@@ -33,6 +34,8 @@ namespace edge {
 		void toggleFastForward();
 		void callNextWave();
         
+        void gameBehaviour();
+
 		bool PAUSED;
 		bool FAST_FORWARD;
 		bool QUIT;
@@ -40,6 +43,7 @@ namespace edge {
 		int  WAVES_LEFT;
 
         int RESOURCES_COOLDOWN;
+        int timeForNextWave;
 
     //private:
         Video *video;
