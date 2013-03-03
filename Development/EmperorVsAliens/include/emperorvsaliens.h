@@ -38,6 +38,7 @@ namespace edge
         void decomposeDead();
         void updateUnits();
         void increaseResources();
+        void killSwarm();
 
         int resources;
         list<Unit*> swarmUnits;

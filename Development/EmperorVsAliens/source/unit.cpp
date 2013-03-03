@@ -8,6 +8,7 @@ Unit::Unit(Field *pos)
 : Element(pos), status(UNIT_IDLE)
 {
 	init();
+	markForDeath = false;
 	spawned = false;
 	decomposed = false;
 	
@@ -70,9 +71,13 @@ void Unit::IA()
 	switch(status)
 	{
 	case UNIT_DEAD:
+		mPosition->habitant = NULL;	
+		mPosition->locked = false;
 	case UNIT_MOVING: break;
 	case UNIT_IDLE:
-		if(!mPosition->x){
+		if(markForDeath)
+			status = UNIT_DEAD;
+		else if(!mPosition->x){
 			getTarget();
 		}
 		else if(!path.size()){
@@ -153,8 +158,6 @@ void Unit::receiveDamage(int damage)
 	if(attributes.hitpoints <= 0)
 	{
 		status = UNIT_DEAD;
-		mPosition->habitant = NULL;	
-		mPosition->locked = false;	
 	}
 }
 

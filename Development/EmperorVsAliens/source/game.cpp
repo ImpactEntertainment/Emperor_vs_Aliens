@@ -31,6 +31,7 @@ namespace edge
         Timer::start();
 
         timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
+        timeToLive = timeForNextWave;
     }
 
     void
@@ -48,6 +49,8 @@ namespace edge
             Timer::set_currentFrameTick();
 
             gameBehaviour();
+            if(Timer::get_currentFrameTick() >= timeForNextWave)
+                callNextWave();
 
             while (SDL_PollEvent(&event)) {
 
@@ -65,10 +68,13 @@ namespace edge
 						break;	
 					case SDLK_f:
 						toggleFastForward();
-						break;	
-					case SDLK_x:
-						callNextWave();
-						break;
+						break;    
+                    case SDLK_x:
+                        callNextWave();
+                        break;  
+                    case SDLK_k:
+                        eva.killSwarm();
+                        break;
                     default:
                         //eva.board.handleKeyboardEvent(&event.key);
                     	break;
@@ -157,13 +163,14 @@ namespace edge
 			WAVES_LEFT--;
             timeForNextWave = Timer::get_currentFrameTick() + WAVE_COOLDOWN;
 			eva.callNextWave();
-		}
-		
+		}	
+
+        timeToLive = timeForNextWave; 
 	}
 
     void Game::gameBehaviour()
     {
-        if(Timer::get_currentFrameTick() >= timeForNextWave)
-            callNextWave();
+        if(Timer::get_currentFrameTick() >= timeToLive)
+            eva.killSwarm();
     }
 }

@@ -64,6 +64,7 @@ public:
 	
 	Unit *target;
 
+	bool  markForDeath;
 	bool  decomposed;
 	bool  spawned;
 	bool  attackCooldown;

@@ -45,6 +45,9 @@ namespace edge {
         int RESOURCES_COOLDOWN;
         int timeForNextWave;
 
+        //easy
+        int timeToLive;
+
     //private:
         Video *video;
         Window *window;

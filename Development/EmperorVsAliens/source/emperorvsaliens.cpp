@@ -17,6 +17,12 @@ namespace edge
         board.shutdown();
     }
     
+    void EmperorVsAliens::killSwarm()
+    {
+        list<Unit*>::iterator it;
+        for(it = swarmUnits.begin(); it != swarmUnits.end();it++)
+            (*it)->markForDeath = true;
+    }
 
     void EmperorVsAliens::decomposeDead()
     {
@@ -50,8 +56,8 @@ namespace edge
     
     void EmperorVsAliens::update()
     {   
-        decomposeDead();
         updateUnits();
+        decomposeDead();
     }
     
     void EmperorVsAliens::callNextWave()
