@@ -23,12 +23,55 @@ void SwarmUnit::createPath()
 	}
 }
 
-
 void SwarmUnit::move()
 {
-	
 	Unit::move();
 	//TODO: verificar qual a direcao para atribuir valores corretos as velocidades
 	speed.x = -SWARM_UNIT_SPEED_X;
 	speed.y = 0;
+}
+
+void SwarmUnit::startAttack(Unit* newTarget)
+{
+	Unit::startAttack(newTarget);
+	buildingTarget = NULL;
+}
+
+void SwarmUnit::startAttack(Building* newTarget)
+{
+	status = UNIT_ATTACKING;
+	buildingTarget = newTarget;
+	target = NULL;
+}
+
+void SwarmUnit::attack()
+{
+	Unit::attack();
+	if(buildingTarget)
+	{
+		buildingTarget->receiveDamage(attributes.damage);
+		if(buildingTarget->destroyed)
+		{
+			status = UNIT_IDLE;
+			buildingTarget = NULL;
+		}
+	}
+	else if(target)
+	{
+		target->receiveDamage(attributes.damage);
+		if(target->status == UNIT_DEAD)
+		{
+			status = UNIT_IDLE;
+			target = NULL;
+		}
+	}
+}
+
+void SwarmUnit::getTarget()
+{
+	if(mPosition->goalBuilding)
+		startAttack((Building *)mPosition->goalBuilding);
+	//TODO: checar se e uma posicao com "alvo de construcao objetivo" se nao procurar alvos ao redor...
+	//cout << "Attacking wall!" << endl;
+	//startAttack(this);
 }

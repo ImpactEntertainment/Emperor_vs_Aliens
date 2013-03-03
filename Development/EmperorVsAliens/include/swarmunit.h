@@ -6,6 +6,7 @@
 #define SWARM_UNIT_H
 
 #include "unit.h"
+#include "building.h"
 
 #define SWARM_UNIT_BASE_HITPOINTS 100
 #define	SWARM_UNIT_BASE_DAMAGE	40
@@ -23,8 +24,14 @@ public:
 	virtual void loadBaseAttributes();
 	virtual void createPath();
 	virtual void move();
+	virtual void getTarget();
+	virtual void startAttack(Building* newTarget);
+	virtual void startAttack(Unit* newTarget);
+	virtual void attack();
+
 
 	SwarmUnit(Field *pos);
+	Building *buildingTarget;
 };
 
 

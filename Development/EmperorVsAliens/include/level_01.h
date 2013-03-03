@@ -21,6 +21,7 @@ private:
 	void loadWaves();
 	void loadEnviroment();
 	void loadSpawnPoints();
+	void loadMainBuilding();
 };
 #endif
 

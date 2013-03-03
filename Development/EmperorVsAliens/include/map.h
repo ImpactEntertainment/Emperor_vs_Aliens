@@ -21,6 +21,7 @@
 #include "enviromentelement.h"
 #include "unitfactory.h"
 #include "field.h"
+#include "building.h"
 
 #define BATTLEFIELD_WIDTH 16
 #define BATTLEFIELD_HEIGHT 6
@@ -34,6 +35,7 @@ private:
 	virtual void loadSpawnPoints() = 0;
 	virtual void loadWaves() = 0;
 	virtual void loadEnviroment() = 0;
+	virtual void loadMainBuilding() = 0;
 public:    
 	virtual int getInitialResources() = 0;
 	virtual int getResourcesIncrement() = 0;
@@ -45,11 +47,12 @@ public:
     int	 getWavesLeft();
 	void reset();
 	
-	Field	battlefield[BATTLEFIELD_WIDTH][BATTLEFIELD_HEIGHT];
-	vector<Field*> spawnPoints;
-	vector<EnviromentElement> enviromentElements;
-	vector< vector<Unit*> > waves;
-	int currentWave;
+	Field						battlefield[BATTLEFIELD_WIDTH][BATTLEFIELD_HEIGHT];
+	Building					*mainBuilding;
+	vector<Field*> 				spawnPoints;
+	vector<EnviromentElement>	enviromentElements;
+	vector< vector<Unit*> > 	waves;
+	int 						currentWave;
 };
 #endif
 

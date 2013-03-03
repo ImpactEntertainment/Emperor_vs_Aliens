@@ -12,6 +12,7 @@ void Map::init()
 {
 	reset();
 	loadBattlefield();
+	loadMainBuilding();
 	loadSpawnPoints();
 	loadWaves();
 	loadEnviroment();

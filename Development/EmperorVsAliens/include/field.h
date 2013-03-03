@@ -32,6 +32,7 @@ namespace edge {
         Field(int x = 0, int y = 0);
 
 		Element *habitant;
+		Element *goalBuilding;
         Field   *path[8];
         bool	locked;
 		int x;

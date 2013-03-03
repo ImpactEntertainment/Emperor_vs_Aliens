@@ -34,7 +34,9 @@ public:
 	virtual void loadBaseAttributes() = 0;
 	virtual void createPath() = 0;
 	virtual void move() = 0;
-
+	virtual void getTarget() = 0;
+	virtual void attack() = 0;
+	
 	bool spawn();
 	void loadRectangle();
 	void loadImage();
@@ -46,9 +48,7 @@ public:
 	void moveTo(int x, int y);
 	void decision();
 	void startAttack(Unit* newTarget);
-	void getTarget();
 	void arrive();
-	void attack();
 	void enableAttack();
 	void receiveDamage(int damage);
 	void onDeath();

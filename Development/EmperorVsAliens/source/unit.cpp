@@ -72,9 +72,6 @@ void Unit::IA()
 	case UNIT_IDLE:
 		if(markForDeath)
 			status = UNIT_DEAD;
-		else if(!mPosition->x){
-			getTarget();
-		}
 		else if(!path.size()){
 			createPath();
 		}
@@ -92,13 +89,17 @@ void Unit::IA()
 
 void Unit::decision()
 {
+	getTarget();
+	
 	Field *next = !path.empty() ? path.back() : 0;
 	if(!next){
-		getTarget();
+	//	getTarget();
 	}
-	else if(next->habitant && !next->locked){
-    	startAttack((Unit *)next->habitant);
-	}
+	else if(target)
+		startAttack(target);
+	//else if(next->habitant && !next->locked){
+    //	startAttack((Unit *)next->habitant);
+	//}
 	else if(!next->locked){
 		next->locked = true;
     	move();
@@ -149,23 +150,10 @@ void Unit::attack()
 {
 	ATTACK_READY_TIME = Timer::get_currentFrameTick() + backswingTime;
 	attackCooldown = true;
-	target->receiveDamage(attributes.damage);
-	if(target->status == UNIT_DEAD)
-	{
-		status = UNIT_IDLE;
-		target = NULL;
-	}
 }
 
 void Unit::startAttack(Unit* newTarget)
 {
 	status = UNIT_ATTACKING;
 	target = newTarget;
-}
-
-void Unit::getTarget()
-{
-	//TODO: checar se e uma posicao com "alvo de construcao objetivo" se nao procurar alvos ao redor...
-	//cout << "Attacking wall!" << endl;
-	//startAttack(this);
 }

@@ -12,6 +12,7 @@ namespace edge {
     Field::Field(int x, int y) 
     {
     	habitant = 0;
+    	goalBuilding = 0;
     	locked = false;
         this->x = x;
         this->y = y;
