@@ -13,8 +13,6 @@
 #define CANVAS_H
 
 #include <vector>
-#include <boost/ptr_container/ptr_vector.hpp>
-
 #include "exception.h"
 #include "point.h"
 #include "color.h"

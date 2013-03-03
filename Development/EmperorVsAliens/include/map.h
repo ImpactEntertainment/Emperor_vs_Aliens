@@ -11,7 +11,6 @@
 #include <SDL/SDL.h>
 #include <string>
 #include <vector>
-#include <boost/ptr_container/ptr_vector.hpp>
 
 #include "exception.h"
 #include "video.h"
