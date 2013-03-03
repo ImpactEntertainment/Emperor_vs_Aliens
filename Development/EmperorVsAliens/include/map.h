@@ -19,7 +19,7 @@
 #include "boundingrectangle.h"
 #include "imageset.h"
 #include "enviromentelement.h"
-#include "swarmunit.h"
+#include "unitfactory.h"
 #include "field.h"
 
 #define BATTLEFIELD_WIDTH 16
