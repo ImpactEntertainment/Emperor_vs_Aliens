@@ -22,11 +22,14 @@ using namespace edge;
 
 int main()
 {
-    Difficulty difficulty = GAME_EASY;
-    Game &game = *(GameFactory::create_game(difficulty));
+
+    GameConfig gameConfig;
+    
+    gameConfig.difficulty = GAME_HARD;
+    Game &game = *(GameFactory::create_game(gameConfig.difficulty));
 
     try {
-        game.init("");
+        game.init(gameConfig);
         game.loop();
         game.shutdown();
     }

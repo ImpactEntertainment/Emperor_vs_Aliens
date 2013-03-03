@@ -12,7 +12,7 @@
 
 class EasyGame : public Game {
 public:
-    void init(const string& configFilePath);
+    void init(GameConfig& config);
     void gameBehaviour();
     void callNextWave();
 

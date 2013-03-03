@@ -17,8 +17,7 @@
 #include "video.h"
 #include "window.h"
 #include "boundingrectangle.h"
-#include "map.h"
-#include "level_01.h"
+#include "levelfactory.h"
 
 using namespace std;
 
@@ -27,7 +26,7 @@ namespace edge
     class EmperorVsAliens
     {
     public:
-        void init();
+        void init(Level choice);
         void shutdown();
         void update();
         void draw(Canvas *canvas);
@@ -41,10 +40,10 @@ namespace edge
         void killSwarm();
         bool waveAlive();
 
-        int resources;
+        int         resources;
         list<Unit*> swarmUnits;
         list<Unit*> emperorUnits;
-        Level_01 board;
+        Map         *board;
     };
 }
 

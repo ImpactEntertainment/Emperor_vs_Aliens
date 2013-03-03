@@ -21,6 +21,19 @@
 
 using namespace std;
 
+typedef enum Difficulty {
+    GAME_EASY,
+    GAME_NORMAL,
+    GAME_HARD
+}Difficulty;
+
+typedef struct GameConfig
+{
+    Difficulty      difficulty;
+    Level           level;
+}GameConfig;
+
+
 namespace edge {
 
     class Game {
@@ -30,7 +43,7 @@ namespace edge {
 
         Game();
         
-        void init(const string& configFilePath) throw(Exception);
+        void init(GameConfig& config) throw(Exception);
         
         void loop() throw(Exception);
         void shutdown();
@@ -53,8 +66,8 @@ namespace edge {
 		EmperorVsAliens eva;
 		int allFrameCount;
 
-        void initVideo(const string& configFilePath) throw(Exception);
-        void initWindow(const string& configFilePath) throw(Exception);
+        void initVideo() throw(Exception);
+        void initWindow() throw(Exception);
     };
 }
 

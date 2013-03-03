@@ -1,8 +1,8 @@
 #include "easygame.h"
 
-void EasyGame::init(const string& configFilePath)
+void EasyGame::init(GameConfig& config)
 {
-	Game::init(configFilePath);
+	Game::init(config);
     timeToLive = timeForNextWave;
 }
 

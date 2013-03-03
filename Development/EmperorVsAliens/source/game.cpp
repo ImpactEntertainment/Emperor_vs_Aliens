@@ -15,13 +15,13 @@ namespace edge
     }
 
     void
-    Game::init(const string& configFilePath) throw (Exception)
+    Game::init(GameConfig& config) throw (Exception)
     {
-        initVideo(configFilePath);
-        initWindow(configFilePath);
-        eva.init();
+        initVideo();
+        initWindow();
+        eva.init(config.level);
         
-        WAVES_LEFT = eva.board.getWavesLeft();
+        WAVES_LEFT = eva.board->getWavesLeft();
         PAUSED=(false);
 		FAST_FORWARD=(false);
 		QUIT=(false);
@@ -74,7 +74,7 @@ namespace edge
                         eva.killSwarm();
                         break;
                     default:
-                        //eva.board.handleKeyboardEvent(&event.key);
+                        //eva.board->handleKeyboardEvent(&event.key);
                     	break;
                     }
                 default:
@@ -121,7 +121,7 @@ namespace edge
     }
 
     void
-    Game::initVideo(const string&) throw (Exception)
+    Game::initVideo() throw (Exception)
     {
         VideoSettings videoSettings;
         videoSettings.videoBufferLocation = VIDEO_MEMORY;
@@ -133,15 +133,15 @@ namespace edge
     }
 
     void
-    Game::initWindow(const string&) throw (Exception)
+    Game::initWindow() throw (Exception)
     {
-        WindowSettings windowSettings;
-        windowSettings.width = 1920;
-        windowSettings.height= 1080;
-        windowSettings.title = "EmperorVsAliens";
-        windowSettings.presentationMode = WINDOW;
+        WindowSettings ws;
+        ws.width = 1920;
+        ws.height= 1080;
+        ws.presentationMode = WINDOW;
+        ws.title = "EmperorVsAliens";
         
-        window = WindowFactory::create(windowSettings);
+        window = WindowFactory::create(ws);
     }
     
     void Game::togglePause()

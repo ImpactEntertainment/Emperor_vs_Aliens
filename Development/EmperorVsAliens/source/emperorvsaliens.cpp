@@ -6,15 +6,16 @@ using namespace std;
 namespace edge
 {
 
-    void EmperorVsAliens::init()
+    void EmperorVsAliens::init(Level choice)
     {
-        board.init();
-        resources = board.getInitialResources();
+        board = (LevelFactory::create_level(choice));
+        board->init();
+        resources = board->getInitialResources();
     }
 
     void EmperorVsAliens::shutdown()
     {
-        board.shutdown();
+        board->shutdown();
     }
     
     void EmperorVsAliens::killSwarm()
@@ -51,7 +52,7 @@ namespace edge
 
     void EmperorVsAliens::increaseResources()
     {
-        resources += board.getResourcesIncrement();
+        resources += board->getResourcesIncrement();
     }
     
     void EmperorVsAliens::update()
@@ -62,10 +63,10 @@ namespace edge
     
     void EmperorVsAliens::callNextWave()
     {	
-    	swarmUnits.insert(swarmUnits.end(),board.Wave()->begin(),board.Wave()->end());
-    	board.NextWave();
+    	swarmUnits.insert(swarmUnits.end(),board->Wave()->begin(),board->Wave()->end());
+    	board->NextWave();
 
-        //emperorUnits.push_back(new Unit(&board.battlefield[8][3]));
+        //emperorUnits.push_back(new Unit(&board->battlefield[8][3]));
     }
     
     void EmperorVsAliens::draw(Canvas* canvas)
@@ -73,7 +74,7 @@ namespace edge
         canvas->drawBackground();
         canvas->drawUnits(swarmUnits);
         canvas->drawUnits(emperorUnits);
-        canvas->drawEnviroment(board.enviromentElements);
+        canvas->drawEnviroment(board->enviromentElements);
         canvas->drawBottomGrass();          
     }
 
