@@ -40,13 +40,6 @@ void Map::loadBattlefield()
 		}
 }
 
-void Map::draw(Canvas* canvas)
-{
-	canvas->drawBackground();
-	canvas->drawEnviroment(enviromentElements);
-	canvas->drawBottomGrass();			
-}
-
 void Map::shutdown()
 {
 }

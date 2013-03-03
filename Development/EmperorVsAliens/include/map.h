@@ -40,7 +40,6 @@ public:
     void init();
     void loadBattlefield();
     void shutdown();
-    void draw(Canvas * canvas);
     void NextWave();
     vector<Unit*>* Wave();
     int	 getWavesLeft();
