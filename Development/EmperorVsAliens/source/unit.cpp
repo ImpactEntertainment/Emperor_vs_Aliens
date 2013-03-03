@@ -137,6 +137,7 @@ void Unit::arrive()
 void Unit::onDeath()
 {	
 	cout << this << " Died and Decomposed" << endl;
+	mPosition->locked = false;	
 	decomposed = true;
 }
 
@@ -151,7 +152,8 @@ void Unit::receiveDamage(int damage)
 	if(attributes.hitpoints <= 0)
 	{
 		status = UNIT_DEAD;
-		mPosition->habitant = NULL;		
+		mPosition->habitant = NULL;	
+		mPosition->locked = false;	
 	}
 }
 
