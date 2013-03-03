@@ -11,7 +11,6 @@
 #include <iostream>
 #include <SDL/SDL.h>
 
-#include "draw.h"
 #include "windowfactory.h"
 #include "canvas.h"
 #include "boundingrectangle.h"

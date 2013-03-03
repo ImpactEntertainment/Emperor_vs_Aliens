@@ -43,7 +43,7 @@ void Unit::loadRectangle()
 
 void Unit::loadImage()
 {
-	image = Image::load("/opt/EmperorVsAliens/resources/hiver.png",mResource.x,mResource.y,mResource.width,mResource.height);
+	image = Image::load("/opt/EmperorVsAliens/data/images/hiver.png",mResource.x,mResource.y,mResource.width,mResource.height);
 }
 
 void Unit::update()

@@ -70,7 +70,7 @@ install:
 	@sudo mkdir -p /opt/$(TARGET)
 	@sudo cp -Rf data /opt/$(TARGET)/
 	@sudo cp -f $(TARGET) /opt/$(TARGET)/$(TARGET)
-	@sudo ln -s /opt/$(TARGET)/$(TARGET) /usr/local/bin/$(TARGET)
+	@sudo ln -sf /opt/$(TARGET)/$(TARGET) /usr/local/bin/$(TARGET)
 
 uninstall:
 	@sudo rm -rf /opt/$(TARGET)
