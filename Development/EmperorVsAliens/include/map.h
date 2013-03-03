@@ -39,8 +39,10 @@ private:
 public:    
 	virtual int getInitialResources() = 0;
 	virtual int getResourcesIncrement() = 0;
+
     void init();
-    void loadBattlefield();
+    bool isMainBuildingDestroyed();
+	void loadBattlefield();
     void shutdown();
     void NextWave();
     vector<Unit*>* Wave();
@@ -52,7 +54,7 @@ public:
 	vector<Field*> 				spawnPoints;
 	vector<EnviromentElement>	enviromentElements;
 	vector< vector<Unit*> > 	waves;
-	int 						currentWave;
+	unsigned int				currentWave;
 };
 #endif
 

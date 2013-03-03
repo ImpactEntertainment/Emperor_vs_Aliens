@@ -97,6 +97,16 @@ namespace edge
             
             window->getCanvas()->update();
 
+            if(eva.isMainBuildingDestroyed()) 
+            {
+                cout << "LOSE" << endl;
+                quitGame = true;
+            }
+            if(eva.noMoreEnemies()){
+                cout << "WIN" << endl;
+                quitGame = true;
+            }
+            
             int ticksElapsed = Timer::get_ticks() - Timer::get_currentFrameTick();
             int delayTime = ( 1000 / FRAMES_PER_SECOND ) - ticksElapsed;
             SDL_Delay( delayTime > 0 ? delayTime : 0);

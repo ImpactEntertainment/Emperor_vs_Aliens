@@ -13,10 +13,8 @@ void Level_01::loadMainBuilding()
 {
 	mainBuilding = new Building(500,50);
 
-	for(int y = 0; y < BATTLEFIELD_HEIGHT -1; y++)
+	for(int y = 0; y < BATTLEFIELD_HEIGHT ; y++)
 		mainBuilding->addRange(&battlefield[0][y]);
-
-	cout << "loadMB" << endl;
 }
 
 void Level_01::loadWaves()

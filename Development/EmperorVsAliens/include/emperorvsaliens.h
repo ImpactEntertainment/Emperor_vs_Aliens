@@ -31,7 +31,10 @@ namespace edge
         void update();
         void draw(Canvas *canvas);
 		void IA();
-        
+        bool gameEnded();
+        bool noMoreEnemies();
+        bool isMainBuildingDestroyed();
+
         void callNextWave();
         
         void decomposeDead();

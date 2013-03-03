@@ -59,6 +59,7 @@ namespace edge
     {   
         updateUnits();
         decomposeDead();
+        board->mainBuilding->update();
     }
     
     void EmperorVsAliens::callNextWave()
@@ -88,6 +89,21 @@ namespace edge
     bool EmperorVsAliens::waveAlive()
     {
         return !swarmUnits.empty();
+    }
+
+    bool EmperorVsAliens::noMoreEnemies()
+    {
+        return swarmUnits.empty() && (board->currentWave == board->waves.size()); 
+    }
+
+    bool EmperorVsAliens::isMainBuildingDestroyed()
+    {
+        return board->isMainBuildingDestroyed();
+    }
+
+    bool EmperorVsAliens::gameEnded()
+    {
+        return  isMainBuildingDestroyed() || noMoreEnemies();
     }
 
 }

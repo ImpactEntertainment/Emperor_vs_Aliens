@@ -1,8 +1,13 @@
 #include "swarmunit.h"
 
+#include <iostream>
+using namespace std;
+
 SwarmUnit::SwarmUnit(Field *pos)
 : Unit(pos)
-{}
+{
+	buildingTarget = 0;
+}
 
 void SwarmUnit::loadBaseAttributes()
 {
@@ -47,6 +52,7 @@ void SwarmUnit::startAttack(Building* newTarget)
 void SwarmUnit::attack()
 {
 	Unit::attack();
+	
 	if(buildingTarget)
 	{
 		buildingTarget->receiveDamage(attributes.damage);
@@ -69,8 +75,10 @@ void SwarmUnit::attack()
 
 void SwarmUnit::getTarget()
 {
-	if(mPosition->goalBuilding)
-		startAttack((Building *)mPosition->goalBuilding);
+	if(mPosition->goalBuilding){
+		if(!((Building *)mPosition->goalBuilding)->destroyed) startAttack((Building *)mPosition->goalBuilding);
+	}
+	
 	//TODO: checar se e uma posicao com "alvo de construcao objetivo" se nao procurar alvos ao redor...
 	//cout << "Attacking wall!" << endl;
 	//startAttack(this);

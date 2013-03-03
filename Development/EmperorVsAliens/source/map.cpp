@@ -41,6 +41,11 @@ void Map::loadBattlefield()
 		}
 }
 
+bool Map::isMainBuildingDestroyed()
+{
+	return  mainBuilding->destroyed;
+}
+
 void Map::shutdown()
 {
 }

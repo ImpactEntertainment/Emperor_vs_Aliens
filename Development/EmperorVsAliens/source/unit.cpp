@@ -8,6 +8,7 @@ Unit::Unit(Field *pos)
 : Element(pos), status(UNIT_IDLE)
 {
 	init();
+	target = 0;
 	markForDeath = false;
 	spawned = false;
 	decomposed = false;
@@ -89,17 +90,13 @@ void Unit::IA()
 
 void Unit::decision()
 {
-	getTarget();
-	
 	Field *next = !path.empty() ? path.back() : 0;
 	if(!next){
-	//	getTarget();
+		getTarget();
 	}
-	else if(target)
-		startAttack(target);
-	//else if(next->habitant && !next->locked){
-    //	startAttack((Unit *)next->habitant);
-	//}
+	else if(next->habitant && !next->locked){
+    	startAttack((Unit *)next->habitant);
+	}
 	else if(!next->locked){
 		next->locked = true;
     	move();
