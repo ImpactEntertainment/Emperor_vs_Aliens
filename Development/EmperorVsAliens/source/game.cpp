@@ -8,7 +8,6 @@ using namespace std;
 
 namespace edge
 {
-
     Game::Game()
     {
         video = NULL;

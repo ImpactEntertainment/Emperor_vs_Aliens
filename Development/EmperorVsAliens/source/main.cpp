@@ -14,16 +14,15 @@
 #include "windowfactory.h"
 #include "canvas.h"
 #include "boundingrectangle.h"
-#include "easygame.h"
-#include "normalgame.h"
-#include "hardgame.h"
+#include "gamefactory.h"
 
 using namespace std;
 using namespace edge;
 
 int main()
 {
-    HardGame game;
+    Difficulty difficulty = GAME_EASY;
+    Game &game = *(GameFactory::create_game(difficulty));
 
     try {
         game.init("");
