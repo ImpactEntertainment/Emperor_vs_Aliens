@@ -24,6 +24,7 @@ public:
 	
 	void init();
 	Element(Field *pos);
+	Element();
 
 	void setPosition(Field *pos);
 	void shutdown();

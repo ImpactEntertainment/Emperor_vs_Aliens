@@ -4,6 +4,9 @@ Element::Element(Field *pos)
 : mPosition(pos)
 {}
 
+Element::Element()
+{}
+
 void Element::setPosition(Field *pos)
 { 
 	mPosition = pos;
