@@ -16,6 +16,7 @@
 #include "emperorvsaliens.h"
 #include "timer.h"
 #include "gameconfig.h"
+#include "menu.h"
 
 #define WAVE_COOLDOWN       TEN_SECONDS
 
@@ -51,6 +52,7 @@ namespace edge {
         Video           *video;
         Window          *window;
         Field           *selected;
+        Menu            *menu;
 		EmperorVsAliens eva;
         GameConfig      *gameConfig;
 

@@ -21,6 +21,7 @@
 #include "element.h"
 #include "enviromentelement.h"
 #include "unit.h"
+#include "menu.h"
 
 namespace edge {
 
@@ -43,7 +44,9 @@ namespace edge {
      	
      	virtual void drawElementAt(const Element& element, int fieldIndex) = 0;
      	virtual void drawElement(const Element& element)=0;
+        virtual void drawMenu(const Menu& element)=0;
     	virtual void drawUnit(Unit& element)=0;
+
     };
 
 }

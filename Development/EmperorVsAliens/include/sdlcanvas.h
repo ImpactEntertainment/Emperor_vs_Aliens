@@ -39,6 +39,7 @@ namespace edge {
         void drawUnits(list<Unit*>& units);
         
         void drawElementAt(const Element& element, int fieldIndex);
+        void drawMenu(const Menu& element);
         void drawElement(const Element& element);
         void drawUnit(Unit& element);
             

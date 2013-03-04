@@ -83,6 +83,7 @@ namespace edge
                     }
                     break;
                 case SDL_MOUSEBUTTONDOWN:
+                    cout << selected << endl;
                     if(event.button.button == SDL_BUTTON_LEFT)
                         selected = eva.select(event.button.x,event.button.y);
                     if(event.button.button == SDL_BUTTON_RIGHT && selected)
@@ -94,12 +95,17 @@ namespace edge
                     }
                     if(selected)
                     {
+                        menu = new Menu;
+                        menu->mPosition = selected;
                         cout << "SELECTED! ";                        
                         if(selected->habitant)
                             cout << "DO SOME ACTION!" << endl;
                         else
                             cout << "CREATE SOMETHING!" << endl;
                     }
+                    else
+                        menu = 0;
+
                     break;
                 default:
                     break;
@@ -111,6 +117,7 @@ namespace edge
             // 4. Rodar simulações de física
             // 5. Atualizar entidades do jogo
 			eva.update();
+            if(menu) menu->update();
 
             if(Timer::get_currentFrameTick() > RESOURCES_COOLDOWN){
                 eva.increaseResources();
@@ -119,7 +126,9 @@ namespace edge
             // 6. Enviar/receber mensagens da rede
             // 7. Atualizar o estado do jogo (display)
             eva.draw(window->getCanvas());
-            
+            if(menu)
+                window->getCanvas()->drawMenu(*menu);
+
             window->getCanvas()->update();
 
             if(eva.isMainBuildingDestroyed()) 
