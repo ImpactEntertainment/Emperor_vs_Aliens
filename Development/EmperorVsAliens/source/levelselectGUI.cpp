@@ -71,6 +71,7 @@ void LevelSelectGUI::handleClick(int index)
     break;
     case 12:
         beDone();
+        gameConfig->levelSelected = true;
     break;
     case 13:
         beDone();
