@@ -21,6 +21,7 @@
 #include "unitfactory.h"
 #include "field.h"
 #include "building.h"
+#include "gameconfig.h"
 
 #define BATTLEFIELD_WIDTH 16
 #define BATTLEFIELD_HEIGHT 6

@@ -15,24 +15,11 @@
 #include "window.h"
 #include "emperorvsaliens.h"
 #include "timer.h"
+#include "gameconfig.h"
 
-#define FRAMES_PER_SECOND   20
 #define WAVE_COOLDOWN       TEN_SECONDS
 
 using namespace std;
-
-typedef enum Difficulty {
-    GAME_EASY,
-    GAME_NORMAL,
-    GAME_HARD
-}Difficulty;
-
-typedef struct GameConfig
-{
-    Difficulty      difficulty;
-    Level           level;
-}GameConfig;
-
 
 namespace edge {
 
