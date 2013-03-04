@@ -9,10 +9,12 @@
 #define GUI_FACTORY_H
 
 #include "mainGUI.h"
+#include "levelselectGUI.h"
 
 typedef enum GUI_Option
 {
-	GUI_MAIN
+	GUI_MAIN,
+	GUI_LEVEL_SELECT
 }GUI_Option;
 
 class GUIFactory {

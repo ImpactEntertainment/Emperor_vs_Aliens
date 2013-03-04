@@ -28,6 +28,7 @@ int main()
 
     GameConfig gameConfig;
     gameConfig.exit = false;
+    gameConfig.levelSelected = true;
     gameConfig.level = LEVEL_01;
 
     GUI *gui = GUIFactory::create_GUI(GUI_MAIN);
@@ -56,6 +57,7 @@ int main()
             return -1;
         }
 
+        gui = GUIFactory::create_GUI(GUI_LEVEL_SELECT);
     }while(!gameConfig.exit);
 
     gui->shutdown();

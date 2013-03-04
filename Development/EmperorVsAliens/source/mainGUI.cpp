@@ -13,7 +13,7 @@ void MainGUI::beDone()
 
 void MainGUI::loadSubmenus()
 {
-    addSubmenu(GUIFactory::create_GUI(GUI_MAIN));
+    addSubmenu(GUIFactory::create_GUI(GUI_LEVEL_SELECT));
 }
 
 void MainGUI::loadButtons()
@@ -28,10 +28,10 @@ void MainGUI::handleClick(int index)
     switch(index)
     {
     case 0:
-        GUI::beDone();
+        openSubmenu(0);
+        if(gameConfig->levelSelected) GUI::beDone();
     break;
     case 1:
-        openSubmenu(0);
     break;
     case 2:
         beDone();
