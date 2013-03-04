@@ -83,12 +83,29 @@ namespace edge
                     }
                     break;
                 case SDL_MOUSEBUTTONDOWN:
-                    eva.handleMouseButtonEvent(event.button.x,event.button.y);
+                    if(event.button.button == SDL_BUTTON_LEFT)
+                        selected = eva.select(event.button.x,event.button.y);
+                    if(event.button.button == SDL_BUTTON_RIGHT && selected)
+                    {
+                        Field *oldSelected = selected;
+                        selected = eva.select(event.button.x,event.button.y);
+                        eva.moveTo(oldSelected,selected);
+                        selected = NULL;
+                    }
+                    if(selected)
+                    {
+                        cout << "SELECTED! ";                        
+                        if(selected->habitant)
+                            cout << "DO SOME ACTION!" << endl;
+                        else
+                            cout << "CREATE SOMETHING!" << endl;
+                    }
                     break;
                 default:
                     break;
                 }
             }
+
             // 3. Rodar IA
 			eva.IA();
             // 4. Rodar simulações de física

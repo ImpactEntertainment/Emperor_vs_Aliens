@@ -1,3 +1,11 @@
+/**
+ * \file gameconfig.h
+ * \brief Classe com as configuracoes do jogo.
+ *
+ * \author Luis Gustavo (luisgustavodd@hotmail.com)
+ * \date 25/01/2012
+ */
+
 #ifndef GAME_CONFIG_H
 #define GAME_CONFIG_H
 
@@ -24,12 +32,13 @@ typedef enum Difficulty {
     GAME_HARD
 }Difficulty;
 
-typedef struct GameConfig
+class GameConfig
 {
+public:
     Difficulty      difficulty;
     Level           level;
     bool            levelSelected;
     bool            exit;
-}GameConfig;
+};
 
 #endif

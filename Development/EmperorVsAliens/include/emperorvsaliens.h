@@ -18,6 +18,7 @@
 #include "window.h"
 #include "boundingrectangle.h"
 #include "levelfactory.h"
+#include "gameconfig.h"
 
 using namespace std;
 
@@ -35,7 +36,8 @@ namespace edge
         bool noMoreEnemies();
         bool isMainBuildingDestroyed();
 
-        void handleMouseButtonEvent(int x, int y);
+        Field* select(int x, int y);
+        void   moveTo(Field* origin, Field* dest);
 
         void callNextWave();
         

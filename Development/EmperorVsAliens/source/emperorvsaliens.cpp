@@ -66,7 +66,7 @@ namespace edge
     	swarmUnits.insert(swarmUnits.end(),board->Wave()->begin(),board->Wave()->end());
     	board->NextWave();
 
-        //emperorUnits.push_back(new Unit(&board->battlefield[8][3]));
+        emperorUnits.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,&board->battlefield[1][1]));
     }
     
     void EmperorVsAliens::draw(Canvas* canvas)
@@ -105,9 +105,26 @@ namespace edge
         return  isMainBuildingDestroyed() || noMoreEnemies();
     }
 
-    void EmperorVsAliens::handleMouseButtonEvent(int x, int y)
+    Field* EmperorVsAliens::select(int x, int y)
     {
-        cout << "(" << x << "," << y << ")" << endl;
-    }
+        int boardPositionX = 134,
+            boardPositionY = 409,
+            fieldSize      = 112;
+        if(x < boardPositionX || y < boardPositionY)
+            return NULL;
+        else
+        {    
+            x = (x - boardPositionX)/fieldSize;
+            y = (y - boardPositionY)/fieldSize;
+            cout << "SELECTED: (" <<  board->battlefield[x][y].x << "," <<  board->battlefield[x][y].y << ")" <<  endl;
+            return &board->battlefield[x][y];
+        }
 
+    }
+    void EmperorVsAliens::moveTo(Field* origin, Field* dest)
+    {
+        if(!origin->habitant) return;
+        if(origin == dest)    return;
+        cout << "SHOULD CREATE NEW PATH HERE!" << endl;
+    }
 }
