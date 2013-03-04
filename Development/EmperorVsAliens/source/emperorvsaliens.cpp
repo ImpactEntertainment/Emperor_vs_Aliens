@@ -5,7 +5,6 @@ using namespace std;
 
 namespace edge
 {
-
     void EmperorVsAliens::init(Level choice)
     {
         board = (LevelFactory::create_level(choice));
@@ -104,6 +103,11 @@ namespace edge
     bool EmperorVsAliens::gameEnded()
     {
         return  isMainBuildingDestroyed() || noMoreEnemies();
+    }
+
+    void EmperorVsAliens::handleMouseButtonEvent(int x, int y)
+    {
+        cout << "(" << x << "," << y << ")" << endl;
     }
 
 }

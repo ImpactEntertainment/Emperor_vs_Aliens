@@ -48,10 +48,11 @@ namespace edge {
         int timeForNextWave;
 
     //private:
-        Video *video;
-        Window *window;
+        Video           *video;
+        Window          *window;
+        Field           *selected;
 		EmperorVsAliens eva;
-        GameConfig *gameConfig;
+        GameConfig      *gameConfig;
 
 		int allFrameCount;
 

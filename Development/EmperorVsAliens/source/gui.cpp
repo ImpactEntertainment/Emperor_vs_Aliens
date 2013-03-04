@@ -116,6 +116,7 @@ void GUI::loop() throw (Exception)
                     //eva.board->handleKeyboardEvent(&event.key);
                     break;
                 }
+                break;
             case SDL_MOUSEBUTTONDOWN:
                 handleMouseEvent(event.button);
                 break;

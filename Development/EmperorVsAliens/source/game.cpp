@@ -23,12 +23,12 @@ namespace edge
         gameConfig = &config;
         eva.init(config.level);
         
-        WAVES_LEFT = eva.board->getWavesLeft();
-        PAUSED=(false);
-		FAST_FORWARD=(false);
-		QUIT=(false);
-		
-		allFrameCount = -1;
+        WAVES_LEFT      = eva.board->getWavesLeft();
+        PAUSED          = false;
+		FAST_FORWARD    = false;
+		QUIT            = false;
+        selected        = 0;
+		allFrameCount   = -1;
         Timer::start();
 
         timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
@@ -81,6 +81,10 @@ namespace edge
                         //eva.board->handleKeyboardEvent(&event.key);
                     	break;
                     }
+                    break;
+                case SDL_MOUSEBUTTONDOWN:
+                    eva.handleMouseButtonEvent(event.button.x,event.button.y);
+                    break;
                 default:
                     break;
                 }

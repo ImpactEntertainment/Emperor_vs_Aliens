@@ -35,6 +35,8 @@ namespace edge
         bool noMoreEnemies();
         bool isMainBuildingDestroyed();
 
+        void handleMouseButtonEvent(int x, int y);
+
         void callNextWave();
         
         void decomposeDead();
