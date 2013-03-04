@@ -28,6 +28,7 @@ typedef struct GameConfig
 {
     Difficulty      difficulty;
     Level           level;
+    bool            levelSelected;
     bool            exit;
 }GameConfig;
 
