@@ -28,6 +28,7 @@ void MainGUI::handleClick(int index)
     switch(index)
     {
     case 0:
+        gameConfig->levelSelected = false;
         openSubmenu(0);
         if(gameConfig->levelSelected) GUI::beDone();
     break;
