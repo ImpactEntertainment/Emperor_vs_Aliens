@@ -84,9 +84,11 @@ namespace edge
                     }
                     break;
                 case SDL_MOUSEBUTTONDOWN:
-                    if(menu)    
+                    if(menu)
+                    {
                         menuHandled = menu->handleMouseEvent(event.button);
-                    if(!menuHandled || menu)
+                    }
+                    if(!menuHandled)
                     {
                         if(event.button.button == SDL_BUTTON_LEFT)
                             selected = eva.select(event.button.x,event.button.y);

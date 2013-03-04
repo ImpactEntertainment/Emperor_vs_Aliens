@@ -19,11 +19,11 @@ void Menu::init(Field *pos)
 
 void Menu::update()
 {
-	if(!mPosition) 
+    if(!mPosition) 
 		frameCount = 0;
 	else
 		frameCount += frameCount < 7 ? 1 : 0;
-	mResource.x = mResource.width * frameCount;
+	mResource.x = mResource.width * frameCount;    
 }
 
 void Menu::loadRectangle()
