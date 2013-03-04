@@ -51,6 +51,8 @@ namespace edge {
         Video *video;
         Window *window;
 		EmperorVsAliens eva;
+        GameConfig *gameConfig;
+
 		int allFrameCount;
 
         void initVideo() throw(Exception);

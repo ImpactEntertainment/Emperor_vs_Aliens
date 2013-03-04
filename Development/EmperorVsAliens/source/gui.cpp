@@ -13,6 +13,7 @@ void GUI::init(GameConfig& config) throw (Exception)
 {
     initVideo();
     initWindow();
+    loadImage();
     loadButtons();
     loadSubmenus();
     Timer::start();
@@ -35,7 +36,7 @@ void GUI::openSubmenu(int index)
         }
     }
     else{
-        cout << "Nenhum submenu carrregado" << endl;
+        //cout << "Nenhum submenu carrregado" << endl;
     }
 }
 
@@ -51,7 +52,7 @@ void GUI::addSubmenu(GUI* submenu)
 }
 
 
-bool GUI::click(Rectangle& area)
+bool GUI::click(Button& area)
 {
     return ( ( (clicked.x > area.x) && (clicked.x < area.x + area.width) ) && ( (clicked.y > area.y) && (clicked.y < area.y + area.height) ) );
 }
@@ -70,9 +71,8 @@ void GUI::handleMouseEvent(SDL_MouseButtonEvent &event){
     {
         vector<Button*>::iterator it;
         for(it = buttons.begin(); it != buttons.end(); it++)
-            if( click( (*it)->rect) )
+            if( click( *(*it) ) )
                 buttonIndex = (*it)->index;
-        
         if(buttonIndex != -1) handleClick(buttonIndex);
     }
     else{
@@ -83,9 +83,8 @@ void GUI::handleMouseEvent(SDL_MouseButtonEvent &event){
 void GUI::loop() throw (Exception)
 {
     SDL_Event event;
-    bool quitGame = false;
 
-    while (!done && !quitGame) {       
+    while (!done && !gameConfig->exit) {       
 
         Timer::set_currentFrameTick();
         clicked.x = 0;
@@ -95,12 +94,13 @@ void GUI::loop() throw (Exception)
 
             switch (event.type) {
             case SDL_QUIT:
-                quitGame = true;
+                done = true;
+                gameConfig->exit = true;
                 break;		
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym) {
                 case SDLK_ESCAPE:
-                    quitGame = true;
+                    beDone();
                     break;
 				/*case SDLK_s:
 					toggleFastForward();
@@ -124,7 +124,7 @@ void GUI::loop() throw (Exception)
             }
         }
 
-        window->getCanvas()->drawBackground(); 
+        window->getCanvas()->drawImage(background); 
         window->getCanvas()->update();
 
         int ticksElapsed = Timer::get_ticks() - Timer::get_currentFrameTick();

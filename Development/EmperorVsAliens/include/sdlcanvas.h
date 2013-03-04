@@ -29,6 +29,7 @@ namespace edge {
         void erase(const Color& color);
         void update();
 
+        void drawImage(const Image *image);
         void drawImage(const Image *image, const Point& position);
         void drawImage(const Image *image, const Rectangle& baseRect, const Point& position);    
         

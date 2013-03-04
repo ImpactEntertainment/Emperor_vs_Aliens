@@ -19,6 +19,8 @@ namespace edge
     {
         initVideo();
         initWindow();
+        
+        gameConfig = &config;
         eva.init(config.level);
         
         WAVES_LEFT = eva.board->getWavesLeft();
@@ -30,6 +32,7 @@ namespace edge
         Timer::start();
 
         timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
+
     }
 
     void
@@ -55,6 +58,7 @@ namespace edge
                 switch (event.type) {
                 case SDL_QUIT:
                     quitGame = true;
+                    gameConfig->exit = true;
                     break;		
                 case SDL_KEYDOWN:
                     switch (event.key.keysym.sym) {

@@ -23,6 +23,9 @@ public:
     virtual void handleClick(int index) =0;
     virtual void loadButtons()          =0;
     virtual void loadSubmenus()         =0;
+    virtual void loadImage()            =0;
+
+    virtual void beDone();
 
     GUI();
 
@@ -31,11 +34,10 @@ public:
     void loop() throw(Exception);
     void shutdown();
     void handleMouseEvent(SDL_MouseButtonEvent &event);
-    bool click(Rectangle& area);
+    bool click(Button& area);
     void addButton(int x, int y, int w, int h);
     void addSubmenu(GUI* submenu);
     void openSubmenu(int index);
-    void beDone();
     void close();
 
 
@@ -44,6 +46,7 @@ public:
     vector<Button*> buttons;
     vector<GUI*>    submenus;
     GameConfig      *gameConfig;
+    Image           *background;
 //private:
     Video *video;
     Window *window;

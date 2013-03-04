@@ -10,10 +10,10 @@ void Map::reset()
 
 void Map::init()
 {
-	reset();
-	loadBattlefield();
+  	reset();
+ 	loadBattlefield();
 	loadMainBuilding();
-	loadSpawnPoints();
+  	loadSpawnPoints();
 	loadWaves();
 	loadEnviroment();
 }

@@ -47,6 +47,13 @@ namespace edge {
         SDL_FillRect(surface, NULL, pixelColor);
     }
 
+    void SDL_Canvas::drawImage(const Image *image){
+        const SDL_Image *sdlimage = dynamic_cast<const SDL_Image *>(image);
+        
+        SDL_BlitSurface(sdlimage->surface, NULL, surface, NULL);
+    
+    }
+
     void SDL_Canvas::drawImage(const Image *image, const Point& position){
         const SDL_Image *sdlimage = dynamic_cast<const SDL_Image *>(image);
         

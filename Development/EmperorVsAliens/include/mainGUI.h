@@ -16,9 +16,11 @@ using namespace std;
 
 class MainGUI : public GUI {
 public:
+	void loadImage();
     void handleClick(int index);
     void loadButtons();
     void loadSubmenus();
+    void beDone();
 };
 
 #endif

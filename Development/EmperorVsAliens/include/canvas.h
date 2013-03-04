@@ -32,7 +32,7 @@ namespace edge {
         virtual void erase(const Color& color) = 0;
         virtual void update() = 0;
 
-      
+        virtual void drawImage(const Image *image) = 0;
         virtual void drawImage(const Image *image, const Point& position) = 0;
 		virtual void drawImage(const Image *image, const Rectangle& baseRect, const Point& position) = 0;
       
