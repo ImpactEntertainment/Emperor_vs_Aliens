@@ -44,6 +44,7 @@ namespace edge
         // 2. Inputs
         SDL_Event event;
         bool quitGame = false;
+        bool menuHandled = false;
 
         while (quitGame == false) {
 
@@ -83,29 +84,34 @@ namespace edge
                     }
                     break;
                 case SDL_MOUSEBUTTONDOWN:
-                    cout << selected << endl;
-                    if(event.button.button == SDL_BUTTON_LEFT)
-                        selected = eva.select(event.button.x,event.button.y);
-                    if(event.button.button == SDL_BUTTON_RIGHT && selected)
+                    if(menu)    
+                        menuHandled = menu->handleMouseEvent(event.button);
+                    if(!menuHandled || menu)
                     {
-                        Field *oldSelected = selected;
-                        selected = eva.select(event.button.x,event.button.y);
-                        eva.moveTo(oldSelected,selected);
-                        selected = NULL;
-                    }
-                    if(selected)
-                    {
-                        menu = new Menu;
-                        menu->mPosition = selected;
-                        cout << "SELECTED! ";                        
-                        if(selected->habitant)
-                            cout << "DO SOME ACTION!" << endl;
+                        if(event.button.button == SDL_BUTTON_LEFT)
+                            selected = eva.select(event.button.x,event.button.y);
+                        if(event.button.button == SDL_BUTTON_RIGHT && selected)
+                        {
+                            Field *oldSelected = selected;
+                            selected = eva.select(event.button.x,event.button.y);
+                            eva.moveTo(oldSelected,selected);
+                            selected = NULL;
+                        }
+                        if(selected)
+                        {
+                            menu = new Menu(selected);
+                            cout << "SELECTED ";                        
+                            if(selected->habitant)
+                                cout << "SKILL MENU" << endl;
+                            else
+                                cout << "UNIT MENU" << endl;
+                        }
                         else
-                            cout << "CREATE SOMETHING!" << endl;
+                        {
+                            if(menu) menu->close();
+                            menu = 0;
+                        }
                     }
-                    else
-                        menu = 0;
-
                     break;
                 default:
                     break;
@@ -126,8 +132,7 @@ namespace edge
             // 6. Enviar/receber mensagens da rede
             // 7. Atualizar o estado do jogo (display)
             eva.draw(window->getCanvas());
-            if(menu)
-                window->getCanvas()->drawMenu(*menu);
+            if(menu) window->getCanvas()->drawMenu(*menu);
 
             window->getCanvas()->update();
 

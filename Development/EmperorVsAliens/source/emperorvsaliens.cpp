@@ -116,7 +116,6 @@ namespace edge
         {    
             x = (x - boardPositionX)/fieldSize;
             y = (y - boardPositionY)/fieldSize;
-            cout << "SELECTED: (" <<  board->battlefield[x][y].x << "," <<  board->battlefield[x][y].y << ")" <<  endl;
             return &board->battlefield[x][y];
         }
 
