@@ -109,27 +109,15 @@ namespace edge {
         SDL_BlitSurface(sdlimage->surface, &srcrect, surface, &rect);
 	}
 	
-	void SDL_Canvas::drawBottomGrass()
+	void SDL_Canvas::drawBottomGrass(const EnviromentElement* bottomGrass)
 	{
 	
-		Rectangle rect;
-		rect.x = 0;
-		rect.y = 1020;
-		rect.width = 1920;
-		rect.height = 60;
-		
-		//Image *bottomGrass = 
-		//Image::load("/opt/EmperorVsAliens/data/images/map_elements.png",
-		//imageOffsetX,imageOffsetY,imageWidth,imageHeight);
-
 		Point position;
 
-		position.x = 0;
-		position.y = 1020;
+		position.x = bottomGrass->mPosition->x;
+		position.y = bottomGrass->mPosition->y;
 
-		drawImage(map_elements, rect, position);
-		
-		//Image::release(bottomGrass);
+		drawImage(bottomGrass->image, bottomGrass->mResource, position);
 	}
 	
 	void SDL_Canvas::drawBackground(const Image* background) 

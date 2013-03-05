@@ -34,7 +34,7 @@ namespace edge {
         void drawImage(const Image *image, const Rectangle& baseRect, const Point& position);    
         
         void drawBackground(const Image* background);
-        void drawBottomGrass();
+        void drawBottomGrass(const EnviromentElement* bottomGrass);
         void drawEnviroment(vector<EnviromentElement>& enviroment);
         void drawUnits(list<Unit*>& units);
         
