@@ -105,6 +105,7 @@ namespace edge
 
     Field* EmperorVsAliens::select(int x, int y)
     {
+        cout << "INPUT : ( " << x << " , " << y << " )" << endl; 
         int boardPositionX = 134,
             boardPositionY = 409,
             fieldSize      = 112;
@@ -112,11 +113,10 @@ namespace edge
             return NULL;
         else
         {    
-            x = (x - boardPositionX)/fieldSize;
-            y = (y - boardPositionY)/fieldSize;
-            cout << y << " " << boardPositionY << " " << endl;
-            cout << "( " << x << " , " << y << " )" << endl;
-            return &board->battlefield[x][y];
+            cout << "( " << (x - boardPositionX) << " , " << (y - boardPositionY) << " )" << endl;
+            int iX = (x - boardPositionX)/fieldSize;
+            int iY = (y - boardPositionY)/fieldSize;
+            return &board->battlefield[iX][iY];
         }
 
     }
