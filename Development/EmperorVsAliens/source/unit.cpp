@@ -67,8 +67,6 @@ void Unit::IA()
 	switch(status)
 	{
 	case UNIT_DEAD:
-		mPosition->habitant = NULL;	
-		mPosition->locked = false;
 	case UNIT_MOVING: break;
 	case UNIT_IDLE:
 		if(markForDeath)
@@ -125,7 +123,7 @@ void Unit::arrive()
 
 void Unit::onDeath()
 {	
-	mPosition->locked = false;	
+	mPosition->locked = false;
 	decomposed = true;
 }
 
@@ -140,6 +138,7 @@ void Unit::receiveDamage(int damage)
 	if(attributes.hitpoints <= 0)
 	{
 		status = UNIT_DEAD;
+		mPosition->habitant = NULL;
 	}
 }
 
