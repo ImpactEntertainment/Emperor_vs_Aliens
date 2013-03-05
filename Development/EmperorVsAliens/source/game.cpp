@@ -114,6 +114,10 @@ namespace edge
                             menu = 0;
                         }
                     }
+                    else
+                    {
+                        eva.emperorUnits.push_back(UnitFactory::create_unit((Class)menu->option,menu->mPosition));
+                    }
                     break;
                 default:
                     break;

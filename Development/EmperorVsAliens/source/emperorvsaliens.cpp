@@ -65,8 +65,6 @@ namespace edge
     {	
     	swarmUnits.insert(swarmUnits.end(),board->Wave()->begin(),board->Wave()->end());
     	board->NextWave();
-
-        emperorUnits.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,&board->battlefield[1][1]));
     }
     
     void EmperorVsAliens::draw(Canvas* canvas)

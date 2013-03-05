@@ -12,6 +12,15 @@
 
 using namespace edge;
 
+typedef enum Option
+{
+	OPTION_01,
+	OPTION_02,
+	OPTION_03,
+	OPTION_04,
+	NO_OPTION
+}Option;
+
 class Menu : public Element {
 public:
 	Menu(Field *pos);
@@ -27,6 +36,7 @@ public:
 	bool handleMouseEvent(SDL_MouseButtonEvent &event);
 	void close();
 
+	Option 			option;
 	int 			frameCount;
 	int 			timeForNextFrame;
 	Point 			clicked;

@@ -9,6 +9,7 @@ Menu::Menu(Field *pos)
 	loadButtons();
 	frameCount = 0;
 	timeForNextFrame = 0;
+    option = NO_OPTION;
 }
 
 void Menu::init(Field *pos)
@@ -57,16 +58,20 @@ void Menu::handleClick(int index)
     switch(index)
     {
     case 0:
-    	cout << "Option 1" << endl;
-    break;
+        cout << "Option 1" << endl; 
+        option = OPTION_01; 
+    break; 
     case 1:
-    	cout << "Option 2" << endl;
+        cout << "Option 2" << endl; 
+        option = OPTION_02; 
     break;
     case 2:
-    	cout << "Option 3" << endl;
+        cout << "Option 3" << endl; 
+        option = OPTION_03; 
     break;
     case 3:
-    	cout << "Option 4" << endl;
+        cout << "Option 4" << endl; 
+        option = OPTION_04; 
     break;
     }
 }
