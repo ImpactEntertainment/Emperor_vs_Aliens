@@ -30,7 +30,7 @@ public:
 
 	void init(Field *pos);
 	void loadButtons();
-	void handleClick(int index);
+	bool handleClick(int index);
 	void addButton(int x, int y, int w, int h);
 	bool click(Button& area);
 	bool handleMouseEvent(SDL_MouseButtonEvent &event);

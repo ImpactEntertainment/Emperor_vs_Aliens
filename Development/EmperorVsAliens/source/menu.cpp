@@ -53,8 +53,11 @@ void Menu::loadButtons()
     addButton(68+x,58+y,39,35);
 }
 
-void Menu::handleClick(int index)
+bool Menu::handleClick(int index)
 {
+    if(mPosition->habitant)
+        return false;
+
     switch(index)
     {
     case 0:
@@ -74,6 +77,7 @@ void Menu::handleClick(int index)
         option = OPTION_04; 
     break;
     }
+    return true;
 }
 
 void Menu::addButton(int x, int y, int w, int h)
@@ -105,8 +109,7 @@ bool Menu::handleMouseEvent(SDL_MouseButtonEvent &event){
                 buttonIndex = (*it)->index;
         if(buttonIndex != -1)
         {
-        	handleClick(buttonIndex);
-    		return true;
+        	return handleClick(buttonIndex);
     	}
     }
     return false;
