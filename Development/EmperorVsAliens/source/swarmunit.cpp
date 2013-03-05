@@ -9,6 +9,7 @@ SwarmUnit::SwarmUnit(Field *pos)
 	buildingTarget = 0;
 }
 
+
 void SwarmUnit::loadBaseAttributes()
 {
 	backswingTime 		 = SWARM_UNIT_BACKSWING_TIME;
@@ -71,6 +72,11 @@ void SwarmUnit::attack()
 			target = NULL;
 		}
 	}
+}
+
+bool SwarmUnit::isAlien()
+{
+	return true;
 }
 
 void SwarmUnit::getTarget()

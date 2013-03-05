@@ -28,6 +28,9 @@ typedef enum Status {
 	UNIT_DEAD
 } Status;
 
+class SwarmUnit;
+class EmperorUnit;
+
 class Unit : public Element {
 public:
 	
@@ -36,10 +39,15 @@ public:
 	virtual void move() = 0;
 	virtual void getTarget() = 0;
 	virtual void attack() = 0;
-	
-	bool spawn();
+	virtual	bool isAlien()=0;
 	void loadRectangle();
 	void loadImage();
+	//virtual void alienTarget(Unit* unit) = 0;
+	//virtual void emperorTarget(Unit* unit) = 0;
+
+	void interact(Unit* unit);
+	
+	bool spawn();
 	
 	Unit(Field* pos);
 

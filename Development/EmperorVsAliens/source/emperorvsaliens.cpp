@@ -81,6 +81,8 @@ namespace edge
 		list<Unit*>::iterator it;
 		for(it = swarmUnits.begin(); it != swarmUnits.end(); it++)
 			(*it)->IA();
+        for(it = emperorUnits.begin(); it != emperorUnits.end(); it++)
+            (*it)->IA();
 	}
 
     bool EmperorVsAliens::waveAlive()
@@ -105,7 +107,6 @@ namespace edge
 
     Field* EmperorVsAliens::select(int x, int y)
     {
-        cout << "INPUT : ( " << x << " , " << y << " )" << endl; 
         int boardPositionX = 134,
             boardPositionY = 409,
             fieldSize      = 112;
@@ -113,7 +114,6 @@ namespace edge
             return NULL;
         else
         {    
-            cout << "( " << (x - boardPositionX) << " , " << (y - boardPositionY) << " )" << endl;
             int iX = (x - boardPositionX)/fieldSize;
             int iY = (y - boardPositionY)/fieldSize;
             return &board->battlefield[iX][iY];
@@ -125,5 +125,6 @@ namespace edge
         if(!origin->habitant) return;
         if(origin == dest)    return;
         cout << "SHOULD CREATE NEW PATH HERE!" << endl;
+        ((EmperorUnit* )origin->habitant)->dest = dest;
     }
 }

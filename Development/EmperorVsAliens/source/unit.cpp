@@ -28,6 +28,7 @@ bool Unit::spawn()
 		spawned = true;
 		mPosition->habitant = this;
 		loadBaseAttributes();
+		createPath();
 		return true;
 	}
 	return false;
@@ -71,12 +72,8 @@ void Unit::IA()
 	case UNIT_IDLE:
 		if(markForDeath)
 			status = UNIT_DEAD;
-		else if(!path.size()){
-			createPath();
-		}
-		else{
+		else
 			decision();
-		}
 	break;
 	case UNIT_ATTACKING: 
 		if(!attackCooldown) attack();
@@ -89,18 +86,24 @@ void Unit::IA()
 void Unit::decision()
 {
 	Field *next = !path.empty() ? path.back() : 0;
-	if(!next){
+
+	if(!next)	
 		getTarget();
-	}
-	else if(next->habitant && !next->locked){
-    	startAttack((Unit *)next->habitant);
-	}
-	else if(!next->locked){
+	else if(next->habitant && !next->locked)
+    	interact((Unit*)next->habitant);
+	else if(!target && !next->locked){
 		next->locked = true;
     	move();
 	}
 	else{
+		createPath();
 	}
+}
+
+void Unit::interact(Unit* unit)
+{
+	if(unit->isAlien() != this->isAlien())
+		startAttack(unit);
 }
 
 void Unit::move()
