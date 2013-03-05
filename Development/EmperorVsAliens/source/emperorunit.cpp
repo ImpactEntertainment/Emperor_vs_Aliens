@@ -53,6 +53,12 @@ bool EmperorUnit::isAlien()
 
 void EmperorUnit::getTarget()
 {
+	for(int way=0; way<8; way++)
+		if(mPosition->path[way]->habitant && !mPosition->path[way]->locked)
+		{
+			interact((Unit *)mPosition->path[way]->habitant);
+			break;
+		}
 	//TODO: checar se e uma posicao com "alvo de construcao objetivo" se nao procurar alvos ao redor...
 	//cout << "Attacking wall!" << endl;
 	//startAttack(this);
