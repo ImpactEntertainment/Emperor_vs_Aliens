@@ -1,13 +1,13 @@
-#include "level_01.h"
+#include "level_04.h"
 
 using namespace std;
 
-void Level_01::loadBackground()
+void Level_04::loadBackground()
 {
-	background = Image::load("/opt/EmperorVsAliens/data/images/level_01.png");
+	background = Image::load("/opt/EmperorVsAliens/data/images/level_04.png");
 }
 
-void Level_01::loadBottomGrass()
+void Level_04::loadBottomGrass()
 {
 	bottomGrass = new EnviromentElement(BOTTOM_GRASS,NULL);
 	bottomGrass->mResource.x = 0;
@@ -15,16 +15,16 @@ void Level_01::loadBottomGrass()
 	bottomGrass->mResource.width = 1920;
 	bottomGrass->mResource.height = 60;
 	bottomGrass->mPosition = new Field(0,1020);
-}
+}		
 
-void Level_01::loadSpawnPoints()
+void Level_04::loadSpawnPoints()
 {
 	spawnPoints.push_back(&battlefield[15][2]);
 	spawnPoints.push_back(&battlefield[15][3]);
 	spawnPoints.push_back(&battlefield[15][4]);
 }
 
-void Level_01::loadMainBuilding()
+void Level_04::loadMainBuilding()
 {
 	mainBuilding = new Building(500,50);
 
@@ -32,7 +32,7 @@ void Level_01::loadMainBuilding()
 		mainBuilding->addRange(&battlefield[0][y]);
 }
 
-void Level_01::loadWaves()
+void Level_04::loadWaves()
 {
 	vector<Unit*>	wave1,
 					wave2,
@@ -53,7 +53,7 @@ void Level_01::loadWaves()
 	waves.push_back(wave3);
 }
 
-void Level_01::loadEnviroment()
+void Level_04::loadEnviroment()
 {
 	EnviromentElement	cherryTree1(CHERRY_TREE,&battlefield[11][0]),
 						cherryTree2(CHERRY_TREE,&battlefield[4][4]),
@@ -73,12 +73,12 @@ void Level_01::loadEnviroment()
 	enviromentElements.push_back(smallRock01);	
 }
 
-int Level_01::getInitialResources()
+int Level_04::getInitialResources()
 {
 	return 1000;
 }
 
-int Level_01::getResourcesIncrement()
+int Level_04::getResourcesIncrement()
 {
 	return 10;
 }

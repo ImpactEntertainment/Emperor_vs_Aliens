@@ -37,7 +37,7 @@ namespace edge {
         virtual void drawImage(const Image *image, const Point& position) = 0;
 		virtual void drawImage(const Image *image, const Rectangle& baseRect, const Point& position) = 0;
       
-     	virtual void drawBackground() = 0;
+     	virtual void drawBackground(const Image* background) = 0;
      	virtual void drawBottomGrass() = 0;
      	virtual void drawEnviroment(vector<EnviromentElement>& enviroment) = 0;
      	virtual void drawUnits(list<Unit*>& units) = 0;

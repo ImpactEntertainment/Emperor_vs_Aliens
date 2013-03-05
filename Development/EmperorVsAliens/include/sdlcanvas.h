@@ -33,7 +33,7 @@ namespace edge {
         void drawImage(const Image *image, const Point& position);
         void drawImage(const Image *image, const Rectangle& baseRect, const Point& position);    
         
-        void drawBackground();
+        void drawBackground(const Image* background);
         void drawBottomGrass();
         void drawEnviroment(vector<EnviromentElement>& enviroment);
         void drawUnits(list<Unit*>& units);
@@ -46,7 +46,7 @@ namespace edge {
 
     private:
         SDL_Surface *surface;
-        Image *map_elements,*background;
+        Image *map_elements;
     };
 
 }

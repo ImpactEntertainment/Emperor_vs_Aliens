@@ -1,18 +1,18 @@
 /**
- * \file  Level_01.h
- * \brief Classe que representa o level 01.
+ * \file  Level_09.h
+ * \brief Classe que representa o level 09.
  *
  * \author Luis Gustavo Souza Silva (luisgustavodd@hotmail.com)
  * \date 25/01/2012
  */
-#ifndef LEVEL_01_H
-#define	LEVEL_01_H
+#ifndef LEVEL_09_H
+#define	LEVEL_09_H
 
 #include "map.h"
 
 using namespace std;
 	
-class Level_01 : public Map
+class Level_09 : public Map
 {
 public:
 	int getInitialResources();

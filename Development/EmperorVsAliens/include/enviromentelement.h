@@ -40,7 +40,8 @@ typedef enum EnviromentElementType
 	LARGE_ROCK_01,
 	LARGE_ROCK_02,
 	LARGE_ROCK_03,
-	SMALL_ROCK_01	
+	SMALL_ROCK_01,
+	BOTTOM_GRASS
 }EnviromentElementType; 
 
 class EnviromentElement : public Element 

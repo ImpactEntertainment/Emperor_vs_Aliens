@@ -26,16 +26,17 @@
 #define BATTLEFIELD_WIDTH 16
 #define BATTLEFIELD_HEIGHT 6
 
-
 using namespace std;
 
 class Map
 {
 private:
 	virtual void loadSpawnPoints() = 0;
+	virtual void loadBackground() = 0;
 	virtual void loadWaves() = 0;
 	virtual void loadEnviroment() = 0;
 	virtual void loadMainBuilding() = 0;
+	virtual void loadBottomGrass() = 0;
 public:    
 	virtual int getInitialResources() = 0;
 	virtual int getResourcesIncrement() = 0;
@@ -49,6 +50,8 @@ public:
     int	 getWavesLeft();
 	void reset();
 	
+	Image 						*background;
+	EnviromentElement			*bottomGrass;
 	Field						battlefield[BATTLEFIELD_WIDTH][BATTLEFIELD_HEIGHT];
 	Building					*mainBuilding;
 	vector<Field*> 				spawnPoints;

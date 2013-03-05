@@ -16,8 +16,8 @@ using namespace edge;
 class Element {
 public:
 	Rectangle mResource;	
-	Field *mPosition;
-    Image *image;
+	Field 	  *mPosition;
+    Image 	  *image;
     
 	virtual void loadRectangle() = 0;
 	virtual void loadImage() = 0;

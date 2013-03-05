@@ -11,6 +11,8 @@ void Map::reset()
 void Map::init()
 {
   	reset();
+  	loadBackground();
+  	loadBottomGrass();
  	loadBattlefield();
 	loadMainBuilding();
   	loadSpawnPoints();
@@ -48,6 +50,9 @@ bool Map::isMainBuildingDestroyed()
 
 void Map::shutdown()
 {
+	delete background;
+	delete bottomGrass->mPosition;
+	delete bottomGrass;
 }
 
 void Map::NextWave()

@@ -71,7 +71,7 @@ namespace edge
     
     void EmperorVsAliens::draw(Canvas* canvas)
     {
-        canvas->drawBackground();
+        canvas->drawBackground(board->background);
         canvas->drawUnits(swarmUnits);
         canvas->drawUnits(emperorUnits);
         canvas->drawEnviroment(board->enviromentElements);
