@@ -36,44 +36,34 @@ int main()
     Game *game = 0; 
     GUI *gui = GUIFactory::create_GUI(GUI_MAIN);
 
-    do{
-        
     /*
     */
-        if(game)
+    do{
+        try 
         {
-            try 
-            {
-                game->init(gameConfig);
-                game->loop();
-                game->shutdown();
-            }
-            catch (Exception e) {
-                cout << e.getMessage() << endl;
-                return -1;
-            }
-            game = 0;
+            gui->init(gameConfig);
+            gui->loop();
+            gui->shutdown();
         }
-        else
-        {
-            try {
-                gui->init(gameConfig);
-                gui->loop();
-                gui->shutdown();
-            }
-            catch (Exception e) {
-                cout << e.getMessage() << endl;
-                return -1;
-            }
+        catch (Exception e) {
+            cout << e.getMessage() << endl;
+            return -1;
+        }
 
-            if(gameConfig.exit){
-                //gui->shutdown();
-                break;
-            }
-            game = (GameFactory::create_game(gameConfig.difficulty));
+        if(gameConfig.exit) break;
+
+        game = (GameFactory::create_game(gameConfig.difficulty));
+        try 
+        {
+            game->init(gameConfig);
+            game->loop();
+            game->shutdown();
         }
+        catch (Exception e) {
+            cout << e.getMessage() << endl;
+            return -1;
+        }
+        game = 0;
     }while(!gameConfig.exit);
-
-    game->shutdown();
     return 0;
 }

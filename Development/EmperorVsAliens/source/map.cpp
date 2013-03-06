@@ -53,6 +53,7 @@ void Map::shutdown()
 	delete background;
 	delete bottomGrass->mPosition;
 	delete bottomGrass;
+	delete mainBuilding;
 }
 
 void Map::NextWave()
