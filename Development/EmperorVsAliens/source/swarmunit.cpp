@@ -148,16 +148,22 @@ void SwarmUnit::getTarget()
 		if(!((Building *)mPosition->goalBuilding)->destroyed) startAttack((Building *)mPosition->goalBuilding);
 		target = 0;
 	}
-	else
+	else if(mPosition)
 	{
 		for(int way = 0; (way < 8); way ++)
-		if(mPosition->path[way])
-			if(mPosition->path[way]->habitant && !mPosition->path[way]->locked)
-				if(mPosition->path[way]->habitant->isAttackable())
+		{
+			if(mPosition->path[way])
+			{
+				if(mPosition->path[way]->habitant && !mPosition->path[way]->locked)
 				{
-					interact((Unit*)mPosition->path[way]->habitant);
-					if(status == UNIT_ATTACKING) break;
+					if(mPosition->path[way]->habitant->isAttackable())
+					{
+						interact((Unit*)mPosition->path[way]->habitant);
+						if(status == UNIT_ATTACKING) break;
+					}
 				}
+			}
+		}
 	}
 	//TODO: checar se e uma posicao com "alvo de construcao objetivo" se nao procurar alvos ao redor...
 	//cout << "Attacking wall!" << endl;
