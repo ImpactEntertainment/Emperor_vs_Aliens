@@ -23,12 +23,12 @@ namespace edge
         gameConfig = &config;
         eva.init(config.level);
         
-        WAVES_LEFT      = eva.board->getWavesLeft();
-		QUIT            = false;
+        WAVES_LEFT          = eva.board->getWavesLeft();
+	    QUIT                = false;
         toggledFastForward  = false;
         toggledPause        = false;
-        selected        = 0;
-		allFrameCount   = -1;
+        selected            = 0;
+		allFrameCount       = -1;
         menu = 0;
         Timer::start();
 

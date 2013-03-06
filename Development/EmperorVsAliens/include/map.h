@@ -16,7 +16,7 @@
 #include "video.h"
 #include "window.h"
 #include "boundingrectangle.h"
-#include "imageset.h"
+#include "image.h"
 #include "enviromentelement.h"
 #include "unitfactory.h"
 #include "field.h"

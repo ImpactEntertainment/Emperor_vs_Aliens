@@ -13,6 +13,7 @@
 #define	SDLIMAGE_H
 
 #include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 
 #include "exception.h"
 #include "image.h"
@@ -27,8 +28,6 @@ namespace edge {
         int width() const;
         int height() const;
         bool hasClip() const;
-
-		Image *select(const Point& position, const Rectangle& rect) const;
         
         SDL_Surface *surface;
     };

@@ -8,7 +8,6 @@ Menu::Menu(Field *pos)
 	init(pos);
 	loadButtons();
 	frameCount = 0;
-	timeForNextFrame = 0;
     option = NO_OPTION;
 }
 
@@ -71,6 +70,10 @@ bool Menu::handleClick(int index)
     break;
     case 3:
         option = OPTION_04; 
+    break;
+    default:
+        option = NO_OPTION;
+        return false;
     break;
     }
     return true;

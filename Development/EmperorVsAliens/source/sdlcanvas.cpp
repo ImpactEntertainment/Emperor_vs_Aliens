@@ -143,7 +143,10 @@ namespace edge {
 		position.x = (element.mPosition->x)*112+134-(element.mResource.width-112);
 		position.y = (element.mPosition->y)*112+409-(element.mResource.height-112/2);
 
-		drawImage(element.image, element.mResource, position);
+		if(!element.mPosition)
+			drawImage(element.image);
+		else
+			drawImage(element.image, element.mResource, position);
 	}
 	
 	void SDL_Canvas::drawElement(const Element& element)
