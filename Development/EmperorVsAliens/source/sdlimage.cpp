@@ -5,7 +5,6 @@
  * \date 09/01/2013
  */
 #include <fstream>
-#include <SDL/SDL_image.h>
 
 #include "sdlimage.h"
 
@@ -14,8 +13,7 @@ using namespace std;
 namespace edge
 {
 
-    Image *
-    Image::load(const string& imagePath, int offsetX, int offsetY, int width, int height) throw (Exception)
+    Image *  Image::load(const string& imagePath, int offsetX, int offsetY, int width, int height) throw (Exception)
     {
 
         ifstream file(imagePath.c_str());
@@ -45,8 +43,7 @@ namespace edge
         return image;
     }
 
-    void
-    Image::release(Image *image) throw (Exception)
+    void Image::release(Image *image) throw (Exception)
     {
         if (image) {
             delete image;
@@ -65,46 +62,19 @@ namespace edge
         this->surface = surface;
     }
 
-    int
-    SDL_Image::width() const
+    int SDL_Image::width() const
     {
         return w;
     }
 
-    int
-    SDL_Image::height() const
+    int SDL_Image::height() const
     {
         return h;
     }
     
-    bool
-    SDL_Image::hasClip() const
+    bool  SDL_Image::hasClip() const
     {
     	return (offsetX || offsetY || w || h);
     }
     
-    Image *
-	SDL_Image::select(const Point& position, const Rectangle& rect) const
-	{
-		SDL_Surface *selection = SDL_CreateRGBSurface(SDL_HWSURFACE,
-			rect.width, rect.height, surface->format->BitsPerPixel,
-			surface->format->Rmask, surface->format->Gmask,
-			surface->format->Bmask, surface->format->Amask);
-		
-		if (selection == NULL) {
-			return NULL;
-		}
-		
-		SDL_Rect dest;
-		dest.x = dest.y = 0;
-		dest.w = rect.width;
-		dest.h = rect.height;
-		
-		//SDL_BlitSurface(surface, &r, selection, &dest);
-		//SDL_UpdateRect(selection, 0, 0, 0, 0);
-		SDL_BlitSurface(selection, &dest, surface, &dest);
-		SDL_UpdateRect(surface, 0, 0, 0, 0);
-		
-		return new SDL_Image(selection);
-	}
 }

@@ -24,13 +24,13 @@ namespace edge
         eva.init(config.level);
         
         WAVES_LEFT      = eva.board->getWavesLeft();
-		QUIT            = false;
+	QUIT            = false;
         toggledFastForward  = false;
         toggledPause        = false;
         selected        = 0;
-		allFrameCount   = -1;
+	allFrameCount   = -1;
         Timer::start();
-
+        menu=0;
         timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
 
     }
