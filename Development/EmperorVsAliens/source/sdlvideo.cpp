@@ -33,7 +33,10 @@ void
 SDL_Video::shutdown()
 {
 	if (isUp())
+	{
+		video = NULL;
 		SDL_QuitSubSystem(SDL_INIT_VIDEO);
+	}
 }
 
 void 

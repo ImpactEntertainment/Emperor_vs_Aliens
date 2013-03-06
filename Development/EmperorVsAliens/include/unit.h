@@ -40,12 +40,14 @@ public:
 	virtual void getTarget() = 0;
 	virtual void attack() = 0;
 	virtual	bool isAlien()=0;
+	virtual void decision();
 	void loadRectangle();
 	void loadImage();
 	//virtual void alienTarget(Unit* unit) = 0;
 	//virtual void emperorTarget(Unit* unit) = 0;
 
 	void interact(Unit* unit);
+	bool isAttackable();
 	
 	bool spawn();
 	
@@ -54,7 +56,6 @@ public:
 	void update();
 	void IA();
 	void moveTo(int x, int y);
-	void decision();
 	void startAttack(Unit* newTarget);
 	void arrive();
 	void enableAttack();

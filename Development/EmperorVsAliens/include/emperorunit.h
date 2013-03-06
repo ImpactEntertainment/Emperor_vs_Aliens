@@ -26,10 +26,11 @@ public:
 	virtual void move();
 	virtual void getTarget();
 	virtual void attack();
+	virtual void decision();
 
 	bool isAlien();
 
-	Field *dest;
+	Field *destination;
 	EmperorUnit(Field *pos);
 };
 

@@ -23,3 +23,7 @@ void Element::shutdown()
     Image::release(image);
 }
 
+bool Element::isAttackable()
+{
+	return false;
+}

@@ -18,7 +18,7 @@
 #include "gameconfig.h"
 #include "menu.h"
 
-#define WAVE_COOLDOWN       TEN_SECONDS
+#define WAVE_COOLDOWN       TEN_SECONDS*1000
 
 using namespace std;
 
@@ -35,6 +35,7 @@ namespace edge {
         
         void loop() throw(Exception);
         void shutdown();
+        void close();
         
 		void togglePause();
 		void toggleFastForward();

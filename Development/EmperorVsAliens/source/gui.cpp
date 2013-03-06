@@ -132,8 +132,6 @@ void GUI::loop() throw (Exception)
         int delayTime = ( 1000 / FRAMES_PER_SECOND ) - ticksElapsed;
         SDL_Delay( delayTime > 0 ? delayTime : 0);
     }
-
-
 }
 
 void GUI::close()
@@ -152,6 +150,7 @@ void GUI::shutdown()
         video->shutdown();
         delete video;
     }
+    close();
 }
 
 void GUI::initVideo() throw (Exception)

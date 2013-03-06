@@ -30,35 +30,50 @@ int main()
     gameConfig.exit = false;
     gameConfig.levelSelected = true;
     gameConfig.level = LEVEL_01;
+    gameConfig.difficulty = GAME_NORMAL;
 
+
+    Game *game = 0; 
     GUI *gui = GUIFactory::create_GUI(GUI_MAIN);
+
     do{
-        try {
-            gui->init(gameConfig);
-            gui->loop();
-        }
-        catch (Exception e) {
-            cout << e.getMessage() << endl;
-            return -1;
-        }
-
-        if(gameConfig.exit) break;
         
-        Game &game = *(GameFactory::create_game(gameConfig.difficulty));
-
-        try {
-            game.init(gameConfig);
-            game.loop();
+    /*
+    */
+        if(game)
+        {
+            try 
+            {
+                game->init(gameConfig);
+                game->loop();
+                game->shutdown();
+            }
+            catch (Exception e) {
+                cout << e.getMessage() << endl;
+                return -1;
+            }
+            game = 0;
         }
-        catch (Exception e) {
-            cout << e.getMessage() << endl;
-            return -1;
-        }
+        else
+        {
+            try {
+                gui->init(gameConfig);
+                gui->loop();
+                gui->shutdown();
+            }
+            catch (Exception e) {
+                cout << e.getMessage() << endl;
+                return -1;
+            }
 
-        gui->openSubmenu(0);
-        gui->close();
+            if(gameConfig.exit){
+                //gui->shutdown();
+                break;
+            }
+            game = (GameFactory::create_game(gameConfig.difficulty));
+        }
     }while(!gameConfig.exit);
 
-    gui->shutdown();
+    game->shutdown();
     return 0;
 }

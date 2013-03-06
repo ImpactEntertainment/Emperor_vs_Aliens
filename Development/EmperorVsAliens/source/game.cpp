@@ -116,7 +116,8 @@ namespace edge
                     }
                     else
                     {
-                        eva.emperorUnits.push_back(UnitFactory::create_unit((Class)menu->option,menu->mPosition));
+                        if(!menu->mPosition->habitant || !menu->mPosition->locked)
+                            eva.emperorUnits.push_back(UnitFactory::create_unit((Class)menu->option,menu->mPosition));
                     }
                     break;
                 default:
@@ -159,17 +160,16 @@ namespace edge
 
 
     }
-
+    
     void
     Game::shutdown()
     {
-        if (window) {
-            delete window;
-        }
-
         if (video && video->isUp()) {
             video->shutdown();
             delete video;
+        }
+        if (window) {
+            delete window;
         }
 
         eva.shutdown();

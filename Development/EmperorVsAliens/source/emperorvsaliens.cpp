@@ -124,7 +124,6 @@ namespace edge
     {
         if(!origin->habitant) return;
         if(origin == dest)    return;
-        cout << "SHOULD CREATE NEW PATH HERE!" << endl;
-        ((EmperorUnit* )origin->habitant)->dest = dest;
+        ((EmperorUnit* )origin->habitant)->destination = dest;
     }
 }

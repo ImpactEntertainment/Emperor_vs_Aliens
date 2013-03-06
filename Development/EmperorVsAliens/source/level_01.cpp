@@ -24,12 +24,16 @@ void Level_01::loadSpawnPoints()
 	spawnPoints.push_back(&battlefield[15][4]);
 }
 
+#include <iostream>
+using namespace std;
+
 void Level_01::loadMainBuilding()
 {
 	mainBuilding = new Building(500,50);
 
-	for(int y = 0; y < BATTLEFIELD_HEIGHT ; y++)
+	for(int y = 0; y < BATTLEFIELD_HEIGHT -1; y++)
 		mainBuilding->addRange(&battlefield[0][y]);
+
 }
 
 void Level_01::loadWaves()

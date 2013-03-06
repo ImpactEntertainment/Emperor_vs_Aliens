@@ -22,6 +22,8 @@ public:
 	virtual void loadRectangle() = 0;
 	virtual void loadImage() = 0;
 	
+	virtual bool isAttackable();
+	
 	void init();
 	Element(Field *pos);
 	Element();

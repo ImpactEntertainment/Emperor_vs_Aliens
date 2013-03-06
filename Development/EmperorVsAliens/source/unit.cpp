@@ -28,7 +28,6 @@ bool Unit::spawn()
 		spawned = true;
 		mPosition->habitant = this;
 		loadBaseAttributes();
-		createPath();
 		return true;
 	}
 	return false;
@@ -49,9 +48,7 @@ void Unit::loadImage()
 
 void Unit::update()
 {
-	if(!spawned) 
-		if(!spawn())
-			return;
+	if(!spawned) spawn();
 
 	frameCount = (frameCount + 1) % 8;
 	mResource.x = mResource.width * frameCount;
@@ -85,19 +82,27 @@ void Unit::IA()
 
 void Unit::decision()
 {
+	if(!path.size()) 
+		createPath();
+	else if(!path.back()->locked){
+    	move();
+	}
+	//olhar em volta e interagir com os habitantes ao redor
+
+	/*
 	Field *next = !path.empty() ? path.back() : 0;
 
 	if(!next)	
 		getTarget();
-	else if(next->habitant && !next->locked)
+	else if(next->habitant && next->habitant->isAttackable())
     	interact((Unit*)next->habitant);
 	else if(!target && !next->locked){
 		next->locked = true;
     	move();
 	}
 	else{
-		createPath();
 	}
+	*/
 }
 
 void Unit::interact(Unit* unit)
@@ -108,6 +113,12 @@ void Unit::interact(Unit* unit)
 
 void Unit::move()
 {
+	if(path.back()->locked  && path.back()->habitant) 
+	{
+		status = UNIT_IDLE;
+		return;
+	}
+	path.back()->locked = true;
 	ARRIVAL_TIME = Timer::get_currentFrameTick() + travelTime;
 	mPosition->habitant = NULL;
 	status = UNIT_MOVING;
@@ -155,4 +166,9 @@ void Unit::startAttack(Unit* newTarget)
 {
 	status = UNIT_ATTACKING;
 	target = newTarget;
+}
+
+bool Unit::isAttackable()
+{
+	return true;
 }
