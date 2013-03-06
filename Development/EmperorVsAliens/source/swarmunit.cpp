@@ -22,7 +22,7 @@ void SwarmUnit::loadBaseAttributes()
 
 void SwarmUnit::decision()
 {
-	if(spawned && path.empty()) getTarget();
+	if(!(target && buildingTarget) && spawned) getTarget();
     if(!(target && buildingTarget)) 
     {
 		if(!path.empty())
@@ -148,16 +148,23 @@ void SwarmUnit::getTarget()
 		if(!((Building *)mPosition->goalBuilding)->destroyed) startAttack((Building *)mPosition->goalBuilding);
 		target = 0;
 	}
-	else if(mPosition)
+	/*else if(mPosition)
 	{
+	cout << "updated4 " << this << endl;
 		for(int way = 0; (way < 8); way ++)
 		{
+	cout << "updated5" << this << endl;
 			if(mPosition->path[way])
 			{
+	cout << "updated6 " << this << endl;
 				if(mPosition->path[way]->habitant && !mPosition->path[way]->locked)
 				{
+	cout << mPosition->path[way]->habitant <<"updated7 " << this << endl;
+	cout << mPosition->path[way]->habitant <<"updated7 " << this << endl;
+	cout << mPosition->path[way]->habitant <<"updated7 " << this << endl;
 					if(mPosition->path[way]->habitant->isAttackable())
 					{
+	cout << "updated8 " << this << endl;
 						interact((Unit*)mPosition->path[way]->habitant);
 						if(status == UNIT_ATTACKING) break;
 					}
@@ -165,6 +172,7 @@ void SwarmUnit::getTarget()
 			}
 		}
 	}
+	cout << "updated9 " << this << endl;*/
 	//TODO: checar se e uma posicao com "alvo de construcao objetivo" se nao procurar alvos ao redor...
 	//cout << "Attacking wall!" << endl;
 	//startAttack(this);

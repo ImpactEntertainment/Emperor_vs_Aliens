@@ -23,7 +23,7 @@ Unit::Unit(Field *pos)
 
 bool Unit::spawn()
 {
-	if(!mPosition->habitant && !spawned)
+	if(!mPosition->habitant && !mPosition->locked && !spawned)
 	{
 		spawned = true;
 		mPosition->habitant = this;
@@ -48,7 +48,7 @@ void Unit::loadImage()
 
 void Unit::update()
 {
-	if(!spawned) spawn();
+	if(!spawned && !spawn()) return;
 
 	frameCount = (frameCount + 1) % 8;
 	mResource.x = mResource.width * frameCount;

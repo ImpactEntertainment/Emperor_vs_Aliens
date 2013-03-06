@@ -18,7 +18,7 @@
 #include "gameconfig.h"
 #include "menu.h"
 
-#define WAVE_COOLDOWN       TEN_SECONDS*1000
+#define WAVE_COOLDOWN       TEN_SECONDS
 
 using namespace std;
 
