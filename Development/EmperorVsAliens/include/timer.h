@@ -28,6 +28,7 @@ private:
     //The timer status
     static bool PAUSED;
     static bool STARTED;
+    static bool FAST_FORWARDED;
 
 public:
     //Initializes variables
@@ -41,6 +42,8 @@ public:
 
     static void set_currentFrameTick();
     static int get_currentFrameTick();
+    static void toggleFastForward();
+    static void togglePause();
 
     //Gets the timer's time
     static int get_ticks();

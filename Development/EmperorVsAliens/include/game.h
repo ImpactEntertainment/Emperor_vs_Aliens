@@ -40,10 +40,10 @@ namespace edge {
 		void togglePause();
 		void toggleFastForward();
 
-		bool PAUSED;
-		bool FAST_FORWARD;
 		bool QUIT;
 		bool GAME_ENDED;
+        bool toggledFastForward;
+        bool toggledPause;
 		int  WAVES_LEFT;
 
         int RESOURCES_COOLDOWN;

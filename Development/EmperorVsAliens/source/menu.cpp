@@ -37,7 +37,7 @@ void Menu::loadRectangle()
 
 void Menu::loadImage()
 {
-	image = Image::load("/opt/EmperorVsAliens/data/images/InGameMenu.png",mResource.x,mResource.y,mResource.width,mResource.height);
+	image = Image::load("/opt/EmperorVsAliens/data/images/InGameMenu.png");
 }
 
 void Menu::loadButtons()

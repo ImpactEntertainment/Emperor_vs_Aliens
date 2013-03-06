@@ -24,9 +24,9 @@ namespace edge
         eva.init(config.level);
         
         WAVES_LEFT      = eva.board->getWavesLeft();
-        PAUSED          = false;
-		FAST_FORWARD    = false;
 		QUIT            = false;
+        toggledFastForward  = false;
+        toggledPause        = false;
         selected        = 0;
 		allFrameCount   = -1;
         Timer::start();
@@ -48,6 +48,16 @@ namespace edge
 
         while (quitGame == false) {
 
+            if(toggledFastForward)
+            {
+                toggledFastForward = false;
+                Timer::togglePause();
+            }
+            if(toggledPause)
+            {
+                toggledPause = false;
+                Timer::togglePause();
+            }
             Timer::set_currentFrameTick();
 
             gameBehaviour();
@@ -69,9 +79,12 @@ namespace edge
 					case SDLK_SPACE:
 						togglePause();
 						break;	
-					case SDLK_f:
-						toggleFastForward();
-						break;    
+                    case SDLK_f:
+                        toggleFastForward();
+                        break;    
+                    case SDLK_p:
+                        togglePause();
+                        break;    
                     case SDLK_x:
                         callNextWave();
                         break;  
@@ -152,7 +165,7 @@ namespace edge
                 cout << "WIN" << endl;
                 quitGame = true;
             }
-            
+
             int ticksElapsed = Timer::get_ticks() - Timer::get_currentFrameTick();
             int delayTime = ( 1000 / FRAMES_PER_SECOND ) - ticksElapsed;
             SDL_Delay( delayTime > 0 ? delayTime : 0);
@@ -199,15 +212,15 @@ namespace edge
         window = WindowFactory::create(ws);
     }
     
-    void Game::togglePause()
-	{
-		PAUSED = !PAUSED;
-	}
+    void Game::toggleFastForward()
+    {
+        toggledFastForward = true;
+    }
 
-	void Game::toggleFastForward()
-	{
-		FAST_FORWARD = !FAST_FORWARD;
-	}
+    void Game::togglePause()
+    {
+        toggledPause = true;
+    }
 
 	void Game::callNextWave()
 	{

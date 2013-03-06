@@ -6,6 +6,7 @@ int Timer::CURRENT_FRAME_TICK = 0;
 int Timer::PAUSED_TICKS = 0;
 bool Timer::PAUSED = false;
 bool Timer::STARTED = false;
+bool Timer::FAST_FORWARDED = true;
 
 void Timer::start()
 {
@@ -14,6 +15,9 @@ void Timer::start()
 
     //Unpause the timer
     PAUSED = false;
+
+    
+    FAST_FORWARDED = false;
 
     //Get the current clck time
     START_TICKS = SDL_GetTicks();
@@ -67,6 +71,16 @@ int Timer::get_currentFrameTick()
     return CURRENT_FRAME_TICK;
 }
 
+void Timer::toggleFastForward()
+{
+    FAST_FORWARDED = !FAST_FORWARDED;
+}
+
+void Timer::togglePause()
+{
+    PAUSED ? unpause() : pause();
+}
+
 int Timer::get_ticks()
 {
     //If the timer is running
@@ -81,7 +95,7 @@ int Timer::get_ticks()
         else
         {
             //Return the current time minus the start time
-            return SDL_GetTicks() - START_TICKS;
+            return (SDL_GetTicks()*(FAST_FORWARDED ? 4 : 1) - START_TICKS);
         }
     }
 
