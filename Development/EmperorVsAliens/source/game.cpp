@@ -29,6 +29,7 @@ namespace edge
         toggledPause        = false;
         selected        = 0;
 		allFrameCount   = -1;
+        menu = 0;
         Timer::start();
 
         timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
@@ -51,7 +52,7 @@ namespace edge
             if(toggledFastForward)
             {
                 toggledFastForward = false;
-                Timer::togglePause();
+                Timer::toggleFastForward();
             }
             if(toggledPause)
             {

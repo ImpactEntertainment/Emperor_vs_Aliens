@@ -24,6 +24,8 @@ private:
     static int CURRENT_FRAME_TICK;
     //The ticks stored when the timer was PAUSED
     static int PAUSED_TICKS;
+    static int FORWARDED_TICKS;
+    static int FORWARDED_START;
 
     //The timer status
     static bool PAUSED;
@@ -39,6 +41,8 @@ public:
     static void stop();
     static void pause();
     static void unpause();
+    static void fastforward();
+    static void unfastforward();
 
     static void set_currentFrameTick();
     static int get_currentFrameTick();

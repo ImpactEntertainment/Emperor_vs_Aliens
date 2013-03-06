@@ -1,12 +1,17 @@
 //CODIGO DO LAZY FOO
 #include "timer.h"
 
+#include <iostream>
+using namespace std;
+
 int Timer::START_TICKS = 0;
 int Timer::CURRENT_FRAME_TICK = 0;
 int Timer::PAUSED_TICKS = 0;
+int Timer::FORWARDED_TICKS = 0;
+int Timer::FORWARDED_START = 0;
 bool Timer::PAUSED = false;
 bool Timer::STARTED = false;
-bool Timer::FAST_FORWARDED = true;
+bool Timer::FAST_FORWARDED = false;
 
 void Timer::start()
 {
@@ -17,7 +22,11 @@ void Timer::start()
     PAUSED = false;
 
     
+    CURRENT_FRAME_TICK = 0;
     FAST_FORWARDED = false;
+    PAUSED_TICKS = 0;
+    FORWARDED_TICKS = 0;
+    FORWARDED_START = 0;
 
     //Get the current clck time
     START_TICKS = SDL_GetTicks();
@@ -61,6 +70,31 @@ void Timer::unpause()
     }
 }
 
+void Timer::fastforward()
+{
+    //If the timer is running and isn't already PAUSED
+    if( STARTED && !FAST_FORWARDED )
+    {
+        //Pause the timer
+        FAST_FORWARDED = true;
+
+        FORWARDED_START = SDL_GetTicks() + FORWARDED_TICKS;
+    }
+}
+
+void Timer::unfastforward()
+{
+    //If the timer is PAUSED
+    if( STARTED && FAST_FORWARDED && !PAUSED)
+    {
+        //Unpause the timer
+        FAST_FORWARDED = false;
+
+        //Reset the starting ticks
+        FORWARDED_TICKS += (SDL_GetTicks() + FORWARDED_TICKS - FORWARDED_START)*2;
+    }
+}
+
 void Timer::set_currentFrameTick()
 {
     CURRENT_FRAME_TICK = get_ticks();
@@ -73,7 +107,7 @@ int Timer::get_currentFrameTick()
 
 void Timer::toggleFastForward()
 {
-    FAST_FORWARDED = !FAST_FORWARDED;
+    FAST_FORWARDED ? unfastforward() : fastforward();
 }
 
 void Timer::togglePause()
@@ -92,10 +126,14 @@ int Timer::get_ticks()
             //Return the number of ticks when the timer was PAUSED
             return PAUSED_TICKS;
         }
+        else if(FAST_FORWARDED)
+        {
+            return (SDL_GetTicks() + FORWARDED_TICKS- FORWARDED_START)*2 + (SDL_GetTicks() + FORWARDED_TICKS - START_TICKS) ;
+        }
         else
         {
             //Return the current time minus the start time
-            return (SDL_GetTicks()*(FAST_FORWARDED ? 4 : 1) - START_TICKS);
+            return (SDL_GetTicks() - START_TICKS) + FORWARDED_TICKS;
         }
     }
 
