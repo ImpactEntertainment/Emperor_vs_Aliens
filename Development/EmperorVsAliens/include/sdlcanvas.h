@@ -38,7 +38,6 @@ namespace edge {
         void drawEnviroment(vector<EnviromentElement>& enviroment);
         void drawUnits(list<Unit*>& units);
         
-        void drawElementAt(const Element& element, int fieldIndex);
         void drawMenu(const Menu& element);
         void drawElement(const Element& element);
         void drawUnit(Unit& element);
@@ -46,7 +45,6 @@ namespace edge {
 
     private:
         SDL_Surface *surface;
-        Image *map_elements;
     };
 
 }

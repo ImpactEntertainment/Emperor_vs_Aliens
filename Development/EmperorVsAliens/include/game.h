@@ -17,6 +17,7 @@
 #include "timer.h"
 #include "gameconfig.h"
 #include "menu.h"
+#include "hud.h"
 
 #define WAVE_COOLDOWN       TEN_SECONDS
 
@@ -54,6 +55,7 @@ namespace edge {
         Window          *window;
         Field           *selected;
         Menu            *menu;
+        HUD             *hud;
 		EmperorVsAliens eva;
         GameConfig      *gameConfig;
 

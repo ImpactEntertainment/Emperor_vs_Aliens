@@ -30,6 +30,7 @@ namespace edge
         selected            = 0;
 		allFrameCount       = -1;
         menu = 0;
+        hud = new HUD();
         Timer::start();
 
         timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
@@ -98,40 +99,51 @@ namespace edge
                     }
                     break;
                 case SDL_MOUSEBUTTONDOWN:
-                    if(menu)
+                    menuHandled = hud->handleMouseEvent(event.button);
+                    if(menuHandled)
                     {
-                        menuHandled = menu->handleMouseEvent(event.button);
-                    }
-                    if(!menuHandled)
-                    {
-                        if(event.button.button == SDL_BUTTON_LEFT)
-                            selected = eva.select(event.button.x,event.button.y);
-                        if(event.button.button == SDL_BUTTON_RIGHT && selected)
-                        {
-                            Field *oldSelected = selected;
-                            selected = eva.select(event.button.x,event.button.y);
-                            eva.moveTo(oldSelected,selected);
-                            selected = NULL;
-                        }
-                        if(selected)
-                        {
-                            menu = new Menu(selected);
-                            cout << "SELECTED ";                        
-                            if(selected->habitant)
-                                cout << "SKILL MENU" << endl;
-                            else
-                                cout << "UNIT MENU" << endl;
-                        }
-                        else
-                        {
-                            if(menu) menu->close();
-                            menu = 0;
-                        }
+                        cout << "HUD" << endl;
+                        if(hud->option==OPTION_01) togglePause();
+                        if(hud->option==OPTION_02) toggleFastForward();
+                        if(hud->option==OPTION_02) callNextWave();
                     }
                     else
                     {
-                        if(!menu->mPosition->habitant || !menu->mPosition->locked)
-                            eva.emperorUnits.push_back(UnitFactory::create_unit((Class)menu->option,menu->mPosition));
+                        if(menu)
+                        {
+                            menuHandled = menu->handleMouseEvent(event.button);
+                        }
+                        if(!menuHandled)
+                        {
+                            if(event.button.button == SDL_BUTTON_LEFT)
+                                selected = eva.select(event.button.x,event.button.y);
+                            if(event.button.button == SDL_BUTTON_RIGHT && selected)
+                            {
+                                Field *oldSelected = selected;
+                                selected = eva.select(event.button.x,event.button.y);
+                                eva.moveTo(oldSelected,selected);
+                                selected = NULL;
+                            }
+                            if(selected)
+                            {
+                                menu = new Menu(selected);
+                                cout << "SELECTED ";                        
+                                if(selected->habitant)
+                                    cout << "SKILL MENU" << endl;
+                                else
+                                    cout << "UNIT MENU" << endl;
+                            }
+                            else
+                            {
+                                if(menu) menu->close();
+                                menu = 0;
+                            }
+                        }
+                        else
+                        {
+                            if(!menu->mPosition->habitant || !menu->mPosition->locked)
+                                eva.emperorUnits.push_back(UnitFactory::create_unit((Class)menu->option,menu->mPosition));
+                        }
                     }
                     break;
                 default:
@@ -154,6 +166,7 @@ namespace edge
             // 7. Atualizar o estado do jogo (display)
             eva.draw(window->getCanvas());
             if(menu) window->getCanvas()->drawMenu(*menu);
+            if(hud) window->getCanvas()->drawImage(hud->image);
 
             window->getCanvas()->update();
 
@@ -185,7 +198,7 @@ namespace edge
         if (window) {
             delete window;
         }
-
+        delete hud;
         eva.shutdown();
     }
 

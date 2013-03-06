@@ -3,6 +3,9 @@
 #include <iostream>
 using namespace std;
 
+Menu::Menu()
+{}
+
 Menu::Menu(Field *pos)
 {
 	init(pos);

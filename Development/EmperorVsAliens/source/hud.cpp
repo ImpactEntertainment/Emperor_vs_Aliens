@@ -3,11 +3,10 @@
 #include <iostream>
 using namespace std;
 
-HUD::HUD(Field *pos)
-: Menu(pos)
+HUD::HUD()
 {
-    init(pos);
     loadButtons();
+    loadImage();
     frameCount = 0;
     option = NO_OPTION;
     mPosition = 0;
@@ -30,19 +29,14 @@ void HUD::loadRectangle()
 
 void HUD::loadImage()
 {
-	image = Image::load("/opt/EmperorVsAliens/data/images/InGameMenu.png");
+	image = Image::load("/opt/EmperorVsAliens/data/images/InGameHUD.png");
 }
 
 void HUD::loadButtons()
 {
-    int boardPositionX = 134,
-        boardPositionY = 409,
-        fieldSize      = 112;
-	int x = (mPosition->x)*fieldSize + boardPositionX - (mResource.width -fieldSize);//(mPosition->x - boardPositionX)/fieldSize;
-	int y = (mPosition->y)*fieldSize + boardPositionY - (mResource.height-fieldSize/2);//(mPosition->y - boardPositionY)/fieldSize;
-	addButton( 3+x,58+y,39,35); //togglepause
-    addButton(12+x,14+y,39,35); //toggleFastForward
-    addButton(58+x,14+y,39,35); //callNextWave
+    addButton(1104,12,38,38); //togglepause
+    addButton(1162,12,38,38); //toggleFastForward
+    addButton(1218,12,38,38); //callNextWave
 }
 
 bool HUD::handleClick(int index)
@@ -50,15 +44,19 @@ bool HUD::handleClick(int index)
     switch(index)
     {
     case 0:
+        cout << "Option 1" << endl;
         option = OPTION_01; 
     break; 
     case 1:
+        cout << "Option 2" << endl;
         option = OPTION_02; 
     break;
     case 2:
+        cout << "Option 3" << endl;
         option = OPTION_03; 
     break;
     default:
+        cout << "Option NO" << endl;
         option = NO_OPTION;
         return false;
     break;

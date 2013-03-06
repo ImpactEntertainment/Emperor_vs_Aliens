@@ -24,13 +24,14 @@ typedef enum Option
 class Menu : public Element {
 public:
 	Menu(Field *pos);
-	void update();
-	void loadRectangle();
-	void loadImage();
-
+	Menu();
+	virtual void update();
+	virtual void loadRectangle();
+	virtual void loadImage();
+	virtual void loadButtons();
+	virtual bool handleClick(int index);
+	
 	void init(Field *pos);
-	void loadButtons();
-	bool handleClick(int index);
 	void addButton(int x, int y, int w, int h);
 	bool click(Button& area);
 	bool handleMouseEvent(SDL_MouseButtonEvent &event);

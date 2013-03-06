@@ -27,7 +27,6 @@ namespace edge {
         } else {
             this->surface = surface;
         }
-        map_elements = Image::load("/opt/EmperorVsAliens/data/images/map_elements.png"); 
     }
 
     SDL_Canvas::~SDL_Canvas() {
@@ -125,16 +124,6 @@ namespace edge {
 		drawImage(background);
 	}
 	
-	void SDL_Canvas::drawElementAt(const Element& element, int fieldIndex)
-	{
-		Point position;
-
-		position.x = (fieldIndex%16)*112+134-(element.mResource.width-112);
-		position.y = (fieldIndex >> 4)*112+409-(element.mResource.height-112);
-
-		drawImage(map_elements, position);
-	}
-
 	void SDL_Canvas::drawMenu(const Menu& element)
 	{
 
