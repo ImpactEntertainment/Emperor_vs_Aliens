@@ -48,6 +48,8 @@ class EnviromentElement : public Element
 {
 public:
 	EnviromentElement(EnviromentElementType type, Field *pos);
+
+	bool isAttackable();
 	
 	EnviromentElementType mType;
 	

@@ -11,6 +11,13 @@ EnviromentElement::EnviromentElement(EnviromentElementType type, Field *pos)
 	}
 }
 
+
+bool EnviromentElement::isAttackable()
+{
+	return false;
+}
+
+
 void EnviromentElement::loadCherryTree()
 {
 	mResource.width		=(CHERRY_WIDTH);

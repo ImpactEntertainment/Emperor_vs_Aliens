@@ -67,10 +67,8 @@ void Unit::IA()
 	case UNIT_DEAD:
 	case UNIT_MOVING: break;
 	case UNIT_IDLE:
-		if(markForDeath)
-			status = UNIT_DEAD;
-		else
-			decision();
+		if(markForDeath) status = UNIT_DEAD;
+		else			 decision();
 	break;
 	case UNIT_ATTACKING: 
 		if(!attackCooldown) attack();
@@ -78,31 +76,6 @@ void Unit::IA()
 	default:
 	break;
 	}
-}
-
-void Unit::decision()
-{
-	if(!path.size()) 
-		createPath();
-	else if(!path.back()->locked){
-    	move();
-	}
-	//olhar em volta e interagir com os habitantes ao redor
-
-	/*
-	Field *next = !path.empty() ? path.back() : 0;
-
-	if(!next)	
-		getTarget();
-	else if(next->habitant && next->habitant->isAttackable())
-    	interact((Unit*)next->habitant);
-	else if(!target && !next->locked){
-		next->locked = true;
-    	move();
-	}
-	else{
-	}
-	*/
 }
 
 void Unit::interact(Unit* unit)

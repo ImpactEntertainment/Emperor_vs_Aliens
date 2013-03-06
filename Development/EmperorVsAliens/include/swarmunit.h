@@ -28,6 +28,7 @@ public:
 	virtual void startAttack(Building* newTarget);
 	virtual void startAttack(Unit* newTarget);
 	virtual void attack();
+	virtual	void decision();
 	//virtual void alienTarget(Unit* unit);
 	//virtual void emperorTarget(Unit* unit);
 	

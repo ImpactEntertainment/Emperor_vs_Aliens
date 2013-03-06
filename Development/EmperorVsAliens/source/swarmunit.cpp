@@ -19,10 +19,34 @@ void SwarmUnit::loadBaseAttributes()
 	attributes.defense	 = SWARM_UNIT_BASE_DEFENSE;
 }
 
+
+void SwarmUnit::decision()
+{
+	if(spawned && path.empty()) getTarget();
+    if(!(target && buildingTarget)) 
+    {
+		if(!path.empty())
+		{
+			if(!path.back()->locked)
+			{
+				if(!path.back()->habitant)						move();
+				else if(path.back()->habitant->isAttackable())  interact((Unit*)path.back()->habitant);
+		    }
+		    else
+		    {
+		    	//anti-stuck
+	    		path.clear();
+	    	}
+	    }
+	    else createPath();
+    }
+}
+
+
 void SwarmUnit::createPath()
 {
 	Field *next = mPosition;
-	while(next)
+	while(next->path[WEST])
 	{ 
 		next = next->path[WEST];
 		path.push_front(next);
@@ -122,6 +146,18 @@ void SwarmUnit::getTarget()
 {
 	if(mPosition->goalBuilding){
 		if(!((Building *)mPosition->goalBuilding)->destroyed) startAttack((Building *)mPosition->goalBuilding);
+		target = 0;
+	}
+	else
+	{
+		for(int way = 0; (way < 8); way ++)
+		if(mPosition->path[way])
+			if(mPosition->path[way]->habitant && !mPosition->path[way]->locked)
+				if(mPosition->path[way]->habitant->isAttackable())
+				{
+					interact((Unit*)mPosition->path[way]->habitant);
+					if(status == UNIT_ATTACKING) break;
+				}
 	}
 	//TODO: checar se e uma posicao com "alvo de construcao objetivo" se nao procurar alvos ao redor...
 	//cout << "Attacking wall!" << endl;

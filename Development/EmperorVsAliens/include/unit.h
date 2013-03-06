@@ -40,7 +40,7 @@ public:
 	virtual void getTarget() = 0;
 	virtual void attack() = 0;
 	virtual	bool isAlien()=0;
-	virtual void decision();
+	virtual void decision()=0;
 	void loadRectangle();
 	void loadImage();
 	//virtual void alienTarget(Unit* unit) = 0;

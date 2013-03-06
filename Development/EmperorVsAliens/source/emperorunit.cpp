@@ -18,38 +18,49 @@ void EmperorUnit::loadBaseAttributes()
 	attributes.defense	 = EMPEROR_UNIT_BASE_DEFENSE;
 }
 
+
+void EmperorUnit::getTarget()
+{
+	for(int way = 0; (way < 8); way ++)
+		if(mPosition->path[way])
+			if(mPosition->path[way]->habitant && !mPosition->path[way]->locked)
+				if(mPosition->path[way]->habitant->isAttackable())
+				{
+					interact((Unit*)mPosition->path[way]->habitant);
+					if(status == UNIT_ATTACKING) break;
+				}
+}
+
 void EmperorUnit::decision()
 {
-
 	if(!path.empty())
 	{
-		if(!path.back()->locked){
-			path.back()->locked = true;
-	    	move();
+		if(!path.back()->locked)
+		{
+			if(!path.back()->habitant)						move();
+			else if(path.back()->habitant->isAttackable())  interact((Unit*)path.back()->habitant);
+	    }
+	    else
+	    {
+	    	//anti-stuck
+    		path.clear();
+    		getTarget();
     	}
     }
-	else if(destination) 
+	else if(destination) {
 		createPath();
-	
-	
-	//olhar em volta e interagir com os habitantes ao redor
-	/*
-	Field *next = !path.empty() ? path.back() : 0;
-	if(!next)	
+	}
+	else if(!target) {
 		getTarget();
-	else if(next->habitant && next->habitant->isAttackable())
-    	interact((Unit*)next->habitant);
-	else if(!target && !next->locked){
-		next->locked = true;
-    	move();
 	}
-	else{
+	else {
+		interact(target);
 	}
-	*/
 }
 
 void EmperorUnit::createPath()
 {
+	if(!destination) return;
 	int difX = mPosition->x - destination->x;
 	int difY = mPosition->y - destination->y;
 	Field *next = mPosition;
@@ -153,12 +164,4 @@ void EmperorUnit::attack()
 bool EmperorUnit::isAlien()
 {
 	return false;
-}
-
-void EmperorUnit::getTarget()
-{
-	
-	//TODO: checar se e uma posicao com "alvo de construcao objetivo" se nao procurar alvos ao redor...
-	//cout << "Attacking wall!" << endl;
-	//startAttack(this);
 }
