@@ -102,7 +102,6 @@ namespace edge
                     menuHandled = hud->handleMouseEvent(event.button);
                     if(menuHandled)
                     {
-                        cout << "HUD" << endl;
                         if(hud->option==OPTION_01) togglePause();
                         if(hud->option==OPTION_02) toggleFastForward();
                         if(hud->option==OPTION_02) callNextWave();
