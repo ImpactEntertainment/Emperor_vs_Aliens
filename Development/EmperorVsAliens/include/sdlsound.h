@@ -15,19 +15,17 @@
 #include <SDL/SDL_mixer.h>
 
 #include "exception.h"
-#include "sound.h"
 
-namespace edge {
-
-    class SDL_Sound : public Sound {
+    class SDL_Sound {
     public:
-        SDL_Sound(Mix_Music *sound);
+        SDL_Sound * load(const string& soundPath) throw (Exception);
+        SDL_Sound(Mix_Chunk *sound);               
         ~SDL_Sound();
         static void play(SDL_Sound *sound) throw (Exception); 
        
-        Mix_Music *sound_stream;
+        Mix_Chunk *sound;
     };
-}
+
 
 #endif
 
