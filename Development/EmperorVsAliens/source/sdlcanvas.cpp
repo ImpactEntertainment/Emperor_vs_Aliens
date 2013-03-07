@@ -53,7 +53,6 @@ namespace edge {
 
     void SDL_Canvas::drawImage(const Image *image, const Point& position){
         const SDL_Image *sdlimage = dynamic_cast<const SDL_Image *>(image);
-        
         SDL_Rect *source = NULL; 
         
         SDL_Rect rect;

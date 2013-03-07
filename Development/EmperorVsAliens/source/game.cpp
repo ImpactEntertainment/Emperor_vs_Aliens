@@ -30,10 +30,10 @@ namespace edge
         selected            = 0;
 		allFrameCount       = -1;
         menu = 0;
-        hud = new HUD();
+        hud = new HUD(&eva.resources,&timeLeftForNextWave);
         Timer::start();
 
-        timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
+        timeLeftForNextWave = timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
 
     }
 
@@ -61,10 +61,15 @@ namespace edge
                 Timer::togglePause();
             }
             Timer::set_currentFrameTick();
-
+            timeLeftForNextWave = WAVES_LEFT ? timeForNextWave - Timer::get_currentFrameTick() : 0;
+            
             gameBehaviour();
             if(Timer::get_currentFrameTick() >= timeForNextWave)
                 callNextWave();
+            if(Timer::get_currentFrameTick() > RESOURCES_COOLDOWN){
+                eva.increaseResources();
+                RESOURCES_COOLDOWN = Timer::get_currentFrameTick() + THREE_SECONDS;
+            }
 
             while (SDL_PollEvent(&event)) {
 
@@ -156,11 +161,8 @@ namespace edge
             // 5. Atualizar entidades do jogo
 			eva.update();
             if(menu) menu->update();
+            if(hud)  hud->update();
 
-            if(Timer::get_currentFrameTick() > RESOURCES_COOLDOWN){
-                eva.increaseResources();
-                RESOURCES_COOLDOWN = Timer::get_currentFrameTick() + THREE_SECONDS;
-            }
             // 6. Enviar/receber mensagens da rede
             // 7. Atualizar o estado do jogo (display)
             eva.draw(window->getCanvas());
@@ -169,13 +171,19 @@ namespace edge
 
             window->getCanvas()->update();
 
+
+
             if(eva.isMainBuildingDestroyed()) 
             {
                 cout << "LOSE" << endl;
+                window->getCanvas()->drawImage(hud->display.defeatMessage, *(new Point(10,10)));
+                SDL_Delay(FIVE_SECONDS);
                 quitGame = true;
             }
             if(eva.noMoreEnemies()){
                 cout << "WIN" << endl;
+                window->getCanvas()->drawImage(hud->display.victoryMessage, hud->display.victoryMessagePosition);
+                SDL_Delay(FIVE_SECONDS);
                 quitGame = true;
             }
 

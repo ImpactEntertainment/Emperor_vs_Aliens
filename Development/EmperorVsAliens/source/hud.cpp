@@ -1,5 +1,6 @@
 #include "hud.h"
-
+#include <iomanip>
+#include <sstream>
 #include <iostream>
 using namespace std;
 
@@ -7,15 +8,32 @@ HUD::HUD()
 {
     loadButtons();
     loadImage();
+    display.init();
     frameCount = 0;
     option = NO_OPTION;
     mPosition = 0;
 }
 
+HUD::HUD(int* r, int* t)
+: resource(r), time(t)
+{
+    HUD();
+}
+
 void HUD::update()
 {
-    //frameCount += frameCount < 7 ? 1 : 0;
-	//mResource.x = mResource.width * frameCount; 
+    cout << "resource: " << *resource << endl;
+    cout << "time: " << printTime() << endl; 
+}
+
+string HUD::printTime()
+{
+   stringstream ss;
+   if(*time <= 0)
+    ss << "00'000";
+   else 
+    ss << setfill('0') << setw(2) << ((*time)/1000) << "'" << setfill('0') << setw(3) << ((*time)%1000);
+   return ss.str();
 }
 
 void HUD::loadRectangle()
