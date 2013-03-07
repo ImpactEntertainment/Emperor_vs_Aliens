@@ -44,19 +44,15 @@ bool HUD::handleClick(int index)
     switch(index)
     {
     case 0:
-        cout << "Option 1" << endl;
         option = OPTION_01; 
     break; 
     case 1:
-        cout << "Option 2" << endl;
         option = OPTION_02; 
     break;
     case 2:
-        cout << "Option 3" << endl;
         option = OPTION_03; 
     break;
     default:
-        cout << "Option NO" << endl;
         option = NO_OPTION;
         return false;
     break;

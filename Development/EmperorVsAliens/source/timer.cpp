@@ -44,8 +44,10 @@ void Timer::stop()
 void Timer::pause()
 {
     //If the timer is running and isn't already PAUSED
+
     if( ( STARTED == true ) && ( PAUSED == false ) )
     {
+        if(FAST_FORWARDED) unfastforward();
         //Pause the timer
         PAUSED = true;
 
@@ -57,7 +59,7 @@ void Timer::pause()
 void Timer::unpause()
 {
     //If the timer is PAUSED
-    if( PAUSED == true )
+    if( PAUSED == true)
     {
         //Unpause the timer
         PAUSED = false;
@@ -73,7 +75,7 @@ void Timer::unpause()
 void Timer::fastforward()
 {
     //If the timer is running and isn't already PAUSED
-    if( STARTED && !FAST_FORWARDED )
+    if( STARTED && !FAST_FORWARDED && !PAUSED )
     {
         //Pause the timer
         FAST_FORWARDED = true;
@@ -124,7 +126,7 @@ int Timer::get_ticks()
         if( PAUSED == true )
         {
             //Return the number of ticks when the timer was PAUSED
-            return PAUSED_TICKS;
+            return PAUSED_TICKS+ FORWARDED_TICKS;
         }
         else if(FAST_FORWARDED)
         {
