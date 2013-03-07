@@ -11,6 +11,7 @@
  */
 #include <iostream>
 #include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
 
 #include "gameconfig.h"
 #include "windowfactory.h"
@@ -21,6 +22,20 @@
 
 using namespace std;
 using namespace edge;
+  Mix_Chunk *music = NULL;
+  Mix_Chunk *music2 = NULL;
+
+    void makeSound(){
+       
+	music = Mix_LoadWAV("/opt/EmperorVsAliens/data/sounds/sound_of_death.ogg");
+	Mix_PlayChannel(-1,music, 0);
+    }
+     void makeSound2(){
+        
+        
+	music2 = Mix_LoadWAV("/opt/EmperorVsAliens/data/sounds/thunder/0.ogg");
+	Mix_PlayChannel(-1,music2, 0);
+    }
 
 
 int main()
@@ -42,6 +57,11 @@ int main()
         try 
         {
             gui->init(gameConfig);
+                    
+                    Mix_OpenAudio( 22050,AUDIO_S16SYS,2,640 );
+              makeSound();
+              makeSound2();
+       
             gui->loop();
             gui->shutdown();
         }
@@ -49,7 +69,8 @@ int main()
             cout << e.getMessage() << endl;
             return -1;
         }
-
+        Mix_FreeChunk(music);
+        Mix_FreeChunk(music2);
         if(gameConfig.exit) break;
 
         game = (GameFactory::create_game(gameConfig.difficulty));
@@ -67,3 +88,4 @@ int main()
     }while(!gameConfig.exit);
     return 0;
 }
+
