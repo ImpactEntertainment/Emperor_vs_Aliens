@@ -161,13 +161,13 @@ namespace edge
             // 5. Atualizar entidades do jogo
 			eva.update();
             if(menu) menu->update();
-            if(hud)  hud->update();
+            //if(hud)  hud->update();
 
             // 6. Enviar/receber mensagens da rede
             // 7. Atualizar o estado do jogo (display)
             eva.draw(window->getCanvas());
             if(menu) window->getCanvas()->drawMenu(*menu);
-            if(hud) window->getCanvas()->drawImage(hud->image);
+            if(hud) window->getCanvas()->drawMenu(*hud);
 
             window->getCanvas()->update();
 
@@ -176,14 +176,14 @@ namespace edge
             if(eva.isMainBuildingDestroyed()) 
             {
                 cout << "LOSE" << endl;
-                window->getCanvas()->drawImage(hud->display.defeatMessage, *(new Point(10,10)));
-                SDL_Delay(FIVE_SECONDS);
+                //window->getCanvas()->drawImage(hud->display.defeatMessage, *(new Point(10,10)));
+                //SDL_Delay(FIVE_SECONDS);
                 quitGame = true;
             }
             if(eva.noMoreEnemies()){
                 cout << "WIN" << endl;
-                window->getCanvas()->drawImage(hud->display.victoryMessage, hud->display.victoryMessagePosition);
-                SDL_Delay(FIVE_SECONDS);
+                //window->getCanvas()->drawImage(hud->display.victoryMessage, hud->display.victoryMessagePosition);
+                //SDL_Delay(FIVE_SECONDS);
                 quitGame = true;
             }
 

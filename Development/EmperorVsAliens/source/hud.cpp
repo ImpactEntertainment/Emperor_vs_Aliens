@@ -7,8 +7,8 @@ using namespace std;
 HUD::HUD()
 {
     loadButtons();
-    loadImage();
-    display.init();
+    HUD::loadImage();
+    //display.init();
     frameCount = 0;
     option = NO_OPTION;
     mPosition = 0;
@@ -17,7 +17,12 @@ HUD::HUD()
 HUD::HUD(int* r, int* t)
 : resource(r), time(t)
 {
-    HUD();
+    loadButtons();
+    HUD::loadImage();
+    //display.init();
+    frameCount = 0;
+    option = NO_OPTION;
+    mPosition = 0;
 }
 
 void HUD::update()
@@ -47,7 +52,7 @@ void HUD::loadRectangle()
 
 void HUD::loadImage()
 {
-	image = Image::load("/opt/EmperorVsAliens/data/images/InGameHUD.png");
+    image = Image::load("/opt/EmperorVsAliens/data/images/InGameHUD.png");
 }
 
 void HUD::loadButtons()

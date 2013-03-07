@@ -32,6 +32,7 @@ public:
 	virtual bool handleClick(int index);
 	
 	void init(Field *pos);
+	void init();
 	void addButton(int x, int y, int w, int h);
 	bool click(Button& area);
 	bool handleMouseEvent(SDL_MouseButtonEvent &event);

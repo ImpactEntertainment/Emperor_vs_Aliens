@@ -7,7 +7,7 @@
 
 #include <string>
 #include "menu.h"
-#include "display.h"
+//#include "display.h"
 
 using namespace edge;
 using namespace std;
@@ -23,7 +23,7 @@ public:
 	bool handleClick(int index);
 	string printTime();
 
-	Display display;
+	//Display display;
 	int* resource;
 	int* time;
 private:

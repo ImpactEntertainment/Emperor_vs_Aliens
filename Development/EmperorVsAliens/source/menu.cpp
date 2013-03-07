@@ -16,8 +16,14 @@ Menu::Menu(Field *pos)
 
 void Menu::init(Field *pos)
 {
-	Element::init();
-	mPosition = pos;
+    Element::init();
+    mPosition = pos;
+}
+
+void Menu::init()
+{
+    Element::init();
+    mPosition = 0;
 }
 
 void Menu::update()
