@@ -40,6 +40,7 @@ namespace edge {
         
         void drawMenu(const Menu& element);
         void drawMenu(const HUD& element);
+        void drawDisplay(const Display& element);
         void drawElement(const Element& element);
         void drawUnit(Unit& element);
             

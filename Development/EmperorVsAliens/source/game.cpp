@@ -30,7 +30,7 @@ namespace edge
         selected            = 0;
 		allFrameCount       = -1;
         menu = 0;
-        hud = new HUD(&eva.resources,&timeLeftForNextWave);
+        hud = new HUD(&eva.resources,&timeLeftForNextWave,&WAVES_LEFT);
         Timer::start();
 
         timeLeftForNextWave = timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
@@ -161,35 +161,37 @@ namespace edge
             // 5. Atualizar entidades do jogo
 			eva.update();
             if(menu) menu->update();
-            //if(hud)  hud->update();
+            if(hud)  hud->update();
 
             // 6. Enviar/receber mensagens da rede
             // 7. Atualizar o estado do jogo (display)
             eva.draw(window->getCanvas());
             if(menu) window->getCanvas()->drawMenu(*menu);
-            if(hud) window->getCanvas()->drawMenu(*hud);
+            window->getCanvas()->drawMenu(*hud);
+            //window->getCanvas()->drawDisplays(hud->displays);
 
-            window->getCanvas()->update();
-
-
+            window->getCanvas()->drawImage(hud->timeDisplay.image,hud->timeDisplay.position);
+            window->getCanvas()->drawImage(hud->resourceDisplay.image,hud->resourceDisplay.position);
+            window->getCanvas()->drawImage(hud->wavesLeftDisplay.image,hud->wavesLeftDisplay.position);
 
             if(eva.isMainBuildingDestroyed()) 
             {
                 cout << "LOSE" << endl;
-                //window->getCanvas()->drawImage(hud->display.defeatMessage, *(new Point(10,10)));
-                //SDL_Delay(FIVE_SECONDS);
+                window->getCanvas()->drawImage(hud->defeat.image,hud->defeat.position);
                 quitGame = true;
             }
             if(eva.noMoreEnemies()){
                 cout << "WIN" << endl;
-                //window->getCanvas()->drawImage(hud->display.victoryMessage, hud->display.victoryMessagePosition);
-                //SDL_Delay(FIVE_SECONDS);
+                window->getCanvas()->drawImage(hud->victory.image,hud->victory.position);
                 quitGame = true;
             }
+
+            window->getCanvas()->update();
 
             int ticksElapsed = Timer::get_ticks() - Timer::get_currentFrameTick();
             int delayTime = ( 1000 / FRAMES_PER_SECOND ) - ticksElapsed;
             SDL_Delay( delayTime > 0 ? delayTime : 0);
+            if(quitGame) SDL_Delay(THREE_SECONDS);  
         }
 
 
