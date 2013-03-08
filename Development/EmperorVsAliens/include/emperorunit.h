@@ -19,6 +19,8 @@
 #define EMPEROR_UNIT_SPEED_Y  	112.0/EMPEROR_UNIT_TRAVEL_TIME
 #define EMPEROR_UNIT_SPEED_XY 	(112) // TODO: (sqrt(2) * 112)/EMPEROR_UNIT_TRAVEL_TIME
 
+#define EMPEROR_UNIT_COST		300
+
 class EmperorUnit : public Unit {
 public:
 	virtual void loadBaseAttributes();
@@ -30,6 +32,7 @@ public:
 
 	bool isAlien();
 
+	int cost;
 	Field *destination;
 	EmperorUnit(Field *pos);
 };

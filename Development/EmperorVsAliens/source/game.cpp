@@ -130,6 +130,7 @@ namespace edge
                             }
                             if(selected)
                             {
+                                //implementar uma fabrica de menus para gerar um menu de skill ou de criacao
                                 menu = new Menu(selected);
                                 cout << "SELECTED ";                        
                                 if(selected->habitant)
@@ -147,6 +148,10 @@ namespace edge
                         {
                             if(!menu->mPosition->habitant || !menu->mPosition->locked)
                                 eva.emperorUnits.push_back(UnitFactory::create_unit((Class)menu->option,menu->mPosition));
+                                if(eva.resources >= ((EmperorUnit*)eva.emperorUnits.back())->cost)
+                                    eva.resources -= ((EmperorUnit*)eva.emperorUnits.back())->cost;
+                                else
+                                    eva.emperorUnits.pop_back();
                         }
                     }
                     break;
@@ -168,20 +173,18 @@ namespace edge
             eva.draw(window->getCanvas());
             if(menu) window->getCanvas()->drawMenu(*menu);
             window->getCanvas()->drawMenu(*hud);
-            //window->getCanvas()->drawDisplays(hud->displays);
 
+            //drawing displays
             window->getCanvas()->drawImage(hud->timeDisplay.image,hud->timeDisplay.position);
             window->getCanvas()->drawImage(hud->resourceDisplay.image,hud->resourceDisplay.position);
             window->getCanvas()->drawImage(hud->wavesLeftDisplay.image,hud->wavesLeftDisplay.position);
 
             if(eva.isMainBuildingDestroyed()) 
             {
-                cout << "LOSE" << endl;
                 window->getCanvas()->drawImage(hud->defeat.image,hud->defeat.position);
                 quitGame = true;
             }
             if(eva.noMoreEnemies()){
-                cout << "WIN" << endl;
                 window->getCanvas()->drawImage(hud->victory.image,hud->victory.position);
                 quitGame = true;
             }

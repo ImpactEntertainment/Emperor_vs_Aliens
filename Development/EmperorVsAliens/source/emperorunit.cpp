@@ -7,6 +7,7 @@ EmperorUnit::EmperorUnit(Field *pos)
 : Unit(pos)
 {
 	destination = NULL;
+	cost = EMPEROR_UNIT_COST;
 }
 
 void EmperorUnit::loadBaseAttributes()
