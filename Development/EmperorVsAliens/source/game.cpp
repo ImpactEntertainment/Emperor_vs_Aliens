@@ -30,10 +30,10 @@ namespace edge
         selected            = 0;
 		allFrameCount       = -1;
         menu = 0;
-        hud = new HUD();
+        hud = new HUD(&eva.resources,&timeLeftForNextWave,&WAVES_LEFT);
         Timer::start();
 
-        timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
+        timeLeftForNextWave = timeForNextWave = Timer::get_ticks() + WAVE_COOLDOWN;
 
     }
 
@@ -61,10 +61,15 @@ namespace edge
                 Timer::togglePause();
             }
             Timer::set_currentFrameTick();
-
+            timeLeftForNextWave = WAVES_LEFT ? timeForNextWave - Timer::get_currentFrameTick() : 0;
+            
             gameBehaviour();
             if(Timer::get_currentFrameTick() >= timeForNextWave)
                 callNextWave();
+            if(Timer::get_currentFrameTick() > RESOURCES_COOLDOWN){
+                eva.increaseResources();
+                RESOURCES_COOLDOWN = Timer::get_currentFrameTick() + THREE_SECONDS;
+            }
 
             while (SDL_PollEvent(&event)) {
 
@@ -125,6 +130,7 @@ namespace edge
                             }
                             if(selected)
                             {
+                                //implementar uma fabrica de menus para gerar um menu de skill ou de criacao
                                 menu = new Menu(selected);
                                 cout << "SELECTED ";                        
                                 if(selected->habitant)
@@ -142,6 +148,10 @@ namespace edge
                         {
                             if(!menu->mPosition->habitant || !menu->mPosition->locked)
                                 eva.emperorUnits.push_back(UnitFactory::create_unit((Class)menu->option,menu->mPosition));
+                                if(eva.resources >= ((EmperorUnit*)eva.emperorUnits.back())->cost)
+                                    eva.resources -= ((EmperorUnit*)eva.emperorUnits.back())->cost;
+                                else
+                                    eva.emperorUnits.pop_back();
                         }
                     }
                     break;
@@ -156,32 +166,35 @@ namespace edge
             // 5. Atualizar entidades do jogo
 			eva.update();
             if(menu) menu->update();
+            if(hud)  hud->update();
 
-            if(Timer::get_currentFrameTick() > RESOURCES_COOLDOWN){
-                eva.increaseResources();
-                RESOURCES_COOLDOWN = Timer::get_currentFrameTick() + THREE_SECONDS;
-            }
             // 6. Enviar/receber mensagens da rede
             // 7. Atualizar o estado do jogo (display)
             eva.draw(window->getCanvas());
             if(menu) window->getCanvas()->drawMenu(*menu);
-            if(hud) window->getCanvas()->drawImage(hud->image);
+            window->getCanvas()->drawMenu(*hud);
 
-            window->getCanvas()->update();
+            //drawing displays
+            window->getCanvas()->drawImage(hud->timeDisplay.image,hud->timeDisplay.position);
+            window->getCanvas()->drawImage(hud->resourceDisplay.image,hud->resourceDisplay.position);
+            window->getCanvas()->drawImage(hud->wavesLeftDisplay.image,hud->wavesLeftDisplay.position);
 
             if(eva.isMainBuildingDestroyed()) 
             {
-                cout << "LOSE" << endl;
+                window->getCanvas()->drawImage(hud->defeat.image,hud->defeat.position);
                 quitGame = true;
             }
             if(eva.noMoreEnemies()){
-                cout << "WIN" << endl;
+                window->getCanvas()->drawImage(hud->victory.image,hud->victory.position);
                 quitGame = true;
             }
+
+            window->getCanvas()->update();
 
             int ticksElapsed = Timer::get_ticks() - Timer::get_currentFrameTick();
             int delayTime = ( 1000 / FRAMES_PER_SECOND ) - ticksElapsed;
             SDL_Delay( delayTime > 0 ? delayTime : 0);
+            if(quitGame) SDL_Delay(THREE_SECONDS);  
         }
 
 

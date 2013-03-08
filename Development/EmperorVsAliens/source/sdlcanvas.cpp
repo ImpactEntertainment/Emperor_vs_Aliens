@@ -53,19 +53,8 @@ namespace edge {
 
     void SDL_Canvas::drawImage(const Image *image, const Point& position){
         const SDL_Image *sdlimage = dynamic_cast<const SDL_Image *>(image);
-        
         SDL_Rect *source = NULL; 
         
-        SDL_Rect rect;
-        if(sdlimage->hasClip())
-		{
-		    rect.x = sdlimage->offsetX;
-		    rect.y = sdlimage->offsetY;
-		    rect.w = sdlimage->width();
-		    rect.h = sdlimage->height();
-		    source = &rect;
-		}
-		
         SDL_Rect dest;
         dest.x = position.x;
         dest.y = position.y;
@@ -92,20 +81,20 @@ namespace edge {
 	SDL_Canvas::drawImage(const Image *image, const Rectangle& baseRect, const Point& position)
 	{
 		const SDL_Image *sdlimage = dynamic_cast<const SDL_Image *>(image);
-        
+ 
 		SDL_Rect srcrect;
 		srcrect.x = baseRect.x;
 		srcrect.y = baseRect.y;
 		srcrect.w = baseRect.width;
 		srcrect.h = baseRect.height;
-		
+
         SDL_Rect rect;
         rect.x = position.x;
         rect.y = position.y;
         rect.w = sdlimage->width();
         rect.h = sdlimage->height();
         
-        SDL_BlitSurface(sdlimage->surface, &srcrect, surface, &rect);
+        SDL_BlitSurface(sdlimage->surface,&srcrect, surface, &rect);
 	}
 	
 	void SDL_Canvas::drawBottomGrass(const EnviromentElement* bottomGrass)
@@ -132,10 +121,17 @@ namespace edge {
 		position.x = (element.mPosition->x)*112+134-(element.mResource.width-112);
 		position.y = (element.mPosition->y)*112+409-(element.mResource.height-112/2);
 
-		if(!element.mPosition)
-			drawImage(element.image);
-		else
-			drawImage(element.image, element.mResource, position);
+		drawImage(element.image, element.mResource, position);
+	}
+
+	void SDL_Canvas::drawMenu(const HUD& element)
+	{	
+		drawImage(element.image);
+	}
+	
+	void SDL_Canvas::drawDisplay(const Display& element)
+	{	
+		drawImage(element.image,element.position);
 	}
 	
 	void SDL_Canvas::drawElement(const Element& element)
@@ -146,7 +142,7 @@ namespace edge {
 		position.x = (element.mPosition->x)*112+134-(element.mResource.width-112);
 		position.y = (element.mPosition->y)*112+409-(element.mResource.height-112);
 
-		drawImage(element.image, position);
+		drawImage(element.image, element.mResource, position);
 	}
 	
 	void SDL_Canvas::drawUnit(Unit& element){
