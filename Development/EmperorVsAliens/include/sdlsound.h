@@ -24,6 +24,7 @@
         static void play(SDL_Sound *sound) throw (Exception); 
        
         Mix_Chunk *sound;
+        int enabled;
     };
 
 
