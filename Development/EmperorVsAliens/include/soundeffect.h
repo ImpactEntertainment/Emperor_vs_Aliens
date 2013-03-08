@@ -8,7 +8,7 @@
 #ifndef SOUND_EFFECTS_H
 #define SOUND_EFFECTS_H
 #include "sdlsound.h"
-typedef struct Effect
+typedef struct Effects
 {
 	SDL_Sound *main;
 	SDL_Sound *level01;
@@ -27,11 +27,12 @@ typedef struct Effect
 	SDL_Sound *whip;
 	SDL_Sound *thunder;
 	SDL_Sound *rain;
-}Effect;
+}Effects;
 
 class SoundEffect {
 public:
     static void play_effects();
+    Effects effects;
 };
 
 #endif

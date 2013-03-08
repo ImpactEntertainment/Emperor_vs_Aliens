@@ -18,9 +18,9 @@
 
     class SDL_Sound {
     public:
-        SDL_Sound * load(const string& soundPath) throw (Exception);
         SDL_Sound(Mix_Chunk *sound);               
         ~SDL_Sound();
+        SDL_Sound * load(const string& soundPath) throw (Exception);
         static void play(SDL_Sound *sound) throw (Exception); 
        
         Mix_Chunk *sound;
