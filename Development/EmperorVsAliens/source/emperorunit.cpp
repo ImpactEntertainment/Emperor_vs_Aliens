@@ -22,7 +22,7 @@ void EmperorUnit::loadRectangle()
 
 void EmperorUnit::loadImage()
 {
-	image = Image::load("/opt/EmperorVsAliens/data/images/map_elements.png");
+	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_samurai.png");
 }
 
 void EmperorUnit::loadBaseAttributes()
