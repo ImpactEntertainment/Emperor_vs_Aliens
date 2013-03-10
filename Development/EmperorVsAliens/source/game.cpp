@@ -185,6 +185,19 @@ namespace edge
                 quitGame = true;
             }
             if(eva.noMoreEnemies()){
+                if(gameConfig->level == LEVEL_12)
+                {
+                    if(gameConfig->difficulty != GAME_HARD)
+                    {
+                        gameConfig->difficulty = (Difficulty) (gameConfig->difficulty + 1);
+                        gameConfig->difficultyEnabled[gameConfig->difficulty+1] = true;
+                    }
+                }
+                else
+                {
+                    gameConfig->level = (Level) (gameConfig->level + 1);
+                    gameConfig->levelEnabled[gameConfig->level+1] = true;
+                }
                 window->getCanvas()->drawImage(hud->victory.image,hud->victory.position);
                 quitGame = true;
             }
