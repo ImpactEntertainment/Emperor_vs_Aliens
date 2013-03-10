@@ -12,9 +12,9 @@ class EmperorUnit : public Unit {
 public:
 	virtual void loadBaseAttributes()=0;
 	virtual void loadImage()=0;
-        virtual float getMaxSpeedX()=0;
-        virtual float getMaxSpeedY()=0;
-        virtual float getMaxSpeedXY()=0;
+    virtual float getMaxSpeedX()=0;
+    virtual float getMaxSpeedY()=0;
+    virtual float getMaxSpeedXY()=0;
 
 	virtual void createPath();
 	virtual void move();

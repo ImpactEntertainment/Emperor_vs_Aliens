@@ -9,7 +9,7 @@ Archer::Archer(Field *pos)
 
 void Archer::loadImage()
 {
-	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_samurai.png");
+	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_archer.png");
 }
 
 void Archer::loadBaseAttributes()
