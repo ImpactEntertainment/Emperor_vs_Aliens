@@ -15,8 +15,8 @@ void Monk::loadImage()
 void Monk::loadBaseAttributes()
 {
 	backswingTime 		 = MONK_BACKSWING_TIME;
-	travelTime 		 = MONK_TRAVEL_TIME;
-	attributes.hitpoints     = MONK_BASE_HITPOINTS;
+	travelTime 		 	 = MONK_TRAVEL_TIME;
+	attributes.hitpoints = MONK_BASE_HITPOINTS;
 	attributes.damage	 = MONK_BASE_DAMAGE;
 	attributes.defense	 = MONK_BASE_DEFENSE;
 }

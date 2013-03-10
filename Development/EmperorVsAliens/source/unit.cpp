@@ -107,7 +107,7 @@ void Unit::enableAttack()
 
 void Unit::receiveDamage(int damage)
 {
-	attributes.hitpoints -= (damage - attributes.defense);
+	attributes.hitpoints -= (damage - attributes.defense) < 0 ? 0 : (damage - attributes.defense);
 	if(attributes.hitpoints <= 0)
 	{
 		status = UNIT_DEAD;

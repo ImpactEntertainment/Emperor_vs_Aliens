@@ -10,18 +10,18 @@
 
 #include "emperorunit.h"
 
-#define MONK_BASE_HITPOINTS 100
-#define	MONK_BASE_DAMAGE	40
-#define MONK_BASE_DEFENSE	20
+#define MONK_BASE_HITPOINTS 200
+#define	MONK_BASE_DAMAGE	10
+#define MONK_BASE_DEFENSE	30
 
 #define MONK_TRAVEL_TIME	ONE_SECOND
 #define MONK_BACKSWING_TIME	ONE_SECOND
 
 #define MONK_SPEED_X         112.0/MONK_TRAVEL_TIME
-#define MONK_SPEED_Y  	112.0/MONK_TRAVEL_TIME
-#define MONK_SPEED_XY 	(112) // TODO: (sqrt(2) * 112)/MONK_TRAVEL_TIME
+#define MONK_SPEED_Y  		 112.0/MONK_TRAVEL_TIME
+#define MONK_SPEED_XY 		 (112) // TODO: (sqrt(2) * 112)/MONK_TRAVEL_TIME
 
-#define MONK_COST		300
+#define MONK_COST			 200
 
 class Monk : public EmperorUnit {
 public:

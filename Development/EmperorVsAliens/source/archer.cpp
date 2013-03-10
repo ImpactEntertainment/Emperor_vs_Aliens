@@ -15,8 +15,8 @@ void Archer::loadImage()
 void Archer::loadBaseAttributes()
 {
 	backswingTime 		 = ARCHER_BACKSWING_TIME;
-	travelTime 		 = ARCHER_TRAVEL_TIME;
-	attributes.hitpoints     = ARCHER_BASE_HITPOINTS;
+	travelTime 		 	 = ARCHER_TRAVEL_TIME;
+	attributes.hitpoints = ARCHER_BASE_HITPOINTS;
 	attributes.damage	 = ARCHER_BASE_DAMAGE;
 	attributes.defense	 = ARCHER_BASE_DEFENSE;
 }

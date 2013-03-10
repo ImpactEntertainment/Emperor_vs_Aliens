@@ -15,8 +15,8 @@ void Ninja::loadImage()
 void Ninja::loadBaseAttributes()
 {
 	backswingTime 		 = NINJA_BACKSWING_TIME;
-	travelTime 		 = NINJA_TRAVEL_TIME;
-	attributes.hitpoints     = NINJA_BASE_HITPOINTS;
+	travelTime 		 	 = NINJA_TRAVEL_TIME;
+	attributes.hitpoints = NINJA_BASE_HITPOINTS;
 	attributes.damage	 = NINJA_BASE_DAMAGE;
 	attributes.defense	 = NINJA_BASE_DEFENSE;
 }
