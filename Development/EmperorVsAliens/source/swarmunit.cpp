@@ -6,9 +6,22 @@ using namespace std;
 SwarmUnit::SwarmUnit(Field *pos)
 : Unit(pos)
 {
+	init();
 	buildingTarget = 0;
 }
 
+void SwarmUnit::loadRectangle()
+{
+	mResource.width = 112;
+	mResource.height= 112;
+	mResource.x     = 0;
+	mResource.y 	= 0;
+}
+
+void SwarmUnit::loadImage()
+{
+	image = Image::load("/opt/EmperorVsAliens/data/images/hiver.png");
+}
 
 void SwarmUnit::loadBaseAttributes()
 {

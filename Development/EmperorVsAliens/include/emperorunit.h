@@ -24,11 +24,16 @@
 class EmperorUnit : public Unit {
 public:
 	virtual void loadBaseAttributes();
+
 	virtual void createPath();
 	virtual void move();
 	virtual void getTarget();
 	virtual void attack();
 	virtual void decision();
+
+	virtual void loadImage();
+	
+	void loadRectangle();
 
 	bool isAlien();
 

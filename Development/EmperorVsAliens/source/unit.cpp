@@ -7,7 +7,6 @@ using namespace std;
 Unit::Unit(Field *pos)
 : Element(pos), status(UNIT_IDLE)
 {
-	init();
 	target = 0;
 	markForDeath = false;
 	spawned = false;
@@ -31,19 +30,6 @@ bool Unit::spawn()
 		return true;
 	}
 	return false;
-}
-
-void Unit::loadRectangle()
-{
-	mResource.width	= 112;
-	mResource.height= 112;
-	mResource.x		= 0;
-	mResource.y		= 0;
-}
-
-void Unit::loadImage()
-{
-	image = Image::load("/opt/EmperorVsAliens/data/images/hiver.png",mResource.x,mResource.y,mResource.width,mResource.height);
 }
 
 void Unit::update()

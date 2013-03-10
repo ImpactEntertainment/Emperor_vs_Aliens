@@ -6,8 +6,23 @@ using namespace std;
 EmperorUnit::EmperorUnit(Field *pos)
 : Unit(pos)
 {
+	init();
+	//loadImage();
 	destination = NULL;
 	cost = EMPEROR_UNIT_COST;
+}
+
+void EmperorUnit::loadRectangle()
+{
+	mResource.width = 112;
+	mResource.height= 112;
+	mResource.x     = 0;
+	mResource.y 	= 0;
+}
+
+void EmperorUnit::loadImage()
+{
+	image = Image::load("/opt/EmperorVsAliens/data/images/map_elements.png");
 }
 
 void EmperorUnit::loadBaseAttributes()
@@ -18,7 +33,6 @@ void EmperorUnit::loadBaseAttributes()
 	attributes.damage	 = EMPEROR_UNIT_BASE_DAMAGE;
 	attributes.defense	 = EMPEROR_UNIT_BASE_DEFENSE;
 }
-
 
 void EmperorUnit::getTarget()
 {
