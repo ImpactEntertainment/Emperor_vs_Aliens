@@ -10,6 +10,9 @@
 
 #include "swarmunit.h"
 #include "samurai.h"
+#include "archer.h"
+#include "monk.h"
+#include "ninja.h"
 
 typedef enum Class{
     UNIT_EMPEROR_SAMURAI,

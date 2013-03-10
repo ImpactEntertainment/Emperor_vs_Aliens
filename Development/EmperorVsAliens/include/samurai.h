@@ -27,9 +27,9 @@ class Samurai : public EmperorUnit {
 public:
 	void loadBaseAttributes();
 	void loadImage();
-        float getMaxSpeedX();
-        float getMaxSpeedY();
-        float getMaxSpeedXY();
+    float getMaxSpeedX();
+    float getMaxSpeedY();
+    float getMaxSpeedXY();
 	
 	Samurai(Field *pos);
 };

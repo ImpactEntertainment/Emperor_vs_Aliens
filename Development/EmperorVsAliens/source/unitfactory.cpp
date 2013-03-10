@@ -8,13 +8,13 @@ Unit *UnitFactory::create_unit(Class choice, Field *pos)
 		return new Samurai(pos);
 	break;
 	case UNIT_EMPEROR_ARCHER : 
-		return new Samurai(pos);
+		return new Archer(pos);
 	break;
 	case UNIT_EMPEROR_MONK : 
-		return new Samurai(pos);
+		return new Monk(pos);
 	break;
 	case UNIT_EMPEROR_NINJA : 
-		return new Samurai(pos);
+		return new Ninja(pos);
 	break;
 	case UNIT_SWARM_HIVER : 
 		return new SwarmUnit(pos);
