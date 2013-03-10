@@ -6,10 +6,7 @@ using namespace std;
 EmperorUnit::EmperorUnit(Field *pos)
 : Unit(pos)
 {
-	init();
-	//loadImage();
 	destination = NULL;
-	cost = EMPEROR_UNIT_COST;
 }
 
 void EmperorUnit::loadRectangle()
@@ -18,20 +15,6 @@ void EmperorUnit::loadRectangle()
 	mResource.height= 112;
 	mResource.x     = 0;
 	mResource.y 	= 0;
-}
-
-void EmperorUnit::loadImage()
-{
-	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_samurai.png");
-}
-
-void EmperorUnit::loadBaseAttributes()
-{
-	backswingTime 		 = EMPEROR_UNIT_BACKSWING_TIME;
-	travelTime 			 = EMPEROR_UNIT_TRAVEL_TIME;
-	attributes.hitpoints = EMPEROR_UNIT_BASE_HITPOINTS;
-	attributes.damage	 = EMPEROR_UNIT_BASE_DAMAGE;
-	attributes.defense	 = EMPEROR_UNIT_BASE_DEFENSE;
 }
 
 void EmperorUnit::getTarget()
@@ -123,43 +106,43 @@ void EmperorUnit::move()
 	//TODO: verificar qual a direcao para atribuir valores corretos as velocidades
 	if(path.back() == mPosition->path[NORTHWEST])
 	{
-		speed.x = -EMPEROR_UNIT_SPEED_XY;
-		speed.y = -EMPEROR_UNIT_SPEED_XY;
+		speed.x = -getMaxSpeedXY();
+		speed.y = -getMaxSpeedXY();
 	}
 	else if(path.back() == mPosition->path[NORTH])
 	{
 		speed.x = 0;
-		speed.y = -EMPEROR_UNIT_SPEED_Y;
+		speed.y = -getMaxSpeedY();
 	}
 	else if(path.back() == mPosition->path[NORTHEAST])
 	{
-		speed.x = -EMPEROR_UNIT_SPEED_XY;
-		speed.y = EMPEROR_UNIT_SPEED_XY;
+		speed.x = -getMaxSpeedXY();
+		speed.y = getMaxSpeedXY();
 	}
 	else if(path.back() == mPosition->path[WEST])
 	{
-		speed.x = -EMPEROR_UNIT_SPEED_X;
+		speed.x = -getMaxSpeedX();
 		speed.y = 0;
 	}
 	else if(path.back() == mPosition->path[EAST])
 	{
-		speed.x = EMPEROR_UNIT_SPEED_X;
+		speed.x = getMaxSpeedX();
 		speed.y = 0;
 	}
 	else if(path.back() == mPosition->path[SOUTHWEST])
 	{
-		speed.x = -EMPEROR_UNIT_SPEED_XY;
-		speed.y = EMPEROR_UNIT_SPEED_XY;
+		speed.x = -getMaxSpeedXY();
+		speed.y = getMaxSpeedXY();
 	}
 	else if(path.back() == mPosition->path[SOUTH])
 	{
 		speed.x = 0;
-		speed.y = EMPEROR_UNIT_SPEED_Y;
+		speed.y = getMaxSpeedY();
 	}
 	else if(path.back() == mPosition->path[SOUTHEAST])
 	{
-		speed.x = EMPEROR_UNIT_SPEED_XY;
-		speed.y = EMPEROR_UNIT_SPEED_XY;
+		speed.x = getMaxSpeedXY();
+		speed.y = getMaxSpeedXY();
 	}
 	else{}
 }

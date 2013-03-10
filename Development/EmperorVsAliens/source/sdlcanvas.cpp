@@ -151,14 +151,14 @@ namespace edge {
 		
 		if(element.status == UNIT_MOVING)
 		{
-			int timeTraveling = element.travelTime - (element.ARRIVAL_TIME - Timer::get_currentFrameTick());
-			position.x = (element.mPosition->x)*112 + element.speed.x * (timeTraveling) +134-(element.mResource.width-112);
-			position.y = (element.mPosition->y)*112 + element.speed.y * (timeTraveling) +409-(element.mResource.height-112);	         
+                    int timeTraveling = element.travelTime - (element.ARRIVAL_TIME - Timer::get_currentFrameTick());
+                    position.x = (element.mPosition->x)*112 + element.speed.x * (timeTraveling) +134-(element.mResource.width-112);
+                    position.y = (element.mPosition->y)*112 + element.speed.y * (timeTraveling) +409-(element.mResource.height-112);	         
 		}		
 		else
 		{        
-			position.x = (element.mPosition->x)*112+134-(element.mResource.width-112);
-			position.y = (element.mPosition->y)*112+409-(element.mResource.height-112);
+                    position.x = (element.mPosition->x)*112+134-(element.mResource.width-112);
+                    position.y = (element.mPosition->y)*112+409-(element.mResource.height-112);
 		}
 		drawImage(element.image, element.mResource, position);
 	
