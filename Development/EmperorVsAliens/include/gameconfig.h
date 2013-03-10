@@ -43,6 +43,7 @@ public:
     bool            difficultyEnabled[3];
 
     GameConfig();
+    void levelCleared();
 };
 
 #endif
