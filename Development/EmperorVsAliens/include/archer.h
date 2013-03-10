@@ -28,7 +28,7 @@ public:
 	void loadBaseAttributes();
 	void loadImage();
     float getMaxSpeedX();
-    float getMaxSpeedY();W
+    float getMaxSpeedY();
     float getMaxSpeedXY();
 	
 	Archer(Field *pos);
