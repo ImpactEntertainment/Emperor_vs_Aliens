@@ -16,7 +16,8 @@ namespace edge {
 		color.blue = 0;
 		position.x = 0;
 		position.y = 0;
-
+		image = 0;
+		font = 0;
 	}
 
 	Display::Display(string* infoTracked, int x, int y, int size, int r, int g, int b)
@@ -28,6 +29,8 @@ namespace edge {
 	    color.red = r;
 	    color.green = g;
 	    color.blue = b;
+			image = 0;
+			font = 0;
 	}
 
 	void Display::update()

@@ -8,10 +8,7 @@
 
 #include "sdlsound.h"
 
-
-namespace edge{
-
-    Sound * Sound::load(const string& soundPath) throw (Exception){
+    SDL_Sound * load(const string& soundPath) throw (Exception){
 
         ifstream file(soundPath.c_str());
 
@@ -20,7 +17,7 @@ namespace edge{
 
         file.close();
 
-        Mix_Music *sound_stream = Mix_LoadMUS(soundPath.c_str());
+        Mix_Chunk *sound_stream = Mix_LoadWAV(soundPath.c_str());
 
         if (sound_stream == NULL) 
             throw Exception("Invalid sound");
@@ -30,29 +27,23 @@ namespace edge{
         return sound;
     }
 
-    void  Sound::release(Sound *sound) throw (Exception){
-        if (sound) {
-            delete sound;
-        }
-    }
-
     void  SDL_Sound::play(SDL_Sound* sound) throw (Exception){               
-            Mix_PlayMusic(sound->sound_stream, 0);
+            Mix_PlayChannel(-1,sound->sound, 0);
     }
 
     SDL_Sound::~SDL_Sound(){
-        if (sound_stream) {
-            Mix_FreeMusic(sound_stream);
+        if (sound) {
+            Mix_FreeChunk(sound);
         }
     }
 
-    SDL_Sound::SDL_Sound(Mix_Music * sound_stream){
+    SDL_Sound::SDL_Sound(Mix_Chunk * sound){
 
         if (Mix_OpenAudio( 22050,AUDIO_S16SYS,2,640 ) < 0){
             printf("Error initializing SDL_mixer: %s\n", Mix_GetError());
             exit(1);
         }
-        this->sound_stream = sound_stream;
+        this->sound= sound;
     }
 
-}
+

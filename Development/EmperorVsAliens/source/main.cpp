@@ -28,7 +28,7 @@ using namespace edge;
     void makeSound(){
        
 	music = Mix_LoadWAV("/opt/EmperorVsAliens/data/sounds/sound_of_death.ogg");
-	Mix_PlayChannel(-1,music, 0);
+	Mix_PlayChannel(-1,music, -1);
     }
      void makeSound2(){
         
