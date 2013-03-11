@@ -3,19 +3,19 @@
 
 GameConfig::GameConfig()
 {
+    for(int dif=0; dif<3; dif++)
+       for(int stage=0; stage<12; stage++)
+       {
+            difficultyEnabled[dif] = false;
+            levelEnabled[dif][stage] = false;
+       }
 
     exit 				 = false;
     levelSelected 		 = true;
     level 				 = LEVEL_01;
-    difficulty 			 = GAME_HARD;
-	levelEnabled[0] 	 = true;
-	difficultyEnabled[0] = true;
-
-	for(int i=1; i<12; i++)
-		levelEnabled[i] = false;
-	
-	for(int i=1; i<3; i++)
-		difficultyEnabled[i] = false;
+    difficulty 			 = GAME_EASY;
+	levelEnabled[0][0] 	 = true;
+	difficultyEnabled[0] = true;    
 }
 
 void GameConfig::levelCleared()
@@ -31,6 +31,6 @@ void GameConfig::levelCleared()
     else
     {
         level = (Level) (level + 1);
-        levelEnabled[level+1] = true;
+        levelEnabled[difficulty][level+1] = true;
     }
 }

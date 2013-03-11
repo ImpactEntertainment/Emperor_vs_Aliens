@@ -37,51 +37,51 @@ void LevelSelectGUI::handleClick(int index)
     switch(index)
     {
     case 0:
-        if(gameConfig->levelEnabled[LEVEL_01])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_01])
             gameConfig->level = LEVEL_01;
     break;
     case 1:
-        if(gameConfig->levelEnabled[LEVEL_02])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_02])
             gameConfig->level = LEVEL_02;
     break;
     case 2:
-        if(gameConfig->levelEnabled[LEVEL_03])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_03])
             gameConfig->level = LEVEL_03;
     break;
     case 3:
-        if(gameConfig->levelEnabled[LEVEL_04])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_04])
             gameConfig->level = LEVEL_04;
     break;
     case 4:
-        if(gameConfig->levelEnabled[LEVEL_05])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_05])
             gameConfig->level = LEVEL_05;
     break;
     case 5:
-        if(gameConfig->levelEnabled[LEVEL_06])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_06])
             gameConfig->level = LEVEL_06;
     break;
     case 6:
-        if(gameConfig->levelEnabled[LEVEL_07])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_07])
             gameConfig->level = LEVEL_07;
     break;
     case 7:
-        if(gameConfig->levelEnabled[LEVEL_08])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_08])
             gameConfig->level = LEVEL_08;
     break;
     case 8:
-        if(gameConfig->levelEnabled[LEVEL_09])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_09])
             gameConfig->level = LEVEL_09;
     break;
     case 9:
-        if(gameConfig->levelEnabled[LEVEL_10])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_10])
             gameConfig->level = LEVEL_10;
     break;
     case 10:
-        if(gameConfig->levelEnabled[LEVEL_11])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_11])
             gameConfig->level = LEVEL_11;
     break;
     case 11:
-        if(gameConfig->levelEnabled[LEVEL_12])
+        if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_12])
             gameConfig->level = LEVEL_12;
     break;
     case 12:

@@ -39,7 +39,7 @@ public:
     Level           level;
     bool            levelSelected;
     bool            exit;
-    bool            levelEnabled[12];
+    bool            levelEnabled[3][12];
     bool            difficultyEnabled[3];
 
     GameConfig();
