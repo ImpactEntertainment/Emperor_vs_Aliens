@@ -11,6 +11,14 @@ void Assaulter::loadImage()
 	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_assaulter.png");
 }
 
+void Assaulter::loadRectangle()
+{
+	mResource.width = 130;
+	mResource.height= 130;
+	mResource.x     = 0;
+	mResource.y 	= 0;
+}
+
 void Assaulter::loadBaseAttributes()
 {
 	backswingTime 		 = ASSAULTER_BACKSWING_TIME;

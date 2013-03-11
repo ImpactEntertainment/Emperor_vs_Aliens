@@ -25,6 +25,7 @@ class Siege : public SwarmUnit {
 public:
 	void loadBaseAttributes();
 	void loadImage();
+	void loadRectangle();
     float getMaxSpeedX();
     float getMaxSpeedY();
     float getMaxSpeedXY();

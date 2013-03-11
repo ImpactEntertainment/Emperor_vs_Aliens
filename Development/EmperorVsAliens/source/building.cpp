@@ -24,15 +24,15 @@ void Building::addRange(Field *field)
 
 void Building::loadRectangle()
 {
-	mResource.width	= 112;
-	mResource.height= 784;
+	mResource.width	= 134;
+	mResource.height= 1080;
 	mResource.x		= 0;
 	mResource.y		= 0;
 }
 
 void Building::loadImage()
 {
-	image = Image::load("/opt/EmperorVsAliens/data/images/hiver.png");
+	image = Image::load("/opt/EmperorVsAliens/data/images/wall.png");
 }
 
 void Building::update()

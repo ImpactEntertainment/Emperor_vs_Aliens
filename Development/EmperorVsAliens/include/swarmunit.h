@@ -23,8 +23,7 @@ public:
 	virtual void startAttack(Unit* newTarget);
 	virtual void attack();
 	virtual	void decision();
-
-	void loadRectangle();
+	virtual void loadRectangle();
 
 	bool isAlien();
 

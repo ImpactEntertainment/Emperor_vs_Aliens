@@ -38,13 +38,13 @@ void Level_04::loadWaves()
 					wave2,
 					wave3;
 
-	wave1.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,spawnPoints[rand()%spawnPoints.size()]));
-	wave1.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,spawnPoints[rand()%spawnPoints.size()]));
-	wave2.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,spawnPoints[rand()%spawnPoints.size()]));
-	wave2.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,spawnPoints[rand()%spawnPoints.size()]));
-	wave2.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,spawnPoints[rand()%spawnPoints.size()]));
-	wave3.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,spawnPoints[rand()%spawnPoints.size()]));
-	wave3.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,spawnPoints[rand()%spawnPoints.size()]));
+	wave1.push_back(UnitFactory::create_unit(UNIT_SWARM_SIEGE,spawnPoints[rand()%spawnPoints.size()]));
+	wave1.push_back(UnitFactory::create_unit(UNIT_SWARM_SIEGE,spawnPoints[rand()%spawnPoints.size()]));
+	wave2.push_back(UnitFactory::create_unit(UNIT_SWARM_ASSAULTER,spawnPoints[rand()%spawnPoints.size()]));
+	wave2.push_back(UnitFactory::create_unit(UNIT_SWARM_SIEGE,spawnPoints[rand()%spawnPoints.size()]));
+	wave2.push_back(UnitFactory::create_unit(UNIT_SWARM_ASSAULTER,spawnPoints[rand()%spawnPoints.size()]));
+	wave3.push_back(UnitFactory::create_unit(UNIT_SWARM_SIEGE,spawnPoints[rand()%spawnPoints.size()]));
+	wave3.push_back(UnitFactory::create_unit(UNIT_SWARM_SIEGE,spawnPoints[rand()%spawnPoints.size()]));
 	wave3.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,spawnPoints[rand()%spawnPoints.size()]));
 	wave3.push_back(UnitFactory::create_unit(UNIT_SWARM_HIVER,spawnPoints[rand()%spawnPoints.size()]));
 

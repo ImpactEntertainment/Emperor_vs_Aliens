@@ -11,6 +11,14 @@ void Siege::loadImage()
 	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_siege.png");
 }
 
+void Siege::loadRectangle()
+{
+	mResource.width = 130;
+	mResource.height= 130;
+	mResource.x     = 0;
+	mResource.y 	= 0;
+}
+
 void Siege::loadBaseAttributes()
 {
 	backswingTime 		 = SIEGE_BACKSWING_TIME;

@@ -200,7 +200,7 @@ namespace edge {
 		Point position;
 		
 		position.x = 0;
-		position.y = 409;
+		position.y = 0;
 
 		drawImage(element.image, element.mResource, position);
 	}
