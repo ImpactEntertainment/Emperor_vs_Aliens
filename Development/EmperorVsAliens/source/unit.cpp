@@ -48,13 +48,13 @@ void Unit::update()
 
 void Unit::IA()
 {
+	if(markForDeath) status = UNIT_DEAD;
 	switch(status)
 	{
 	case UNIT_DEAD:
 	case UNIT_MOVING: break;
 	case UNIT_IDLE:
-		if(markForDeath) status = UNIT_DEAD;
-		else			 decision();
+		decision();
 	break;
 	case UNIT_ATTACKING: 
 		if(!attackCooldown) attack();
@@ -97,6 +97,7 @@ void Unit::arrive()
 void Unit::onDeath()
 {	
 	mPosition->locked = false;
+	mPosition->habitant = NULL;
 	decomposed = true;
 }
 
