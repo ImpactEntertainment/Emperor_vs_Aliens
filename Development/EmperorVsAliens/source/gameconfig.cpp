@@ -34,3 +34,8 @@ void GameConfig::levelCleared()
         levelEnabled[level+1] = true;
     }
 }
+
+void GameConfig::toggleLifebars()
+{
+    enableLifebars = !enableLifebars;
+}

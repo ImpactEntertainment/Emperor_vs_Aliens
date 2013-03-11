@@ -51,6 +51,8 @@ namespace edge {
         virtual void drawDisplay(const Display& element)=0;
     	virtual void drawUnit(Unit& element)=0;
         virtual void drawBuilding(Building& element)=0;
+        virtual void drawUnitStatus(int maxHP, int currentHP, const Point& position)=0;
+        
 
     };
 

@@ -27,7 +27,7 @@ void SwarmUnit::loadBaseAttributes()
 {
 	backswingTime 		 = SWARM_UNIT_BACKSWING_TIME;
 	travelTime 			 = SWARM_UNIT_TRAVEL_TIME;
-	attributes.hitpoints = SWARM_UNIT_BASE_HITPOINTS;
+	MAX_HITPOINTS 		 = attributes.hitpoints = SWARM_UNIT_BASE_HITPOINTS;
 	attributes.damage	 = SWARM_UNIT_BASE_DAMAGE;
 	attributes.defense	 = SWARM_UNIT_BASE_DEFENSE;
 }

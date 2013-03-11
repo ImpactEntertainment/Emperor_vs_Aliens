@@ -78,6 +78,8 @@ public:
 	int ARRIVAL_TIME;
 	int ATTACK_READY_TIME;
 	int frameCount;
+
+	int MAX_HITPOINTS;
 protected:
 	list<Field*> path;
 };

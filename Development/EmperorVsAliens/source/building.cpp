@@ -37,7 +37,6 @@ void Building::loadImage()
 
 void Building::update()
 {
-	//TODO: fazer mudar o frame a medida q toma dano
 	frameCount = (int)((MAX_HITPOINTS - HITPOINTS)*10.0/(MAX_HITPOINTS)) % 10;
 	mResource.x = mResource.width * frameCount;
 	mResource.y = 0;

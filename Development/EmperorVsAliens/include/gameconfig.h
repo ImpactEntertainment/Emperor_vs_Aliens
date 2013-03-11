@@ -44,6 +44,7 @@ public:
 
     GameConfig();
     void levelCleared();
+    void toggleLifebars();
 };
 
 #endif

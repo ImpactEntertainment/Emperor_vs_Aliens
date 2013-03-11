@@ -44,9 +44,12 @@ namespace edge {
         void drawElement(const Element& element);
         void drawUnit(Unit& element);
         void drawBuilding(Building& element);
+        void drawUnitStatus(int maxHP, int currentHP, const Point& position);
             
 
     private:
+        Image *display         ;
+        Image *currentHPDisplay;
         SDL_Surface *surface;
     };
 

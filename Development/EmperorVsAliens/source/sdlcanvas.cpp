@@ -27,6 +27,9 @@ namespace edge {
         } else {
             this->surface = surface;
         }
+
+        display 	     = Image::load("/opt/EmperorVsAliens/data/images/unitdisplay.png");
+ 		currentHPDisplay = Image::load("/opt/EmperorVsAliens/data/images/currentHPDisplay.png");
     }
 
     SDL_Canvas::~SDL_Canvas() {
@@ -161,6 +164,20 @@ namespace edge {
                     position.y = (element.mPosition->y)*112+409-(element.mResource.height-112);
 		}
 		drawImage(element.image, element.mResource, position);
+		drawUnitStatus(element.MAX_HITPOINTS, element.attributes.hitpoints, position);
+	}
+
+	void SDL_Canvas::drawUnitStatus(int maxHP, int currentHP, const Point& position)
+	{
+		Rectangle statusDisplay;
+		statusDisplay.width = 112;
+		statusDisplay.height= 112;
+		statusDisplay.x 	= 0;
+		statusDisplay.y 	= 0;
+		drawImage(display,statusDisplay,position);
+		
+		statusDisplay.width = 34 + (int)(67 * (1.0-(maxHP - currentHP*1.0)/maxHP));
+		drawImage(currentHPDisplay,statusDisplay,position); 
 	}
 	
 	void SDL_Canvas::drawEnviroment(vector<EnviromentElement>& enviroment) 

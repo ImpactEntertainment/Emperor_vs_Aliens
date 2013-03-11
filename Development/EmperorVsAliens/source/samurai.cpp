@@ -15,8 +15,8 @@ void Samurai::loadImage()
 void Samurai::loadBaseAttributes()
 {
 	backswingTime 		 = SAMURAI_BACKSWING_TIME;
-	travelTime 		 = SAMURAI_TRAVEL_TIME;
-	attributes.hitpoints     = SAMURAI_BASE_HITPOINTS;
+	travelTime 		 	 = SAMURAI_TRAVEL_TIME;
+	MAX_HITPOINTS 		 = attributes.hitpoints     = SAMURAI_BASE_HITPOINTS;
 	attributes.damage	 = SAMURAI_BASE_DAMAGE;
 	attributes.defense	 = SAMURAI_BASE_DEFENSE;
 }
