@@ -3,7 +3,6 @@ Emperor VS Aliens - Impact Entertainment V0.9
 
 Authors
 -------
-	Fernando Vieira
 	Leonn Ferreira
 	Luis Gustavo
 
