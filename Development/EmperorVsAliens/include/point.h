@@ -17,6 +17,8 @@ namespace edge {
     class Point {
     public:
         Point(int x = 0, int y = 0);
+				int getX();
+				int getY();
 
         int x;
         int y;
