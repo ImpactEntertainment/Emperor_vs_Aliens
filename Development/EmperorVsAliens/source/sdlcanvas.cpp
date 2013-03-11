@@ -161,7 +161,6 @@ namespace edge {
                     position.y = (element.mPosition->y)*112+409-(element.mResource.height-112);
 		}
 		drawImage(element.image, element.mResource, position);
-	
 	}
 	
 	void SDL_Canvas::drawEnviroment(vector<EnviromentElement>& enviroment) 
@@ -176,5 +175,16 @@ namespace edge {
 		list<Unit*>::iterator it;
 		for(it = units.begin(); it != units.end(); it++)
 			drawUnit(**it);
+	}
+	
+	void SDL_Canvas::drawBuilding(Building& element)
+	{
+	
+		Point position;
+		
+		position.x = 0;
+		position.y = 409;
+
+		drawImage(element.image, element.mResource, position);
 	}
 }

@@ -43,6 +43,7 @@ namespace edge {
         void drawDisplay(const Display& element);
         void drawElement(const Element& element);
         void drawUnit(Unit& element);
+        void drawBuilding(Building& element);
             
 
     private:

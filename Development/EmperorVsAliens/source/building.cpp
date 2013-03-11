@@ -5,11 +5,13 @@ using namespace std;
 
 Building::Building(int hp, int damageReduction)
 : Element()
-{
+{	
+	init();
 	MAX_HITPOINTS	 = hp;
 	HITPOINTS 		 = hp;
 	DAMAGE_REDUCTION = damageReduction;
 	destroyed 		 = false;
+	frameCount 		 = 0;
 
 	range.clear();
 }
@@ -23,22 +25,22 @@ void Building::addRange(Field *field)
 void Building::loadRectangle()
 {
 	mResource.width	= 112;
-	mResource.height= 112;
+	mResource.height= 784;
 	mResource.x		= 0;
 	mResource.y		= 0;
 }
 
 void Building::loadImage()
 {
-	image = Image::load("/opt/EmperorVsAliens/data/images/hiver.png",mResource.x,mResource.y,mResource.width,mResource.height);
+	image = Image::load("/opt/EmperorVsAliens/data/images/hiver.png");
 }
 
 void Building::update()
 {
 	//TODO: fazer mudar o frame a medida q toma dano
-	frameCount = 1;//(frameCount + 1) % 8;
+	frameCount = (int)((MAX_HITPOINTS - HITPOINTS)*10.0/(MAX_HITPOINTS)) % 10;
 	mResource.x = mResource.width * frameCount;
-	mResource.y = mResource.height;
+	mResource.y = 0;
 	
 	if(destroyed)	 onDestruction();	
 }

@@ -24,6 +24,7 @@
 #include "menu.h"
 #include "hud.h"
 #include "display.h"
+#include "building.h"
 
 namespace edge {
 
@@ -49,6 +50,7 @@ namespace edge {
         virtual void drawMenu(const HUD& element)=0;
         virtual void drawDisplay(const Display& element)=0;
     	virtual void drawUnit(Unit& element)=0;
+        virtual void drawBuilding(Building& element)=0;
 
     };
 
