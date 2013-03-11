@@ -31,7 +31,7 @@ typedef struct Effects
 
 class SoundEffect {
 public:
-    static void play_effects();
+    void play_effects();
     Effects effects;
 };
 
