@@ -17,16 +17,16 @@ Unit *UnitFactory::create_unit(Class choice, Field *pos)
 		return new Ninja(pos);
 	break;
 	case UNIT_SWARM_HIVER : 
-		return new SwarmUnit(pos);
+		return new Hiver(pos);
 	break;
 	case UNIT_SWARM_ASSAULTER : 
-		return new SwarmUnit(pos);
+		return new Assaulter(pos);
 	break;
 	case UNIT_SWARM_FLYER : 
-		return new SwarmUnit(pos);
+		return new Flyer(pos);
 	break;
 	case UNIT_SWARM_SIEGE : 
-		return new SwarmUnit(pos);
+		return new Siege(pos);
 	break;
 	default:
 		return 0;
