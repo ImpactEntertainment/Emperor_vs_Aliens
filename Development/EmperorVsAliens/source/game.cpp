@@ -147,7 +147,7 @@ namespace edge
                         else
                         {
                             if(!menu->mPosition->habitant || !menu->mPosition->locked)
-                                eva.emperorUnits.push_back(UnitFactory::create_unit((Class)menu->option,menu->mPosition));
+                                eva.emperorUnits.push_back(UnitFactory::create_unit((UnitClass)menu->option,menu->mPosition));
                                 if(eva.resources >= ((EmperorUnit*)eva.emperorUnits.back())->cost)
                                     eva.resources -= ((EmperorUnit*)eva.emperorUnits.back())->cost;
                                 else
