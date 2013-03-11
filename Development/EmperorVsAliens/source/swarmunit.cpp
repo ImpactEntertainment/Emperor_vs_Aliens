@@ -20,7 +20,7 @@ void SwarmUnit::loadRectangle()
 
 void SwarmUnit::loadImage()
 {
-	image = Image::load("/opt/EmperorVsAliens/data/images/hiver.png");
+	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_hiver.png");
 }
 
 void SwarmUnit::loadBaseAttributes()
