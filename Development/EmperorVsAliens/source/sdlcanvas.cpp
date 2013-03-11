@@ -27,6 +27,9 @@ namespace edge {
         } else {
             this->surface = surface;
         }
+
+        display 	     = Image::load("/opt/EmperorVsAliens/data/images/unitdisplay.png");
+ 		currentHPDisplay = Image::load("/opt/EmperorVsAliens/data/images/currentHPDisplay.png");
     }
 
     SDL_Canvas::~SDL_Canvas() {
@@ -151,17 +154,30 @@ namespace edge {
 		
 		if(element.status == UNIT_MOVING)
 		{
-			int timeTraveling = element.travelTime - (element.ARRIVAL_TIME - Timer::get_currentFrameTick());
-			position.x = (element.mPosition->x)*112 + element.speed.x * (timeTraveling) +134-(element.mResource.width-112);
-			position.y = (element.mPosition->y)*112 + element.speed.y * (timeTraveling) +409-(element.mResource.height-112);	         
+                    int timeTraveling = element.travelTime - (element.ARRIVAL_TIME - Timer::get_currentFrameTick());
+                    position.x = (element.mPosition->x)*112 + element.speed.x * (timeTraveling) +134-(element.mResource.width-112);
+                    position.y = (element.mPosition->y)*112 + element.speed.y * (timeTraveling) +409-(element.mResource.height-112);	         
 		}		
 		else
 		{        
-			position.x = (element.mPosition->x)*112+134-(element.mResource.width-112);
-			position.y = (element.mPosition->y)*112+409-(element.mResource.height-112);
+                    position.x = (element.mPosition->x)*112+134-(element.mResource.width-112);
+                    position.y = (element.mPosition->y)*112+409-(element.mResource.height-112);
 		}
 		drawImage(element.image, element.mResource, position);
-	
+		drawUnitStatus(element.MAX_HITPOINTS, element.attributes.hitpoints, position);
+	}
+
+	void SDL_Canvas::drawUnitStatus(int maxHP, int currentHP, const Point& position)
+	{
+		Rectangle statusDisplay;
+		statusDisplay.width = 112;
+		statusDisplay.height= 112;
+		statusDisplay.x 	= 0;
+		statusDisplay.y 	= 0;
+		drawImage(display,statusDisplay,position);
+		
+		statusDisplay.width = 34 + (int)(67 * (1.0-(maxHP - currentHP*1.0)/maxHP));
+		drawImage(currentHPDisplay,statusDisplay,position); 
 	}
 	
 	void SDL_Canvas::drawEnviroment(vector<EnviromentElement>& enviroment) 
@@ -176,5 +192,16 @@ namespace edge {
 		list<Unit*>::iterator it;
 		for(it = units.begin(); it != units.end(); it++)
 			drawUnit(**it);
+	}
+	
+	void SDL_Canvas::drawBuilding(Building& element)
+	{
+	
+		Point position;
+		
+		position.x = 0;
+		position.y = 409;
+
+		drawImage(element.image, element.mResource, position);
 	}
 }

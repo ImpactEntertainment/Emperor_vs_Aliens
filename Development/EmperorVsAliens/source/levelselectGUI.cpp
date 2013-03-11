@@ -29,45 +29,60 @@ void LevelSelectGUI::loadButtons()
     addButton(666,209,120,42);
 }
 
+#include <iostream>
+using namespace std;
+
 void LevelSelectGUI::handleClick(int index)
 {
     switch(index)
     {
     case 0:
-        gameConfig->level = LEVEL_01;
+        if(gameConfig->levelEnabled[LEVEL_01])
+            gameConfig->level = LEVEL_01;
     break;
     case 1:
-        gameConfig->level = LEVEL_02;
+        if(gameConfig->levelEnabled[LEVEL_02])
+            gameConfig->level = LEVEL_02;
     break;
     case 2:
-        gameConfig->level = LEVEL_03;
+        if(gameConfig->levelEnabled[LEVEL_03])
+            gameConfig->level = LEVEL_03;
     break;
     case 3:
-        gameConfig->level = LEVEL_04;
+        if(gameConfig->levelEnabled[LEVEL_04])
+            gameConfig->level = LEVEL_04;
     break;
     case 4:
-        gameConfig->level = LEVEL_05;
+        if(gameConfig->levelEnabled[LEVEL_05])
+            gameConfig->level = LEVEL_05;
     break;
     case 5:
-        gameConfig->level = LEVEL_06;
+        if(gameConfig->levelEnabled[LEVEL_06])
+            gameConfig->level = LEVEL_06;
     break;
     case 6:
-        gameConfig->level = LEVEL_07;
+        if(gameConfig->levelEnabled[LEVEL_07])
+            gameConfig->level = LEVEL_07;
     break;
     case 7:
-        gameConfig->level = LEVEL_08;
+        if(gameConfig->levelEnabled[LEVEL_08])
+            gameConfig->level = LEVEL_08;
     break;
     case 8:
-        gameConfig->level = LEVEL_09;
+        if(gameConfig->levelEnabled[LEVEL_09])
+            gameConfig->level = LEVEL_09;
     break;
     case 9:
-        gameConfig->level = LEVEL_10;
+        if(gameConfig->levelEnabled[LEVEL_10])
+            gameConfig->level = LEVEL_10;
     break;
     case 10:
-        gameConfig->level = LEVEL_11;
+        if(gameConfig->levelEnabled[LEVEL_11])
+            gameConfig->level = LEVEL_11;
     break;
     case 11:
-        gameConfig->level = LEVEL_12;
+        if(gameConfig->levelEnabled[LEVEL_12])
+            gameConfig->level = LEVEL_12;
     break;
     case 12:
         beDone();

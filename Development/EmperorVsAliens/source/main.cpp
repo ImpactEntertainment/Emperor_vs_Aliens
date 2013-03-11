@@ -42,10 +42,6 @@ int main()
 {
 
     GameConfig gameConfig;
-    gameConfig.exit = false;
-    gameConfig.levelSelected = true;
-    gameConfig.level = LEVEL_01;
-    gameConfig.difficulty = GAME_HARD;
 
 
     Game *game = 0; 

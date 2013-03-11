@@ -6,15 +6,28 @@ using namespace std;
 SwarmUnit::SwarmUnit(Field *pos)
 : Unit(pos)
 {
+	init();
 	buildingTarget = 0;
 }
 
+void SwarmUnit::loadRectangle()
+{
+	mResource.width = 112;
+	mResource.height= 112;
+	mResource.x     = 0;
+	mResource.y 	= 0;
+}
+
+void SwarmUnit::loadImage()
+{
+	image = Image::load("/opt/EmperorVsAliens/data/images/hiver.png");
+}
 
 void SwarmUnit::loadBaseAttributes()
 {
 	backswingTime 		 = SWARM_UNIT_BACKSWING_TIME;
 	travelTime 			 = SWARM_UNIT_TRAVEL_TIME;
-	attributes.hitpoints = SWARM_UNIT_BASE_HITPOINTS;
+	MAX_HITPOINTS 		 = attributes.hitpoints = SWARM_UNIT_BASE_HITPOINTS;
 	attributes.damage	 = SWARM_UNIT_BASE_DAMAGE;
 	attributes.defense	 = SWARM_UNIT_BASE_DEFENSE;
 }

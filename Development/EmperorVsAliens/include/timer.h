@@ -8,6 +8,7 @@ and may not be redistributed without written permission.*/
 //The headers
 #include "SDL/SDL.h"
 
+#define HALF_SECOND     500
 #define ONE_SECOND		1000
 #define TWO_SECONDS		2000
 #define THREE_SECONDS	3000

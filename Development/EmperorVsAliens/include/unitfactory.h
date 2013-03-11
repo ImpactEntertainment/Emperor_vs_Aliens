@@ -9,7 +9,10 @@
 #define UNIT_FACTORY_H
 
 #include "swarmunit.h"
-#include "emperorunit.h"
+#include "samurai.h"
+#include "archer.h"
+#include "monk.h"
+#include "ninja.h"
 
 typedef enum Class{
     UNIT_EMPEROR_SAMURAI,

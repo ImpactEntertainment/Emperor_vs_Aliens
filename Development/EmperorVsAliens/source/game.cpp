@@ -171,13 +171,15 @@ namespace edge
             // 6. Enviar/receber mensagens da rede
             // 7. Atualizar o estado do jogo (display)
             eva.draw(window->getCanvas());
+
             if(menu) window->getCanvas()->drawMenu(*menu);
             window->getCanvas()->drawMenu(*hud);
-
-            //drawing displays
+            //drawing HUD displays
             window->getCanvas()->drawImage(hud->timeDisplay.image,hud->timeDisplay.position);
             window->getCanvas()->drawImage(hud->resourceDisplay.image,hud->resourceDisplay.position);
             window->getCanvas()->drawImage(hud->wavesLeftDisplay.image,hud->wavesLeftDisplay.position);
+
+
 
             if(eva.isMainBuildingDestroyed()) 
             {
@@ -185,6 +187,7 @@ namespace edge
                 quitGame = true;
             }
             if(eva.noMoreEnemies()){
+                gameConfig->levelCleared();
                 window->getCanvas()->drawImage(hud->victory.image,hud->victory.position);
                 quitGame = true;
             }

@@ -73,6 +73,7 @@ namespace edge
         canvas->drawUnits(swarmUnits);
         canvas->drawUnits(emperorUnits);
         canvas->drawEnviroment(board->enviromentElements);
+        canvas->drawBuilding(*board->mainBuilding);
         canvas->drawBottomGrass(board->bottomGrass);          
     }
 

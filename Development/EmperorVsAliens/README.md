@@ -3,7 +3,6 @@ Emperor VS ALiens - Impact Entertainment V0.8
 
 Authors
 -------
-	Fernando Vieira
 	Leonn Ferreira
 	Luis Gustavo
 

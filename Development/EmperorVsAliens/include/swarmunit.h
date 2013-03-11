@@ -29,11 +29,11 @@ public:
 	virtual void startAttack(Unit* newTarget);
 	virtual void attack();
 	virtual	void decision();
-	//virtual void alienTarget(Unit* unit);
-	//virtual void emperorTarget(Unit* unit);
-	
-	bool isAlien();
+	virtual void loadImage();
 
+	void loadRectangle();
+
+	bool isAlien();
 
 	SwarmUnit(Field *pos);
 	Building *buildingTarget;
