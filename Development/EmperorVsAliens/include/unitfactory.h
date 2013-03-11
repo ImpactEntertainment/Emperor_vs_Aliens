@@ -14,7 +14,7 @@
 #include "monk.h"
 #include "ninja.h"
 
-typedef enum Class{
+typedef enum UnitClass{
     UNIT_EMPEROR_SAMURAI,
     UNIT_EMPEROR_ARCHER,
     UNIT_EMPEROR_MONK,
@@ -23,11 +23,11 @@ typedef enum Class{
     UNIT_SWARM_ASSAULTER,
     UNIT_SWARM_FLYER,
     UNIT_SWARM_SIEGE
-}Class;
+}UnitClass;
 
 class UnitFactory {
 public:
-    static Unit *create_unit(Class choice, Field *pos);
+    static Unit *create_unit(UnitClass choice, Field *pos);
 };
 
 #endif
