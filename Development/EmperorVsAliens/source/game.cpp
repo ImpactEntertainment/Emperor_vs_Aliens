@@ -235,7 +235,7 @@ namespace edge
         WindowSettings ws;
         ws.width = 1920;
         ws.height= 1080;
-        ws.presentationMode = FULLSCREEN;
+        ws.presentationMode = WINDOW;
         ws.title = "EmperorVsAliens";
         
         window = WindowFactory::create(ws);
