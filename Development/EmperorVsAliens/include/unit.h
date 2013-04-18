@@ -41,8 +41,8 @@ public:
 	virtual void attack() = 0;
 	virtual	bool isAlien()=0;
 	virtual void decision()=0;
-	void loadRectangle();
-	void loadImage();
+	virtual void loadImage()=0;
+	virtual void loadRectangle()=0;
 	//virtual void alienTarget(Unit* unit) = 0;
 	//virtual void emperorTarget(Unit* unit) = 0;
 
@@ -78,6 +78,8 @@ public:
 	int ARRIVAL_TIME;
 	int ATTACK_READY_TIME;
 	int frameCount;
+
+	int MAX_HITPOINTS;
 protected:
 	list<Field*> path;
 };

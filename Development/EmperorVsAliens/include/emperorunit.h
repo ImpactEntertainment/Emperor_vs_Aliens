@@ -8,28 +8,22 @@
 #include "unit.h"
 #include "building.h"
 
-#define EMPEROR_UNIT_BASE_HITPOINTS 100
-#define	EMPEROR_UNIT_BASE_DAMAGE	40
-#define EMPEROR_UNIT_BASE_DEFENSE	20
-
-#define EMPEROR_UNIT_TRAVEL_TIME	ONE_SECOND
-#define EMPEROR_UNIT_BACKSWING_TIME	ONE_SECOND
-
-#define EMPEROR_UNIT_SPEED_X	112.0/EMPEROR_UNIT_TRAVEL_TIME
-#define EMPEROR_UNIT_SPEED_Y  	112.0/EMPEROR_UNIT_TRAVEL_TIME
-#define EMPEROR_UNIT_SPEED_XY 	(112) // TODO: (sqrt(2) * 112)/EMPEROR_UNIT_TRAVEL_TIME
-
-#define EMPEROR_UNIT_COST		300
-
 class EmperorUnit : public Unit {
 public:
-	virtual void loadBaseAttributes();
+	virtual void loadBaseAttributes()=0;
+	virtual void loadImage()=0;
+    virtual float getMaxSpeedX()=0;
+    virtual float getMaxSpeedY()=0;
+    virtual float getMaxSpeedXY()=0;
+
 	virtual void createPath();
 	virtual void move();
 	virtual void getTarget();
 	virtual void attack();
 	virtual void decision();
 
+	
+	void loadRectangle();
 	bool isAlien();
 
 	int cost;

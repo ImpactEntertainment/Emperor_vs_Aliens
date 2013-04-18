@@ -7,7 +7,6 @@ using namespace std;
 Unit::Unit(Field *pos)
 : Element(pos), status(UNIT_IDLE)
 {
-	init();
 	target = 0;
 	markForDeath = false;
 	spawned = false;
@@ -33,19 +32,6 @@ bool Unit::spawn()
 	return false;
 }
 
-void Unit::loadRectangle()
-{
-	mResource.width	= 112;
-	mResource.height= 112;
-	mResource.x		= 0;
-	mResource.y		= 0;
-}
-
-void Unit::loadImage()
-{
-	image = Image::load("/opt/EmperorVsAliens/data/images/hiver.png",mResource.x,mResource.y,mResource.width,mResource.height);
-}
-
 void Unit::update()
 {
 	if(!spawned && !spawn()) return;
@@ -62,13 +48,13 @@ void Unit::update()
 
 void Unit::IA()
 {
+	if(markForDeath) status = UNIT_DEAD;
 	switch(status)
 	{
 	case UNIT_DEAD:
 	case UNIT_MOVING: break;
 	case UNIT_IDLE:
-		if(markForDeath) status = UNIT_DEAD;
-		else			 decision();
+		decision();
 	break;
 	case UNIT_ATTACKING: 
 		if(!attackCooldown) attack();
@@ -111,6 +97,7 @@ void Unit::arrive()
 void Unit::onDeath()
 {	
 	mPosition->locked = false;
+	mPosition->habitant = NULL;
 	decomposed = true;
 }
 
@@ -121,7 +108,7 @@ void Unit::enableAttack()
 
 void Unit::receiveDamage(int damage)
 {
-	attributes.hitpoints -= (damage - attributes.defense);
+	attributes.hitpoints -= (damage - attributes.defense) < 0 ? 0 : (damage - attributes.defense);
 	if(attributes.hitpoints <= 0)
 	{
 		status = UNIT_DEAD;

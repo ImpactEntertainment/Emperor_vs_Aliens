@@ -9,16 +9,13 @@ SwarmUnit::SwarmUnit(Field *pos)
 	buildingTarget = 0;
 }
 
-
-void SwarmUnit::loadBaseAttributes()
+void SwarmUnit::loadRectangle()
 {
-	backswingTime 		 = SWARM_UNIT_BACKSWING_TIME;
-	travelTime 			 = SWARM_UNIT_TRAVEL_TIME;
-	attributes.hitpoints = SWARM_UNIT_BASE_HITPOINTS;
-	attributes.damage	 = SWARM_UNIT_BASE_DAMAGE;
-	attributes.defense	 = SWARM_UNIT_BASE_DEFENSE;
+	mResource.width = 112;
+	mResource.height= 112;
+	mResource.x     = 0;
+	mResource.y 	= 0;
 }
-
 
 void SwarmUnit::decision()
 {
@@ -59,43 +56,43 @@ void SwarmUnit::move()
 	//TODO: verificar qual a direcao para atribuir valores corretos as velocidades
 	if(path.back() == mPosition->path[NORTHWEST])
 	{
-		speed.x = -SWARM_UNIT_SPEED_XY;
-		speed.y = -SWARM_UNIT_SPEED_XY;
+		speed.x = -getMaxSpeedXY();
+		speed.y = -getMaxSpeedXY();
 	}
 	else if(path.back() == mPosition->path[NORTH])
 	{
 		speed.x = 0;
-		speed.y = -SWARM_UNIT_SPEED_Y;
+		speed.y = -getMaxSpeedY();
 	}
 	else if(path.back() == mPosition->path[NORTHEAST])
 	{
-		speed.x = -SWARM_UNIT_SPEED_XY;
-		speed.y = SWARM_UNIT_SPEED_XY;
+		speed.x = -getMaxSpeedXY();
+		speed.y = getMaxSpeedXY();
 	}
 	else if(path.back() == mPosition->path[WEST])
 	{
-		speed.x = -SWARM_UNIT_SPEED_X;
+		speed.x = -getMaxSpeedX();
 		speed.y = 0;
 	}
 	else if(path.back() == mPosition->path[EAST])
 	{
-		speed.x = SWARM_UNIT_SPEED_X;
+		speed.x = getMaxSpeedX();
 		speed.y = 0;
 	}
 	else if(path.back() == mPosition->path[SOUTHWEST])
 	{
-		speed.x = -SWARM_UNIT_SPEED_XY;
-		speed.y = SWARM_UNIT_SPEED_XY;
+		speed.x = -getMaxSpeedXY();
+		speed.y = getMaxSpeedXY();
 	}
 	else if(path.back() == mPosition->path[SOUTH])
 	{
 		speed.x = 0;
-		speed.y = SWARM_UNIT_SPEED_Y;
+		speed.y = getMaxSpeedY();
 	}
 	else if(path.back() == mPosition->path[SOUTHEAST])
 	{
-		speed.x = SWARM_UNIT_SPEED_XY;
-		speed.y = SWARM_UNIT_SPEED_XY;
+		speed.x = getMaxSpeedXY();
+		speed.y = getMaxSpeedXY();
 	}
 	else{}
 }
