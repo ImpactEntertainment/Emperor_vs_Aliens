@@ -4,8 +4,7 @@
 #include <iostream>
 using namespace std;
 
-HUD::HUD()
-{
+HUD::HUD(){
     loadButtons();
     HUD::loadImage();
     loadDisplays();
@@ -18,8 +17,7 @@ HUD::HUD()
 }
 
 HUD::HUD(int* r, int* t, int* w)
-: resource(r), time(t), wavesLeft(w)
-{
+: resource(r), time(t), wavesLeft(w){
     loadButtons();
     HUD::loadImage();
     loadDisplays();
@@ -33,8 +31,7 @@ HUD::HUD(int* r, int* t, int* w)
     defeat.update();
 }
 
-void HUD::loadDisplays()
-{
+void HUD::loadDisplays(){
     addDisplay(resourceDisplay,&resourceInfo,990,5,30,250,250,0);
     addDisplay(timeDisplay,&timeInfo,988,60,13,0,0,50);
     addDisplay(wavesLeftDisplay,&wavesLeftInfo,1005,80,30,127,0,0);
@@ -43,8 +40,7 @@ void HUD::loadDisplays()
     addDisplay(defeat,&defeatInfo,540,540,200,255,0,0);
 }
 
-void HUD::addDisplay(Display& display, string* infoTracked, int x, int y, int size, int r, int g, int b)
-{
+void HUD::addDisplay(Display& display, string* infoTracked, int x, int y, int size, int r, int g, int b){
     display.init(size);
     display.infoDisplayed = infoTracked;
     display.position.x = x;
@@ -56,8 +52,7 @@ void HUD::addDisplay(Display& display, string* infoTracked, int x, int y, int si
 
 }
 
-void HUD::update()
-{
+void HUD::update(){
     //cout << "resource: " << *resource << endl;
     //cout << "time: " << printTime() << endl;
     updateTime();
@@ -68,8 +63,7 @@ void HUD::update()
     wavesLeftDisplay.update();
 }
 
-void HUD::updateTime()
-{
+void HUD::updateTime(){
    stringstream ss;
    if(*time <= 0)
     ss << "00'000";
@@ -79,23 +73,20 @@ void HUD::updateTime()
    timeInfo = ss.str();
 }
 
-void HUD::updateResource()
-{
+void HUD::updateResource(){
    stringstream ss;
 
    ss << setfill('0') << setw(2) << *resource;
     
    resourceInfo = ss.str();
 }
-void HUD::updateWavesLeft()
-{
+void HUD::updateWavesLeft(){
    stringstream ss;
    ss << *wavesLeft;
    wavesLeftInfo = ss.str();
 }
 
-void HUD::loadRectangle()
-{
+void HUD::loadRectangle(){
 	//mResource = NULL;
     mResource.width = 0;
     mResource.height= 0;
@@ -103,20 +94,17 @@ void HUD::loadRectangle()
     mResource.y     = 0;   
 }
 
-void HUD::loadImage()
-{
+void HUD::loadImage(){
     image = Image::load("/opt/EmperorVsAliens/data/images/InGameHUD.png");
 }
 
-void HUD::loadButtons()
-{
+void HUD::loadButtons(){
     addButton(1104,12,38,38); //togglepause
     addButton(1162,12,38,38); //toggleFastForward
     addButton(1218,12,38,38); //callNextWave
 }
 
-bool HUD::handleClick(int index)
-{
+bool HUD::handleClick(int index){
     switch(index)
     {
     case 0:

@@ -8,8 +8,7 @@
 namespace edge {
 
 SDL_VideoSettings::SDL_VideoSettings(const VideoSettings& settings)
-	: VideoSettings(settings)
-{
+	: VideoSettings(settings){
 }
 
 Uint32 
@@ -27,8 +26,7 @@ SDL_VideoSettings::getFlags() const
 Uint32 
 SDL_VideoSettings::getBufferLocationFlags() const
 {
-	switch (videoBufferLocation)
-	{
+	switch (videoBufferLocation){
 		case VIDEO_MEMORY:
 			return SDL_HWSURFACE;
 

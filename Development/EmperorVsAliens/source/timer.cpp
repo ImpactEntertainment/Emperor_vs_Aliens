@@ -13,8 +13,7 @@ bool Timer::PAUSED = false;
 bool Timer::STARTED = false;
 bool Timer::FAST_FORWARDED = false;
 
-void Timer::start()
-{
+void Timer::start(){
     //Start the timer
     STARTED = true;
 
@@ -32,8 +31,7 @@ void Timer::start()
     START_TICKS = SDL_GetTicks();
 }
 
-void Timer::stop()
-{
+void Timer::stop(){
     //Stop the timer
     STARTED = false;
 
@@ -41,8 +39,7 @@ void Timer::stop()
     PAUSED = false;
 }
 
-void Timer::pause()
-{
+void Timer::pause(){
     //If the timer is running and isn't already PAUSED
 
     if( ( STARTED == true ) && ( PAUSED == false ) )
@@ -56,8 +53,7 @@ void Timer::pause()
     }
 }
 
-void Timer::unpause()
-{
+void Timer::unpause(){
     //If the timer is PAUSED
     if( PAUSED == true)
     {
@@ -72,8 +68,7 @@ void Timer::unpause()
     }
 }
 
-void Timer::fastforward()
-{
+void Timer::fastforward(){
     //If the timer is running and isn't already PAUSED
     if( STARTED && !FAST_FORWARDED && !PAUSED )
     {
@@ -84,8 +79,7 @@ void Timer::fastforward()
     }
 }
 
-void Timer::unfastforward()
-{
+void Timer::unfastforward(){
     //If the timer is PAUSED
     if( STARTED && FAST_FORWARDED && !PAUSED)
     {
@@ -97,28 +91,23 @@ void Timer::unfastforward()
     }
 }
 
-void Timer::set_currentFrameTick()
-{
+void Timer::set_currentFrameTick(){
     CURRENT_FRAME_TICK = get_ticks();
 }
 
-int Timer::get_currentFrameTick()
-{
+int Timer::get_currentFrameTick(){
     return CURRENT_FRAME_TICK;
 }
 
-void Timer::toggleFastForward()
-{
+void Timer::toggleFastForward(){
     FAST_FORWARDED ? unfastforward() : fastforward();
 }
 
-void Timer::togglePause()
-{
+void Timer::togglePause(){
     PAUSED ? unpause() : pause();
 }
 
-int Timer::get_ticks()
-{
+int Timer::get_ticks(){
     //If the timer is running
     if( STARTED == true )
     {
@@ -143,12 +132,10 @@ int Timer::get_ticks()
     return -1;
 }
 
-bool Timer::is_started()
-{
+bool Timer::is_started(){
     return STARTED;
 }
 
-bool Timer::is_paused()
-{
+bool Timer::is_paused(){
     return PAUSED;
 }

@@ -1,16 +1,13 @@
 #include "configGUI.h"
 
-void ConfigGUI::loadImage()
-{
+void ConfigGUI::loadImage(){
     background = Image::load("/opt/EmperorVsAliens/data/images/ConfigMenu.png");
 }
 
-void ConfigGUI::loadSubmenus()
-{
+void ConfigGUI::loadSubmenus(){
 }
 
-void ConfigGUI::loadButtons()
-{
+void ConfigGUI::loadButtons(){
     addButton(290,180,132,26);
     addButton(435,180,132,26);
     addButton(583,180,132,26);
@@ -19,8 +16,7 @@ void ConfigGUI::loadButtons()
 #include <iostream>
 using namespace std;
 
-void ConfigGUI::handleClick(int index)
-{
+void ConfigGUI::handleClick(int index){
     switch(index)
     {
     case 0:

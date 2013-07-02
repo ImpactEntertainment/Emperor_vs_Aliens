@@ -8,10 +8,8 @@
 namespace edge {
 
 ostream& 
-operator<<(ostream& os, PresentationMode presentationMode)
-{
-	switch (presentationMode)
-	{
+operator<<(ostream& os, PresentationMode presentationMode){
+	switch (presentationMode){
 		case WINDOW: 
 			os << "Window";
 			break;
@@ -28,10 +26,8 @@ operator<<(ostream& os, PresentationMode presentationMode)
 }
 
 ostream& 
-operator<<(ostream& os, WindowSize windowSize)
-{
-	switch (windowSize)
-	{
+operator<<(ostream& os, WindowSize windowSize){
+	switch (windowSize){
 		case RESIZABLE: 
 			os << "Resizable window";
 			break;
@@ -45,10 +41,8 @@ operator<<(ostream& os, WindowSize windowSize)
 }
 
 ostream& 
-operator<<(ostream& os, ColorDepth colorDepth)
-{
-	switch (colorDepth)
-	{
+operator<<(ostream& os, ColorDepth colorDepth){
+	switch (colorDepth){
 		case SYSTEM:
 			os << "Same as OS";
 			break;
@@ -74,8 +68,7 @@ operator<<(ostream& os, ColorDepth colorDepth)
 }
 
 ostream& 
-operator<<(ostream& os, const WindowSettings settings)
-{
+operator<<(ostream& os, const WindowSettings settings){
 	os << "Dimensions: " << settings.width << "x" << settings.height << endl;
 	os << "Title: " << settings.title << endl;
 	os << "Presentation mode: " << settings.presentationMode << endl;
@@ -85,8 +78,7 @@ operator<<(ostream& os, const WindowSettings settings)
 	return os;
 }
 
-WindowSettings::WindowSettings()
-{
+WindowSettings::WindowSettings(){
 	width = 800; 
 	height = 600;
 	title = "Window"; 
@@ -96,8 +88,7 @@ WindowSettings::WindowSettings()
 }
 
 WindowSettings& 
-WindowSettings::operator=(const WindowSettings& settings)
-{
+WindowSettings::operator=(const WindowSettings& settings){
 	width = settings.width;
 	height = settings.height;
 	title = settings.title;
@@ -109,8 +100,7 @@ WindowSettings::operator=(const WindowSettings& settings)
 }
 
 bool 
-WindowSettings::operator!=(const WindowSettings& settings)
-{
+WindowSettings::operator!=(const WindowSettings& settings){
 	if (width != settings.width)
 		return true;
 

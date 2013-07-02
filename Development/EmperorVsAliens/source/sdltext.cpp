@@ -7,13 +7,11 @@ using namespace std;
 
 namespace edge {
 
-	SDL_Text::SDL_Text(const string& text) : Text(text)
-	{
+	SDL_Text::SDL_Text(const string& text) : Text(text){
 	}
 
 	Image *
-	SDL_Text::render(Font *font, const Color& color) const throw(Exception)
-	{
+	SDL_Text::render(Font *font, const Color& color) const throw(Exception){
 		SDL_Font *sdlFont = dynamic_cast<SDL_Font *>(font);
 		if (!sdlFont) {
 			throw Exception("Tipo de fonte invalido");

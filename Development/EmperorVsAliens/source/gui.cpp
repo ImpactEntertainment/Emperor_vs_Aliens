@@ -3,14 +3,12 @@
 #include <iostream>
 using namespace std;
 
-GUI::GUI()
-{
+GUI::GUI(){
     video = NULL;
     window = NULL;
 }
 
-void GUI::init(GameConfig& config) throw (Exception)
-{
+void GUI::init(GameConfig& config) throw (Exception){
     initVideo();
     initWindow();
     loadImage();
@@ -21,8 +19,7 @@ void GUI::init(GameConfig& config) throw (Exception)
     gameConfig = &config;
 }
 
-void GUI::openSubmenu(int index)
-{
+void GUI::openSubmenu(int index){
     if(submenus.size())
     {
         try {
@@ -40,20 +37,17 @@ void GUI::openSubmenu(int index)
     }
 }
 
-void GUI::addButton(int x, int y, int w, int h)
-{
+void GUI::addButton(int x, int y, int w, int h){
     buttons.push_back(new Button(x,y,w,h));
     buttons.back()->index = buttons.size()-1;
 }
 
-void GUI::addSubmenu(GUI* submenu)
-{
+void GUI::addSubmenu(GUI* submenu){
     submenus.push_back(submenu);
 }
 
 
-bool GUI::click(Button& area)
-{
+bool GUI::click(Button& area){
     return ( ( (clicked.x > area.x) && (clicked.x < area.x + area.width) ) && ( (clicked.y > area.y) && (clicked.y < area.y + area.height) ) );
 }
 
@@ -80,8 +74,7 @@ void GUI::handleMouseEvent(SDL_MouseButtonEvent &event){
     }
 }
 
-void GUI::loop() throw (Exception)
-{
+void GUI::loop() throw (Exception){
     SDL_Event event;
 
     while (!done && !gameConfig->exit) {       
@@ -134,14 +127,12 @@ void GUI::loop() throw (Exception)
     }
 }
 
-void GUI::close()
-{
+void GUI::close(){
     buttons.clear();
     submenus.clear();
 }
 
-void GUI::shutdown()
-{
+void GUI::shutdown(){
     if (window) {
         delete window;
     }
@@ -153,8 +144,7 @@ void GUI::shutdown()
     close();
 }
 
-void GUI::initVideo() throw (Exception)
-{
+void GUI::initVideo() throw (Exception){
     VideoSettings videoSettings;
     videoSettings.videoBufferLocation = VIDEO_MEMORY;
     videoSettings.machineArchitecture = MULTI_CORE;
@@ -164,18 +154,14 @@ void GUI::initVideo() throw (Exception)
     video->changeSettings(videoSettings);
 }
 
-void GUI::initWindow() throw (Exception)
-{
+void GUI::initWindow() throw (Exception){
     WindowSettings ws;
-    ws.width = 800;
-    ws.height= 600;
-    ws.presentationMode = WINDOW;
+    ws.presentationMode = FULLSCREEN;
     ws.title = "EmperorVsAliens";
     
     window = WindowFactory::create(ws);
 }
 
-void GUI::beDone()
-{
+void GUI::beDone(){
     done = true;
 }

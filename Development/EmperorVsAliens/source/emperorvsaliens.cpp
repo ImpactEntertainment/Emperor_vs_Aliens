@@ -77,8 +77,7 @@ namespace edge
         canvas->drawBottomGrass(board->bottomGrass);          
     }
 
-	void EmperorVsAliens::IA()
-	{
+	void EmperorVsAliens::IA(){
 		list<Unit*>::iterator it;
 		for(it = swarmUnits.begin(); it != swarmUnits.end(); it++)
 			(*it)->IA();

@@ -6,13 +6,11 @@ namespace edge {
 	MessageID Object::addChildID = MessageIDGenerator::nextID();
 	MessageID Object::removeChildID = MessageIDGenerator::nextID();
 	
-	Object::Object(Object *parent)
-	{
+	Object::Object(Object *parent){
 		changeParent(parent);
 	}
 
-	Object::~Object()
-	{
+	Object::~Object(){
 
 	}
 
@@ -41,8 +39,7 @@ namespace edge {
 	}
 
 	void 
-	Object::sendMessage(MessageID id, const void *inputs, void *outputs)
-	{
+	Object::sendMessage(MessageID id, const void *inputs, void *outputs){
 		if (parent) {
 			parent->receiveMessage(id, this, inputs, outputs);
 		}

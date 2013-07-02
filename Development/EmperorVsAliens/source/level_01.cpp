@@ -2,13 +2,11 @@
 
 using namespace std;
 
-void Level_01::loadBackground()
-{
+void Level_01::loadBackground(){
 	background = Image::load("/opt/EmperorVsAliens/data/images/level_01.png");
 }
 
-void Level_01::loadBottomGrass()
-{
+void Level_01::loadBottomGrass(){
 	bottomGrass = new EnviromentElement(BOTTOM_GRASS,NULL);
 	bottomGrass->mResource.x = 0;
 	bottomGrass->mResource.y = 1020;
@@ -17,8 +15,7 @@ void Level_01::loadBottomGrass()
 	bottomGrass->mPosition = new Field(0,1020);
 }
 
-void Level_01::loadSpawnPoints()
-{
+void Level_01::loadSpawnPoints(){
 	spawnPoints.push_back(&battlefield[15][2]);
 	spawnPoints.push_back(&battlefield[15][3]);
 	spawnPoints.push_back(&battlefield[15][4]);
@@ -27,8 +24,7 @@ void Level_01::loadSpawnPoints()
 #include <iostream>
 using namespace std;
 
-void Level_01::loadMainBuilding()
-{
+void Level_01::loadMainBuilding(){
 	mainBuilding = new Building(500,50);
 
 	for(int y = 0; y < BATTLEFIELD_HEIGHT -1; y++)
@@ -36,8 +32,7 @@ void Level_01::loadMainBuilding()
 
 }
 
-void Level_01::loadWaves()
-{
+void Level_01::loadWaves(){
 	vector<Unit*>	wave1,
 					wave2,
 					wave3;
@@ -57,8 +52,7 @@ void Level_01::loadWaves()
 	waves.push_back(wave3);
 }
 
-void Level_01::loadEnviroment()
-{
+void Level_01::loadEnviroment(){
 	EnviromentElement	cherryTree1(CHERRY_TREE,&battlefield[11][0]),
 						cherryTree2(CHERRY_TREE,&battlefield[4][4]),
 						cherryTree3(CHERRY_TREE,&battlefield[14][5]);
@@ -77,12 +71,10 @@ void Level_01::loadEnviroment()
 	enviromentElements.push_back(smallRock01);	
 }
 
-int Level_01::getInitialResources()
-{
+int Level_01::getInitialResources(){
 	return 1000;
 }
 
-int Level_01::getResourcesIncrement()
-{
+int Level_01::getResourcesIncrement(){
 	return 10;
 }

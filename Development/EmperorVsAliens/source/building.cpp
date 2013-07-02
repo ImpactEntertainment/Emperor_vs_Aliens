@@ -4,8 +4,7 @@
 using namespace std;
 
 Building::Building(int hp, int damageReduction)
-: Element()
-{	
+: Element(){	
 	init();
 	MAX_HITPOINTS	 = hp;
 	HITPOINTS 		 = hp;
@@ -16,27 +15,23 @@ Building::Building(int hp, int damageReduction)
 	range.clear();
 }
 
-void Building::addRange(Field *field)
-{
+void Building::addRange(Field *field){
 	range.push_back(field);
 	field->goalBuilding = this;
 }
 
-void Building::loadRectangle()
-{
+void Building::loadRectangle(){
 	mResource.width	= 134;
 	mResource.height= 1080;
 	mResource.x		= 0;
 	mResource.y		= 0;
 }
 
-void Building::loadImage()
-{
+void Building::loadImage(){
 	image = Image::load("/opt/EmperorVsAliens/data/images/wall.png");
 }
 
-void Building::update()
-{
+void Building::update(){
 	frameCount = (int)((MAX_HITPOINTS - HITPOINTS)*10.0/(MAX_HITPOINTS)) % 10;
 	mResource.x = mResource.width * frameCount;
 	mResource.y = 0;
@@ -44,15 +39,13 @@ void Building::update()
 	if(destroyed)	 onDestruction();	
 }
 
-void Building::receiveDamage(int damage)
-{
+void Building::receiveDamage(int damage){
 	HITPOINTS -= (damage * (100 - DAMAGE_REDUCTION)/100);
 	if(HITPOINTS <= 0)
 		destroyed = true;
 }
 
-void Building::onDestruction()
-{
+void Building::onDestruction(){
 	list<Field*>::iterator it;
 	for(it = range.begin(); it != range.end(); it++)
 		(*it)->goalBuilding = 0;

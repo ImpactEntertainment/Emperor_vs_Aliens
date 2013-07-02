@@ -1,18 +1,15 @@
 #include "flyer.h"
 
 Flyer::Flyer(Field *pos)
-: SwarmUnit(pos)
-{
+: SwarmUnit(pos){
 	init();
 }
 
-void Flyer::loadImage()
-{
+void Flyer::loadImage(){
 	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_flyer.png");
 }
 
-void Flyer::loadBaseAttributes()
-{
+void Flyer::loadBaseAttributes(){
 	backswingTime 		 = FLYER_BACKSWING_TIME;
 	travelTime 		 	 = FLYER_TRAVEL_TIME;
 	MAX_HITPOINTS 		 = attributes.hitpoints     = FLYER_BASE_HITPOINTS;
@@ -20,17 +17,14 @@ void Flyer::loadBaseAttributes()
 	attributes.defense	 = FLYER_BASE_DEFENSE;
 }
 
-float Flyer::getMaxSpeedX()
-{
+float Flyer::getMaxSpeedX(){
     return FLYER_SPEED_X;
 }
 
-float Flyer::getMaxSpeedY()
-{
+float Flyer::getMaxSpeedY(){
     return FLYER_SPEED_Y;
 }
 
-float Flyer::getMaxSpeedXY()
-{
+float Flyer::getMaxSpeedXY(){
     return FLYER_SPEED_XY;
 }

@@ -2,8 +2,7 @@
 
 namespace edge {
 
-	Text::Text(const string& text)
-	{
+	Text::Text(const string& text){
 		set(text);
 	}
 
@@ -20,8 +19,7 @@ namespace edge {
 	}
 
 	void
-	Text::set(const string& text)
-	{
+	Text::set(const string& text){
 		this->text = text;
 	}
 

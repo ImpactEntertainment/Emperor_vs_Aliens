@@ -1,7 +1,6 @@
 #include "gamefactory.h"
 
-Game *GameFactory::create_game(Difficulty choice)
-{
+Game *GameFactory::create_game(Difficulty choice){
     switch(choice)
     {   
     case GAME_EASY:

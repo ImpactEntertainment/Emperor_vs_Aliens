@@ -1,19 +1,16 @@
 #include "samurai.h"
 
 Samurai::Samurai(Field *pos)
-: EmperorUnit(pos)
-{
+: EmperorUnit(pos){
 	init();
 	cost = SAMURAI_COST;
 }
 
-void Samurai::loadImage()
-{
+void Samurai::loadImage(){
 	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_samurai.png");
 }
 
-void Samurai::loadBaseAttributes()
-{
+void Samurai::loadBaseAttributes(){
 	backswingTime 		 = SAMURAI_BACKSWING_TIME;
 	travelTime 		 	 = SAMURAI_TRAVEL_TIME;
 	MAX_HITPOINTS 		 = attributes.hitpoints     = SAMURAI_BASE_HITPOINTS;
@@ -21,17 +18,14 @@ void Samurai::loadBaseAttributes()
 	attributes.defense	 = SAMURAI_BASE_DEFENSE;
 }
 
-float Samurai::getMaxSpeedX()
-{
+float Samurai::getMaxSpeedX(){
     return SAMURAI_SPEED_X;
 }
 
-float Samurai::getMaxSpeedY()
-{
+float Samurai::getMaxSpeedY(){
     return SAMURAI_SPEED_Y;
 }
 
-float Samurai::getMaxSpeedXY()
-{
+float Samurai::getMaxSpeedXY(){
     return SAMURAI_SPEED_XY;
 }

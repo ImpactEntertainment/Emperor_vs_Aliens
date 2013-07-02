@@ -1,7 +1,6 @@
 #include "levelfactory.h"
 
-Map *LevelFactory::create_level(Level choice)
-{
+Map *LevelFactory::create_level(Level choice){
    	switch(choice)
     {   
     case LEVEL_01:

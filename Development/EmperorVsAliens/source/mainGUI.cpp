@@ -1,31 +1,26 @@
 #include "mainGUI.h"
 
-void MainGUI::loadImage()
-{
+void MainGUI::loadImage(){
     background = Image::load("/opt/EmperorVsAliens/data/images/MainMenu.png");
 }
 
-void MainGUI::beDone()
-{
+void MainGUI::beDone(){
     GUI::beDone();
     gameConfig->exit = true;
 }
 
-void MainGUI::loadSubmenus()
-{
+void MainGUI::loadSubmenus(){
     addSubmenu(GUIFactory::create_GUI(GUI_LEVEL_SELECT));
     addSubmenu(GUIFactory::create_GUI(GUI_CONFIG));
 }
 
-void MainGUI::loadButtons()
-{
+void MainGUI::loadButtons(){
     addButton(483,230,242,68);
     addButton(483,315,242,68);
     addButton(483,398,242,68);
 }
 
-void MainGUI::handleClick(int index)
-{
+void MainGUI::handleClick(int index){
     switch(index)
     {
     case 0:

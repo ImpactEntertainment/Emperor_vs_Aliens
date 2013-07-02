@@ -1,16 +1,13 @@
 #include "levelselectGUI.h"
 
-void LevelSelectGUI::loadImage()
-{
+void LevelSelectGUI::loadImage(){
     background = Image::load("/opt/EmperorVsAliens/data/images/LevelSelectMenu.png");
 }
 
-void LevelSelectGUI::loadSubmenus()
-{
+void LevelSelectGUI::loadSubmenus(){
 }
 
-void LevelSelectGUI::loadButtons()
-{
+void LevelSelectGUI::loadButtons(){
     addButton(78,508,25,25);
     addButton(125,457,25,25);
     addButton(209,443,25,25);
@@ -32,8 +29,7 @@ void LevelSelectGUI::loadButtons()
 #include <iostream>
 using namespace std;
 
-void LevelSelectGUI::handleClick(int index)
-{
+void LevelSelectGUI::handleClick(int index){
     switch(index)
     {
     case 0:

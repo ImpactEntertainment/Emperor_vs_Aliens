@@ -8,19 +8,19 @@ using namespace std;
 
 namespace edge {
 
-	Display::Display()
-	{
+	Display::Display(){
 		infoDisplayed = new string("EMPTY");
 		color.red = 255;
 		color.green = 0;
 		color.blue = 0;
 		position.x = 0;
 		position.y = 0;
+		image = 0;
+		font = 0;
 
 	}
 
-	Display::Display(string* infoTracked, int x, int y, int size, int r, int g, int b)
-	{
+	Display::Display(string* infoTracked, int x, int y, int size, int r, int g, int b){
 	    init(size);
 	    infoDisplayed = infoTracked;
 	    position.x = x;
@@ -28,17 +28,17 @@ namespace edge {
 	    color.red = r;
 	    color.green = g;
 	    color.blue = b;
+	    image = 0;
+		font = 0;
 	}
 
-	void Display::update()
-	{
+	void Display::update(){
 		SDL_Text text(infoDisplayed->c_str());
 		image = text.render(font, color);	
 	}
 
 	void
-	Display::init(int size)
-	{
+	Display::init(int size){
 		font = Font::load("/opt/EmperorVsAliens/data/fonts/tribal.ttf", size);
 		if (!font) {
 			cerr << "Erro no carregamento da fonte" << endl;
@@ -104,8 +104,7 @@ namespace edge {
 	}
 
 	void
-	Display::shutdown()
-	{
+	Display::shutdown(){
 		if(image)
 			delete image;
 		if(font)

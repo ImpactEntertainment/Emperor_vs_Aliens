@@ -15,19 +15,16 @@
 namespace edge {
 
 Window * 
-WindowFactory::create(const WindowSettings& settings) throw (Exception)
-{
+WindowFactory::create(const WindowSettings& settings) throw (Exception){
 	Video *video = Video::getInstance();
 
-	if (video->isUp() == false)
-	{
+	if (video->isUp() == false){
 		throw Exception("Video not initialized");
 	}
 
 	SDL_Window *window = new SDL_Window();
 
-	if (window == NULL)
-	{
+	if (window == NULL){
 		throw Exception("Sem memoria");
 	}
 

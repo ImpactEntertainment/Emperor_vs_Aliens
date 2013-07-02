@@ -3,13 +3,11 @@
 
 using namespace std;
 
-void Map::reset()
-{
+void Map::reset(){
 	currentWave = 0;
 }
 
-void Map::init()
-{
+void Map::init(){
   	reset();
   	loadBackground();
   	loadBottomGrass();
@@ -20,8 +18,7 @@ void Map::init()
 	loadEnviroment();
 }
 
-void Map::loadBattlefield()
-{
+void Map::loadBattlefield(){
 	for(int x=0; x < BATTLEFIELD_WIDTH; x++)
 		for(int y=0; y < BATTLEFIELD_HEIGHT; y++)
 		{
@@ -43,31 +40,26 @@ void Map::loadBattlefield()
 		}
 }
 
-bool Map::isMainBuildingDestroyed()
-{
+bool Map::isMainBuildingDestroyed(){
 	return  mainBuilding->destroyed;
 }
 
-void Map::shutdown()
-{
+void Map::shutdown(){
 	delete background;
 	delete bottomGrass->mPosition;
 	delete bottomGrass;
 	delete mainBuilding;
 }
 
-void Map::NextWave()
-{
+void Map::NextWave(){
 	currentWave++;
 }
 
-vector<Unit*>* Map::Wave()
-{
+vector<Unit*>* Map::Wave(){
 	return &waves[currentWave];
 }
 
-int Map::getWavesLeft()
-{
+int Map::getWavesLeft(){
 	return waves.size();
 }
 

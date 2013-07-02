@@ -1,29 +1,23 @@
 #include "element.h"
 
 Element::Element(Field *pos)
-: mPosition(pos)
-{}
+: mPosition(pos){}
 
-Element::Element()
-{}
+Element::Element(){}
 
-void Element::setPosition(Field *pos)
-{ 
+void Element::setPosition(Field *pos){ 
 	mPosition = pos;
 }
 
-void Element::init()
-{
+void Element::init(){
 	loadRectangle();
 	loadImage();
 }
 
-void Element::shutdown()
-{
+void Element::shutdown(){
     Image::release(image);
 }
 
-bool Element::isAttackable()
-{
+bool Element::isAttackable(){
 	return false;
 }

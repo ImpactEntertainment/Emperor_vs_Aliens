@@ -3,8 +3,7 @@
 namespace edge {
 
 	Font *
-	Font::load(const string& fontPath, int size) throw(Exception)
-	{
+	Font::load(const string& fontPath, int size) throw(Exception){
 		if (!TTF_WasInit()) {
 			int rc = TTF_Init();
 
@@ -24,14 +23,12 @@ namespace edge {
 		return font;
 	}
 
-	SDL_Font::SDL_Font(TTF_Font *font, int size)
-	{
+	SDL_Font::SDL_Font(TTF_Font *font, int size){
 		handle = font;
 		fontSize = size;
 	}
 
-	SDL_Font::~SDL_Font()
-	{
+	SDL_Font::~SDL_Font(){
 		if (handle) {
 			TTF_CloseFont(handle);
 		}

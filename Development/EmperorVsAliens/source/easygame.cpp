@@ -1,20 +1,17 @@
 #include "easygame.h"
 
-void EasyGame::init(GameConfig& config)
-{
+void EasyGame::init(GameConfig& config){
 	Game::init(config);
     timeToLive = timeForNextWave;
 }
 
 
-void EasyGame::gameBehaviour()
-{
+void EasyGame::gameBehaviour(){
     if(Timer::get_currentFrameTick() >= timeToLive)
         eva.killSwarm();
 }
 
-void EasyGame::callNextWave()
-{
+void EasyGame::callNextWave(){
 	Game::callNextWave();
     timeToLive = timeForNextWave; 
 }

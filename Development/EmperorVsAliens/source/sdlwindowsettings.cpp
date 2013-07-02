@@ -8,8 +8,7 @@
 namespace edge {
 
 SDL_WindowSettings::SDL_WindowSettings(const WindowSettings& settings)
-	: WindowSettings(settings)
-{
+	: WindowSettings(settings){
 }
 
 Uint32 
@@ -26,8 +25,7 @@ SDL_WindowSettings::getFlags() const
 Uint32
 SDL_WindowSettings::getPresentationModeFlags() const
 {
-	switch (presentationMode)
-	{
+	switch (presentationMode){
 		case WINDOW:
 			return 0;
 
@@ -44,8 +42,7 @@ SDL_WindowSettings::getPresentationModeFlags() const
 Uint32
 SDL_WindowSettings::getWindowSizeFlags() const
 {
-	switch (windowSize)
-	{
+	switch (windowSize){
 		case RESIZABLE:
 			return SDL_RESIZABLE;
 
@@ -61,8 +58,7 @@ SDL_WindowSettings::getBitsPerPixel() const
 {
 	int bitsPerPixel = 0;
 
-	switch (colorDepth)
-	{
+	switch (colorDepth){
 		case SYSTEM:
 			break;
 

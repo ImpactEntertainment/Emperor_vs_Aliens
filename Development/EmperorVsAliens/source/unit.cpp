@@ -5,8 +5,7 @@
 using namespace std;
 
 Unit::Unit(Field *pos)
-: Element(pos), status(UNIT_IDLE)
-{
+: Element(pos), status(UNIT_IDLE){
 	target = 0;
 	markForDeath = false;
 	spawned = false;
@@ -20,10 +19,8 @@ Unit::Unit(Field *pos)
 	path.clear();
 }
 
-bool Unit::spawn()
-{
-	if(!mPosition->habitant && !mPosition->locked && !spawned)
-	{
+bool Unit::spawn(){
+	if(!mPosition->habitant && !mPosition->locked && !spawned){
 		spawned = true;
 		mPosition->habitant = this;
 		loadBaseAttributes();
@@ -32,8 +29,7 @@ bool Unit::spawn()
 	return false;
 }
 
-void Unit::update()
-{
+void Unit::update(){
 	if(!spawned && !spawn()) return;
 
 	frameCount = (frameCount + 1) % 8;
@@ -46,11 +42,9 @@ void Unit::update()
 	if(frameCount == 7 && status == UNIT_DEAD)	 onDeath();	
 }
 
-void Unit::IA()
-{
+void Unit::IA(){
 	if(markForDeath) status = UNIT_DEAD;
-	switch(status)
-	{
+	switch(status){
 	case UNIT_DEAD:
 	case UNIT_MOVING: break;
 	case UNIT_IDLE:
@@ -64,14 +58,12 @@ void Unit::IA()
 	}
 }
 
-void Unit::interact(Unit* unit)
-{
+void Unit::interact(Unit* unit){
 	if(unit->isAlien() != this->isAlien())
 		startAttack(unit);
 }
 
-void Unit::move()
-{
+void Unit::move(){
 	if(path.back()->locked  && path.back()->habitant) 
 	{
 		status = UNIT_IDLE;
@@ -83,8 +75,7 @@ void Unit::move()
 	status = UNIT_MOVING;
 }
 
-void Unit::arrive()
-{
+void Unit::arrive(){
 	status = UNIT_IDLE;				
 	speed.x = 0;
 	speed.y = 0;
@@ -94,41 +85,34 @@ void Unit::arrive()
 	path.pop_back();
 }
 
-void Unit::onDeath()
-{	
+void Unit::onDeath(){	
 	mPosition->locked = false;
 	mPosition->habitant = NULL;
 	decomposed = true;
 }
 
-void Unit::enableAttack()
-{
+void Unit::enableAttack(){
 	attackCooldown = false;
 }
 
-void Unit::receiveDamage(int damage)
-{
+void Unit::receiveDamage(int damage){
 	attributes.hitpoints -= (damage - attributes.defense) < 0 ? 0 : (damage - attributes.defense);
-	if(attributes.hitpoints <= 0)
-	{
+	if(attributes.hitpoints <= 0){
 		status = UNIT_DEAD;
 		mPosition->habitant = NULL;
 	}
 }
 
-void Unit::attack()
-{
+void Unit::attack(){
 	ATTACK_READY_TIME = Timer::get_currentFrameTick() + backswingTime;
 	attackCooldown = true;
 }
 
-void Unit::startAttack(Unit* newTarget)
-{
+void Unit::startAttack(Unit* newTarget){
 	status = UNIT_ATTACKING;
 	target = newTarget;
 }
 
-bool Unit::isAttackable()
-{
+bool Unit::isAttackable(){
 	return true;
 }

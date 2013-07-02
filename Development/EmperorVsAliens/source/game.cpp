@@ -132,11 +132,6 @@ namespace edge
                             {
                                 //implementar uma fabrica de menus para gerar um menu de skill ou de criacao
                                 menu = new Menu(selected);
-                                cout << "SELECTED ";                        
-                                if(selected->habitant)
-                                    cout << "SKILL MENU" << endl;
-                                else
-                                    cout << "UNIT MENU" << endl;
                             }
                             else
                             {
@@ -235,7 +230,7 @@ namespace edge
         WindowSettings ws;
         ws.width = 1920;
         ws.height= 1080;
-        ws.presentationMode = WINDOW;
+        ws.presentationMode = FULLSCREEN;
         ws.title = "EmperorVsAliens";
         
         window = WindowFactory::create(ws);
@@ -251,8 +246,7 @@ namespace edge
         toggledPause = true;
     }
 
-	void Game::callNextWave()
-	{
+	void Game::callNextWave(){
 		if (WAVES_LEFT > 0) 
 		{
 			WAVES_LEFT--;

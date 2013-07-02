@@ -38,8 +38,7 @@ using namespace edge;
     }
 
 
-int main()
-{
+int main(){
 
     GameConfig gameConfig;
 

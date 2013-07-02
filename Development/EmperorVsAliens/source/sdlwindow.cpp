@@ -14,15 +14,13 @@
 
 namespace edge {
 
-SDL_Window::SDL_Window()
-{
+SDL_Window::SDL_Window(){
 	canvas = NULL;
 	surface = NULL;
 }
 
 void 
-SDL_Window::applySettings(const WindowSettings& settings) throw (Exception)
-{
+SDL_Window::applySettings(const WindowSettings& settings) throw (Exception){
 	Video *video = Video::getInstance();
 	VideoSettings videoSettings = video->currentSettings();
 
@@ -38,8 +36,7 @@ SDL_Window::applySettings(const WindowSettings& settings) throw (Exception)
 	surface = SDL_SetVideoMode(settings.width, settings.height, 
 		bitsPerPixel, flags);
 
-	if (surface == NULL)
-	{
+	if (surface == NULL){
 		throw Exception("Error on SDL_SetVideoMode()");
 	} 
 
@@ -48,8 +45,7 @@ SDL_Window::applySettings(const WindowSettings& settings) throw (Exception)
 	
 	canvas = new SDL_Canvas();
 
-	if (!canvas)
-	{
+	if (!canvas){
 		throw Exception("Sem memoria");
 	}
 

@@ -3,31 +3,26 @@
 #include <iostream>
 using namespace std;
 
-Menu::Menu()
-{}
+Menu::Menu(){}
 
-Menu::Menu(Field *pos)
-{
+Menu::Menu(Field *pos){
 	init(pos);
 	loadButtons();
 	frameCount = 0;
     option = NO_OPTION;
 }
 
-void Menu::init(Field *pos)
-{
+void Menu::init(Field *pos){
     Element::init();
     mPosition = pos;
 }
 
-void Menu::init()
-{
+void Menu::init(){
     Element::init();
     mPosition = 0;
 }
 
-void Menu::update()
-{
+void Menu::update(){
     if(!mPosition) 
 		frameCount = 0;
 	else
@@ -35,21 +30,18 @@ void Menu::update()
 	mResource.x = mResource.width * frameCount;    
 }
 
-void Menu::loadRectangle()
-{
+void Menu::loadRectangle(){
 	mResource.width	= 112;
 	mResource.height= 112;
 	mResource.x		= 0;
 	mResource.y		= 0;
 }
 
-void Menu::loadImage()
-{
+void Menu::loadImage(){
 	image = Image::load("/opt/EmperorVsAliens/data/images/InGameMenu.png");
 }
 
-void Menu::loadButtons()
-{
+void Menu::loadButtons(){
     int boardPositionX = 134,
         boardPositionY = 409,
         fieldSize      = 112;
@@ -61,8 +53,7 @@ void Menu::loadButtons()
     addButton(68+x,58+y,39,35);
 }
 
-bool Menu::handleClick(int index)
-{
+bool Menu::handleClick(int index){
     if(mPosition->habitant)
         return false;
 
@@ -88,15 +79,13 @@ bool Menu::handleClick(int index)
     return true;
 }
 
-void Menu::addButton(int x, int y, int w, int h)
-{
+void Menu::addButton(int x, int y, int w, int h){
     buttons.push_back(new Button(x,y,w,h));
     buttons.back()->index = buttons.size()-1;
 }
 
 
-bool Menu::click(Button& area)
-{
+bool Menu::click(Button& area){
     return ( ( (clicked.x > area.x) && (clicked.x < area.x + area.width) ) && ( (clicked.y > area.y) && (clicked.y < area.y + area.height) ) );
 }
 
@@ -123,7 +112,6 @@ bool Menu::handleMouseEvent(SDL_MouseButtonEvent &event){
     return false;
 }
 
-void Menu::close()
-{
+void Menu::close(){
     buttons.clear();
 }

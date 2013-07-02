@@ -81,8 +81,7 @@ namespace edge {
     }
 	
 	void 
-	SDL_Canvas::drawImage(const Image *image, const Rectangle& baseRect, const Point& position)
-	{
+	SDL_Canvas::drawImage(const Image *image, const Rectangle& baseRect, const Point& position){
 		const SDL_Image *sdlimage = dynamic_cast<const SDL_Image *>(image);
  
 		SDL_Rect srcrect;
@@ -100,8 +99,7 @@ namespace edge {
         SDL_BlitSurface(sdlimage->surface,&srcrect, surface, &rect);
 	}
 	
-	void SDL_Canvas::drawBottomGrass(const EnviromentElement* bottomGrass)
-	{
+	void SDL_Canvas::drawBottomGrass(const EnviromentElement* bottomGrass){
 	
 		Point position;
 
@@ -116,8 +114,7 @@ namespace edge {
 		drawImage(background);
 	}
 	
-	void SDL_Canvas::drawMenu(const Menu& element)
-	{
+	void SDL_Canvas::drawMenu(const Menu& element){
 
 		Point position;
 		
@@ -127,18 +124,15 @@ namespace edge {
 		drawImage(element.image, element.mResource, position);
 	}
 
-	void SDL_Canvas::drawMenu(const HUD& element)
-	{	
+	void SDL_Canvas::drawMenu(const HUD& element){	
 		drawImage(element.image);
 	}
 	
-	void SDL_Canvas::drawDisplay(const Display& element)
-	{	
+	void SDL_Canvas::drawDisplay(const Display& element){	
 		drawImage(element.image,element.position);
 	}
 	
-	void SDL_Canvas::drawElement(const Element& element)
-	{
+	void SDL_Canvas::drawElement(const Element& element){
 	
 		Point position;
 		
@@ -167,8 +161,7 @@ namespace edge {
 		drawUnitStatus(element.MAX_HITPOINTS, element.attributes.hitpoints, position);
 	}
 
-	void SDL_Canvas::drawUnitStatus(int maxHP, int currentHP, const Point& position)
-	{
+	void SDL_Canvas::drawUnitStatus(int maxHP, int currentHP, const Point& position){
 		Rectangle statusDisplay;
 		statusDisplay.width = 112;
 		statusDisplay.height= 112;
@@ -194,8 +187,7 @@ namespace edge {
 			drawUnit(**it);
 	}
 	
-	void SDL_Canvas::drawBuilding(Building& element)
-	{
+	void SDL_Canvas::drawBuilding(Building& element){
 	
 		Point position;
 		

@@ -1,8 +1,7 @@
 #include "gameconfig.h"
 
 
-GameConfig::GameConfig()
-{
+GameConfig::GameConfig(){
     for(int dif=0; dif<3; dif++)
        for(int stage=0; stage<12; stage++)
        {
@@ -18,8 +17,7 @@ GameConfig::GameConfig()
 	difficultyEnabled[0] = true;    
 }
 
-void GameConfig::levelCleared()
-{
+void GameConfig::levelCleared(){
 	if(level == LEVEL_12)
     {
         if(difficulty != GAME_HARD)

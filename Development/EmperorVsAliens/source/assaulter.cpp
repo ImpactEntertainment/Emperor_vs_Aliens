@@ -1,26 +1,22 @@
 #include "assaulter.h"
 
 Assaulter::Assaulter(Field *pos)
-: SwarmUnit(pos)
-{
+: SwarmUnit(pos){
 	init();
 }
 
-void Assaulter::loadImage()
-{
+void Assaulter::loadImage(){
 	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_assaulter.png");
 }
 
-void Assaulter::loadRectangle()
-{
+void Assaulter::loadRectangle(){
 	mResource.width = 130;
 	mResource.height= 130;
 	mResource.x     = 0;
 	mResource.y 	= 0;
 }
 
-void Assaulter::loadBaseAttributes()
-{
+void Assaulter::loadBaseAttributes(){
 	backswingTime 		 = ASSAULTER_BACKSWING_TIME;
 	travelTime 		 	 = ASSAULTER_TRAVEL_TIME;
 	MAX_HITPOINTS 		 = attributes.hitpoints     = ASSAULTER_BASE_HITPOINTS;
@@ -28,17 +24,14 @@ void Assaulter::loadBaseAttributes()
 	attributes.defense	 = ASSAULTER_BASE_DEFENSE;
 }
 
-float Assaulter::getMaxSpeedX()
-{
+float Assaulter::getMaxSpeedX(){
     return ASSAULTER_SPEED_X;
 }
 
-float Assaulter::getMaxSpeedY()
-{
+float Assaulter::getMaxSpeedY(){
     return ASSAULTER_SPEED_Y;
 }
 
-float Assaulter::getMaxSpeedXY()
-{
+float Assaulter::getMaxSpeedXY(){
     return ASSAULTER_SPEED_XY;
 }

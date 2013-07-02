@@ -7,8 +7,7 @@
 
 namespace edge {
 
-ostream& operator<<(ostream& os, VideoBufferLocation videoBufferLocation)
-{
+ostream& operator<<(ostream& os, VideoBufferLocation videoBufferLocation){
 	switch (videoBufferLocation) 
 	{
 		case SYSTEM_MEMORY:
@@ -24,10 +23,8 @@ ostream& operator<<(ostream& os, VideoBufferLocation videoBufferLocation)
 }
 
 ostream& 
-operator<<(ostream& os, MachineArchitecture machineArchitecture)
-{
-	switch (machineArchitecture)
-	{
+operator<<(ostream& os, MachineArchitecture machineArchitecture){
+	switch (machineArchitecture){
 		case SINGLE_CORE:
 			os << "Single Core";
 			break;
@@ -41,10 +38,8 @@ operator<<(ostream& os, MachineArchitecture machineArchitecture)
 }
 
 ostream& 
-operator<<(ostream& os, BufferingMode bufferingMode)
-{
-	switch (bufferingMode)
-	{
+operator<<(ostream& os, BufferingMode bufferingMode){
+	switch (bufferingMode){
 		case SINGLE_BUFFER:
 			os << "Single buffer";
 			break;
@@ -58,8 +53,7 @@ operator<<(ostream& os, BufferingMode bufferingMode)
 }
 
 ostream& 
-operator<<(ostream& os, const VideoSettings settings)
-{
+operator<<(ostream& os, const VideoSettings settings){
 	os << "Video buffer location: " << settings.videoBufferLocation << endl;
 	os << "Machine architecture: " << settings.machineArchitecture << endl;
 	os << "Buffering mode: " << settings.bufferingMode << endl;
@@ -67,21 +61,18 @@ operator<<(ostream& os, const VideoSettings settings)
 	return os;	
 }
 	
-VideoSettings::VideoSettings(const VideoSettings& settings)
-{
+VideoSettings::VideoSettings(const VideoSettings& settings){
 	*this = settings;
 }
 
-VideoSettings::VideoSettings()
-{
+VideoSettings::VideoSettings(){
 	videoBufferLocation = VIDEO_MEMORY;
 	machineArchitecture = SINGLE_CORE;
 	bufferingMode = DOUBLE_BUFFER;
 }
 
 VideoSettings& 
-VideoSettings::operator=(const VideoSettings& settings)
-{
+VideoSettings::operator=(const VideoSettings& settings){
 	videoBufferLocation = settings.videoBufferLocation;
 	machineArchitecture = settings.machineArchitecture;
 	bufferingMode = settings.bufferingMode;
@@ -90,8 +81,7 @@ VideoSettings::operator=(const VideoSettings& settings)
 }
 
 bool 
-VideoSettings::operator!=(const VideoSettings& settings)
-{
+VideoSettings::operator!=(const VideoSettings& settings){
 	if (videoBufferLocation != settings.videoBufferLocation)
 		return true;
 
