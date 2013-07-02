@@ -6,6 +6,11 @@ Authors
 	Leonn Ferreira
 	Luis Gustavo
 
+TODO:
+----------
+	- 0 - 
+		remove to many calls to initWindow 
+
 Changelog:
 ----------
 	- 0.0 -

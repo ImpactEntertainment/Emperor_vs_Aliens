@@ -52,7 +52,7 @@ int main(){
     Game *game = 0; 
     GUI *gui = GUIFactory::create_GUI(GUI_MAIN);
 
-    /
+    
     do{
         try 
         {
