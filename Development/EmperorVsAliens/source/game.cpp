@@ -17,7 +17,6 @@ namespace edge
         initWindow();
         
         gameConfig = &config;
-       
 
         eva.init(config.level);
         
