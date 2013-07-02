@@ -13,8 +13,7 @@ using namespace std;
 namespace edge
 {
 
-    Image *  Image::load(const string& imagePath, int offsetX, int offsetY, int width, int height) throw (Exception)
-    {
+    Image *  Image::load(const string& imagePath, int offsetX, int offsetY, int width, int height) throw (Exception){
 
         ifstream file(imagePath.c_str());
 
@@ -43,37 +42,31 @@ namespace edge
         return image;
     }
 
-    void Image::release(Image *image) throw (Exception)
-    {
+    void Image::release(Image *image) throw (Exception){
         if (image) {
             delete image;
         }
     }
 
-    SDL_Image::~SDL_Image()
-    {
+    SDL_Image::~SDL_Image(){
         if (surface) {
             SDL_FreeSurface(surface);
         }
     }
 
-    SDL_Image::SDL_Image(SDL_Surface * surface)
-    {
+    SDL_Image::SDL_Image(SDL_Surface * surface){
         this->surface = surface;
     }
 
-    int SDL_Image::width() const
-    {
+    int SDL_Image::width() const{
         return w;
     }
 
-    int SDL_Image::height() const
-    {
+    int SDL_Image::height() const{
         return h;
     }
     
-    bool  SDL_Image::hasClip() const
-    {
+    bool  SDL_Image::hasClip() const{
     	return (offsetX || offsetY || w || h);
     }
     

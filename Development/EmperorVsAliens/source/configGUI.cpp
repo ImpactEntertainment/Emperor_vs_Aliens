@@ -17,8 +17,7 @@ void ConfigGUI::loadButtons(){
 using namespace std;
 
 void ConfigGUI::handleClick(int index){
-    switch(index)
-    {
+    switch(index){
     case 0:
         if(gameConfig->difficultyEnabled[GAME_EASY])
             gameConfig->difficulty = GAME_EASY;

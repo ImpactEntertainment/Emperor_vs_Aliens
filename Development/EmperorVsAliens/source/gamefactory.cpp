@@ -1,8 +1,7 @@
 #include "gamefactory.h"
 
 Game *GameFactory::create_game(Difficulty choice){
-    switch(choice)
-    {   
+    switch(choice){   
     case GAME_EASY:
         return new EasyGame;
     break;

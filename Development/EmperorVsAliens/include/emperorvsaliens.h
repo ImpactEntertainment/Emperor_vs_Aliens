@@ -24,8 +24,7 @@ using namespace std;
 
 namespace edge
 {
-    class EmperorVsAliens
-    {
+    class EmperorVsAliens{
     public:
         void init(Level choice);
         void shutdown();

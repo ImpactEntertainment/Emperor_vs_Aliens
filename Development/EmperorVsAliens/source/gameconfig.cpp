@@ -18,16 +18,14 @@ GameConfig::GameConfig(){
 }
 
 void GameConfig::levelCleared(){
-	if(level == LEVEL_12)
-    {
+	if(level == LEVEL_12){
         if(difficulty != GAME_HARD)
         {
             difficulty = (Difficulty) (difficulty + 1);
             difficultyEnabled[difficulty+1] = true;
         }
     }
-    else
-    {
+    else{
         level = (Level) (level + 1);
         levelEnabled[difficulty][level+1] = true;
     }

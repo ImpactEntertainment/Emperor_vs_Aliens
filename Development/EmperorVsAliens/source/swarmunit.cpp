@@ -17,8 +17,7 @@ void SwarmUnit::loadRectangle(){
 
 void SwarmUnit::decision(){
 	if(!(target && buildingTarget) && spawned) getTarget();
-    if(!(target && buildingTarget)) 
-    {
+    if(!(target && buildingTarget)) {
 		if(!path.empty())
 		{
 			if(!path.back()->locked)

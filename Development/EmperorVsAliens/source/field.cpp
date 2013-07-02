@@ -9,8 +9,7 @@
 
 namespace edge {
 
-    Field::Field(int x, int y) 
-    {
+    Field::Field(int x, int y) {
     	habitant = 0;
     	goalBuilding = 0;
     	locked = false;

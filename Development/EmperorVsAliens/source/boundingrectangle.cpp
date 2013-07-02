@@ -4,14 +4,11 @@ namespace edge
 {
 
     BoundingRectangle::BoundingRectangle(const Rectangle& rect,
-        const Point& position)
-    {
+        const Point& position){
         set(rect, position);
     }
     
-    void
-    BoundingRectangle::set(const Rectangle& rect, const Point& position)
-    {
+    void BoundingRectangle::set(const Rectangle& rect, const Point& position){
         xmin = position.x;
         xmax = position.x + rect.width - 1;
         ymin = position.y;
@@ -19,14 +16,12 @@ namespace edge
     }
         
     Point 
-    BoundingRectangle::getPosition() const
-    {
+    BoundingRectangle::getPosition() const{
         return Point(xmin, ymin);
     }
     
     bool 
-    BoundingRectangle::hit(const Point& point) const
-    {
+    BoundingRectangle::hit(const Point& point) const{
         int x = point.x;
         int y = point.y;
         

@@ -8,15 +8,12 @@ using namespace std;
 
 namespace edge
 {
-    Game::Game()
-    {
+    Game::Game(){
         video = NULL;
         window = NULL;
     }
 
-    void
-    Game::init(GameConfig& config) throw (Exception)
-    {
+    void Game::init(GameConfig& config) throw (Exception){
         initVideo();
         initWindow();
         
@@ -37,9 +34,7 @@ namespace edge
 
     }
 
-    void
-    Game::loop() throw (Exception)
-    {
+    void Game::loop() throw (Exception){
         // 1. Atualizar time step
 		allFrameCount++;
 
@@ -198,23 +193,19 @@ namespace edge
 
     }
     
-    void
-    Game::shutdown()
-    {
-        if (video && video->isUp()) {
+    void Game::shutdown(){
+        /*if (video && video->isUp()) {
             video->shutdown();
             delete video;
         }
         if (window) {
             delete window;
-        }
+        }*/
         delete hud;
         eva.shutdown();
     }
 
-    void
-    Game::initVideo() throw (Exception)
-    {
+    void Game::initVideo() throw (Exception){
         VideoSettings videoSettings;
         videoSettings.videoBufferLocation = VIDEO_MEMORY;
         videoSettings.machineArchitecture = MULTI_CORE;
@@ -224,9 +215,7 @@ namespace edge
         video->changeSettings(videoSettings);
     }
 
-    void
-    Game::initWindow() throw (Exception)
-    {
+    void Game::initWindow() throw (Exception){
         WindowSettings ws;
         ws.width = 1920;
         ws.height= 1080;
@@ -236,13 +225,11 @@ namespace edge
         window = WindowFactory::create(ws);
     }
     
-    void Game::toggleFastForward()
-    {
+    void Game::toggleFastForward(){
         toggledFastForward = true;
     }
 
-    void Game::togglePause()
-    {
+    void Game::togglePause(){
         toggledPause = true;
     }
 

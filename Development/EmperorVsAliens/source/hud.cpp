@@ -105,8 +105,7 @@ void HUD::loadButtons(){
 }
 
 bool HUD::handleClick(int index){
-    switch(index)
-    {
+    switch(index){
     case 0:
         option = OPTION_01; 
     break; 

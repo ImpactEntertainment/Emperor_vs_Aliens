@@ -20,8 +20,7 @@ void GUI::init(GameConfig& config) throw (Exception){
 }
 
 void GUI::openSubmenu(int index){
-    if(submenus.size())
-    {
+    if(submenus.size()){
         try {
             submenus[index]->init(*gameConfig);
             submenus[index]->loop();
@@ -55,14 +54,12 @@ void GUI::handleMouseEvent(SDL_MouseButtonEvent &event){
 
     int  buttonIndex = -1;
 
-    if(event.button == SDL_BUTTON_LEFT)
-    {
+    if(event.button == SDL_BUTTON_LEFT){
         clicked.x = event.x;
         clicked.y = event.y;
     }
 
-    if(buttons.size())
-    {
+    if(buttons.size()){
         vector<Button*>::iterator it;
         for(it = buttons.begin(); it != buttons.end(); it++)
             if( click( *(*it) ) )
@@ -137,15 +134,19 @@ void GUI::shutdown(){
         delete window;
     }
 
+    close();
+}
+
+
+void GUI::die(){
     if (video && video->isUp()) {
         video->shutdown();
         delete video;
     }
-    close();
 }
 
 void GUI::initVideo() throw (Exception){
-    VideoSettings videoSettings;
+   VideoSettings videoSettings;
     videoSettings.videoBufferLocation = VIDEO_MEMORY;
     videoSettings.machineArchitecture = MULTI_CORE;
 
@@ -156,9 +157,11 @@ void GUI::initVideo() throw (Exception){
 
 void GUI::initWindow() throw (Exception){
     WindowSettings ws;
+    ws.width = 1920;
+    ws.height= 1080;
     ws.presentationMode = FULLSCREEN;
     ws.title = "EmperorVsAliens";
-    
+        
     window = WindowFactory::create(ws);
 }
 

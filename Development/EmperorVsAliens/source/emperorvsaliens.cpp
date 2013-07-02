@@ -5,27 +5,23 @@ using namespace std;
 
 namespace edge
 {
-    void EmperorVsAliens::init(Level choice)
-    {
+    void EmperorVsAliens::init(Level choice){
         board = (LevelFactory::create_level(choice));
         board->init();
         resources = board->getInitialResources();
     }
 
-    void EmperorVsAliens::shutdown()
-    {
+    void EmperorVsAliens::shutdown(){
         board->shutdown();
     }
     
-    void EmperorVsAliens::killSwarm()
-    {
+    void EmperorVsAliens::killSwarm(){
         list<Unit*>::iterator it;
         for(it = swarmUnits.begin(); it != swarmUnits.end();it++)
             (*it)->markForDeath = true;
     }
 
-    void EmperorVsAliens::decomposeDead()
-    {
+    void EmperorVsAliens::decomposeDead(){
         list<Unit*>::iterator it;
         for(it = swarmUnits.begin(); it != swarmUnits.end();)
             if((*it)->decomposed)
@@ -39,8 +35,7 @@ namespace edge
                 it ++;
     }
 
-    void EmperorVsAliens::updateUnits()
-    {
+    void EmperorVsAliens::updateUnits(){
         list<Unit*>::iterator it;
         for(it = swarmUnits.begin(); it != swarmUnits.end(); it++)
             (*it)->update();
@@ -49,26 +44,22 @@ namespace edge
     
     }
 
-    void EmperorVsAliens::increaseResources()
-    {
+    void EmperorVsAliens::increaseResources(){
         resources += board->getResourcesIncrement();
     }
     
-    void EmperorVsAliens::update()
-    {   
+    void EmperorVsAliens::update(){   
         updateUnits();
         decomposeDead();
         board->mainBuilding->update();
     }
     
-    void EmperorVsAliens::callNextWave()
-    {	
+    void EmperorVsAliens::callNextWave(){	
     	swarmUnits.insert(swarmUnits.end(),board->Wave()->begin(),board->Wave()->end());
     	board->NextWave();
     }
     
-    void EmperorVsAliens::draw(Canvas* canvas)
-    {
+    void EmperorVsAliens::draw(Canvas* canvas){
         canvas->drawBackground(board->background);
         canvas->drawUnits(swarmUnits);
         canvas->drawUnits(emperorUnits);
@@ -85,28 +76,23 @@ namespace edge
             (*it)->IA();
 	}
 
-    bool EmperorVsAliens::waveAlive()
-    {
+    bool EmperorVsAliens::waveAlive(){
         return !swarmUnits.empty();
     }
 
-    bool EmperorVsAliens::noMoreEnemies()
-    {
+    bool EmperorVsAliens::noMoreEnemies(){
         return swarmUnits.empty() && (board->currentWave == board->waves.size()); 
     }
 
-    bool EmperorVsAliens::isMainBuildingDestroyed()
-    {
+    bool EmperorVsAliens::isMainBuildingDestroyed(){
         return board->isMainBuildingDestroyed();
     }
 
-    bool EmperorVsAliens::gameEnded()
-    {
+    bool EmperorVsAliens::gameEnded(){
         return  isMainBuildingDestroyed() || noMoreEnemies();
     }
 
-    Field* EmperorVsAliens::select(int x, int y)
-    {
+    Field* EmperorVsAliens::select(int x, int y){
         int boardPositionX = 134,
             boardPositionY = 409,
             fieldSize      = 112;
@@ -120,8 +106,7 @@ namespace edge
         }
 
     }
-    void EmperorVsAliens::moveTo(Field* origin, Field* dest)
-    {
+    void EmperorVsAliens::moveTo(Field* origin, Field* dest){
         if(!origin->habitant) return;
         if(origin == dest)    return;
         ((EmperorUnit* )origin->habitant)->destination = dest;

@@ -30,8 +30,7 @@ void LevelSelectGUI::loadButtons(){
 using namespace std;
 
 void LevelSelectGUI::handleClick(int index){
-    switch(index)
-    {
+    switch(index){
     case 0:
         if(gameConfig->levelEnabled[gameConfig->difficulty][LEVEL_01])
             gameConfig->level = LEVEL_01;

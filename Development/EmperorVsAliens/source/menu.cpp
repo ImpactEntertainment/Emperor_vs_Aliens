@@ -57,8 +57,7 @@ bool Menu::handleClick(int index){
     if(mPosition->habitant)
         return false;
 
-    switch(index)
-    {
+    switch(index){
     case 0:
         option = OPTION_01; 
     break; 
@@ -92,14 +91,12 @@ bool Menu::click(Button& area){
 bool Menu::handleMouseEvent(SDL_MouseButtonEvent &event){
     int  buttonIndex = -1;
 
-    if(event.button == SDL_BUTTON_LEFT)
-    {
+    if(event.button == SDL_BUTTON_LEFT){
         clicked.x = event.x;
         clicked.y = event.y;
     }
 
-    if(buttons.size())
-    {
+    if(buttons.size()){
         vector<Button*>::iterator it;
         for(it = buttons.begin(); it != buttons.end(); it++)
             if( click( *(*it) ) )

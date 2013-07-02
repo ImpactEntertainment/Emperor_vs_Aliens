@@ -33,6 +33,7 @@ public:
     
     void loop() throw(Exception);
     void shutdown();
+    void die();
     void handleMouseEvent(SDL_MouseButtonEvent &event);
     bool click(Button& area);
     void addButton(int x, int y, int w, int h);

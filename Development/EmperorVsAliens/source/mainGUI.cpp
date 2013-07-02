@@ -21,8 +21,7 @@ void MainGUI::loadButtons(){
 }
 
 void MainGUI::handleClick(int index){
-    switch(index)
-    {
+    switch(index){
     case 0:
         gameConfig->levelSelected = false;
         openSubmenu(0);

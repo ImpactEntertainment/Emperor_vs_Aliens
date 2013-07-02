@@ -1,8 +1,7 @@
 #include "unitfactory.h"
 
 Unit *UnitFactory::create_unit(Class choice, Field *pos){
-    switch(choice)
-    {   
+    switch(choice){   
         case UNIT_EMPEROR_SAMURAI : 
 		return new Samurai(pos);
 	break;
