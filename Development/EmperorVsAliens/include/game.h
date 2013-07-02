@@ -62,7 +62,7 @@ namespace edge {
 
 		int allFrameCount;
 
-        void initVideo() throw(Exception);
+       
         void initWindow() throw(Exception);
     };
 }

@@ -14,10 +14,11 @@ namespace edge
     }
 
     void Game::init(GameConfig& config) throw (Exception){
-        initVideo();
         initWindow();
         
         gameConfig = &config;
+       
+
         eva.init(config.level);
         
         WAVES_LEFT          = eva.board->getWavesLeft();
@@ -205,7 +206,8 @@ namespace edge
         eva.shutdown();
     }
 
-    void Game::initVideo() throw (Exception){
+
+   /* void Game::initVideo() throw (Exception){
         VideoSettings videoSettings;
         videoSettings.videoBufferLocation = VIDEO_MEMORY;
         videoSettings.machineArchitecture = MULTI_CORE;
@@ -213,13 +215,13 @@ namespace edge
         video = Video::getInstance();
         video->init();
         video->changeSettings(videoSettings);
-    }
+    }*/
 
     void Game::initWindow() throw (Exception){
         WindowSettings ws;
         ws.width = 1920;
         ws.height= 1080;
-        ws.presentationMode = FULLSCREEN;
+        ws.presentationMode = WINDOW;
         ws.title = "EmperorVsAliens";
         
         window = WindowFactory::create(ws);

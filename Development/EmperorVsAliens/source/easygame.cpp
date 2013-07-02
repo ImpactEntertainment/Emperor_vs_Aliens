@@ -1,7 +1,7 @@
 #include "easygame.h"
 
 void EasyGame::init(GameConfig& config){
-	Game::init(config);
+	EasyGame::init(config);
     timeToLive = timeForNextWave;
 }
 
