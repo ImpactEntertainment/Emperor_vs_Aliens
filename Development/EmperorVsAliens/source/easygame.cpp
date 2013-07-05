@@ -7,8 +7,8 @@ void EasyGame::init(GameConfig& config){
 
 
 void EasyGame::gameBehaviour(){
-    if(Timer::get_currentFrameTick() >= timeToLive)
-        eva.killSwarm();
+  //  if(Timer::get_currentFrameTick() >= timeToLive)
+    //    eva.killSwarm();
 }
 
 void EasyGame::callNextWave(){

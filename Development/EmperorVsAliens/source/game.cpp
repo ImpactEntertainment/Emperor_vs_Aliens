@@ -206,16 +206,6 @@ namespace edge
     }
 
 
-   /* void Game::initVideo() throw (Exception){
-        VideoSettings videoSettings;
-        videoSettings.videoBufferLocation = VIDEO_MEMORY;
-        videoSettings.machineArchitecture = MULTI_CORE;
-
-        video = Video::getInstance();
-        video->init();
-        video->changeSettings(videoSettings);
-    }*/
-
     void Game::initWindow() throw (Exception){
         WindowSettings ws;
         ws.width = 1920;
