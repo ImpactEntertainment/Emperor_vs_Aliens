@@ -159,7 +159,7 @@ void GUI::initWindow() throw (Exception){
     WindowSettings ws;
     ws.width = 1920;
     ws.height= 1080;
-    ws.presentationMode = WINDOW;
+    ws.presentationMode = FULLSCREEN;
     ws.title = "EmperorVsAliens";
         
     window = WindowFactory::create(ws);

@@ -41,14 +41,6 @@ using namespace edge;
 int main(){
 
     GameConfig gameConfig;
-    WindowSettings ws;
-    ws.width = 1920;
-    ws.height= 1080;
-    ws.presentationMode = WINDOW;
-    ws.title = "EmperorVsAliens";
-        
-   //window = WindowFactory::create(ws);
-
     Game *game = 0; 
     GUI *gui = GUIFactory::create_GUI(GUI_MAIN);
 
