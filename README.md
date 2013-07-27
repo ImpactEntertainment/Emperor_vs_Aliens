@@ -6,6 +6,24 @@ Authors
 	Leonn Ferreira
 	Luis Gustavo
 
+	TODO:
+----------
+	- 0 - 
+	- 1 - PathFinding
+	- 2 - Implementar Níveis (Colocar Construções)
+	- 3 - IA
+ 	- 4 - Upar unidade
+	- 5 - Melhoria das unidades (aumentar status, aprender habilidades)
+ 	- 6 - Balanceamento
+	- 7 - Interface
+		- 7.0 - ToolTips (informações das unidades)
+		- 7.1 - Melhorar arte dos menus 
+		- 7.2 - Animações dos Menus
+		- 7.3 - Animações das Unidades
+		- 7.4 - Arte dos níveis  & das unidades & construções
+
+	
+
 Changelog:
 ----------
 	- 0.0 -

@@ -1,0 +1,30 @@
+# Object files
+*.o
+build/
+
+# Libraries
+*.lib
+*.lo
+*.la
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+
+#temp files 
+*~
+nbproject/
+
+# Executables
+*.exe
+*.out
+*.app
+*.pkg
+*.self
+*.elf
+EmperorVsAliens
+
