@@ -39,13 +39,13 @@ namespace edge {
 
 	void
 	Display::init(int size){
-		font = Font::load("/opt/EmperorVsAliens/data/fonts/tribal.ttf", size);
+		font = Font::load("/opt/Emperor_vs_Aliens/data/fonts/tribal.ttf", size);
 		if (!font) {
 			cerr << "Erro no carregamento da fonte" << endl;
 			return;
 		}
 		/*
-		Font *font = Font::load("/opt/EmperorVsAliens/data/fonts/tribal.ttf", 200);
+		Font *font = Font::load("/opt/Emperor_vs_Aliens/data/fonts/tribal.ttf", 200);
 
 		if (!font) {
 			cerr << "Erro no carregamento da fonte" << endl;
@@ -67,7 +67,7 @@ namespace edge {
 		defeatMessagePosition.y = 240;
 
 		delete font;
-		font = Font::load("/opt/EmperorVsAliens/data/fonts/Tribal.ttf", 100);
+		font = Font::load("/opt/Emperor_vs_Aliens/data/fonts/Tribal.ttf", 100);
 
 		Color white(255, 255, 255);
 		text.set("Player X");

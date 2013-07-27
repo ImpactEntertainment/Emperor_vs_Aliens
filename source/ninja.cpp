@@ -7,7 +7,7 @@ Ninja::Ninja(Field *pos)
 }
 
 void Ninja::loadImage(){
-	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_ninja.png");
+	image = Image::load("/opt/Emperor_vs_Aliens/data/images/sprite_sheet_ninja.png");
 }
 
 void Ninja::loadBaseAttributes(){

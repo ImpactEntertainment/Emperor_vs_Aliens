@@ -1,8 +1,8 @@
 /**
  * \file main.cpp
- * \brief Entrada do programa EmperorVsAliens.
+ * \brief Entrada do programa Emperor_vs_Aliens.
  *
- * Módulo principal do jogo EmperorVsAliens, responsável para inicialização
+ * Módulo principal do jogo Emperor_vs_Aliens, responsável para inicialização
  * dos componentes e do laço principal.
  *
  * \author Edson Alves (edsonalves@unb.br)
@@ -27,13 +27,13 @@ using namespace edge;
 
     void makeSound(){
        
-	music = Mix_LoadWAV("/opt/EmperorVsAliens/data/sounds/sound_of_death.ogg");
+	music = Mix_LoadWAV("/opt/Emperor_vs_Aliens/data/sounds/sound_of_death.ogg");
 	Mix_PlayChannel(-1,music, -1);
     }
      void makeSound2(){
         
         
-	music2 = Mix_LoadWAV("/opt/EmperorVsAliens/data/sounds/thunder/0.ogg");
+	music2 = Mix_LoadWAV("/opt/Emperor_vs_Aliens/data/sounds/thunder/0.ogg");
 	Mix_PlayChannel(-1,music2, 0);
     }
 

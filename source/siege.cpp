@@ -6,7 +6,7 @@ Siege::Siege(Field *pos)
 }
 
 void Siege::loadImage(){
-	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_siege.png");
+	image = Image::load("/opt/Emperor_vs_Aliens/data/images/sprite_sheet_siege.png");
 }
 
 void Siege::loadRectangle(){

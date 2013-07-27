@@ -6,7 +6,7 @@ Hiver::Hiver(Field *pos)
 }
 
 void Hiver::loadImage(){
-	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_hiver.png");
+	image = Image::load("/opt/Emperor_vs_Aliens/data/images/sprite_sheet_hiver.png");
 }
 
 void Hiver::loadBaseAttributes(){

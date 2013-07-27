@@ -6,7 +6,7 @@ Flyer::Flyer(Field *pos)
 }
 
 void Flyer::loadImage(){
-	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_flyer.png");
+	image = Image::load("/opt/Emperor_vs_Aliens/data/images/sprite_sheet_flyer.png");
 }
 
 void Flyer::loadBaseAttributes(){

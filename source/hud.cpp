@@ -95,7 +95,7 @@ void HUD::loadRectangle(){
 }
 
 void HUD::loadImage(){
-    image = Image::load("/opt/EmperorVsAliens/data/images/InGameHUD.png");
+    image = Image::load("/opt/Emperor_vs_Aliens/data/images/InGameHUD.png");
 }
 
 void HUD::loadButtons(){

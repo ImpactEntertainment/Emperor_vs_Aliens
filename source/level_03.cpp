@@ -3,7 +3,7 @@
 using namespace std;
 
 void Level_03::loadBackground(){
-	background = Image::load("/opt/EmperorVsAliens/data/images/level_03.png");
+	background = Image::load("/opt/Emperor_vs_Aliens/data/images/level_03.png");
 }
 
 void Level_03::loadBottomGrass(){

@@ -1,7 +1,7 @@
 #include "configGUI.h"
 
 void ConfigGUI::loadImage(){
-    background = Image::load("/opt/EmperorVsAliens/data/images/ConfigMenu.png");
+    background = Image::load("/opt/Emperor_vs_Aliens/data/images/ConfigMenu.png");
 }
 
 void ConfigGUI::loadSubmenus(){

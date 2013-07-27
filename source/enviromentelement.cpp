@@ -51,7 +51,7 @@ void EnviromentElement::loadSmallRock01(){
 }
 
 void EnviromentElement::loadImage(){
-	image = Image::load("/opt/EmperorVsAliens/data/images/map_elements.png",mResource.x,mResource.y,mResource.width,mResource.height);
+	image = Image::load("/opt/Emperor_vs_Aliens/data/images/map_elements.png",mResource.x,mResource.y,mResource.width,mResource.height);
 }
 
 void EnviromentElement::loadRectangle(){

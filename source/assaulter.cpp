@@ -6,7 +6,7 @@ Assaulter::Assaulter(Field *pos)
 }
 
 void Assaulter::loadImage(){
-	image = Image::load("/opt/EmperorVsAliens/data/images/sprite_sheet_assaulter.png");
+	image = Image::load("/opt/Emperor_vs_Aliens/data/images/sprite_sheet_assaulter.png");
 }
 
 void Assaulter::loadRectangle(){

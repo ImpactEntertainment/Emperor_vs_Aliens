@@ -6,7 +6,7 @@ Authors
 	Leonn Ferreira
 	Luis Gustavo
 
-	TODO:
+TODO:
 ----------
 	- 0 - 
 	- 1 - PathFinding
@@ -23,7 +23,6 @@ Authors
 		- 7.4 - Arte dos níveis  & das unidades & construções
 
 	
-
 Changelog:
 ----------
 	- 0.0 -

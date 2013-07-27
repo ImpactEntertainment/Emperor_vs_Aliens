@@ -208,10 +208,10 @@ namespace edge
 
     void Game::initWindow() throw (Exception){
         WindowSettings ws;
-        ws.width = 800;
-        ws.height= 600;
+        ws.width = 1920;
+        ws.height= 1080;
         ws.presentationMode = FULLSCREEN;
-        ws.title = "EmperorVsAliens";
+        ws.title = "Emperor_vs_Aliens";
         
         window = WindowFactory::create(ws);
     }

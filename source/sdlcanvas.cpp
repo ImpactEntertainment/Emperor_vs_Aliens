@@ -28,8 +28,8 @@ namespace edge {
             this->surface = surface;
         }
 
-        display 	     = Image::load("/opt/EmperorVsAliens/data/images/unitdisplay.png");
- 		currentHPDisplay = Image::load("/opt/EmperorVsAliens/data/images/currentHPDisplay.png");
+        display 	     = Image::load("/opt/Emperor_vs_Aliens/data/images/unitdisplay.png");
+ 		currentHPDisplay = Image::load("/opt/Emperor_vs_Aliens/data/images/currentHPDisplay.png");
     }
 
     SDL_Canvas::~SDL_Canvas() {

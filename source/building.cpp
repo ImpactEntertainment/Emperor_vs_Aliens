@@ -28,7 +28,7 @@ void Building::loadRectangle(){
 }
 
 void Building::loadImage(){
-	image = Image::load("/opt/EmperorVsAliens/data/images/wall.png");
+	image = Image::load("/opt/Emperor_vs_Aliens/data/images/wall.png");
 }
 
 void Building::update(){
